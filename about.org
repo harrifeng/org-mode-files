@@ -1,0 +1,10 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+
+*** 关于本站:
+本站使用Emacs 编辑器上的org-mode 7.5 生成。
+
+所有的源文件也会发布在网上,原始org文件在这里：[[file:src][org源代码]]
+
+经htmlize.el 进行着色后便于网上浏览的在这里:[[file:htmlized-src][htmlized后的org源代码]]
+

@@ -1,0 +1,24 @@
+#+TITLE: 站点地图
+
+   + daily
+     + [[file:daily/music.org][music]]
+     + [[file:daily/tobehappy.org][tobehappy]]
+     + [[file:daily/beautiful-sentence.org][一些话]]
+     + [[file:daily/first-meet.org][人生若只如初见]]
+     + [[file:daily/night.org][夜色缤纷]]
+     + [[file:daily/old.org][故旧]]
+     + [[file:daily/danjiu.org][浓妖不及淡久]]
+     + [[file:daily/man.org][男儿风]]
+   + emacs
+     + [[file:emacs/ediff.org][Windows 下使用Emacs的 Ediff 进行文件的比较、合并]]
+     + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
+     + [[file:emacs/auto-insert-and-yasnippet.org][yasnippet ,Auto Insert mode整合]]
+   + java
+     + [[file:java/ant-example1.org][ant build.xml 示例 ]]
+   + Linux
+     + [[file:Linux/linux-logo-by-code.htm][用代码画成的Linux吉祥物企鹅]]
+   + Windows
+     + [[file:windows/windows-keymap.org][Windows 下进行键盘映射]] 
+   + [[file:about.org][about]]
+   + [[file:index.org][welcome to my personal page]]
+   + [[file:links.org][一些有用的链接]]

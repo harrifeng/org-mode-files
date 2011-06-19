@@ -3,6 +3,7 @@
 #+TITLE:     tobehappy
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:      2011-06-03 星期五
+#+FILETAGS: @Daily
 #+begin_quote
          其实天很蓝
          阴云总要散

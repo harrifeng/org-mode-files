@@ -1,24 +1,32 @@
 #+TITLE: 站点地图
 
-   + daily
+   + Autohotkey
+     + [[file:autohotkey/AutoHotKey_1.org][AutoHotKey 几个简单的小例子]]
+     + [[file:autohotkey/AutoHotKey_Introduce.org][AutoHotKey 简介]]
+     + [[file:autohotkey/AutoHotKeyExplorer.org][对"我的电脑"  进行增强]]
+   + Daily
      + [[file:daily/music.org][music]]
      + [[file:daily/tobehappy.org][tobehappy]]
      + [[file:daily/beautiful-sentence.org][一些话]]
      + [[file:daily/first-meet.org][人生若只如初见]]
      + [[file:daily/night.org][夜色缤纷]]
+     + [[file:daily/wunian.org][心不染境]]
      + [[file:daily/old.org][故旧]]
      + [[file:daily/danjiu.org][浓妖不及淡久]]
      + [[file:daily/man.org][男儿风]]
-   + emacs
-     + [[file:emacs/ediff.org][Windows 下使用Emacs的 Ediff 进行文件的比较、合并]]
+     + [[file:daily/want.org][追逐自我的幸福]]
+   + Emacs
      + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
+     + [[file:emacs/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念 ]]
+     + [[file:emacs/emacs-help-system.org][emacs 的帮助系统]]
+     + [[file:emacs/emacs-introduce.org][Emacs一些并不可笑的笑话，闲言碎语]]
      + [[file:emacs/auto-insert-and-yasnippet.org][yasnippet ,Auto Insert mode整合]]
-   + java
+     + [[file:emacs/ediff.org][Windows 下使用Emacs的 Ediff 进行文件的比较、合并]]
+     + [[file:emacs/emacs-23.2-cedet.org][emacs-23.2安装官网cedet]]
+     + [[file:emacs/cedet-customize.org][cedet 的定制，（译文）]]
+   + Java
      + [[file:java/ant-example1.org][ant build.xml 示例 ]]
-   + Linux
-     + [[file:Linux/linux-logo-by-code.htm][用代码画成的Linux吉祥物企鹅]]
    + Windows
-     + [[file:windows/windows-keymap.org][Windows 下进行键盘映射]] 
+     + [[file:windows/windows-keymap.org][windows 的键盘映射]]
    + [[file:about.org][about]]
-   + [[file:index.org][welcome to my personal page]]
    + [[file:links.org][一些有用的链接]]

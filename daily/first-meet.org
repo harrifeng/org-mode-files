@@ -4,6 +4,7 @@
 #+AUTHOR:    孤峰独秀
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:      2011-06-03 星期五
+#+FILETAGS: @Daily
 #+begin_quote
                  人生若只如初见，
                  何事秋风悲画扇。

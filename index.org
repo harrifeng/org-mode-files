@@ -5,6 +5,5 @@
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:      2011-06-04 星期六
 
-**** 首页还未做好，先看[[file:sitemap.html][站点地图]]吧
-     
-**** [[file:about.org][about]]
+ + 首页还未做好，先看[[file:sitemap.org][站点地图]]吧
+ + [[file:about.org][About]]

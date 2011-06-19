@@ -4,6 +4,7 @@
 #+AUTHOR:    孤峰独秀
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:      2011-06-03 星期五
+#+FILETAGS: @Daily
 #+begin_html
 <pre>
 人生有缘自相逢                人生有缘自相逢                 谁说男儿有泪不能落        

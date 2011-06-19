@@ -1,4 +1,4 @@
-body {
+ body {
     background-color: #999966;
     margin: 0em;
 }
@@ -29,39 +29,13 @@ div#content {
     line-height: 1.4;
     margin: 0em auto;
     padding: 2em;
-    width: 45em;
+    width: 48em;
     height:100%; 
     min-height:600px;           /*firefox do'nt support height:100% ,so*/
  
 }
-/* p { */
-/*     /\* wrap long line     *\/ */
-/*     white-space: pre-wrap;       /\* css-3 *\/ */
-/*     white-space: -moz-pre-wrap;  /\* Mozilla, since 1999 *\/ */
-/*     white-space: -pre-wrap;      /\* Opera 4-6 *\/ */
-/*     white-space: -o-pre-wrap;    /\* Opera 7 *\/ */
-/*     word-wrap: break-word;       /\* Internet Explorer 5.5+ *\/ */
-/*     overflow:auto; */
-/* } */
-
-/* ul { */
-/*     margin: 0; */
-/* } */
-
-
-/* #table-of-contents ul { */
-/* 	list-style: none; */
-/* 	margin: 7px 0px 7px 15px ; */
-/* 	padding: 0px; */
-/*     color:red */
-/* 	position: fixed; */
-/* 	display: block; */
-/* 	top: 5%; */
-/*     white-space: nowrap;     */
-/* 	overflow:visible; */
-/* } */
 #table-of-contents {
-	font-size: 85%;
+	font-size: 75%;
 	line-height: 1.4em;
 	position: fixed;
 	display: block;
@@ -70,7 +44,7 @@ div#content {
 	width: 250px;
 	min-height:60px;
 	max-height:95%;
-	overflow:visible;
+	overflow:hidden;
     white-space:nowrap;
 }
 
@@ -100,6 +74,19 @@ div#content {
 }
 
 
+div#tags {
+	font-size: 75%;
+	/* line-height: 1.4em; */
+	position: fixed;
+	display: block;
+	right: -2px;
+	top: 10%;
+	width: 180px;
+	/* min-height:60px; */
+	max-height:95%;
+	/* overflow:visible; */
+    /* white-space:pre-wrap; */
+}
 
 .title {
     text-align:center;
@@ -157,6 +144,32 @@ pre.src {
     overflow-x:auto;
     overflow-y:auto;
 }
+blockquote {
+	border: 1px solid #555;
+	/* background:#696969; */
+    background:#263111;
+    color:#7cfc00;
+	font-size: 11pt;
+    width:95%;
+	padding: 1em;
+	margin: 0;
+	width: 700px;
+	float: none;
+	clear: none;
+	line-height: 1.333;
+	text-align:left;
+    font-style:italic;
+    
+    /* overflow: scroll; */
+    max-height:300px;           /*IEXPLORE  don't support max-height*/
+    _height:expression(this.scrollHeight > 300 ? "300px" : "auto");
+    min-height:20px;
+    max-width:700px;
+    min-width:700px;
+    overflow-x:auto;
+    overflow-y:auto;
+}
+
 .org-function-name {
     /* font-lock-function-name-face */
     /* color: #0000ff; */
@@ -175,26 +188,29 @@ pre.src {
  { color: #ffa07a;
    text-decoration: none;
  }
-
 p.author{
-    font-size:75%;
-    float:right;
+    font-size:80%;
     color:#556b2f;
     font-style:italic;
     position:fixed;
-    bottom:0px;
     left:10px;
+    bottom:40px;
+}
+p.date{
+    font-size:80%;
+    color:#556b2f;
+    font-style:italic;
+    position:fixed;
+    left:10px;
+    bottom:0px;
 }
 p.creator{
-    font-size:75%;
-    float:right;
+    font-size:80%;
     color:#556b2f;
     font-style:italic;
     position:fixed;
-    bottom:0px;
-    right:10px;
-    font-size:85%;
-    float:right;
+    left:10px;
+    bottom:20px;
 }
 
 img {
@@ -202,6 +218,7 @@ img {
 	border: none;
     float:none;
     clear:none;
+    left:10px;
 }
 
 .share img {
@@ -807,14 +824,42 @@ img {
 * html #org-div-home-and-up {
     position: absolute;
     width:200px;
-    right:25px
+    right:25px;
     /*
       The evil IE-JavaScript hack :-) depends on Picture and y-distance.
       Added to support small screens (Netbooks...).
       */
-    top: expression( ( 10 + ( noValue = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+    /* top: expression( ( 10 + ( noValue = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' ); */
     /* top: expression((document.body.clientHeight - 210) + "px"); */
      /* height: expression((document.body.clientHeight - 210) + "px"); */
+}
+* html #org-src{
+    position: absolute;
+    width:25px;
+    right:20px;
+}
+* html #htmlized-src{
+    position: absolute;
+    width:120px;
+    right:20px;
+}
+
+* html p.author{
+    position: absolute;
+    width:125px;
+    left:20px;
+}
+* html p.date{
+    position: absolute;
+    width:225px;
+    left:20px;
+    bottom:0px;
+}
+* html p.creator{
+    position: absolute;
+    width:425px;
+    left:20px;
+    bottom:20px;
 }
 
 * html h1 {
@@ -827,4 +872,5 @@ img {
     left: 30px;
 }
 
+ 
  

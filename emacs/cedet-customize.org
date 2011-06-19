@@ -1,12 +1,25 @@
-Customization
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     cedet 的定制，（译文）
+#+AUTHOR:    孤峰独秀
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:      2011-06-08 星期三
+#+DESCRIPTION: 对cedet进行定制 
+#+KEYWORDS:emacs cedet c c++ 
+#+FILETAGS: @Emacs @Linux 
+
+* Customization
 Cedet最简单的配置就是加载cedet.el
+#+begin_src emacs-lisp
 (load-file "~/emacs/cedet/common/cedet.el")
+#+end_src
 关于emacs23.2中加载cedet.el的一些配置见另一篇文章,这里不多说了
 如果还想用Cedet 对项目进行管理可以再加上一这句
+#+begin_src emacs-lisp
 (global-ede-mode t)
+#+end_src
 
-
-Semantic's customization
+* Semantic's customization
 
 这个需要根据你的需求来进行配置
 你可以用下面的命令来实现相应的功能.它们的功能是依次增强的,
@@ -33,27 +46,34 @@ Semantic's customization
     
     
 对以上命令你只需根据你的需要,在load cedet.el后运行其中的一个命令
-如(semantic-load-enable-excessive-code-helpers)
+如
+#+begin_src emacs-lisp
+(semantic-load-enable-excessive-code-helpers)
+#+end_src
 
 下面的部分会解释一下Semantic的一些简单特性.
 如果想要得用名称的补全及显示tags ,classes相应的信息,你可以需要
 加载 semantic-ia
+#+begin_src emacs-lisp
   (require 'semantic-ia)
+#+end_src
 运行了这个语句后,下面的命令就可以使用了.
 为了正常使用系统及的函数库Semantic应该具有接触觉系统include 文件的权限.
 其中含有一此关于函数 数据类型的相信息.
 如果你使用gcc 编译C/C++文件,Semantic可以自动寻找相应的 include路径
 为了达到这个目换,需要下面这个命令来实现
+#+begin_src emacs-lisp
 (require 'semantic-gcc)
+#+end_src
 当然你也可以显式的指定include的路径,
 semantic-add-system-include函数可以实现这个功能
 它需要两个参数
  1. include files 的路径,及相应的major-mode,例如: 
+#+begin_src emacs-lisp
 (semantic-add-system-include "~/exp/include/boost_1_37" 'c++-mode)
+#+end_src
 
-
-
-Optimization of Semantic's work
+* Optimization of Semantic's work
 为了优化tags ,有以下几个技巧
     *通过声明一个EDE project来限制搜索的范围:
     *显式的声明有关你的项目root 目录,Semantic就会用有限的几个databases
@@ -74,32 +94,37 @@ Integration with imenu
  functions,variables,及其他的tags
  semantic-load-enable-code-helpers级即可以实现此功能
 或者通过下面的代码也可以实现
+#+begin_src emacs-lisp
 (defun my-semantic-hook ()
   (imenu-add-to-menubar "TAGS"))
 (add-hook 'semantic-init-hooks 'my-semantic-hook)
+#+end_src
 
-
-Customization of Semanticdb
+* Customization of Semanticdb
 
 如果你使用默认的加载cedet.el的方式 ,那么Semanticdb已经自动加载了
 如果没有的话可以用下面的方式实现
+#+begin_src emacs-lisp
 (require 'semanticdb)
 (global-semanticdb-minor-mode 1)
+#+end_src
 对Semanticdb进行定制,你可以设定semanticdb的存储位置
 具体见customize-group semanticdb.
 
 另外semanticdb可以得用其他的外部工具生成的databased
 诸如gtags(GNU/Global) ,ctags ,ebrower, cscope
 下面的命令支持gnu/global
+#+begin_src emacs-lisp
 (require 'semanticdb-global)
 (semanticdb-enable-gnu-global-databases 'c-mode)
 (semanticdb-enable-gnu-global-databases 'c++-mode)
-
+#+end_src
 为 Unix Shell, Perl, Pascal, Tcl, Fortran, Asm等语言起用
 ctags支持
+#+begin_src emacs-lisp
 (semantic-load-enable-primary-exuberent-ctags-support)
-
-How to customize Semantic to work with C & C++ projects
+#+end_src
+* How to customize Semantic to work with C & C++ projects
 为了让Semantic更好的为C/C++工作,推荐使用EDE 对其进行项目的管理.
 EDE定义特定的project 类型ede-cpp-root-project,它提供额外的Semantic信息.
 可以用于分析人项目中的代码.
@@ -127,8 +152,7 @@ BOOST_TEST_DYN_LINK,它们会被传递给preprocessor,对于代码的解析有�
  用户如果有必要可以重定义一些与项目内文件有关的变量.通过
   :local-variables变量可以实现,其值与:spp-table一样是键值对
 
-
- Preprocessing of source code
+* Preprocessing of source code
 更详细的关于 preprocessor的内容见
 semantic-lex-c-preprocessor-symbol-map 变量
 可以通过semantic-lex-spp-describe命令获得与preprocessor symbols定义相
@@ -140,33 +164,36 @@ semantic-lex-c-preprocessor-symbol-map变量.
 这样的文件,当Cedet进行语法分析的时候就会得用其中的内容.
 默认情况下它只有一个值C++的标准库:作为一个例子,我来告诉你
 如何配置QT4
+#+begin_src emacs-lisp
 (setq qt4-base-dir "/usr/include/qt4")
 (semantic-add-system-include qt4-base-dir 'c++-mode)
 (add-to-list 'auto-mode-alist (cons qt4-base-dir 'c++-mode))
 (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt4-base-dir "/Qt/qconfig.h"))
 (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt4-base-dir "/Qt/qconfig-dist.h"))
 (add-to-list 'semantic-lex-c-preprocessor-symbol-file (concat qt4-base-dir "/Qt/qglobal.h"))
+#+end_src
 
 此后你就可以得用QT4库中定义的类了,下面是截图.
 
-Work with Semantic
+* Work with Semantic
 Semantic提供了几种补全方式,收集tags信息(变量,函数等),及在代码间导航.
 其中一些内容是semantic-ia包实现的,还有一些是Senator实现的,剩下的就是
 Semantic内核实现的了.
 
 一些命令没有进行键绑定,你需要自已进行绑定
+#+begin_src emacs-lisp
 (defun my-cedet-hook ()
   (local-set-key [(control return)] 'semantic-ia-complete-symbol)
   (local-set-key "\C-c?" 'semantic-ia-complete-symbol-menu)
   (local-set-key "\C-c>" 'semantic-complete-analyze-inline)
   (local-set-key "\C-cp" 'semantic-analyze-proto-impl-toggle))
 (add-hook 'c-mode-common-hook 'my-cedet-hook)
+#+end_src
 
 另外需要提及的一点的Semantic的开发工作是相当活跃的,如果semantic不能很
 好得处理你的代码,你可以给cedet-devel 邮件列表发送你的代码帮助他们改进
 
-
-Names completion
+* Names completion
 对函数 变量 类名进行名称的补全 Semantic内部有两个package实现了这个功能
 semantic-ia和Senator.semantic-ia 用
 semantic-analyze-possible-completions 来创建可用的 补全列表,
@@ -198,8 +225,7 @@ semantic-idle-completions-mode,
 (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
 当用记键入"." 及">"时,就会列出可选的补全内容.
 
-
-Getting information about tags
+* Getting information about tags
 
 semantic-ia包提供了几个收集变量函数类名信息的命令.
 semantic-ia-show-doc
@@ -235,8 +261,7 @@ semantic-decoration-include-visit 可以在光标下name 的include 文件间跳
  that move cursor to the "parent" tag
  例如 函数的上层tag就是类的声明
 
-
- Search for places where function is called
+* Search for places where function is called
  
 semantic-symref命令
 可以查找到光标下变量的在本项目中声明位置
@@ -245,8 +270,7 @@ semantic-symref-symbol 可以输入你想要找的具体变量名.
 如果某些名称没有在相应的database(如gnu/global,)中找到,它会用
 find-grep命令尝试搜索.可以在打开的新buffer中找到你要找的变量进行跳转.
 
-
-Source code folding
+* Source code folding
 Semantic可以实现代码折叠.跟hideshow.el提供的功能类似
 global-semantic-tag-folding-mode 实现这个功能.
 不仅可以折叠代码,还可以折叠注释.
@@ -273,8 +297,7 @@ senator-search-set-tag-class-filter command (C-c , f)
 senator-search-forward  senator-search-backward
 即使没激活.senator-isearch-toggle-semantic-mode,也可以用这两个命令.
 
-
-Work with Srecode
+* Work with Srecode
 可用于定义及插入代码模版.它是contextable的,
 比如插入set/get 的模版仅在类的声明内部才有用
 ,函数的插入不会在函数内部激活.
@@ -291,8 +314,7 @@ C-c / [a..z],
 C-c / E  (srecode-edit) 编辑模版
 用户定义的模版可放在~/.srecode下,关于如何创建,见手册
 
-
-Additional packages
+* Additional packages
 eassist-list-methods 列出当前buffer中定义的函数,并可以进行跳转
 eassist-switch-h-cpp 可以在include file 和源码间跳转.
 

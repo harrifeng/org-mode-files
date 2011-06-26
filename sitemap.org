@@ -1,32 +1,48 @@
-#+TITLE: Õ¾µãµØÍ¼
-
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     ç«™ç‚¹åœ°å›¾
+#+AUTHOR:    å­¤å³°ç‹¬ç§€
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2011-06-26 æ˜ŸæœŸæ—¥
+#+DESCRIPTION:ç«™ç‚¹åœ°å›¾
+#+KEYWORDS: sitemap org mode emacs
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
    + Autohotkey
-     + [[file:autohotkey/AutoHotKey_1.org][AutoHotKey ¼¸¸ö¼òµ¥µÄÐ¡Àý×Ó]]
-     + [[file:autohotkey/AutoHotKey_Introduce.org][AutoHotKey ¼ò½é]]
-     + [[file:autohotkey/AutoHotKeyExplorer.org][¶Ô"ÎÒµÄµçÄÔ"  ½øÐÐÔöÇ¿]]
+     + [[file:autohotkey/AutoHotKey_Introduce.org][AutoHotKey ç®€ä»‹]]
+     + [[file:autohotkey/AutoHotKey_1.org][AutoHotKey å‡ ä¸ªç®€å•çš„å°ä¾‹å­]]
+     + [[file:autohotkey/AutoHotKeyExplorer.org][å¯¹"æˆ‘çš„ç”µè„‘"  è¿›è¡Œå¢žå¼º]]
+     + [[file:autohotkey/AutoHotKey_auto_close_boring_window.org][è‡ªåŠ¨å…³é—­å¹¿å‘Šçª—å£]]
+     + [[file:autohotkey/AutoHotKey_eclipse.org][AutoHotkeyå¯¹Eclipseè¿›è¡Œå¢žå¼º]]
    + Daily
      + [[file:daily/music.org][music]]
      + [[file:daily/tobehappy.org][tobehappy]]
-     + [[file:daily/beautiful-sentence.org][Ò»Ð©»°]]
-     + [[file:daily/first-meet.org][ÈËÉúÈôÖ»Èç³õ¼û]]
-     + [[file:daily/night.org][Ò¹É«çÍ·×]]
-     + [[file:daily/wunian.org][ÐÄ²»È¾¾³]]
-     + [[file:daily/old.org][¹Ê¾É]]
-     + [[file:daily/danjiu.org][Å¨Ñý²»¼°µ­¾Ã]]
-     + [[file:daily/man.org][ÄÐ¶ù·ç]]
-     + [[file:daily/want.org][×·Öð×ÔÎÒµÄÐÒ¸£]]
+     + [[file:daily/beautiful-sentence.org][ä¸€äº›è¯]]
+     + [[file:daily/first-meet.org][äººç”Ÿè‹¥åªå¦‚åˆè§]]
+     + [[file:daily/night.org][å¤œè‰²ç¼¤çº·]]
+     + [[file:daily/wunian.org][å¿ƒä¸æŸ“å¢ƒ]]
+     + [[file:daily/old.org][æ•…æ—§]]
+     + [[file:daily/danjiu.org][æµ“å¦–ä¸åŠæ·¡ä¹…]]
+     + [[file:daily/man.org][ç”·å„¿é£Ž]]
+     + [[file:daily/want.org][è¿½é€è‡ªæˆ‘çš„å¹¸ç¦]]
+     + [[file:daily/you_hurt_me.org][ä½ ä¼¤äº†ä»–çš„éª„å‚²]]
    + Emacs
-     + [[file:emacs/emacs-on-windows.org][WindowsÉÏEmacsµÄ°²×°¼°emacsclient½øÐÐC/SÁ¬½Ó]]
-     + [[file:emacs/emacs-first-class.org][emacs ÈëÃÅµÚÒ»¿Î£ºEmacsÀïµÄ»ù±¾¸ÅÄî ]]
-     + [[file:emacs/emacs-help-system.org][emacs µÄ°ïÖúÏµÍ³]]
-     + [[file:emacs/emacs-introduce.org][EmacsÒ»Ð©²¢²»¿ÉÐ¦µÄÐ¦»°£¬ÏÐÑÔËéÓï]]
-     + [[file:emacs/auto-insert-and-yasnippet.org][yasnippet ,Auto Insert modeÕûºÏ]]
-     + [[file:emacs/ediff.org][Windows ÏÂÊ¹ÓÃEmacsµÄ Ediff ½øÐÐÎÄ¼þµÄ±È½Ï¡¢ºÏ²¢]]
-     + [[file:emacs/emacs-23.2-cedet.org][emacs-23.2°²×°¹ÙÍøcedet]]
-     + [[file:emacs/cedet-customize.org][cedet µÄ¶¨ÖÆ£¬£¨ÒëÎÄ£©]]
+     + [[file:emacs/emacs-on-windows.org][Windowsä¸ŠEmacsçš„å®‰è£…åŠemacsclientè¿›è¡ŒC/Sè¿žæŽ¥]]
+     + [[file:emacs/emacs-first-class.org][emacs å…¥é—¨ç¬¬ä¸€è¯¾ï¼šEmacsé‡Œçš„åŸºæœ¬æ¦‚å¿µ ]]
+     + [[file:emacs/emacs-help-system.org][emacs çš„å¸®åŠ©ç³»ç»Ÿ]]
+     + [[file:emacs/emacs-introduce.org][Emacsä¸€äº›å¹¶ä¸å¯ç¬‘çš„ç¬‘è¯ï¼Œé—²è¨€ç¢Žè¯­]]
+     + [[file:emacs/emacs-fun.org][Emacsä¸­ä¸€äº›æœ‰è¶£çš„ä¸œè¥¿]]
+     + [[file:emacs/auto-insert-and-yasnippet.org][yasnippet ,Auto Insert modeæ•´åˆ]]
+     + [[file:emacs/ediff.org][Windows ä¸‹ä½¿ç”¨Emacsçš„ Ediff è¿›è¡Œæ–‡ä»¶çš„æ¯”è¾ƒã€åˆå¹¶]]
+     + [[file:emacs/emacs-23.2-cedet.org][emacs-23.2å®‰è£…å®˜ç½‘cedet]]
+     + [[file:emacs/cedet-customize.org][cedet çš„å®šåˆ¶ï¼Œï¼ˆè¯‘æ–‡ï¼‰]]
    + Java
-     + [[file:java/ant-example1.org][ant build.xml Ê¾Àý ]]
+     + [[file:java/ant-example1.org][ant build.xml ç¤ºä¾‹ ]]
    + Windows
-     + [[file:windows/windows-keymap.org][windows µÄ¼üÅÌÓ³Éä]]
+     + [[file:windows/windows-keymap.org][windows çš„é”®ç›˜æ˜ å°„]]
    + [[file:about.org][about]]
-   + [[file:links.org][Ò»Ð©ÓÐÓÃµÄÁ´½Ó]]
+   + [[file:links.org][ä¸€äº›æœ‰ç”¨çš„é“¾æŽ¥]]
+

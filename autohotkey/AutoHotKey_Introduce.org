@@ -39,12 +39,12 @@ Java里的AOP 。它拦的是你对键盘鼠标的一切操作，而不论它们
 的外观)。在Linux 上这些操作只归窗口管理器管理，而不归窗口本身管的。
 
 *** Windows自身提供了一套方案:
-+ 窗口的切换、焦点的转移使用鼠标点选窗口、或者Alt-Tab键盘切换。
-+ 移动窗口 是点选窗口标题栏然后移动鼠标
-+ 改变窗口大小是将光标移动到窗口边界拖动。
++ 窗口的切换、焦点的转移:使用鼠标点选窗口、或者Alt-Tab键盘切换。
++ 移动窗口 :点选窗口标题栏然后移动鼠标
++ 改变窗口大小: 将光标移动到窗口边界拖动。
 似乎它没提供备选方案。
 只此一家别无分店的后果就是你用也得用不用也得用。
-没有比较的后果就是你不知道它是好是坏。
+没有比较的后果就是你不知道它是好是坏,你也永远不知道你所不知道的。
 
 *** Linux 下我用过一窗口管理器
 Linux下我用过的窗口管理器一个是gnome自带的Metacity ，一个是openbox、一个是
@@ -121,12 +121,12 @@ Linux难用、是因为你还没驯服它。它没把你当主人之前，怎么
 
 说了那么多关于Linux 下窗口管理器的话，其实是想说有了autohotkey ,在Windows 下
 实现这些功能不是没有可能。
-**** [[http://www.autohotkey.com/docs/scripts/EasyWindowDrag_(KDE).htm][EasyWindowDrag(KDE)]]
+*** [[http://www.autohotkey.com/docs/scripts/EasyWindowDrag_(KDE).htm][EasyWindowDrag(KDE)]]
 窗口的移动，不一定要按下标题栏。
 Alt+鼠标左键 在窗口的任何位置都可以改变窗口大小。
 Alt+鼠标右键，拖动窗口就可以，不需要一定在窗口边界，而那个边界有时并不怎么
 好找。
-**** 监控您的系统。例如，当您不希望见到的窗口出现时自动关闭它们；
+*** [[file:AutoHotKey_auto_close_boring_window.org][监控您的系统。例如，当您不希望见到的窗口出现时自动关闭它们；]]
 
 * [[file:AutoHotKey_1.html#sec-1][支持缩写]]
     键入“btw”然后按下tab 空格或回车后 就可以自动扩展为“by the way”

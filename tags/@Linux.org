@@ -1,0 +1,12 @@
+# -*- coding:utf-8 -*-
+
+#+TITLE: Tag: @Linux
+
+#+LANGUAGE:  zh
+   + [[file:../emacs/emacs-introduce.org][Emacs一些并不可笑的笑话，闲言碎语]]
+   + [[file:../emacs/emacs-help-system.org][emacs 的帮助系统]]
+   + [[file:../emacs/emacs-fun.org][emacs中一些有趣的东西]]
+   + [[file:../emacs/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念 ]]
+   + [[file:../emacs/emacs-23.2-cedet.org][emacs-23.2安装官网cedet]]
+   + [[file:../emacs/cedet-customize.org][cedet 的定制，（译文）]]
+   + [[file:../emacs/auto-insert-and-yasnippet.org][yasnippet ,Auto Insert mode整合]]

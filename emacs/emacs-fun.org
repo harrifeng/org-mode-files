@@ -1,0 +1,40 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     emacs中一些有趣的东西
+#+AUTHOR:    孤峰独秀
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2011-06-25 星期六
+#+DESCRIPTION:emacs中一些有趣的东西
+#+KEYWORDS: emacs fun game 
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+FILETAGS: @Emacs @Linux 
+
+* 心理医生doctor
+ M-x doctor ,然后试着跟他交谈，很有意思，不过它不认识中文。
+* 几个游戏，
+因为平常不玩游戏，所以也懒得去记游戏对应的函数名,试着从菜单栏里找
+Tools/Games/
+其中Snake 是贪吃蛇，Tetris 是俄罗斯方块,还有其也几个小游戏，没怎么玩过
+* animate-birthday-present  animate-string两个函数
+  这个可以利用文字作出动画的效果。因为是动画，所以用文字不太容易表示,可以试
+  着运行 animate-birthday-present这个命令，这只是个示例，它内部实际是调用
+  animate-string这个函数
+  比如，我写的下面这个函数，bye bye 的页面
+#+begin_src emacs-lisp
+  (defun bye ()
+  "say bye-bye !"
+    (interactive)
+    ;; Make a suitable buffer to display the birthday present in.
+    (switch-to-buffer (get-buffer-create "*bye*"))
+    (erase-buffer)
+    ;; Display the empty buffer.
+    (sit-for 0)
+    (animate-string "下次再会!" 6)
+    (sit-for 1) ;;停1秒钟
+    (animate-string " Bye!!!" 9)
+    )
+#+end_src

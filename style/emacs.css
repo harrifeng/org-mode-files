@@ -1,4 +1,4 @@
- body {
+body {
     background-color: #999966;
     margin: 0em;
 }
@@ -29,7 +29,7 @@ div#content {
     line-height: 1.4;
     margin: 0em auto;
     padding: 2em;
-    width: 45em;
+    width: 65%;
     height:100%; 
     min-height:600px;           /*firefox do'nt support height:100% ,so*/
  
@@ -58,14 +58,14 @@ div#content {
 #org-src{
 	position: fixed;
 	display: block;
-	right: 5px;
+	right: 3px;
 	top: 20px;
 	overflow:hidden;
     }
 #htmlized-src{
 	position: fixed;
 	display: block;
-	right: 35px;
+	right: 38px;
 	top: 20px;
 	overflow:hidden;
     }
@@ -81,6 +81,7 @@ div#content {
 	overflow:hidden;
 }
 #logo-img{
+    font-size: 60%;
 	position: fixed;
 	display: block;
     left: 6px;
@@ -139,7 +140,7 @@ pre.src {
     /* background:#263111; */
     color: #f7f8c6;
 	font-size: 10pt;
-    width:95%;
+    width:85%;
 	padding: 0em;
 	margin: 0;
 	width: 700px;

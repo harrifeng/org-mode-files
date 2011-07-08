@@ -1,4 +1,3 @@
-#+SETUPFILE: ~/.emacs.d/org-templates/level-1.org
 # -*- coding:utf-8 -*-
 #+LANGUAGE:  zh
 #+TITLE:     windows 的键盘映射
@@ -109,4 +108,4 @@ LAlt 映射为 LCtrl:
 
 另外从网上找了一个软件，他所用的原理就是本文所介绍的，用它可以很方便的修改键盘映射
 *** [[file:../download/sharpkeys2.msi][ sharpkey2.msi]]
-          
+

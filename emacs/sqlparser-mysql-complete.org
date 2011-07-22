@@ -1,0 +1,72 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     为mysql编写sql脚本时补全表名、列名
+#+AUTHOR:    孤峰独秀
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2011-07-21 四
+#+DESCRIPTION:为mysql编写sql脚本时补全表名、列名
+#+KEYWORDS: emacs sql mysql complete anything
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+FILETAGS: @Emacs @SQL @DB
+
+最近新写了一个以mysql 为后端，当编写sql 脚本时，能适时地从mysql 数据库中查询
+适入插入到当前光标下的表名列名等内容的扩展吧. 即进行表名列名的补全。
+emacswiki上有[[http://www.emacswiki.org/emacs/SqlComplete][SqlComplete]] 的介绍，用了一下，发现并不好用。不够智能，比如它不
+清楚什么时候该插入表名，什么时候该插入列名。所以只好自已动手。还好，发现了一
+个[[http://www.emacswiki.org/emacs/SqlCompletion][Mysql Completion]] 中的脚本mysql.el 它并不能补全，但是提供了如何从mysql中进
+行查询的函数。所以这部分懒得再写了，直接用他的，对了，其作者名叫叶文彬。是个
+中国人。写好后，录了个视频，展示其效果。视频上传到了。
+screencast [[http://screencast-repos.googlecode.com/files/emacs-sqlparse-mysql-complete.mkv.bz2][screencast]]
+文件上传到了 [[http://www.emacswiki.org/emacs/down/sqlparser-mysql-complete.el][emacswiki]], 同时源代码用git 进行管理，地址
+在这里[[https://github.com/jixiuf/sqlparser-mysql-complete][github.com]].
+* 如何使用：
+ + 下载mysql.el sqlparser-mysql-complete.el两个文件 
+ + 首先得设好mysql 的用户名，密码,才能从中查到数据.
+ + 设置一个或多个键绑定，当需要补全的时候，按一下即可.
+下面是我的一些配置
+#+begin_src emacs-lisp
+(eval-after-load 'sql
+  '(progn
+     (require 'sqlparser-mysql-complete)
+     (defun sqlparse-setup-for-mysql()
+       "initial some variable .some is defined in mysql.el.
+        some is defined here."
+       (interactive)
+       (setq mysql-user "root")
+       (setq mysql-password "root")
+       (setq sqlparse-mysql-default-db-name "test")
+       )
+     (sqlparse-setup-for-mysql)
+     (define-key sql-mode-map (quote [M-return]) 'anything-mysql-complete)
+     (define-key sql-interactive-mode-map  (quote [M-return]) 'anything-mysql-complete)
+     (define-key sql-mode-map (quote [tab]) 'anything-mysql-complete)
+     (define-key sql-interactive-mode-map  (quote [tab]) 'anything-mysql-complete)
+     )
+  )
+#+end_src
+因为我同时用了anything.el的补全系统，所以，如果你没用的话，上面的配置对你无
+效。
+#+begin_src  emacs-lisp
+(eval-after-load 'sql
+  '(progn
+     (require 'sqlparser-mysql-complete)
+     (defun sqlparse-setup-for-mysql()
+       "initial some variable .some is defined in mysql.el.
+        some is defined here."
+       (interactive)
+       (setq mysql-user "root")
+       (setq mysql-password "root")
+       (setq sqlparse-mysql-default-db-name "test")
+       )
+     (sqlparse-setup-for-mysql)
+      (define-key sql-mode-map (quote [M-return]) 'sqlparse-mysql-complete)
+      (define-key sql-interactive-mode-map  (quote [M-return]) 'sqlparse-mysql-complete)
+     )
+  )
+
+#+end_src
+当然，其中也提供了，没有anything.el支持的补全函数。如上。

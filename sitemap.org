@@ -40,6 +40,7 @@
      + [[file:emacs/emacs-vc.org][emacs中的版本控制VC接口]]
      + [[file:emacs/open-with.org][Emacs中的openwith.el扩展]]
      + [[file:emacs/emacs-kill-region-or-line.org][Emacs中的剪切复制]]
+     + [[file:emacs/sqlparser-mysql-complete.org][编写mysql 脚本时，适时补全表名、列名]]
      + [[file:emacs/ediff-git-mergetool.org][使用Emacs中的ediff作为Git的mergetool]]
      + [[file:emacs/emacs-smart-beginning-of-line-and-end-of-line.org][smart-beginning-of-line]]
      + [[file:emacs/auto-insert-and-yasnippet.org][yasnippet ,Auto Insert mode整合]]
@@ -50,6 +51,10 @@
      + [[file:java/ant-example1.org][ant build.xml 示例 ]]
    + Windows
      + [[file:windows/windows-keymap.org][windows 的键盘映射]]
+   + Oracle
+     + [[file:oracle/3ManageAnOracleInstance.org]]
+     + [[file:oracle/4ManageADatabase.org]]
+     + [[file:oracle/oracle_learn.org][oracle笔记]]
    + [[file:about.org][about]]
    + [[file:links.org][一些有用的链接]]
 

@@ -1,0 +1,7 @@
+# -*- coding:utf-8 -*-
+
+#+TITLE: Tag: @Oracle
+
+#+LANGUAGE:  zh
+   + [[file:../oracle/4ManageADatabase.org][4ManageADatabase.org]]
+   + [[file:../oracle/3ManageAnOracleInstance.org][3.ManageAnOracleInstance.org]]

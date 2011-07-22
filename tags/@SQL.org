@@ -1,0 +1,6 @@
+# -*- coding:utf-8 -*-
+
+#+TITLE: Tag: @SQL
+
+#+LANGUAGE:  zh
+   + [[file:../emacs/sqlparser-mysql-complete.org][为mysql编写sql脚本时补全表名、列名]]

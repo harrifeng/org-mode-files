@@ -1,6 +1,3 @@
-#+SETUPFILE: ~/.emacs.d/org-templates/level-setupfile-1.org
-#+INCLUDE: ~/.emacs.d/org-templates/level-1.org
-#+INCLUDE: ~/.emacs.d/org-templates/level-all.org
 # -*- coding:utf-8 -*-
 #+LANGUAGE:  zh
 #+TITLE:     为mysql 及oracle编写sql脚本时补全表名、列名
@@ -103,33 +100,3 @@ lsnrctl start
      )
   )
 #+end_src
-
-#+begin_html
-           <div id='my-src'>
-             <div id='org-src'><a href='../src/emacs/sqlparser-mysql-complete.org'>src</a></div>
-             <div id='htmlized-src'><a href='../htmlized-src/emacs/sqlparser-mysql-complete.org.html'>htmlized-src</a></div>
-           </div>
-           #+end_html
-          
-#+begin_html
-                   
-<div id='tags'><span id='tags-title'>Tags:</span><br />
-                 #+end_html    [[file:../tags/@Oracle.org][@Oracle]]
-    [[file:../tags/@Java.org][@Java]]
-    [[file:../tags/@SQL.org][@SQL]]
-    [[file:../tags/@DB.org][@DB]]
-    [[file:../tags/@Ediff.org][@Ediff]]
-    [[file:../tags/@Git.org][@Git]]
-    [[file:../tags/@Emacs.org][@Emacs]]
-    [[file:../tags/@Linux.org][@Linux]]
-    [[file:../tags/@Novel.org][@Novel]]
-    [[file:../tags/@Daily.org][@Daily]]
-    [[file:../tags/@Eclipse.org][@Eclipse]]
-    [[file:../tags/@AutoHotKey.org][@AutoHotKey]]
-    [[file:../tags/@Windows.org][@Windows]]
-
-#+begin_html
-                       
-</div>
-
-                 #+end_html

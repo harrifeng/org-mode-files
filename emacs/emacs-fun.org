@@ -3,7 +3,6 @@
 #+TITLE:     emacs中一些有趣的东西
 #+AUTHOR:    孤峰独秀
 #+EMAIL:     jixiuf@gmail.com
-#+DATE:     2011-06-25 星期六
 #+DESCRIPTION:emacs中一些有趣的东西
 #+KEYWORDS: emacs fun game 
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
@@ -40,10 +39,10 @@ Tools/Games/
 #+end_src
 
 * 小时候玩过一个扑克牌游戏，就是给你四张牌，对这四张牌进行加减乘除运算最终得到的数字是24
-  刚从emacswiki [[http://www.emacswiki.org][emacswiki]] 上发现一个与这个类似的游戏，不过不是给你玩的是，
+  刚从emacswiki [[http://www.emacswiki.org/emacs/EmacsTickets][emacswiki]] 上发现一个与这个类似的游戏，不过不是给你玩的是，
   是给Emacs 玩的。就是给你一串数字，在数字之间可以随意加入加减乘除的运算符，
   最终得到结果100 ,结果有人用elisp 把它实现了
-  #+begin_src emacs-lisp
+#+begin_src emacs-lisp
 (defvar bil-list nil "list of valid tickets.")
 (defun bil-calc (pbil pidx)
   "nil"
@@ -71,8 +70,8 @@ Tools/Games/
     bil-list))
 
   
-  #+end_src
+#+end_src
   比如对168324进行运算的结果 是"16*8-32+4"
-  #+begin_src emacs-lisp
+#+begin_src emacs-lisp
 (bil-findit "168324")
-  #+end_src
+#+end_src

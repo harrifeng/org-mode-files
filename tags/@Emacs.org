@@ -15,6 +15,7 @@
    + [[file:../emacs/emacs-help-system.org][emacs 的帮助系统]]
    + [[file:../emacs/emacs-fun.org][emacs中一些有趣的东西]]
    + [[file:../emacs/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念 ]]
+   + [[file:../emacs/emacs-can-do-what.org][GNU/Emacs 可以做什么]]
    + [[file:../emacs/emacs-23.2-cedet.org][emacs-23.2安装官网cedet]]
    + [[file:../emacs/ediff.org][Windows 下使用Emacs的 Ediff 进行文件的比较、合并]]
    + [[file:../emacs/ediff-git-mergetool.org][使用Emacs中的Ediff 作为git mergetool使用的工具进行文件合并]]

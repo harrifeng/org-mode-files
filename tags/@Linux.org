@@ -3,6 +3,7 @@
 #+TITLE: Tag: @Linux
 
 #+LANGUAGE:  zh
+   + [[file:../perl/perl.org][perl 一的些总结]]
    + [[file:../emacs/emacs-introduce.org][Emacs一些并不可笑的笑话，闲言碎语]]
    + [[file:../emacs/emacs-help-system.org][emacs 的帮助系统]]
    + [[file:../emacs/emacs-fun.org][emacs中一些有趣的东西]]

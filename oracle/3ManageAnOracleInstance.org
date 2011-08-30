@@ -220,7 +220,7 @@ shutdown immediate ,最常用，它不等事务完成，而是回滚，保证数
    + 记录一些大事件，如启动关闭等
    + used to resolve problems
    + used to better manage the database on a day-to-day  bsis
-主要包括以下几种类型的files
+  主要包括以下几种类型的files
 ** alert_SID.log
    + record you command
    + record results of major event

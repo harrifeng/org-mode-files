@@ -1,3 +1,4 @@
+
 # -*- coding:utf-8 -*-
 #+LANGUAGE:  zh
 #+TITLE:     站点地图
@@ -40,7 +41,7 @@
      + [[file:emacs/emacs-vc.org][emacs中的版本控制VC接口]]
      + [[file:emacs/open-with.org][Emacs中的openwith.el扩展]]
      + [[file:emacs/emacs-kill-region-or-line.org][Emacs中的剪切复制]]
-     + [[file:emacs/sqlparser.org][编写mysql/oracle脚本时，补全表名、列名]]
+     + [[file:emacs/sqlparser.org][编写mysql/oracle脚本时，补全表名、列名]]x
      + [[file:emacs/ediff-git-mergetool.org][使用Emacs中的ediff作为Git的mergetool]]
      + [[file:emacs/emacs-smart-beginning-of-line-and-end-of-line.org][smart-beginning-of-line]]
      + [[file:emacs/auto-insert-and-yasnippet.org][yasnippet ,Auto Insert mode整合]]
@@ -49,6 +50,10 @@
      + [[file:emacs/cedet-customize.org][cedet 的定制，（译文）]]
    + Java
      + [[file:java/ant-example1.org][ant build.xml 示例 ]]
+   + Perl 
+     + [[file:perl/perl.org][perl 笔记]]
+   + Git
+     + [[file:git/git.org][git拾遗]] 
    + Windows
      + [[file:windows/windows-keymap.org][windows 的键盘映射]]
    + Oracle

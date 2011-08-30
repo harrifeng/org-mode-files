@@ -17,7 +17,6 @@
 git rm --cache filename
 #+end_src
 从库中删除filename ,即不再对它进行管理， 但本地会留一份.
-要查看某个文件的以前的版本,使用
 
 ** git submodule 子模块的删除
   需要3步
@@ -41,7 +40,7 @@ git rm --cache filename
     git rm --cache site-lisp/anything-config/ 
     #+end_src
     
-** git show 命令
+** 要查看某个文件的以前的版本,使用 git show 命令
 #+begin_src sh
 git show 0b26bbe907c929ed88f6ba3dfeaaa9a2953b1c56:a.txt
 

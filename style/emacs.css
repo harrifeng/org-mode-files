@@ -34,19 +34,19 @@ div#content {
     min-height:600px;           /*firefox do'nt support height:100% ,so*/
  
 }
-#table-of-contents {
-	font-size: 75%;
-	line-height: 1.4em;
-	position: fixed;
-	display: block;
-	left: -20px;
-	top: 5%;
-	width: 250px;
-	min-height:60px;
-	max-height:95%;
-	overflow:hidden;
-    white-space:nowrap;
-}
+/* #table-of-contents { */
+/* 	font-size: 75%; */
+/* 	line-height: 1.4em; */
+/* 	position: fixed; */
+/* 	display: block; */
+/* 	left: -20px; */
+/* 	top: 5%; */
+/* 	width: 250px; */
+/* 	min-height:60px; */
+/* 	max-height:95%; */
+/* 	overflow:hidden; */
+/*     white-space:nowrap; */
+/* } */
 
 #org-div-home-and-up{
 	position: fixed;

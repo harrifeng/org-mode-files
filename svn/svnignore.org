@@ -1,12 +1,10 @@
-
-
 # -*- coding:utf-8 -*-
 #+LANGUAGE:  zh
-#+TITLE:     svn:ignore global-ignores property ºöÂÔÄ³Ğ©ÎÄ¼ş
-#+AUTHOR:    ¹Â·å¶ÀĞã
+#+TITLE:     svn:ignore global-ignores property å¿½ç•¥æŸäº›æ–‡ä»¶
+#+AUTHOR:    å­¤å³°ç‹¬ç§€
 #+EMAIL:     jixiuf@gmail.com
-#+DATE:     2011-09-08 ĞÇÆÚËÄ
-#+DESCRIPTION:svn:ignore property Ïà¹ØÄÚÈİ
+#+DATE:     2011-09-08 æ˜ŸæœŸå››
+#+DESCRIPTION:svn:ignore property ç›¸å…³å†…å®¹
 #+KEYWORDS: svn ignore 
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
@@ -17,27 +15,26 @@
 
 
 
-²Î¿¼£ºhttp://qa.taobao.com/?p=2163
+å‚è€ƒï¼šhttp://qa.taobao.com/?p=2163
 
 #+begin_src sh
 svn propedit svn:ignore . -editor-cmd notepad
-»ò
+æˆ–
 EXPORT SVN_EDITOR=emacsclientw.exe 
 svn propedit svn:ignore . 
 #+end_src
-ÔËĞĞÉÏÃæµÄÃüÁî£¬»áÊ¹ÓÃÄãÉèÖÃµÄ±à¼­Æ÷±à¼­svn:ignore ÊôĞÔµÄÄÚÈİ£¬
-´ÓÍøÉÏÕÒÁË¼¸¸öÀı×Ó
-ËÆºõ svn:ignore ÊôĞÔ²»ÄÜµİ¹éÄ¿Â¼
+è¿è¡Œä¸Šé¢çš„å‘½ä»¤ï¼Œä¼šä½¿ç”¨ä½ è®¾ç½®çš„ç¼–è¾‘å™¨ç¼–è¾‘svn:ignore å±æ€§çš„å†…å®¹ï¼Œ
+ä»ç½‘ä¸Šæ‰¾äº†å‡ ä¸ªä¾‹å­
+ä¼¼ä¹ svn:ignore å±æ€§ä¸èƒ½é€’å½’ç›®å½•
 
-²»¹ısvn »¹ÓĞÒ»¸öÊôĞÔglobal-ignores ,Õâ¸öÊôĞÔÖ»ÔÚ¿Í»§¶ËÓĞĞ§£¬
-ÔÚwindows ÉÏ£¬
-%appdata%/Subversion Ä¿Â¼ÏÂÓĞÒ»¸öconfig ÎÄ¼ş
-ÔÚÎÄ¼şÖĞ[miscellany] ×ÓÄ£¿éÏÂ£¬ÓĞÒ»¸ö×¢ÊÍÄêµÄÊôĞÔglobal-ignore
-ËüµÄÖµÊÇÒ»ÏµÁĞ±»ºöÂÔµÄÎÄ¼şÄ¿Â¼¶ÔÓ¦µÄÆ¥Åä·û£¬ÓÃ¿Õ¸ñ¸ñÊ½
+ä¸è¿‡svn è¿˜æœ‰ä¸€ä¸ªå±æ€§global-ignores ,è¿™ä¸ªå±æ€§åªåœ¨å®¢æˆ·ç«¯æœ‰æ•ˆï¼Œ
+åœ¨windows ä¸Šï¼Œ
+%appdata%/Subversion ç›®å½•ä¸‹æœ‰ä¸€ä¸ªconfig æ–‡ä»¶
+åœ¨æ–‡ä»¶ä¸­[miscellany] å­æ¨¡å—ä¸‹ï¼Œæœ‰ä¸€ä¸ªæ³¨é‡Šæ‰çš„å±æ€§global-ignore
+å®ƒçš„å€¼æ˜¯ä¸€ç³»åˆ—è¢«å¿½ç•¥çš„æ–‡ä»¶ç›®å½•å¯¹åº”çš„åŒ¹é…ç¬¦ï¼Œç”¨ç©ºæ ¼æ ¼å¼
 #+begin_quote
 [miscellany]
 global-ignores = *.usr *.hello *.o *.lo *.la *.al .libs *.so *.so.[0-9]* *.a *.pyc *.pyo
-
 #+end_quote
 
 #+begin_quote

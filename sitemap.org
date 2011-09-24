@@ -53,9 +53,13 @@
    + Perl 
      + [[file:perl/perl.org][perl 笔记]]
    + Git
-     + [[file:git/git.org][git拾遗]] 
+     + [[file:git/git.org][git拾遗]]
+   + SVN 
+     + [[file:svn/svnignore.org][svn ignore]]
    + Windows
      + [[file:windows/windows-keymap.org][windows 的键盘映射]]
+   + Linux
+     + [[file:Linux/lcd-vga.org][Linux下调笔记本亮度]]
    + Oracle
      + [[file:oracle/3ManageAnOracleInstance.org]]
      + [[file:oracle/4ManageADatabase.org]]

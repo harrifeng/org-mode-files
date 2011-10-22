@@ -4,8 +4,10 @@
 
 #+LANGUAGE:  zh
    + [[file:../windows/windows-keymap.org][windows 的键盘映射]]
+   + [[file:../java/spring.org][spring.rnc的作成]]
    + [[file:../emacs/sqlparser.org][为mysql 及oracle编写sql脚本时补全表名、列名]]
    + [[file:../emacs/open-with.org][Emacs的插件openwith.el]]
+   + [[file:../emacs/nxml-mode.org][nxml-mode补全]]
    + [[file:../emacs/emacs-vc.org][emacs 进行版本控制(Version Control)]]
    + [[file:../emacs/emacs-some-func.org][emacs-some-func.org]]
    + [[file:../emacs/emacs-smart-beginning-of-line-and-end-of-line.org][emacs smart-end-of-line smart-beginning-of-line]]

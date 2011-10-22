@@ -48,8 +48,12 @@
      + [[file:emacs/ediff.org][Windows 下使用Emacs的 Ediff 进行文件的比较、合并]]
      + [[file:emacs/emacs-23.2-cedet.org][emacs-23.2安装官网cedet]]
      + [[file:emacs/cedet-customize.org][cedet 的定制，（译文）]]
+     + [[file:emacs/nxml-mode.org][nxml mode ]]
+     + [[file:java/spring.org][nxml mode : spring.rnc的作成]]
    + Java
      + [[file:java/ant-example1.org][ant build.xml 示例 ]]
+   + C 
+     + [[file:c/concat.org][c 的长度可变的参数concat(char* first ...)]]
    + Perl 
      + [[file:perl/perl.org][perl 笔记]]
    + Git
@@ -58,6 +62,7 @@
      + [[file:svn/svnignore.org][svn ignore]]
    + Windows
      + [[file:windows/windows-keymap.org][windows 的键盘映射]]
+     + [[file:sqlserver/sqlserver-kill-all-connection.org][SQL SERVER kill all connection]]
    + Linux
      + [[file:Linux/lcd-vga.org][Linux下调笔记本亮度]]
    + Oracle

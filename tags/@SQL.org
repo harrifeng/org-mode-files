@@ -3,4 +3,5 @@
 #+TITLE: Tag: @SQL
 
 #+LANGUAGE:  zh
+   + [[file:../sqlserver/sqlserver-kill-all-connection.org][kill所有连接到某库的连接]]
    + [[file:../emacs/sqlparser.org][为mysql 及oracle编写sql脚本时补全表名、列名]]

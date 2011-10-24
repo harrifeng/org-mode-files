@@ -4,6 +4,7 @@
 
 #+LANGUAGE:  zh
    + [[file:../windows/windows-keymap.org][windows 的键盘映射]]
+   + [[file:../sqlserver/sqlserver-kill-all-connection.org][kill所有连接到某库的连接]]
    + [[file:../emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
    + [[file:../emacs/emacs-introduce.org][Emacs一些并不可笑的笑话，闲言碎语]]
    + [[file:../emacs/emacs-help-system.org][emacs 的帮助系统]]

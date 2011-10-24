@@ -1,0 +1,7 @@
+# -*- coding:utf-8 -*-
+
+#+TITLE: Tag: @C
+
+#+LANGUAGE:  zh
+   + [[file:../c/malloc.org][动态内在分配]]
+   + [[file:../c/error_log.org][可变参数实现的error 日志函数]]

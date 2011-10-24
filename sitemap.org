@@ -53,6 +53,8 @@
      + [[file:java/ant-example1.org][ant build.xml 示例 ]]
    + C 
      + [[file:c/concat.org][c 的长度可变的参数concat(char* first ...)]]
+     + [[file:c/error_log.org][可变参数2 ,类printf的error()]]
+     + [[file:c/concat.org][可变参数3 ,concat(string...)]]
      + [[file:c/macro.org][宏展开 及#与##]]
    + Perl 
      + [[file:perl/perl.org][perl 笔记]]

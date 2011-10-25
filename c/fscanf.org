@@ -14,35 +14,55 @@
 #+FILETAGS: @C
 首先向文件中写入格式化数据,然后再用fscanf读出
 #+begin_src c 
-#include <stdio.h>
-
-int main( void )
-{
-  long l;
-  float fp;
-  char s[81];
-  char c;
-  FILE *f = fopen("fscanf.out", "w+");
-
-  fprintf( f, "%s %ld %f%c", "a-string", 65000l, 3.14159, 'x' );
-
-  // Set pointer to beginning of file:
-  fseek( f, 0L, SEEK_SET );
-
-  // Read data back from file:
-  fscanf(f, "%s", s );   // C4996
-  fscanf(f, "%ld", &l ); // C4996
-  fscanf(f, "%f", &fp ); // C4996
-  fscanf(f, "%c", &c );  // C4996
-
-  // Output data read:
-  printf( "%s\n", s );
-  printf( "%ld\n", l );
-  printf( "%f\n", fp );
-  printf( "%c\n", c );
-
-  fclose( f );
-  return 0;
-}
-
+  #include <stdio.h>
+  
+  int main( void )
+  {
+    long l;
+    float fp;
+    char s[81];
+    char c;
+    FILE *f = fopen("fscanf.out", "w+");
+   /* w表示可写,+表示如果文件不存在则创建之 */
+  
+    fprintf( f, "%s %ld %f%c", "a-string", 65000l, 3.14159, 'x' );
+  
+    // Set pointer to beginning of file:
+    fseek( f, 0L, SEEK_SET );
+  
+    // Read data back from file:
+    fscanf(f, "%s", s );   // C4996
+    fscanf(f, "%ld", &l ); // C4996
+    fscanf(f, "%f", &fp ); // C4996
+    fscanf(f, "%c", &c );  // C4996
+  
+    // Output data read:
+    printf( "%s\n", s );
+    printf( "%ld\n", l );
+    printf( "%f\n", fp );
+    printf( "%c\n", c );
+  
+    fclose( f );
+    return 0;
+  }
+  
+#+end_src
+#+begin_src c
+  //file name : a.c
+  //created at: 2011年10月20日 星期四 00时26分11秒
+  //author:  纪秀峰
+  
+  #include <stdio.h>
+  
+  int main(void){
+    FILE *in = fopen("a.in", "r");
+    int sum=0,i;
+    //这个重点是如何判断读至文件末尾
+    while (fscanf(in,"%d\n",&i)!=EOF){
+      printf ("%d\n",i);
+      sum+=i;
+    }
+    printf ("sum=%d\n",sum);
+  }
+  
 #+end_src

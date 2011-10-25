@@ -51,6 +51,7 @@
   //file name : a.c
   //created at: 2011年10月20日 星期四 00时26分11秒
   //author:  纪秀峰
+  //a.in中每行一个数字
   
   #include <stdio.h>
   

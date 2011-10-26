@@ -40,20 +40,20 @@ int *(*(*F())[])();
 
 + (*F())[]
 遇到)往左,又遇到(,变为往右,然后是[]:
-- F是一个返回( (指向(..类型的数组)的指针) 类型)的函数, 
+- F是一个返回(指向(..类型的数组)的指针)的函数, 
 - F is a function returing a pointer to  an array of...
 
 + (*(*F())[])
-- F是一个返回( (指向((指向..类型的指针) 类型的数组)的指针) 类型)的函数, 
+- F是一个返回( 指向((指向..类型的指针) 类型的数组)的指针)的函数, 
 - F is a function returing a pointer to  an array of a pointer to ...
 
 + (*(*F())[])()
-- F是一个返回( (指向((指向(返回..类型的函数)类型的指针) 类型的数组)的指针) 类型)的函数, 
+- F是一个返回 (指向 ((指向(返回..类型的函数)的指针) 类型的数组)  的指针) 的函数, 
 - F is a function returing a pointer to  an array of a pointer to  a function returing ..
 
 int *(*(*F())[])();
 
-F是一个返回( (指向((指向(返回(指向int的指针)类型的函数)类型的指针) 类型的数组)的指针) 类型)的函数, 
+F是一个返回(指向 ((指向(返回(指向int的指针)类型的函数)指针) 类型的数组) 的指针) 的函数, 
 F is a function returing a pointer to  an array of a pointer to  a function returing   a pointer to int
 
 

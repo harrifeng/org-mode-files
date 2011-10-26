@@ -12,11 +12,11 @@
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+FILETAGS: @C
-比如看到这样一个声明,你肯定头都大了.:
+* 比如看到这样一个声明,你肯定头都大了.:
 int *(*(*F())[])();
  - F is a function returning a pointer to an array of pointers to
    functions returning a pointer to int.
-
+* 法则
 1 先找到或变量或函数或数组(因为现在还不知道它倒底是什么,暂命名为id)的名称.比如此处的F
 2 接下来,从F往右读,如果遇到
      下面三种标专时的读法:
@@ -26,35 +26,110 @@ int *(*(*F())[])();
 比如
 + F()
 读作
-- F是一个返回(..类型)的函数,
-- F is a function returing ...
+  - F是一个返回(..类型)的函数,
+  - F is a function returing ...
 类型我们还不知道.
 当读完这个id,或者遇到右括号)时,开始沿id 往左读
 比如接下来是
 +  *F()
   读作 
-- F是一个返回 ((指向..的指针) 类型)的函数, (1因为这个指针指向什么,还不清楚用..代替)
-- F is a function returing a pointer to ...
+ - F是一个返回 ((指向..的指针) 类型)的函数, (1因为这个指针指向什么,还不清楚用..代替)
+ - F is a function returing a pointer to ...
 
 遇到左括号,则返回继续向右读
 
 + (*F())[]
 遇到)往左,又遇到(,变为往右,然后是[]:
-- F是一个返回(指向(..类型的数组)的指针)的函数, 
-- F is a function returing a pointer to  an array of...
+ - F是一个返回(指向(..类型的数组)的指针)的函数, 
+ - F is a function returing a pointer to  an array of...
 
 + (*(*F())[])
-- F是一个返回( 指向((指向..类型的指针) 类型的数组)的指针)的函数, 
-- F is a function returing a pointer to  an array of a pointer to ...
+ - F是一个返回( 指向((指向..类型的指针) 类型的数组)的指针)的函数, 
+ - F is a function returing a pointer to  an array of a pointer to ...
 
 + (*(*F())[])()
 - F是一个返回 (指向 ((指向(返回..类型的函数)的指针) 类型的数组)  的指针) 的函数, 
 - F is a function returing a pointer to  an array of a pointer to  a function returing ..
 
-int *(*(*F())[])();
++ int *(*(*F())[])();
 
-F是一个返回(指向 ((指向(返回(指向int的指针)类型的函数)指针) 类型的数组) 的指针) 的函数, 
-F is a function returing a pointer to  an array of a pointer to  a function returing   a pointer to int
+ - F是一个返回(指向 ((指向(返回(指向int的指针)类型的函数)指针) 类型的数组) 的指针) 的函数, 
+ - F is a function returing a pointer to  an array of a pointer to  a function returing   a pointer to int
+
+* 一些示例
+  int x;
+ - x is an int.
+
+int *x;
+ - x is a pointer to an int.
+
+int **x;
+ - x is a pointer to a pointer to an int.
+
+const int x;
+ - x is a const int (constant integer).
+
+const int *x;
+ - x is a pointer to a const int. The value of x may change, but
+   the integer that it points to not be changed. In other words,
+   x cannot be used to alter the value to which it points.
+
+int *const x;
+ - x is a constant pointer to an int. The value may not change,
+   but the integer that it points to may change. In other words,
+   x will always point at the same location, but the contents may
+   vary.
+
+const int *const x;
+ - x is a constant pointer to a constant integer. The value of x
+   may not change, and the integer that it points to may not
+   change. In other words, x will always point at the same
+   location, which cannot be modified via x.
+
+int x[];
+ - x is an array of int.
+
+int x[99];
+ - x is an array of 99 int's.
+
+int *x[];
+ - x is an array of pointers to int.
+
+int (*x)[];
+ - x is a pointer to an array of int.
+
+int *(*x)[];
+ - x is a pointer to an array of pointers to int.
+
+int F();
+ - F is a function returning int.
+
+int *F();
+ - F is a function returning a pointer to int.
+
+int (*x)();
+ - x is a pointer to a function returning int.
+
+int (*x[99])();
+ - x is an array of 99 pointers to functions returning int.
+
+int (*F())();
+ - F is a function returning a pointer to a function returning int.
+
+int *(*F())();
+ - F is a function returning a pointer to a function returning a
+   pointer to an int.
+
+int (*F())[];
+ - F is a function returning a pointer to an array of int.
+
+int (*(*F())[])();
+ - F is a function returning a pointer to an array of pointers to
+   functions returning int.
+
+int *(*(*F())[])();
+ - F is a function returning a pointer to an array of pointers to
+   functions returning a pointer to int.
 
 
 +++Date last modified: 05-Jul-1997

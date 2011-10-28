@@ -49,6 +49,8 @@
      + [[file:emacs/cedet-customize.org][cedet 的定制，（译文）]]
      + [[file:emacs/nxml-mode.org][nxml mode ]]
      + [[file:java/spring.org][nxml mode : spring.rnc的作成]]
+     + [[file:emacs/msys-bash-ls-color.org][Windows 上使用msys中的bash，及ls 显示颜色的配置]]
+     + [[file:emacs/image-suport-on-windows.org][Windows上Emacs中显示jpeg ,pgn 格式的图片]]
    + Java
      + [[file:java/ant-example1.org][ant build.xml 示例 ]]
    + C 
@@ -65,6 +67,7 @@
    + Windows
      + [[file:windows/windows-keymap.org][windows 的键盘映射]]
      + [[file:sqlserver/sqlserver-kill-all-connection.org][SQL SERVER kill all connection]]
+     + [[file:sqlserver/clonedb.org][sqlserver clone DB]]
    + Linux
      + [[file:Linux/lcd-vga.org][Linux下调笔记本亮度]]
    + Oracle

@@ -89,7 +89,7 @@ const int *const x;
 int x[];
  - x is an array of int.
 
-int x[99];
+int x[99 ];
  - x is an array of 99 int's.
 
 int *x[];
@@ -110,7 +110,7 @@ int *F();
 int (*x)();
  - x is a pointer to a function returning int.
 
-int (*x[99])();
+int (*x[ 99])();
  - x is an array of 99 pointers to functions returning int.
 
 int (*F())();
@@ -238,12 +238,12 @@ you a hint about where the put the next symbol and whether parentheses
 are required.
 
 Some declarations look much more complicated than they are due to array
-sizes and argument lists in prototype form.  If you see "[3]", that's
+sizes and argument lists in prototype form.  If you see "[ 3]", that's
 read as "array (size 3) of...".  If you see "(char *,int)" that's read
 as "function expecting (char *,int) and returning...".  Here's a fun
 one:
 
-                 int (*(*fun_one)(char *,double))[9][20];
+                 int (*(*fun_one)(char *,double))[9 ][20 ];
 
 I won't go through each of the steps to decipher this one.  It's:
 

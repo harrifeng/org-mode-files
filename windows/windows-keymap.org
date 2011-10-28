@@ -105,6 +105,8 @@ LAlt 映射为 LCtrl:
 
 * 下载链接
 *** 本站保存了一份  [[../download/scancode.doc][scancode.doc]]
+    
+*** [[flie][Alt_Ctl_CapsLock交换的注删表修改文件]]
 
 另外从网上找了一个软件，他所用的原理就是本文所介绍的，用它可以很方便的修改键盘映射
 *** [[file:../download/sharpkeys2.msi][ sharpkey2.msi]]

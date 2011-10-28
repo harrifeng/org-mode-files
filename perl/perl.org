@@ -615,8 +615,8 @@ time ($acctime, $modtime, @filelist);
     
   #+end_src
    使用哈希表和数组时，用$和用->是类似的，对数组而言下面两个语句等效：
-    $$names[0] = "kamran";
-    $names->[0] = "kamran";
+    $$names[ 0] = "kamran";
+    $names->[ 0] = "kamran";
     对哈希表而言下面两个语句等效：
     $$lastnames{"kamran"} = "Husain";
     $lastnames->{"kamran"} = "Husain";

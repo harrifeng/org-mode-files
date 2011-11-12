@@ -1,0 +1,46 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     receive timeout
+#+AUTHOR:    纪秀峰
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2011-11-12 六
+#+DESCRIPTION:receive timeout
+#+KEYWORDS: erlang
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+FILETAGS: @erlang
+#+begin_src erlang
+-module(tt).
+-export([start/0,value/1,loop/1,test/0]).
+
+
+start()->
+    spawn(tt,loop,[0])
+        .
+
+value(T) ->
+    T!{self(),value},
+    receive
+        Val->
+            Val
+    after 1000 ->                               %一秒钟超时
+            timeout
+    end
+        .
+loop (Val) ->
+    receive
+        inc->
+            loop(Val+1);
+        {From,value}->
+            From! Val
+    end.
+
+test() ->
+    P=tt:start(),
+    P!inc,
+    P!inc,
+    value(P).
+#+end_src

@@ -3,5 +3,13 @@
 #+TITLE: Tag: @C
 
 #+LANGUAGE:  zh
+   + [[file:../c/right-left-rule.org][c里的变量或函数或数组的声明的解析,先右后左法则]]
+   + [[file:../c/qsort.org][qsort 与函数指针 ]]
    + [[file:../c/malloc.org][动态内在分配]]
+   + [[file:../c/macro.org][c中的宏]]
+   + [[file:../c/fscanf.org][fscanf示例]]
+   + [[file:../c/fread_fwrite_int.org][读写二进制文件,读写int]]
    + [[file:../c/error_log.org][可变参数实现的error 日志函数]]
+   + [[file:../c/concat.org][concat()可变长度参数的实现]]
+   + [[file:../c/cast.org][强制类型转换]]
+   + [[file:../c/IO.org][IO.org]]

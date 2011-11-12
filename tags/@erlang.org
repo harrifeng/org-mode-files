@@ -1,0 +1,6 @@
+# -*- coding:utf-8 -*-
+
+#+TITLE: Tag: @erlang
+
+#+LANGUAGE:  zh
+   + [[file:../erlang/echo.org][echo]]

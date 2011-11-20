@@ -7,6 +7,7 @@
 #+KEYWORDS:  link url emacs 
 #+LANGUAGE:  zh
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:{} -:t f:t *:t <:t timestamp:t
++ [[http://blog.yufeng.info/archives/category/erlang][Erlang非业余研究]]
 + [[http://blog.ec-ae.com/][zhangwei Denny (Emacs Erlang)]]
 + [[http://emacser.com/][Emacs中文网，不知是哪位老兄建的站.还算不错]]
 + [[http://emacser.com/about.htm][Emacs中文网众多牛人的信息]]

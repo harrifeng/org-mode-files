@@ -13,39 +13,39 @@
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+FILETAGS: @erlang
 #+begin_src erlang
--module(foo).
--export([foo/1,demo/1]).
-
-
-
-foo(1) ->
-    hello;
-foo(2) ->
-    throw({myerror, abc});
-foo(3) ->
-    tuple_to_list(a);
-foo(4) ->
-    exit({myExit, 222}).
-
-demo(X)->
-    case  catch foo(X) of
-        {myerror, abc} ->
-            when2error;
-        {'EXIT',What} ->
-            {i_catch_this_error ,What};
-        Other ->
-            Other
-    end.
-
-%% 24> foo:demo(4).
-%% {i_catch_this_error,{myExit,222}}
-
-%% 25> foo:demo(3).
-%% {i_catch_this_error,{badarg,[{foo,foo,1},
-%%                              {foo,demo,1},
-%%                              {erl_eval,do_apply,5},
-%%                              {shell,exprs,7},
-%%                              {shell,eval_exprs,7},
-%%                              {shell,eval_loop,3}]}}
-%% 26>
+  -module(foo).
+  -export([foo/1,demo/1]).
+  
+  
+  
+  foo(1) ->
+      hello;
+  foo(2) ->
+      throw({myerror, abc});
+  foo(3) ->
+      tuple_to_list(a);
+  foo(4) ->
+      exit({myExit, 222}).
+  
+  demo(X)->
+      case  catch foo(X) of
+          {myerror, abc} ->
+              when2error;
+          {'EXIT',What} ->
+              {i_catch_this_error ,What};
+          Other ->
+              Other
+      end.
+  
+  %% 24> foo:demo(4).
+  %% {i_catch_this_error,{myExit,222}}
+  
+  %% 25> foo:demo(3).
+  %% {i_catch_this_error,{badarg,[{foo,foo,1},
+  %%                              {foo,demo,1},
+  %%                              {erl_eval,do_apply,5},
+  %%                              {shell,exprs,7},
+  %%                              {shell,eval_exprs,7},
+  %%                              {shell,eval_loop,3}]}}
+  %% 26>
 #+end_src

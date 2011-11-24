@@ -55,6 +55,7 @@ exec socat STDIO PROXY:$_proxy:$1:$2,proxyport=$_proxyport
 要想git push 命令可用，还需要继续做一些工作
 参考了http://skim.la/2010/02/22/how-to-make-github-and-proxy-play-nicely-with-ssh/
 但是不要费劲去找文中提到的connect.c 编译后的connect.exe了，因为现在的
+[[file:~/documents/org/src/download/connect.c][connect.c]] [[file:~/documents/org/src/download/connect][connect_compile_on_linux]] 本站保存
 msysGit bin目录下已经提供了这个文件。
 只需要在~/.ssh/config文件中加入以下代码即可以了
 注意我用的密钥是dsa 的而不是rsa 另外文件中的和种路径 及代理ip端口，你需要改

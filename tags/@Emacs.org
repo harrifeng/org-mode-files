@@ -23,4 +23,5 @@
    + [[file:../emacs/ediff.org][Windows 下使用Emacs的 Ediff 进行文件的比较、合并]]
    + [[file:../emacs/ediff-git-mergetool.org][使用Emacs中的Ediff 作为git mergetool使用的工具进行文件合并]]
    + [[file:../emacs/cedet-customize.org][cedet 的定制，（译文）]]
+   + [[file:../emacs/cc-indent.org][cc mode 里关于indent(缩进)的控制]]
    + [[file:../emacs/auto-insert-and-yasnippet.org][yasnippet ,Auto Insert mode整合]]

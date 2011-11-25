@@ -49,3 +49,51 @@
   %%                              {shell,eval_loop,3}]}}
   %% 26>
 #+end_src
+
+
+#+begin_src erlang
+-module(a).
+-compile([export_all]).
+
+t(F)->
+    try F() of
+        _ -> ok
+    catch
+        T -> {throw,caughted, T};
+        exit:custom_exit -> {exit,caughted ,custom_exit};
+        exit:Exit ->{exit,caughted ,Exit};
+        error:custom_error ->{error, caughted,custom_error};
+        error:Error ->{error, caughted,Error}
+    end.
+
+%% a:t(fun()  -> throw(msg) end).
+%% a:t(fun()  -> error(msg) end).
+%% a:t(fun()  -> exit(custom_exit) end).
+%% a:t(fun()  -> exit(msg) end).
+%% a:t(fun()  -> exit(custom_error) end).
+%% a:t(fun()  -> list:addddddd(ele) end).
+
+%% after == finally in java
+t2(F)->
+    try F() of
+        _ -> ok
+    catch
+        T -> {throw,caughted, T};
+        exit:Exit ->{exit,caughted ,Exit};
+        error:Error ->{error, caughted,Error}
+    after
+        io:format("this will be execute anyway like 'finally' ~n",[])
+    end.
+
+%% of 语句可以省略
+
+t2(F)->
+    try F()
+    catch
+        T -> {throw,caughted, T};
+        exit:Exit ->{exit,caughted ,Exit};
+        error:Error ->{error, caughted,Error}
+    after
+        io:format("this will be execute anyway like 'finally' ~n",[])
+    end.
+#+end_src

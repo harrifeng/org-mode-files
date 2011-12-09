@@ -29,8 +29,12 @@
 ::kanban::http://172.20.68.243:8080
 #+end_src
 
-* 简单的键绑定  
-;; "#" 表示Windows键 "^" 表示Cntrl键 "!" 表示Alt, "+" 表示Shift键。
+* 简单的键绑定
+| "#" | 表示Windows键 |
+| "^" | 表示Cntrl键   |
+| "!" | 表示Alt,      |
+| "+" | 表示Shift键。 |
+
 详细内容看官网[[http://www.autohotkey.com/docs/Hotkeys.htm][hotkey]]
 
 ** Ctrl+鼠标中键关闭窗口,
@@ -42,6 +46,11 @@ Return
 你不必把鼠标移动到窗口右上方的关闭按钮，按下鼠标后然后鼠标中键点选窗口，就会
 关闭当前窗口。
 原理很简单，就是简单的模拟你按下Alt+F4,的操作，其实不必像上面那么复杂
+#+begin_src c
+^MButton::
+    SendInput !{F4}
+Return
+#+end_src
 例如：我想让
 ** Win+Esc 关闭当前窗口：
 #+begin_src  c

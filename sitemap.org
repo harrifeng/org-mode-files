@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 #+LANGUAGE:  zh
 #+TITLE:     站点地图
-#+AUTHOR:    孤峰独秀
+#+AUTHOR:    纪秀峰
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:     2011-06-26 星期日
 #+DESCRIPTION:站点地图
@@ -18,19 +18,8 @@
      + [[file:autohotkey/AutoHotKey_auto_close_boring_window.org][自动关闭广告窗口]]
      + [[file:autohotkey/AutoHotKey_eclipse.org][AutoHotkey对Eclipse进行增强]]
    + Daily
-     + [[file:daily/music.org][music]]
-     + [[file:daily/tobehappy.org][tobehappy]]
      + [[file:daily/beautiful-sentence.org][一些话]]
-     + [[file:daily/first-meet.org][人生若只如初见]]
-     + [[file:daily/night.org][夜色缤纷]]
-     + [[file:daily/wunian.org][心不染境]]
-     + [[file:daily/old.org][故旧]]
-     + [[file:daily/danjiu.org][浓妖不及淡久]]
-     + [[file:daily/man.org][男儿风]]
-     + [[file:daily/want.org][追逐自我的幸福]]
-     + [[file:daily/you_hurt_me.org][你伤了他的骄傲]]
-     + [[file:daily/withme.org][谁执我之手，敛我半世癫狂]]
-   + Erlang 
+   + Erlang(一种变量只能赋值一次，没有循环只有递归的诡异语言) 
      + [[file:erlang/echo.org][echo]]
      + [[file:erlang/catch.org][catch]]
      + [[file:erlang/timeout.org][timeout]]
@@ -38,7 +27,7 @@
      + [[file:erlang/message.org][message分布式聊天小例]]
      + [[file:erlang/counter.org][counter计数]]
      + [[file:erlang/spawn_link.org][spawn_link进程关,同生共死]]
-   + Emacs
+   + Emacs (编辑器圣战的主角)
      + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
      + [[file:emacs/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念 ]]
      + [[file:emacs/emacs-help-system.org][emacs 的帮助系统]]

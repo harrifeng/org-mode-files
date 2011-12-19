@@ -17,6 +17,7 @@
      + [[file:autohotkey/AutoHotKeyExplorer.org][对"我的电脑"  进行增强]]
      + [[file:autohotkey/AutoHotKey_auto_close_boring_window.org][自动关闭广告窗口]]
      + [[file:autohotkey/AutoHotKey_eclipse.org][AutoHotkey对Eclipse进行增强]]
+     + [[file:autohotkey/anything-doc.org][Anything.ahk]]
    + Daily
      + [[file:daily/beautiful-sentence.org][一些话]]
    + Erlang(一种变量只能赋值一次，没有循环只有递归的诡异语言) 

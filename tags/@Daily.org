@@ -3,14 +3,4 @@
 #+TITLE: Tag: @Daily
 
 #+LANGUAGE:  zh
-   + [[file:../daily/you_hurt_me.org][你伤了他的骄傲]]
-   + [[file:../daily/wunian.org][心不染境]]
-   + [[file:../daily/withme.org][谁执我之手，敛我半世癫狂]]
-   + [[file:../daily/want.org][追逐自我的幸福]]
-   + [[file:../daily/tobehappy.org][tobehappy]]
-   + [[file:../daily/night.org][夜色缤纷]]
-   + [[file:../daily/music.org][music]]
-   + [[file:../daily/man.org][男儿风]]
-   + [[file:../daily/first-meet.org][人生若只如初见]]
-   + [[file:../daily/danjiu.org][浓妖不及淡久]]
    + [[file:../daily/beautiful-sentence.org][一些话]]

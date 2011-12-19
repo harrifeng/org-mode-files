@@ -124,11 +124,9 @@ a:focus {color: #0000cd; text-decoration: none; background-color: yellow;} /* ":
 
 table {border: none;}
 th	{
-    border: none;
 	background-color: #006699; 
 }
 td	{
-    border: none;
     padding: .1em .7em .1em .3em;
 	background-color: gray;
 }

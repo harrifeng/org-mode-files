@@ -26,7 +26,7 @@ Exiting_Process_Id是即将终止的进程的进程标识，Reason可以是任�
 同时向当前与之链接的进程发送EXIT信号。默认情况下，Reason为原子式normal的
 EXIT信号将被忽略
 
-* link/1
+* Link/1
   通过执行BIF link(Pid)便可创建链接。调用link(Pid)时，若调用进程和Pid之间已经
   存在链接，则不会产生任何影响。
 * unlink/1
@@ -38,9 +38,9 @@ EXIT信号将被忽略
    BIF spawn_link/3在创建新进程的同时还会在调用进程和新进程间建立链接。
    其行为可以定义为：
    #+begin_src erlang
-spawn_link(Module, Function, ArgumentList) ->
-    link(Id = spawn(Module, Function, ArgumentList)),
-    Id.
+     spawn_link(Module, Function, ArgumentList) ->
+         link(Id = spawn(Module, Function, ArgumentList)),
+         Id.
    #+end_src
    
 #+begin_src erlang

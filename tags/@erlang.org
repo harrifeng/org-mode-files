@@ -5,6 +5,7 @@
 #+LANGUAGE:  zh
    + [[file:../erlang/timeout.org][receive timeout]]
    + [[file:../erlang/spawn_link.org][spawn_link 进程关联]]
+   + [[file:../erlang/release.org][erlang.org]]
    + [[file:../erlang/message.org][分布式,聊天小例]]
    + [[file:../erlang/erlang.org][erlang.org]]
    + [[file:../erlang/echo.org][echo]]

@@ -1,3 +1,5 @@
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 * Introduction
   
 If you use GNU/Emacs  maybe you have known "Anything"
@@ -110,7 +112,8 @@ Now I have wrote 4 <anything-source> for anything.ahk
 | delete_all_directory_history  | add a new directory to  directory history       | <Ctrl-m>            |
 | list all actions              |                                                 | <Ctrl-L>            |
    
-**  anything-favorite-directories.ahk  do something like anything-explorer-history.ahk
+**  anything-favorite-directories.ahk  
+    anything-favorite-directories.ahk  do something like anything-explorer-history.ahk
    add your favorite directories ,and visit it using "Anything".
    about how to use it .see comments in anything-favorite-directories.ahk
    if you use anything-favorites-directory as the only source for anything.ahk
@@ -130,7 +133,9 @@ Now I have wrote 4 <anything-source> for anything.ahk
    select "call action: Favdirs.anything_favorite_directories_add "
    about what the meaning of <Ctrl-L>
    anything_favorite_directories_source have three actions
+   #+begin_src c
    anything_favorite_directories_source["action"]:=Array("anything_favorite_directories_visit","anything_favorite_directories_delete","anything_favorite_directories_add")
+   #+end_src
 *** actions for   anything-favorite-directories.ahk 
 | actions                              | description                                       | key binding         |
 |--------------------------------------+---------------------------------------------------+---------------------|
@@ -150,15 +155,6 @@ Now I have wrote 4 <anything-source> for anything.ahk
    about how to use it .see comments in anything-run.ahk
 ** anything-window-switch.ahk is a replacement of Alt-Tab   
    
-** you just need download:
-   + anything.ahk
-   + anything-explorer-history.ahk
-   + anything-favorite-directories.ahk
-   + anything-run.ahk
-   + anything-window-switch.ahk
-   + anything-config.ahk
-   + and run anything-config.ahk
- 
 * how to  write an anything-source
   an anything-source is an Object with some defined properties
   now it support 5 anything-source-properties :
@@ -260,6 +256,37 @@ Now I have wrote 4 <anything-source> for anything.ahk
   #+end_src
 then if only one candidate left on the listview it will execute the
     default action with the candidate
+ 
+** 6  <anything-action-when-2-candidates> (optional)
+   the value of it is a function accept two parameters 
+    fun(candidate1,candidate2)
+
+   if only two candidats for you to select ,and  this property is not null
+   then this function is called .
+   anything-window-switch.ahk use this proerty 
+   when only two windows ,And you press Alt-Tab ,then select another window directly
+   without press RETURN by youself
+
+** 7 <match> (optional) default: "anything_match"
+    if it has value
+        for example
+        #+begin_src c
+        my_source["match"]:="anything_match"
+or 
+        my_source["match"]:="anything_match_case_sensetive"
+        #+end_src
+or any other value .
+the value of it is a function name accept two parameters
+this function is used to find out matched candidates from all candidates depends
+on what you have type in the textfield.
+and these tow function is defined in anything.ahk
+#+begin_src c
+anything_match_case_sensetive(candidate_string,pattern){}
+anything_match(candidate_string,pattern){}
+#+end_src
+
+
+
 ** 6 call anything
    #+begin_src c
     anything(my_source)

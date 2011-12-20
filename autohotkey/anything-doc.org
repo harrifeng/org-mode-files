@@ -285,9 +285,7 @@ anything_match_case_sensetive(candidate_string,pattern){}
 anything_match(candidate_string,pattern){}
 #+end_src
 
-
-
-** 6 call anything
+** 8 call anything
    #+begin_src c
     anything(my_source)
    #+end_src

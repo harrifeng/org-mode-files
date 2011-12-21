@@ -12,7 +12,7 @@
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
 #+FILETAGS: @Emacs
-                    我所有的Emacs相关的配置，在https://github.com/jixiuf/emacs_conf可以找到
+我所有的Emacs相关的配置，在 [[https://github.com/jixiuf/emacs_conf]] 可以找到
 * yasnippet (yet another snippet) 浙大一牛人为Emacs写的插件 模版
   它可以 为 html java cs c c++ ,所有你可以想像的到的语言定义 模版， 语法极
   简单

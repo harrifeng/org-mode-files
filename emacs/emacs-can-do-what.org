@@ -184,7 +184,8 @@ get {return last ;}
   如svn cvs git 等等版本控制工具在emacs中的使用方式得到统一
   比如，不论你是svn 还是git ,
   C-xvl 都是查看此文件的历史
-  C-xvu 更新此文件到最新版
+  C-xv+ 更新此文件到最新版
+  C-xv+ revert
   而功能最强大的功能C-xvv 对应的，它会根据当前文件所处的状态，自动
   决定下一部操作该如何做
   

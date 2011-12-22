@@ -249,24 +249,26 @@ Now I have wrote 4 <anything-source> for anything.ahk
    next time you press Alt-TAB ,and type "www" Firefox is activated
    
 * how to  write an anything-source
-  an anything-source is an Object with some defined properties
-  now it support 5 anything-source-properties :
+  an anything-source is an Object with some pre-defined properties
+  now it support 7 anything-source-properties :
   + name
   + action
   + candidate
   + icon
+  + match
   + anything-execute-action-at-once-if-one
+  + anything-action-when-2-candidates
   for example:
   #+begin_src c
         my_source:=Object()
   #+end_src
-** 1 <name>  (needed)
+** <name>  (required)
    <name> is a string ,it is just a name of this anything-source
    #+begin_src c
         my_source["name"]:="my_source_name"
    #+end_src
-** 2 <candidate>  (needed)
-   <candidate> is an array of available candidates ,or a function name(string)
+** <candidate>  (required)
+   <candidate> is an array of all candidates ,or a function name(string)
    without parameter which return an array .
    each element of the array can be :
 *** a string
@@ -274,7 +276,7 @@ Now I have wrote 4 <anything-source> for anything.ahk
     of the candidates ,and execute action on your selected candidate.
    for example:
    #+begin_src c
-            my_candidates:=Array("red","green")
+            my_source["candidate"] :=Array("red","green")
    #+end_src
       or
       #+begin_src c
@@ -282,25 +284,25 @@ Now I have wrote 4 <anything-source> for anything.ahk
             {
                 return Array("red","green")
             }
-            my_candiates:="my_candidates_fun"
-           my_source["candidate"]:=my_candidates
+           my_source["candidate"]:="my_candidates_fun"
       #+end_src
 *** an array
     the first element of this array must be a string ,the string will be
     displayed on listview ,and you can selected one of the candidates ,and
     execute action on your selected candidate.
     other element of this array can be anything , you can store useful info.
-    there. and when you execute action on your selected candidate,this will
-    be the parameter . see <action>
+    there. and when you execute action on your selected candidate,the selected
+    candidate will be the parameter for the function specified by property "action"
+    see <action>
       for example:
       #+begin_src c
-            my_candidates:=Array(
-                      Array("red","useful info ,string ,object or anything"),
-                      Array("green","useful info ,string ,object or anything")
+         my_source["candidate"]:=Array(
+                      Array("red","useful info ,string ,object or anything(red) "),
+                      Array("green","useful info ,string ,object or anything(red)")
                       )
       #+end_src
 
-** 3 <action>  (needed)
+** <action>  (required)
    <action> is a function name(string) or a list of function name (array).
    and those functions must have one parameter. actually the parameter is
    the selected <candidate> .
@@ -310,30 +312,43 @@ Now I have wrote 4 <anything-source> for anything.ahk
                 {
                   MsgBox , %candidate%
                 }
+      my_source["action"]:=my_action
    #+end_src
+or
+   #+begin_src c
+         my_action:="my_action_fun"
+                  my_action_fun(candidate)
+                {
+                  display :=candidate[1]
+                  usefulinfo :=candidate[2]
+                  MsgBox % usefulinfo  
+                }
+      my_source["action"]:=my_action
+   #+end_src
+
       or
       #+begin_src c
         my_action:=Array("my_action_fun","my_action_fun2")
                   my_action_fun(candidate)
                 {
-                  MsgBox , %candidate%
+                  MsgBox , %candidate% from action_fun
                 }
                   my_action_fun2(candidate)
                 {
-                  MsgBox , %candidate%
+                  MsgBox , %candidate% from action_fun2
                 }
 
       my_source["action"]:=my_action
       #+end_src
-** 4 <icon> (optional)
-    <icon> is a function(string) which return a ImageList.
+** <icon> (optional)
+    <icon> is a function(string) which return an ImageList.
     this property is optional .if this property isn't empty
     <Anything> will display icon before each candidates.
     #+begin_src c
      icon_fun()
      {
-         ImageListID := IL_Create(10)  ; Create an ImageList to hold 10 small icons.
-         Loop 10  ; Load the ImageList with a series of icons from the DLL.
+         ImageListID := IL_Create(2)  ; Create an ImageList to hold 10 small icons.
+         Loop 2  ; Load the ImageList with a series of icons from the DLL.
          IL_Add(ImageListID, "shell32.dll", A_Index)
          return ImageListID
      }
@@ -341,26 +356,8 @@ Now I have wrote 4 <anything-source> for anything.ahk
     my_source["icon"]:=my_icon
     #+end_src
 
-** 5 <anything-execute-action-at-once-if-one> (optional)
-    if it has value
-  for example
-  #+begin_src c
-          my_source["anything-execute-action-at-once-if-one"]:="yes"
-  #+end_src
-then if only one candidate left on the listview it will execute the
-    default action with the candidate
- 
-** 6  <anything-action-when-2-candidates> (optional)
-   the value of it is a function accept two parameters 
-    fun(candidate1,candidate2)
+** <match> (optional) default: "anything_match"
 
-   if only two candidats for you to select ,and  this property is not null
-   then this function is called .
-   anything-window-switch.ahk use this proerty 
-   when only two windows ,And you press Alt-Tab ,then select another window directly
-   without press RETURN by youself
-
-** 7 <match> (optional) default: "anything_match"
     if it has value
         for example
         #+begin_src c
@@ -374,11 +371,63 @@ this function is used to find out matched candidates from all candidates depends
 on what you have type in the textfield.
 and these tow function is defined in anything.ahk
 #+begin_src c
+;param candidate_string is the string display on listview of each candidate
+; pattern is what you have type in the textfield
 anything_match_case_sensetive(candidate_string,pattern){}
 anything_match(candidate_string,pattern){}
 #+end_src
 
-** 8 call anything
-   #+begin_src c
-    anything(my_source)
-   #+end_src
+** <anything-execute-action-at-once-if-one> (optional)
+    if it has value
+  for example
+  #+begin_src c
+          my_source["anything-execute-action-at-once-if-one"]:="yes"
+  #+end_src
+then if only one candidate left on the listview it will execute the
+    default action with the only one candidate as parameter 
+ 
+** <anything-action-when-2-candidates> (optional)
+   the value of it is a function accept two parameters 
+    funname(candidate1,candidate2)
+    #+begin_src c
+    my_source["anything-action-when-2-candidates"] :="funname"
+    #+end_src
+
+   if only two candidats for you to select 
+   then this function is called .
+   anything-window-switch.ahk use this property :
+   when only two windows ,And you press Alt-Tab ,then select another window directly
+   without press RETURN by youself.
+** call anything
+   
+   1. anything(source)
+     #+begin_src c
+      anything(my_source)
+     #+end_src
+   
+   2. anything_multiple_sources(sources) with other anything-source
+     #+begin_src c
+       sources := Array()
+       sources.Insert(my_source)
+       sources.Insert(other_source)
+       anything_multiple_sources(sources)
+     #+end_src
+   
+   3. anything_with_properties(anything-source,anything-properties)
+     #+begin_src c
+      my_anything_properties:=Object()
+      my_anything_properties["win_width"]:= 900
+      my_anything_properties["win_height"]:= 180
+      anything_with_properties(my_source,my_anything_properties)
+     #+end_src
+   4. anything_multiple_sources_with_properties(anything-sources,anything-properties)
+         #+begin_src c
+         my_anything_properties:=Object()
+         my_anything_properties["win_width"]:= 900
+         my_anything_properties["win_height"]:= 180
+          
+         sources:=Array()
+         sources.insert(my_source)
+         sources.insert(other_source)
+         anything_multiple_sources_with_properties(sources,my_anything_properties)
+         #+end_src

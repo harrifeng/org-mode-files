@@ -1,5 +1,13 @@
 body {
-    background-color: #999966;
+    background-color: #E5E5E5;
+	scrollbar-face-color: #DEE3E7;
+	scrollbar-highlight-color: #FFFFFF;
+	scrollbar-shadow-color: #DEE3E7;
+	scrollbar-3dlight-color: #D1D7DC;
+	scrollbar-arrow-color:  #006699;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-darkshadow-color: #98AAB1;
+    /* background-color: #999966;  */
     margin: 0em;
 }
 
@@ -21,15 +29,14 @@ h3 {
 
 
 div#content {
-    background-color: #ffffcc;
+    font-family: Times, serif;
     border-left: double #333300 3mm;
     border-right: double #333300 3mm;
-    font-family: Times, serif;
     letter-spacing: 0.075em;
     line-height: 1.4;
     margin: 0em auto;
     padding: 2em;
-    width: 65%;
+    width: 92%;
     height:100%; 
     min-height:600px;           /*firefox do'nt support height:100% ,so*/
  
@@ -51,21 +58,21 @@ div#content {
 #org-div-home-and-up{
 	position: fixed;
 	display: block;
-	right: 5px;
+	right: 18px;
 	top: 5px;
 	overflow:auto;
     }
 #org-src{
 	position: fixed;
 	display: block;
-	right: 3px;
+	right: 18px;
 	top: 20px;
 	overflow:hidden;
     }
 #htmlized-src{
 	position: fixed;
 	display: block;
-	right: 38px;
+	right: 54px;
 	top: 20px;
 	overflow:hidden;
     }
@@ -76,7 +83,7 @@ div#content {
 #logo-text{
 	position: fixed;
 	display: block;
-	right: 6px;
+	right: 16px;
 	bottom: 3px;
 	overflow:hidden;
 }
@@ -84,7 +91,7 @@ div#content {
     font-size: 60%;
 	position: fixed;
 	display: block;
-    left: 6px;
+    left: 16px;
 	top: 3px;
     }
 div#tags {
@@ -93,9 +100,9 @@ div#tags {
 	/* line-height: 1.4em; */
 	position: fixed;
 	display: block;
-	right: 5px;
-	top: 10%;
-	width: 180px;
+	right: 40px;
+	top: 20%;
+	width: 90px;
 	/* min-height:60px; */
 	max-height:95%;
 	/* overflow:visible; */
@@ -108,31 +115,31 @@ div#tags {
 	margin-bottom: 20px;
 	border-bottom: 1px solid #222;
 }
-a {text-decoration: none} /* because of some browsers the element "A" must be defined */
-a[name] {color: ... !important; background-color: transparent !important} /* CSS2-compliant browsers implement "a:hover" also for named anchors; in order to avoid "a:hover" to change properties of named anchors they must define as important; in this solution "a:hover" should not use the "!important" rule */
-a:link {color: green; text-decoration: underline;} /* unvisited link */
-a:visited {color: #0000cd; text-decoration: underline;} /* visited link */
-a:hover {color: red; text-decoration: none} /* the mouse "hovers" over the link */
-a:active {color: #0000cd; text-decoration: none; background-color: yellow;} /* according to CSS2-specification ":active" should work between on-mouse-down and on-mouse-up events but according to CSS1 the link stays marked until the user click with mouse to another place */
-a:focus {color: #0000cd; text-decoration: none; background-color: yellow;} /* ":active" and ":focus" are different states; Only ":focus" should leave the link marked until the next click of the mouse (":focus" is designed primary into keyboard navigation and form control elements; browsers are not obliged to support it with the "A" element) */
-
+ a:link,a:active,a:visited { color : #006699; } 
+ a:hover		{ text-decoration: underline; color : #DD6900; } 
 
 .todo {color: #990000;}
 .done {color: #006666;}
 .timestamp-kwd {color: #444;}
 .tag {color: #DDD; font-size: 70%; font-weight: 500;}
 
-table {border: none;}
+table {border: none;
+       width:80%;
+      }
 th	{
 	background-color: #006699; 
 }
 td	{
     padding: .1em .7em .1em .3em;
-	background-color: gray;
+	background-color: Gainsboro
 }
 
 
-code {font-size: 10pt;}
+code {
+font-family: Andale Mono, Courier New, Courier, sans-serif; font-size: 12px; line-height: 14px; color: #0000A0;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+}
 
 /* pre { */
 /* 	border: 1px solid #555; */
@@ -165,18 +172,22 @@ pre.src {
     overflow-y:auto;
 }
 blockquote {
+	 border: #D1D7DC;
+     border-style: solid;
+	border-left-width: 1px;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px
+    
+    color: #444444;
+    line-height: 125%;
 	border: 1px solid #555;
-	/* background:#696969; */
-    background:#263111;
-    color:#7cfc00;
-	font-size: 11pt;
+    background-color: #FAFAFA;    
     width:95%;
 	padding: 1em;
 	margin: 0;
-	width: 700px;
 	float: none;
 	clear: none;
-	line-height: 1.333;
 	text-align:left;
     font-style:italic;
     

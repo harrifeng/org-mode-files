@@ -213,6 +213,33 @@ Now I have wrote 4 <anything-source> for anything.ahk
     #+end_src
    
 ** anything-window-switch.ahk is a replacement of Alt-Tab   
+   #+begin_src c
+      #include anything.ahk
+      #include anything-window-switch.ahk' 
+       !Tab::
+       my_anything_properties:=Object()
+       my_anything_properties["win_width"]:= 900    
+       my_anything_properties["win_height"]:= 180
+      
+       sources:=Array()
+       sources.insert(anything_window_switcher_with_assign_keys_source)
+       sources.insert(anything_window_switcher_source)
+       anything_multiple_sources_with_properties(sources,my_anything_properties)
+       return
+   #+end_src
+   anything-window-switch.ahk will treat all windows as candidates
+   the window_title window_process_name is used to fitler.
+   #+begin_src c
+ anything_window_switcher_source["action"]:=Array("anything_ws_visit", "anything_ws_close" ,"anything_ws_assign_key")
+   #+end_src
+| actions                                | description                                                                     | key binding         |
+|----------------------------------------+---------------------------------------------------------------------------------+---------------------|
+| anything_ws_visit                      | visit selected window                                                           | <Click>and  <Enter> |
+| anything_ws_close                      | close selected window                                                           | <Ctrl-j>            |
+| anything_ws_assign_key                 | assign some special "TEXT" ,then you can use it to selected the assigned window | <Ctrl-m>            |
+| list all actions for current candidate |                                                                                 | TAB                 |
+| list all actions                       |                                                                                 | <Ctrl-L>            |
+   
    
 * how to  write an anything-source
   an anything-source is an Object with some defined properties

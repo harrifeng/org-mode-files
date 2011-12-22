@@ -1,5 +1,11 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     anything-doc.org
+#+KEYWORDS: autohotkey windows demo
+#+FILETAGS: @AutoHotKey @Windows
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+
 * Introduction
   
 If you use GNU/Emacs  maybe you have known "Anything"
@@ -8,30 +14,29 @@ you can visit "Anything" on [[http://www.emacswiki.org/emacs/Anything%20][Emacsw
 and see what "Anything" it is .
 and this isn't anything.el ,it 's anything.ahk.
 if you think anything.ahk is great ,
-and have written an anything-source for it ,you can post it here .
+and have written an anything-source for it ,you can post it on  [[http://www.autohotkey.com/forum/viewtopic.php?t%3D72833][autohotkey-forum]]
   
-there is a screencast here :
+there are some screencast here(no voice) :
 + http://www.screenr.com/xxss
 + http://www.screenr.com/vp8s (new one )
 + http://www.screenr.com/BH7s and another one show anything-favorite-directories.ahk
 + http://www.screenr.com/MyHs and another show anything-window-switch.ahk
 
 you can also download these videos
-+ http://screencast-repos.googlecode.com/files/anything-expl-run.mp4
-+ http://screencast-repos.googlecode.com/files/anything.ahk-anything-explorer-history.mp4
-+ http://screencast-repos.googlecode.com/files/anything-window-switch.mp4
-+ http://screencast-repos.googlecode.com/files/anything-fav-dir.mp4
++ [[http://screencast-repos.googlecode.com/files/anything-expl-run.mp4][anything-explore-history.ahk_anything-run.ahk.mp4]]
++ [[http://screencast-repos.googlecode.com/files/anything.ahk-anything-explorer-history.mp4][anything-explore-history.ahk.mp4]]
++ [[http://screencast-repos.googlecode.com/files/anything-window-switch.mp4][anything-window-switch.mp4]]
++ [[http://screencast-repos.googlecode.com/files/anything-fav-dir.mp4][anything-favorite-directories.ahk.mp4]]
 
-and source code is host on
-+ https://github.com/jixiuf/my_autohotkey_scripts/tree/master/ahk_scripts
+and source code is host on [[https://github.com/jixiuf/my_autohotkey_scripts/tree/master/ahk_scripts][Github]]
 
 you can follow these links ,and save them on you disk .
-+ https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything.ahk
-+ https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-explorer-history.ahk
-+ https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-favorite-directories.ahk
-+ https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-run.ahk
-+ https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-window-switch.ahk
-+ https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-config.ahk
++ [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything.ahk][anything.ahk]] (core)
++ [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-explorer-history.ahk][anything-explorer-history.ahk]] (an anything-source)
++ [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-favorite-directories.ahk][anything-favorite-directories.ahk]] (an anything-source)
++ [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-run.ahk][anything-run.ahk]] (an anything-source)
++ [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-window-switch.ahk][anything-window-switch.ahk]] (an anything-source)
++ [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-config.ahk][anything-config.ahk]]  (config file)
 
 * Active <Anything>
   to active anything.ahk , press F3 , or Windows+r , or Alt+TAB
@@ -71,11 +76,11 @@ Now I have wrote 4 <anything-source> for anything.ahk
   +  anything-window-switch.ahk (a replacement of Alt-Tab)
 
 **  anything-explorer-history.ahk
-   when you visit  directory (double click on a directory,up or back ) in
-   explorer.exe ,it can remember directories 
-   you have visited ,then you can press  <F3> to active "Anything"
-   list all directory history ,you can revisit it easyly.
-   how to use anything-explorer-history.ahk
+   when you visit directory (double click on a directory,up or back ) in
+   explorer.exe ,it can remember directories you have visited ,then you can
+   press <F3> to active "Anything" list all directory history you have
+   visited. ,you can revisit it easyly with anything-explorer-history.ahk .
+   how to configure anything-explorer-history.ahk
     
 ***    if you only have one anything-source :
        anything_explorer_history_source  (defined in  anything-explorer-history.ahk)
@@ -93,11 +98,15 @@ Now I have wrote 4 <anything-source> for anything.ahk
         to the sources
        for example :
 #+begin_src c
+      #include anything.ahk
+      #include anything-explorer-history.ahk
+      #include anything-favorite-directories.ahk
        f3::
        sources:=Array()
+       ;; anything_explorer_history_source is an anything-source defined in  anything-explorer-history.ahk   
        sources.insert(anything_explorer_history_source)
+       ;; anything_favorite_directories_source is an anything-source defined in anything-favorites-directory.ahk
        sources.insert(anything_favorite_directories_source)
-       sources.insert(anything_cmd_source)
        anything_multiple_sources(sources)
        return
 #+end_src       
@@ -105,21 +114,24 @@ Now I have wrote 4 <anything-source> for anything.ahk
     #+begin_src c
    anything_explorer_history_source["action"]:=Array("visit_directory","delete_from_directory_history" ,"delete_all_directory_history")
     #+end_src
-| actions                       | description                                     | key binding         |
-|-------------------------------+-------------------------------------------------+---------------------|
-| visit_directory               | visit selected directory                        | <Click>and  <Enter> |
-| delete_from_directory_history | delete select directory from  directory history | <Ctrl-j>            |
-| delete_all_directory_history  | add a new directory to  directory history       | <Ctrl-m>            |
-| list all actions              |                                                 | <Ctrl-L>            |
+| actions                                | description                                     | key binding         |
+|----------------------------------------+-------------------------------------------------+---------------------|
+| visit_directory                        | visit selected directory                        | <Click>and  <Enter> |
+| delete_from_directory_history          | delete select directory from  directory history | <Ctrl-j>            |
+| delete_all_directory_history           | add a new directory to  directory history       | <Ctrl-m>            |
+| list all actions for current candidate |                                                 | TAB                 |
+| list all actions                       |                                                 | <Ctrl-L>            |
    
 **  anything-favorite-directories.ahk  
-    anything-favorite-directories.ahk  do something like anything-explorer-history.ahk
-   add your favorite directories ,and visit it using "Anything".
-   about how to use it .see comments in anything-favorite-directories.ahk
-   if you use anything-favorites-directory as the only source for anything.ahk
-   you just need to bind it to a key like this :
+    anything-favorite-directories.ahk  do something similiar to [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-explorer-history.ahk][anything-explorer-history.ahk]] 
+    add your favorite directories ,and visit it using "Anything".
+    
+***  how to configure it . 
+    if you use anything-favorites-directory as the only source for anything.ahk
+    you just need to bind it to a key like this :
     #+begin_src c
       #include anything.ahk
+       ;; anything_favorite_directories_source is an anything-source defined in anything-favorites-directory.ahk
       #include anything-favorites-directory.ahk
       f1::anything(anything_favorite_directories_source)
     #+end_src
@@ -127,32 +139,79 @@ Now I have wrote 4 <anything-source> for anything.ahk
    if you also use other sources ,just need add "anything_favorite_directories_source" to 
    the array of sources for anything_multiple_sources(sources)
    default have added to  anything-config.ahk 
+#+begin_src c
+      #include anything.ahk
+      #include anything-explorer-history.ahk
+      #include anything-favorite-directories.ahk
+       f3::
+       sources:=Array()
+       ;; anything_explorer_history_source is an anything-source defined in  anything-explorer-history.ahk   
+       sources.insert(anything_explorer_history_source)
+       ;; anything_favorite_directories_source is an anything-source defined in anything-favorites-directory.ahk
+       sources.insert(anything_favorite_directories_source)
+       anything_multiple_sources(sources)
+       return
+#+end_src       
 
-***    how to add a new Folder to your favorite-directories
-   first activate "Anything" and Press <Ctrl-L> list all available actions
-   select "call action: Favdirs.anything_favorite_directories_add "
-   about what the meaning of <Ctrl-L>
-   anything_favorite_directories_source have three actions
+*** how to add a new Folder to your favorite-directories
+    for this anything-source , your favorite directories
+    are the candidates ,so before you can use it ,you should
+    add some candidates (some directories).
+    1. first activate "Anything" (default press F3 )
+    2 Press <Ctrl-L> list all available actions select
+    "call action: Favdirs.anything_favorite_directories_add "
+    if you don't kown what's the meaning of <Ctrl-L> ,
+    see keybindings for execute actions.
+    anything_favorite_directories_source have three actions
    #+begin_src c
    anything_favorite_directories_source["action"]:=Array("anything_favorite_directories_visit","anything_favorite_directories_delete","anything_favorite_directories_add")
    #+end_src
-*** actions for   anything-favorite-directories.ahk 
+*** actions for anything-favorite-directories.ahk 
 | actions                              | description                                       | key binding         |
 |--------------------------------------+---------------------------------------------------+---------------------|
 | anything_favorite_directories_visit  | visit selected directory                          | <Click>and  <Enter> |
 | anything_favorite_directories_delete | delete select directory from favorite directories | <Ctrl-j>            |
 | anything_favorite_directories_add    | add a new directory to favorite directories       | <Ctrl-m>            |
-| list all actions                     |                                                   | <Ctrl-L>            |
+| list all actions for current candidate |                                                 | TAB                 |
+| list all actions                       |                                                 | <Ctrl-L>            |
 
-***    then you can use "Anything" selected one of your favorite directory 
+*** then you can use "Anything" selected one of your favorite directory 
    + it will visit it in current Explorer.exe (if current activated window is Explorer.exe)
    + it will visit it in current cmd.exe (if current activated window is cmd.exe)
    + it will visit it in current msys.bat (if current activated window is msys.bat)
 
 
 ** anything-run.ahk is a replacement of <Win-r>
-   it could remember old  command too. when you press <F3>
+   it could remember old command too. when you press <Windows+r>
    about how to use it .see comments in anything-run.ahk
+    #+begin_src c
+      #include anything.ahk
+      #include anything-run.ahk
+       ;; anything_cmd_source is an anything-source defined in anything-run.ahk
+      #r::anything(anything_cmd_source)
+    #+end_src
+   if a command(candidate) have not been added ,you can type the command in the
+   textfield (for example :"cmd") add press <Ctrl-L> list all available actions select
+   call action: Run.anything_run
+   then a cmd.exe is executed ,and "cmd" as a candidate is add to candidates
+   
+    #+begin_src c
+      #include anything.ahk
+      #include anything-run.ahk
+      #include anything-favorite-directories.ahk
+      #include anything-explorer-history.ahk
+
+      #r::
+      sources:=Array()
+      ;; anything_cmd_source is an anything-source defined in anything-run.ahk
+      ;; add anything_cmd_source as the first anything-source
+      sources.insert(anything_cmd_source)
+      sources.insert(anything_explorer_history_source)
+      sources.insert(anything_favorite_directories_source)
+      anything_multiple_sources(sources)
+      return
+    #+end_src
+   
 ** anything-window-switch.ahk is a replacement of Alt-Tab   
    
 * how to  write an anything-source

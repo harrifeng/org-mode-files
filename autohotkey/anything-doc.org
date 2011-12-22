@@ -431,3 +431,42 @@ then if only one candidate left on the listview it will execute the
          sources.insert(other_source)
          anything_multiple_sources_with_properties(sources,my_anything_properties)
          #+end_src
+* anything-properties
+| properties           | description                                                          | default vaule         | type                                      |
+|----------------------+----------------------------------------------------------------------+-----------------------+-------------------------------------------|
+| win_width            | the width of anything window                                         | 900                   | integer                                   |
+| win_height           | the height of anything window                                        | 510                   | integer                                   |
+| Transparent          | the transparent of anything window                                   | 225                   | integer                                   |
+| WindowColor          | the color of anything window                                         | "black"               | string                                    |
+| ControlColor         | the coloe of control on anything window                              | "black"               | string                                    |
+| FontSize             | the font size of font on anyting window                              | 12                    | integer                                   |
+| FontColor            | the font colorof font on anyting window                              | "c7cfc00"             | string                                    |
+| FontWeight           | the font weight weight on font on anything window                    | "bold"                | bold, italic, strike, underline, and norm |
+| quit_when_lose_focus | auto quit anything when anything lose focus (yes or no)              | "yes"                 | "yes" or "no"                             |
+| no_candidate_action  | when no candiates left and you press Ctrl-i ,this function is called | "anything_do_nothing" | a function name (accept one parameter)    |
+see " how to  write an anything-source"/"call anything" section about how to use anything-properties
+* global variable
+ | global variable name | description                                      |
+ |----------------------+--------------------------------------------------|
+ | anything_wid         | anything window id                               |
+ | anything_pattern     | anything pattern you have typed in the textfield |
+ | anything_properties  | an Array of current anything propeties           |
+    
+  ;; you can access these global variable when you write your anything-source
+  for the special anything property :
+  "quit_when_lose_focus"
+  when you create a new window(or Inputbox ,Dialog) while anything session is opened ,
+  then "anything" will lose focus ,because the new window you created is the child
+  window of "anything window" then it will be killed two .
+  so if you want to make it work
+  you can do it like this:
+  #+begin_src c
+  your_fun(){
+    global 
+    old_value_of_quit_when_lose_focus=anything_properties["quit_when_lose_focus"] 
+    anything_set_property_4_quit_when_lose_focus("no")
+    ;write  your code here ...
+    anything_set_property_4_quit_when_lose_focus(old_value_of_quit_when_lose_focus=anything_properties)
+   }
+  #+end_src
+  

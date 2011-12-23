@@ -456,7 +456,7 @@ then if only one candidate left on the listview it will execute the
 | win_height           | the height of anything window                                        | 510                   | integer                                   |
 | Transparent          | the transparent of anything window                                   | 225                   | integer                                   |
 | WindowColor          | the color of anything window                                         | "black"               | string                                    |
-| ControlColor         | the coloe of control on anything window                              | "black"               | string                                    |
+| ControlColor         | the color of control on anything window                              | "black"               | string                                    |
 | FontSize             | the font size of font on anyting window                              | 12                    | integer                                   |
 | FontColor            | the font colorof font on anyting window                              | "c7cfc00"             | string                                    |
 | FontWeight           | the font weight weight on font on anything window                    | "bold"                | bold, italic, strike, underline, and norm |

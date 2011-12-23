@@ -121,7 +121,10 @@ Now I have wrote 4 <anything-source> for anything.ahk
 | delete_all_directory_history           | add a new directory to  directory history       | <Ctrl-m>            |
 | list all actions for current candidate |                                                 | TAB                 |
 | list all actions                       |                                                 | <Ctrl-L>            |
-   
+   + it will visit your selected directory in current Explorer.exe (if current activated window is Explorer.exe)
+   + it will visit your selected directory in current cmd.exe (if current activated window is cmd.exe)
+   + it will visit your selected directory in current msys.bat (if current activated window is msys.bat)
+    
 **  anything-favorite-directories.ahk  
     anything-favorite-directories.ahk  do something similiar to [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-explorer-history.ahk][anything-explorer-history.ahk]] 
     add your favorite directories ,and visit it using "Anything".
@@ -176,10 +179,9 @@ Now I have wrote 4 <anything-source> for anything.ahk
 | list all actions                       |                                                 | <Ctrl-L>            |
 
 *** then you can use "Anything" selected one of your favorite directory 
-   + it will visit it in current Explorer.exe (if current activated window is Explorer.exe)
-   + it will visit it in current cmd.exe (if current activated window is cmd.exe)
-   + it will visit it in current msys.bat (if current activated window is msys.bat)
-
+   + it will visit your selected directory in current Explorer.exe (if current activated window is Explorer.exe)
+   + it will visit your selected directory in current cmd.exe (if current activated window is cmd.exe)
+   + it will visit your selected directory in current msys.bat (if current activated window is msys.bat)
 
 ** anything-run.ahk is a replacement of <Win-r>
    it could remember old command too. when you press <Windows+r>

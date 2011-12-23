@@ -409,8 +409,8 @@ then if only one candidate left on the listview it will execute the
  
 ** <anything-action-when-2-candidates-even-no-keyword> (optional)
    the value of it is a function accept two parameters 
-    funname(candidate1,candidate2)
     #+begin_src c
+    funname(candidate1,candidate2){}
     my_source["anything-action-when-2-candidates"] :="funname"
     #+end_src
 

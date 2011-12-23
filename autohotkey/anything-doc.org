@@ -259,7 +259,8 @@ Now I have wrote 4 <anything-source> for anything.ahk
   + icon
   + match
   + anything-execute-action-at-once-if-one
-  + anything-action-when-2-candidates
+  + anything-execute-action-at-once-if-one-even-no-keyword
+  + anything-action-when-2-candidates-even-no-keyword
   for example:
   #+begin_src c
         my_source:=Object()
@@ -386,9 +387,19 @@ anything_match(candidate_string,pattern){}
           my_source["anything-execute-action-at-once-if-one"]:="yes"
   #+end_src
 then if only one candidate left on the listview it will execute the
-    default action with the only one candidate as parameter 
+    default action with the only one candidate as parameter auto.
+    you need press <Enter> here.
+** < anything-execute-action-at-once-if-one-even-no-keyword > (optional)
+    if it has value
+  for example
+  #+begin_src c
+          my_source["anything-execute-action-at-once-if-one"]:="yes"
+  #+end_src
+  then if only one candidate left on the listview even no key keyword in the
+  textfiled it will execute the default action with the only one candidate
+  as parameter auto. you need press <Enter> here.
  
-** <anything-action-when-2-candidates> (optional)
+** <anything-action-when-2-candidates-even-no-keyword> (optional)
    the value of it is a function accept two parameters 
     funname(candidate1,candidate2)
     #+begin_src c

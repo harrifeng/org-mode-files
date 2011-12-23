@@ -405,7 +405,7 @@ then if only one candidate left on the listview it will execute the
   #+end_src
   then if only one candidate left on the listview even no key keyword in the
   textfiled it will execute the default action with the only one candidate
-  as parameter auto. you need press <Enter> here.
+  as parameter auto. you needn't press <Enter> here.
  
 ** <anything-action-when-2-candidates-even-no-keyword> (optional)
    the value of it is a function accept two parameters 

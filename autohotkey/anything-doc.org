@@ -396,7 +396,7 @@ anything_match(candidate,pattern){}
   #+end_src
 then if only one candidate left on the listview it will execute the
     default action with the only one candidate as parameter auto.
-    you need press <Enter> here.
+    you needn't press <Enter> here.
 ** < anything-execute-action-at-once-if-one-even-no-keyword > (optional)
     if it has value
   for example

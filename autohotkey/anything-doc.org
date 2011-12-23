@@ -374,15 +374,18 @@ or
         my_source["match"]:="anything_match_case_sensetive"
         #+end_src
 or any other value .
-the value of it is a function name accept two parameters
-this function is used to find out matched candidates from all candidates depends
+the value of it is a function name accept two parameters :(candidate,pattern)
+this function is used to filter candidates from all candidates depends
 on what you have type in the textfield.
+
+; if it match ,then return 1 ,else return 0
+
 and these tow function is defined in anything.ahk
 #+begin_src c
-;param candidate_string is the string display on listview of each candidate
-; pattern is what you have type in the textfield
-anything_match_case_sensetive(candidate_string,pattern){}
-anything_match(candidate_string,pattern){}
+;@param: candidate is current candidate passed to this function
+;@param: pattern, is what you have typed in the textfield
+anything_match_case_sensetive(candidate,pattern){}
+anything_match(candidate,pattern){}
 #+end_src
 
 ** <anything-execute-action-at-once-if-one> (optional)

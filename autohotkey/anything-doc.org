@@ -475,7 +475,7 @@ see " how to  write an anything-source"/"call anything" section about how to use
   "quit_when_lose_focus"
   when you create a new window(or Inputbox ,Dialog) while anything session is opened ,
   then "anything" will lose focus ,because the new window you created is the child
-  window of "anything window" then it will be killed two .
+  window of "anything window" then it will be killed too.
   so if you want to make it work
   you can do it like this:
   #+begin_src c

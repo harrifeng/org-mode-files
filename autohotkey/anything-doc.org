@@ -365,12 +365,10 @@ or
     #+end_src
 
 ** <match> (optional) default: "anything_match"
-
-    if it has value
-        for example
+   if it has value for example:
         #+begin_src c
         my_source["match"]:="anything_match"
-or 
+; or 
         my_source["match"]:="anything_match_case_sensetive"
         #+end_src
 or any other value .
@@ -389,13 +387,12 @@ anything_match(candidate,pattern){}
 #+end_src
 
 ** <anything-execute-action-at-once-if-one> (optional)
-    if it has value
-  for example
+    if it has value  for example:
   #+begin_src c
           my_source["anything-execute-action-at-once-if-one"]:="yes"
   #+end_src
 then if only one candidate left on the listview it will execute the
-    default action with the only one candidate as parameter auto.
+    default action with the only one candidate as parameter automatically.
     you needn't press <Enter> here.
 ** < anything-execute-action-at-once-if-one-even-no-keyword > (optional)
     if it has value
@@ -415,7 +412,7 @@ then if only one candidate left on the listview it will execute the
     #+end_src
 
    if only two candidats for you to select 
-   then this function is called .
+   then this function will be called .
    anything-window-switch.ahk use this property :
    when only two windows ,And you press Alt-Tab ,then select another window directly
    without press RETURN by youself.

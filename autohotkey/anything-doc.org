@@ -68,9 +68,11 @@ you can follow these links ,and save them on you disk .
 | <Esc>  <Ctrl-g>   | quit Anything                                                                                                                                     |
 
 ** keybindings for edit
-| Ctrl-u               | delete all search string |
-| backspace and Ctrl-h | back delete a char       |
-| Ctrl-y               | paste                    |
+| Ctrl-u               | delete all search string           |
+| backspace and Ctrl-h | back delete a char                 |
+| Ctrl-y               | paste                              |
+| Ctrl-w               | copy  and quit anything session    |
+| Alt-w                | copy without quit anything session |
 
 * anything-source I have written
 Now I have wrote 4 <anything-source> for anything.ahk

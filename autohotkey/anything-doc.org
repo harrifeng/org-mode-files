@@ -446,12 +446,12 @@ then if only one candidate left on the listview it will execute the
 | no_candidate_action  | when no candiates left and you press Ctrl-i ,this function is called | "anything_do_nothing" | a function name (accept one parameter)    |
 see " how to  write an anything-source"/"call anything" section about how to use anything-properties
 * global variable
- | global variable name | description                                      |
- |----------------------+--------------------------------------------------|
- | anything_wid         | anything window id                               |
- | anything_pattern     | anything pattern you have typed in the textfield |
- | anything_properties  | an Array of current anything propeties           |
-    
+ | global variable name               | description                                            |
+ |------------------------------------+--------------------------------------------------------|
+ | anything_wid                       | anything window id                                     |
+ | anything_pattern                   | anything pattern you have typed in the textfield       |
+ | anything_properties                | an Array of current anything propeties                 |
+ | anything_previous_activated_win_id | previous activated win_id before anthing-window appera |
   ;; you can access these global variable when you write your anything-source
   for the special anything property :
   "quit_when_lose_focus"

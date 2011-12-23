@@ -238,15 +238,16 @@ Now I have wrote 4 <anything-source> for anything.ahk
    the window_title window_process_name is used to fitler.
    actions for anything-window-switch.ahk
    #+begin_src c
- anything_window_switcher_source["action"]:=Array("anything_ws_visit", "anything_ws_close" ,"anything_ws_assign_key")
+anything_window_switcher_source["action"]:=Array("anything_ws_activate_window", "anything_ws_close_window" ,"anything_ws_assign_key_4_current_window", "anything_ws_kill_process")
    #+end_src
-| actions                                | description                                                                                             | key binding         |
-|----------------------------------------+---------------------------------------------------------------------------------------------------------+---------------------|
-| anything_ws_visit                      | visit selected window                                                                                   | <Click>and  <Enter> |
-| anything_ws_close                      | close selected window                                                                                   | <Ctrl-j>            |
-| anything_ws_assign_key                 | assign some special "TEXT" to your selected window ,then you can use it to selected the assigned window | <Ctrl-m>            |
-| list all actions for current candidate |                                                                                                         | TAB                 |
-| list all actions                       |                                                                                                         | <Ctrl-L>            |
+| actions                                 | description                                                                                             | key binding         |
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------+---------------------|
+| anything_ws_activate_window             | visit selected window                                                                                   | <Click>and  <Enter> |
+| anything_ws_close_window                | close selected window                                                                                   | <Ctrl-j>            |
+| anything_ws_assign_key_4_current_window | assign some special "TEXT" to your selected window ,then you can use it to selected the assigned window | <Ctrl-m>            |
+| anything_ws_kill_process                | kill process of selected window                                                                         | <Ctrl-k>            |
+| list all actions for current candidate  |                                                                                                         | TAB                 |
+| list all actions                        |                                                                                                         | <Ctrl-L>            |
 
    about the third action : anything_ws_assign_key
    for example :there are three windows opened now : Firefox Explore ,Emacs

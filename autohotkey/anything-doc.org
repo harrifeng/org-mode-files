@@ -252,7 +252,7 @@ Now I have wrote 4 <anything-source> for anything.ahk
    
 * how to  write an anything-source
   an anything-source is an Object with some pre-defined properties
-  now it support 7 anything-source-properties :
+  now it support 8 anything-source-properties :
   + name
   + action
   + candidate

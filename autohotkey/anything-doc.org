@@ -249,7 +249,7 @@ anything_window_switcher_source["action"]:=Array("anything_ws_activate_window", 
 | list all actions for current candidate  |                                                                                                         | TAB                 |
 | list all actions                        |                                                                                                         | <Ctrl-L>            |
 
-   about the third action : anything_ws_assign_key
+   about the third action : anything_ws_assign_key_4_current_window
    for example :there are three windows opened now : Firefox Explore ,Emacs
    now the selected candidate is "Firefox" ,and you press <Ctrl-m>
    then a InputBox appear ,and you type in "www" .

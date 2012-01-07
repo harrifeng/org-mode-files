@@ -12,3 +12,4 @@
    + [[file:../erlang/dic.org][Dict,or Map的简单实现]]
    + [[file:../erlang/counter.org][计数器,并行示例]]
    + [[file:../erlang/catch.org][catch ,throw ,异常处理]]
+   + [[file:../erlang/binary_bit.org][erlang的二进制数据处理，binnary,及bit Syntax(语法)]]

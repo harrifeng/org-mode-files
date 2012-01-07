@@ -138,7 +138,7 @@ erlang 对于二进制的数据处理提供了非常强大的语法，而一般�
 <<0,0,0,72>>
 #+end_src
 **** Unit
-     语法 unit:Integer ,如init:1
+     语法 unit:Integer ,如unit:1
      取值范围1..257
      | integer,float,bitstring |            1 |
      | binary                  |            8 |

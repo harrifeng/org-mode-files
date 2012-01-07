@@ -29,6 +29,7 @@
      + [[file:erlang/counter.org][counter计数]]
      + [[file:erlang/spawn_link.org][spawn_link进程关,同生共死]]
      + [[file:erlang/release.org][发布release]]
+     + [[file:erlang/binary_bit.org][binary bit 处理]]
    + Emacs (编辑器圣战的主角)
      + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
      + [[file:emacs/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念 ]]

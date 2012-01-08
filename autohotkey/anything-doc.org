@@ -45,6 +45,7 @@ you can follow these links ,and save them on you disk .
 * keybindings when <Anything> is activated 
   you can input search string just like google to narrow the candidates
 ** keybindings for select candiates
+| Keybindings           | Desc                                                                                      |
 |-----------------------+-------------------------------------------------------------------------------------------|
 | Down or Ctrl+n        | select next candidate                                                                     |
 |-----------------------+-------------------------------------------------------------------------------------------|
@@ -59,6 +60,8 @@ you can follow these links ,and save them on you disk .
    
 ** keybindings for execute actions
 |---------------------+-------------------------------------------------------------------------------|
+| Keybindings         | Desc                                                                          |
+|---------------------+-------------------------------------------------------------------------------|
 | <Click>and  <Enter> | to execute the default action with the selected candiate as parameter         |
 |---------------------+-------------------------------------------------------------------------------|
 | <Ctrl-j>            | to execute the second action(if has) with the selected candidate as parameter |
@@ -70,16 +73,20 @@ you can follow these links ,and save them on you disk .
 | <Ctrl-e>            | to execute the fifth action (if has)with the selected candidate as parameter  |
 |---------------------+-------------------------------------------------------------------------------|
    
-|---------+----------------------------------------------------|
-| <Alt-j> | do the same to Ctrl-j ,but doesn't quit "Anything" |
-|---------+----------------------------------------------------|
-| <Alt-m> | do the same to Ctrl-m ,but doesn't quit "Anything" |
-|---------+----------------------------------------------------|
-| <Alt-k> | do the same to Ctrl-k ,but doesn't quit "Anything" |
-|---------+----------------------------------------------------|
-| <Alt-e> | do the same to Ctrl-k ,but doesn't quit "Anything" |
+|-------------+----------------------------------------------------|
+| Keybindings | Desc                                               |
+|-------------+----------------------------------------------------|
+| <Alt-j>     | do the same to Ctrl-j ,but doesn't quit "Anything" |
+|-------------+----------------------------------------------------|
+| <Alt-m>     | do the same to Ctrl-m ,but doesn't quit "Anything" |
+|-------------+----------------------------------------------------|
+| <Alt-k>     | do the same to Ctrl-k ,but doesn't quit "Anything" |
+|-------------+----------------------------------------------------|
+| <Alt-e>     | do the same to Ctrl-k ,but doesn't quit "Anything" |
 
 
+|-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------|
+| Keybindings     | Desc                                                                                                                                              |
 |-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------|
 | <Ctrl-L>        | will ignore all the candidates ,and treate the search string as candidate , and list all available "action" to execute on the special "candidate" |
 |-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -90,6 +97,8 @@ you can follow these links ,and save them on you disk .
    
 ** keybindings for edit
 
+|----------------------+------------------------------------|
+| Keybindings          | Desc                               |
 |----------------------+------------------------------------|
 | backspace and Ctrl-h | back delete a char                 |
 |----------------------+------------------------------------|

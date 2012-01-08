@@ -140,7 +140,7 @@ Now I have wrote 4 <anything-source> for anything.ahk
    + it will visit your selected directory in current cmd.exe (if current activated window is cmd.exe)
    + it will visit your selected directory in current msys.bat (if current activated window is msys.bat)
     
-**  anything-favorite-directories.ahk  
+**  anything-favorite-directories.ahk (with with   anything-explorer-history.ahk )  
     anything-favorite-directories.ahk  do something similiar to [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-explorer-history.ahk][anything-explorer-history.ahk]] 
     add your favorite directories ,and visit it using "Anything".
     

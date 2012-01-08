@@ -52,20 +52,22 @@ you can follow these links ,and save them on you disk .
 
 ** keybindings for execute actions
 
-| <Click>and  <Enter>  | to execute the default action with the selected candiate as parameter                                                                             |
-| <Ctrl-j>             | to execute the second action(if has) with the selected candidate as parameter                                                                     |
-| <Ctrl-m>             | to execute the third action(if has) with the selected candidate as parameter                                                                              |
-| <Ctrl-k>             | to execute the forth action (if has)with the selected candidate as parameter                                                                              |
+| <Click>and  <Enter> | to execute the default action with the selected candiate as parameter         |
+| <Ctrl-j>            | to execute the second action(if has) with the selected candidate as parameter |
+| <Ctrl-m>            | to execute the third action(if has) with the selected candidate as parameter  |
+| <Ctrl-k>            | to execute the forth action (if has)with the selected candidate as parameter  |
+| <Ctrl-e>            | to execute the fifth action (if has)with the selected candidate as parameter  |
 
-| <Ctrl-z> <Alt-Enter> | do the same to Enter ,but doesn't quit "Anything"                                                                                                 |
-| <Alt-j>              | do the same to Ctrl-j ,but doesn't quit "Anything"                                                                                                |
-| <Alt-m>              | do the same to Ctrl-m ,but doesn't quit "Anything"                                                                                                |
-| <Alt-k>              | do the same to Ctrl-k ,but doesn't quit "Anything"                                                                                                |
+| <Ctrl-z> <Alt-Enter> | do the same to Enter ,but doesn't quit "Anything"  |
+| <Alt-j>              | do the same to Ctrl-j ,but doesn't quit "Anything" |
+| <Alt-m>              | do the same to Ctrl-m ,but doesn't quit "Anything" |
+| <Alt-k>              | do the same to Ctrl-k ,but doesn't quit "Anything" |
+| <Alt-e>              | do the same to Ctrl-k ,but doesn't quit "Anything" |
 
-| <tab>                | will list all available actions , and you can select one to execute .                                                                             |
-| <Ctrl-L>             | will ignore all the candidates ,and treate the search string as candidate , and list all available "action" to execute on the special "candidate" |
-| <Ctrl-i>             | do something similar to <Ctrl-l> ,but don't list all available "action" ,just execute the "action" special by "property": no_candidate_action     |
-| <Esc>  <Ctrl-g>   | quit Anything                                                                                                                                     |
+| <tab>           | will list all available actions , and you can select one to execute .                                                                             |
+| <Ctrl-L>        | will ignore all the candidates ,and treate the search string as candidate , and list all available "action" to execute on the special "candidate" |
+| <Ctrl-i>        | do something similar to <Ctrl-l> ,but don't list all available "action" ,just execute the "action" special by "property": no_candidate_action     |
+| <Esc>  <Ctrl-g> | quit Anything                                                                                                                                     |
 
 ** keybindings for edit
 | Ctrl-u               | delete all search string           |
@@ -79,6 +81,7 @@ Now I have wrote 4 <anything-source> for anything.ahk
   +  anything-explorer-history.ahk ,
   +  anything-favorite-directories.ahk,
   +  anything-run.ahk (a replacement of Windows+r)
+     anything-run-launch-plugin.ahk (work together with anything-run.ahk)
   +  anything-window-switch.ahk (a replacement of Alt-Tab)
 
 **  anything-explorer-history.ahk
@@ -120,13 +123,19 @@ Now I have wrote 4 <anything-source> for anything.ahk
     #+begin_src c
    anything_explorer_history_source["action"]:=Array("visit_directory","delete_from_directory_history" ,"delete_all_directory_history")
     #+end_src
+|----------------------------------------+-------------------------------------------------+---------------------|
 | actions                                | description                                     | key binding         |
 |----------------------------------------+-------------------------------------------------+---------------------|
 | visit_directory                        | visit selected directory                        | <Click>and  <Enter> |
+|----------------------------------------+-------------------------------------------------+---------------------|
 | delete_from_directory_history          | delete select directory from  directory history | <Ctrl-j>            |
+|----------------------------------------+-------------------------------------------------+---------------------|
 | delete_all_directory_history           | add a new directory to  directory history       | <Ctrl-m>            |
+|----------------------------------------+-------------------------------------------------+---------------------|
 | list all actions for current candidate |                                                 | TAB                 |
+|----------------------------------------+-------------------------------------------------+---------------------|
 | list all actions                       |                                                 | <Ctrl-L>            |
+|----------------------------------------+-------------------------------------------------+---------------------|
    + it will visit your selected directory in current Explorer.exe (if current activated window is Explorer.exe)
    + it will visit your selected directory in current cmd.exe (if current activated window is cmd.exe)
    + it will visit your selected directory in current msys.bat (if current activated window is msys.bat)
@@ -176,14 +185,20 @@ Now I have wrote 4 <anything-source> for anything.ahk
    anything_favorite_directories_source["action"]:=Array("anything_favorite_directories_visit","anything_favorite_directories_delete","anything_favorite_directories_add")
    #+end_src
 *** actions for anything-favorite-directories.ahk 
-| actions                              | description                                       | key binding         |
-|--------------------------------------+---------------------------------------------------+---------------------|
-| anything_favorite_directories_visit  | visit selected directory                          | <Click>and  <Enter> |
-| anything_favorite_directories_delete | delete select directory from favorite directories | <Ctrl-j>            |
-| anything_favorite_directories_add    | add a new directory to favorite directories       | <Ctrl-m>            |
-| list all actions for current candidate |                                                 | TAB                 |
-| list all actions                       |                                                 | <Ctrl-L>            |
-
+|----------------------------------------+---------------------------------------------------+---------------------|
+| actions                                | description                                       | key binding         |
+|----------------------------------------+---------------------------------------------------+---------------------|
+| anything_favorite_directories_visit    | visit selected directory                          | <Click>and  <Enter> |
+|----------------------------------------+---------------------------------------------------+---------------------|
+| anything_favorite_directories_delete   | delete select directory from favorite directories | <Ctrl-j>            |
+|----------------------------------------+---------------------------------------------------+---------------------|
+| anything_favorite_directories_add      | add a new directory to favorite directories       | <Ctrl-m>            |
+|----------------------------------------+---------------------------------------------------+---------------------|
+| list all actions for current candidate |                                                   | TAB                 |
+|----------------------------------------+---------------------------------------------------+---------------------|
+| list all actions                       |                                                   | <Ctrl-L>            |
+|----------------------------------------+---------------------------------------------------+---------------------|
+    
 *** then you can use "Anything" selected one of your favorite directory 
    + it will visit your selected directory in current Explorer.exe (if current activated window is Explorer.exe)
    + it will visit your selected directory in current cmd.exe (if current activated window is cmd.exe)
@@ -193,27 +208,28 @@ Now I have wrote 4 <anything-source> for anything.ahk
    it could remember old command too. when you press <Windows+r>
    about how to use it .see comments in anything-run.ahk
     #+begin_src c
-      #include anything.ahk
-      #include anything-run.ahk
-       ;; anything_cmd_source is an anything-source defined in anything-run.ahk
-      #r::anything(anything_cmd_source)
+         #include anything.ahk
+         #include anything-run.ahk
+         #include anything-run-launch-plugin.ahk
+
+         #r::
+         my_anything_properties2:=Object()
+         my_anything_properties2["anything_use_large_icon"]:=0
+         my_anything_properties2["FontSize"]:= 12
+         anything_multiple_sources_with_properties(Array(anything_run_source, anything_run_launch_source),my_anything_properties2)
+         return
     #+end_src
    if a command(candidate) have not been added ,you can type the command in the
    textfield (for example :"cmd") add press <Ctrl-L> list all available actions select
    call action: Run.anything_run
    then a cmd.exe is executed ,and "cmd" as a candidate is add to candidates
-   
-    #+begin_src c
-      #include anything.ahk
-      #include anything-run.ahk
-      #include anything-favorite-directories.ahk
-      #include anything-explorer-history.ahk
 
+   you can also append other anything-source,for example 
+    #+begin_src c
       #r::
       sources:=Array()
-      ;; anything_cmd_source is an anything-source defined in anything-run.ahk
-      ;; add anything_cmd_source as the first anything-source
       sources.insert(anything_cmd_source)
+      sources.insert(anything_run_launch_source)
       sources.insert(anything_explorer_history_source)
       sources.insert(anything_favorite_directories_source)
       anything_multiple_sources(sources)
@@ -242,14 +258,21 @@ Now I have wrote 4 <anything-source> for anything.ahk
    #+begin_src c
 anything_window_switcher_source["action"]:=Array("anything_ws_activate_window", "anything_ws_close_window" ,"anything_ws_assign_key_4_current_window", "anything_ws_kill_process")
    #+end_src
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------+---------------------|
 | actions                                 | description                                                                                             | key binding         |
 |-----------------------------------------+---------------------------------------------------------------------------------------------------------+---------------------|
 | anything_ws_activate_window             | visit selected window                                                                                   | <Click>and  <Enter> |
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------+---------------------|
 | anything_ws_close_window                | close selected window                                                                                   | <Ctrl-j>            |
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------+---------------------|
 | anything_ws_assign_key_4_current_window | assign some special "TEXT" to your selected window ,then you can use it to selected the assigned window | <Ctrl-m>            |
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------+---------------------|
 | anything_ws_kill_process                | kill process of selected window                                                                         | <Ctrl-k>            |
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------+---------------------|
+| anything_ws_exclude_window_by_class     | don't list this window as candidates(excluded by ahk_class)                                             | <Ctrl-e>            |
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------+---------------------|
 | list all actions for current candidate  |                                                                                                         | TAB                 |
-| list all actions                        |                                                                                                         | <Ctrl-L>            |
+|-----------------------------------------+---------------------------------------------------------------------------------------------------------+---------------------|
 
    about the third action : anything_ws_assign_key_4_current_window
    for example :there are three windows opened now : Firefox Explore ,Emacs

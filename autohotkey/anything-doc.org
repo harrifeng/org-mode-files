@@ -35,6 +35,7 @@ you can follow these links ,and save them on you disk .
 + [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-explorer-history.ahk][anything-explorer-history.ahk]] (an anything-source)
 + [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-favorite-directories.ahk][anything-favorite-directories.ahk]] (an anything-source)
 + [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-run.ahk][anything-run.ahk]] (an anything-source)
++ [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-run-launch-plugin.ahk][anything-run-launch-plugin.ahk]] (an anything-source work with anything-run.ahk)
 + [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-window-switch.ahk][anything-window-switch.ahk]] (an anything-source)
 + [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-config.ahk][anything-config.ahk]]  (config file)
 
@@ -44,38 +45,61 @@ you can follow these links ,and save them on you disk .
 * keybindings when <Anything> is activated 
   you can input search string just like google to narrow the candidates
 ** keybindings for select candiates
-| Down or Ctrl+n          | select next candidate                                                                     |
-| Up or Ctrl+p            | select previous candidate                                                                 |
-| Ctrl+o                  | will select next source ,that means ,all candidate from first source will be send to last |
-| pageUp ,Ctrl-r ,Alt-v   | pageup                                                                                    |
-| pageDn ,Ctrl-v          | pageDn                                                                                    |
-
+|-----------------------+-------------------------------------------------------------------------------------------|
+| Down or Ctrl+n        | select next candidate                                                                     |
+|-----------------------+-------------------------------------------------------------------------------------------|
+| Up or Ctrl+p          | select previous candidate                                                                 |
+|-----------------------+-------------------------------------------------------------------------------------------|
+| Ctrl+o                | will select next source ,that means ,all candidate from first source will be send to last |
+|-----------------------+-------------------------------------------------------------------------------------------|
+| pageUp ,Ctrl-r ,Alt-v | pageup                                                                                    |
+|-----------------------+-------------------------------------------------------------------------------------------|
+| pageDn ,Ctrl-v        | pageDn                                                                                    |
+|-----------------------+-------------------------------------------------------------------------------------------|
+   
 ** keybindings for execute actions
-
+|---------------------+-------------------------------------------------------------------------------|
 | <Click>and  <Enter> | to execute the default action with the selected candiate as parameter         |
+|---------------------+-------------------------------------------------------------------------------|
 | <Ctrl-j>            | to execute the second action(if has) with the selected candidate as parameter |
+|---------------------+-------------------------------------------------------------------------------|
 | <Ctrl-m>            | to execute the third action(if has) with the selected candidate as parameter  |
+|---------------------+-------------------------------------------------------------------------------|
 | <Ctrl-k>            | to execute the forth action (if has)with the selected candidate as parameter  |
+|---------------------+-------------------------------------------------------------------------------|
 | <Ctrl-e>            | to execute the fifth action (if has)with the selected candidate as parameter  |
+|---------------------+-------------------------------------------------------------------------------|
+   
+|---------+----------------------------------------------------|
+| <Alt-j> | do the same to Ctrl-j ,but doesn't quit "Anything" |
+|---------+----------------------------------------------------|
+| <Alt-m> | do the same to Ctrl-m ,but doesn't quit "Anything" |
+|---------+----------------------------------------------------|
+| <Alt-k> | do the same to Ctrl-k ,but doesn't quit "Anything" |
+|---------+----------------------------------------------------|
+| <Alt-e> | do the same to Ctrl-k ,but doesn't quit "Anything" |
 
-| <Ctrl-z> <Alt-Enter> | do the same to Enter ,but doesn't quit "Anything"  |
-| <Alt-j>              | do the same to Ctrl-j ,but doesn't quit "Anything" |
-| <Alt-m>              | do the same to Ctrl-m ,but doesn't quit "Anything" |
-| <Alt-k>              | do the same to Ctrl-k ,but doesn't quit "Anything" |
-| <Alt-e>              | do the same to Ctrl-k ,but doesn't quit "Anything" |
 
-| <tab>           | will list all available actions , and you can select one to execute .                                                                             |
+|-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------|
 | <Ctrl-L>        | will ignore all the candidates ,and treate the search string as candidate , and list all available "action" to execute on the special "candidate" |
+|-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------|
 | <Ctrl-i>        | do something similar to <Ctrl-l> ,but don't list all available "action" ,just execute the "action" special by "property": no_candidate_action     |
+|-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------|
 | <Esc>  <Ctrl-g> | quit Anything                                                                                                                                     |
-
+|-----------------+---------------------------------------------------------------------------------------------------------------------------------------------------|
+   
 ** keybindings for edit
-| Ctrl-u               | delete all search string           |
-| backspace and Ctrl-h | back delete a char                 |
-| Ctrl-y               | paste                              |
-| Ctrl-w               | copy  and quit anything session    |
-| Alt-w                | copy without quit anything session |
 
+|----------------------+------------------------------------|
+| backspace and Ctrl-h | back delete a char                 |
+|----------------------+------------------------------------|
+| Ctrl-y               | paste                              |
+|----------------------+------------------------------------|
+| Ctrl-w               | copy  and quit anything session    |
+|----------------------+------------------------------------|
+| Alt-w                | copy without quit anything session |
+|----------------------+------------------------------------|
+   
 * anything-source I have written
 Now I have wrote 4 <anything-source> for anything.ahk
   +  anything-explorer-history.ahk ,

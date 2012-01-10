@@ -557,4 +557,15 @@ see " how to  write an anything-source"/"call anything" section about how to use
     the Input() hasn't been called . so the letter would be dropped
     I try to fix this by compare %anything_pattern% with text in the textfield
     if they are different ,then I know some letter got dropped ,but it seems
-    doesn't work very well 
+    doesn't work very well
+
+  + anything-explorer-history.ahk must be the last included file
+    
+    maybe the reason is
+    there is some code look like this
+    
+       #IfWinActive ahk_class ExploreWClass|CabinetWClass
+    or 
+       Return 
+
+    

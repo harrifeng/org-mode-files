@@ -546,3 +546,15 @@ see " how to  write an anything-source"/"call anything" section about how to use
    }
   #+end_src
   
+* Known Bugs
+  + when sometimes you type too quickly , letters get dropped from 
+    search key , the letters get typed and then deleted .
+    or you type "ab" but got "ba".
+    or you type "abc" ,only "ab" are used to filter candidates
+    
+    Becuase I use Input() in a loop to read what you have typed 
+    if the code in loop take too long time ,maybe when you type next char 
+    the Input() hasn't been called . so the letter would be dropped
+    I try to fix this by compare %anything_pattern% with text in the textfield
+    if they are different ,then I know some letter got dropped ,but it seems
+    doesn't work very well 

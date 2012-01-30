@@ -121,7 +121,6 @@ Now I have wrote 4 <anything-source> for anything.ahk
               anything-source:   <anything_run_launch_source>  defined here.
   +  anything-window-switch.ahk (a replacement of Alt-Tab)
              <anything_window_switcher_source> and
-             <anything_window_switcher_with_assign_keys_source> defined here.
 
 **  anything-explorer-history.ahk
    when you visit directory (double click on a directory,up or back ) in
@@ -286,7 +285,6 @@ Now I have wrote 4 <anything-source> for anything.ahk
        my_anything_properties["win_height"]:= 180
       
        sources:=Array()
-       sources.insert(anything_window_switcher_with_assign_keys_source)
        sources.insert(anything_window_switcher_source)
        anything_multiple_sources_with_properties(sources,my_anything_properties)
        return

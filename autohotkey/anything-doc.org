@@ -45,18 +45,18 @@ you can follow these links ,and save them on you disk .
 * keybindings when <Anything> is activated 
   you can input search string just like google to narrow the candidates
 ** keybindings for select candiates
-| Keybindings    | Desc                                                                                      |
-|----------------+-------------------------------------------------------------------------------------------|
-| Down or Ctrl+n | select next candidate                                                                     |
-|----------------+-------------------------------------------------------------------------------------------|
-| Up or Ctrl+p   | select previous candidate                                                                 |
-|----------------+-------------------------------------------------------------------------------------------|
-| Ctrl+o         | will select next source ,that means ,all candidate from first source will be send to last |
-|----------------+-------------------------------------------------------------------------------------------|
-| pageUp ,Alt-v  | pageup                                                                                    |
-|----------------+-------------------------------------------------------------------------------------------|
-| pageDn ,Ctrl-v | pageDn                                                                                    |
-|----------------+-------------------------------------------------------------------------------------------|
+| Keybindings                                   | Desc                                                                                      |
+|-----------------------------------------------+-------------------------------------------------------------------------------------------|
+| Down or Ctrl+n                                | select next candidate                                                                     |
+|-----------------------------------------------+-------------------------------------------------------------------------------------------|
+| Up or Ctrl+p                                  | select previous candidate                                                                 |
+|-----------------------------------------------+-------------------------------------------------------------------------------------------|
+| Ctrl+o                                        | will select next source ,that means ,all candidate from first source will be send to last |
+|-----------------------------------------------+-------------------------------------------------------------------------------------------|
+| pageUp ,Alt-v                                 | pageup                                                                                    |
+|-----------------------------------------------+-------------------------------------------------------------------------------------------|
+| pageDn ,Ctrl-v(doesn't work very well),Ctrl-d | pageDn                                                                                    |
+|-----------------------------------------------+-------------------------------------------------------------------------------------------|
    
 ** keybindings for execute actions
 |---------------------+-------------------------------------------------------------------------------|
@@ -112,16 +112,22 @@ you can follow these links ,and save them on you disk .
 * anything-source I have written
 Now I have wrote 4 <anything-source> for anything.ahk
   +  anything-explorer-history.ahk ,
+             anything-source : <anything_explorer_history_source> defined here.
   +  anything-favorite-directories.ahk,
+             anything-source: <anything_favorite_directories_source> defined here.
   +  anything-run.ahk (a replacement of Windows+r)
+              anything-source: <anything_run_source> defined here.
      anything-run-launch-plugin.ahk (work together with anything-run.ahk)
+              anything-source:   <anything_run_launch_source>  defined here.
   +  anything-window-switch.ahk (a replacement of Alt-Tab)
+             <anything_window_switcher_source> and
+             <anything_window_switcher_with_assign_keys_source> defined here.
 
 **  anything-explorer-history.ahk
    when you visit directory (double click on a directory,up or back ) in
    explorer.exe ,it can remember directories you have visited ,then you can
    press <F3> to active "Anything" list all directory history you have
-   visited. ,you can revisit it easyly with anything-explorer-history.ahk .
+   visited. ,you can revisit it easily with anything-explorer-history.ahk .
    how to configure anything-explorer-history.ahk
     
 ***    if you only have one anything-source :
@@ -557,7 +563,7 @@ see " how to  write an anything-source"/"call anything" section about how to use
     the Input() hasn't been called . so the letter would be dropped
     I try to fix this by compare %anything_pattern% with text in the textfield
     if they are different ,then I know some letter got dropped ,but it seems
-    doesn't work very well
+    doesn't work very well(Now is fixed.)
 
   + anything-explorer-history.ahk must be the last included file
     

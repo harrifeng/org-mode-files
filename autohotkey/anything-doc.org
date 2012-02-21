@@ -21,12 +21,14 @@ there are some screencast here(no voice) :
 + http://www.screenr.com/vp8s (new one )
 + http://www.screenr.com/BH7s and another one show anything-favorite-directories.ahk
 + http://www.screenr.com/MyHs and another show anything-window-switch.ahk
++ http://www.screenr.com/Zbjs (new one ,show anything-services.ahk) 
 
 you can also download these videos
 + [[http://screencast-repos.googlecode.com/files/anything-expl-run.mp4][anything-explore-history.ahk_anything-run.ahk.mp4]]
 + [[http://screencast-repos.googlecode.com/files/anything.ahk-anything-explorer-history.mp4][anything-explore-history.ahk.mp4]]
 + [[http://screencast-repos.googlecode.com/files/anything-window-switch.mp4][anything-window-switch.mp4]]
 + [[http://screencast-repos.googlecode.com/files/anything-fav-dir.mp4][anything-favorite-directories.ahk.mp4]]
++ http://screencast-repos.googlecode.com/files/anything-services.ahk.zip
 
 and source code is host on [[https://github.com/jixiuf/my_autohotkey_scripts/tree/master/ahk_scripts][Github]]
 
@@ -110,17 +112,21 @@ you can follow these links ,and save them on you disk .
 |----------------------+------------------------------------|
    
 * anything-source I have written
-Now I have wrote 4 <anything-source> for anything.ahk
-  +  anything-explorer-history.ahk ,
-             anything-source : <anything_explorer_history_source> defined here.
-  +  anything-favorite-directories.ahk,
-             anything-source: <anything_favorite_directories_source> defined here.
-  +  anything-run.ahk (a replacement of Windows+r)
-              anything-source: <anything_run_source> defined here.
-     anything-run-launch-plugin.ahk (work together with anything-run.ahk)
-              anything-source:   <anything_run_launch_source>  defined here.
-  +  anything-window-switch.ahk (a replacement of Alt-Tab)
-             <anything_window_switcher_source> and
+Now I have wrote 6 <anything-source> for anything.ahk
+  + anything-explorer-history.ahk ,
+            anything-source : <anything_explorer_history_source> defined here.
+  + anything-favorite-directories.ahk,
+            anything-source: <anything_favorite_directories_source> defined here.
+  + anything-run.ahk (a replacement of Windows+r)
+             anything-source: <anything_run_source> defined here.
+    anything-run-launch-plugin.ahk (work together with anything-run.ahk)
+             anything-source:   <anything_run_launch_source>  defined here.
+  + anything-window-switch.ahk (a replacement of Alt-Tab)
+            <anything_window_switcher_source> and
+  + anything-precess-manager.ahk
+    anything-source: <anything_precess_manager_source> defined here.
+  + anything-services.ahk
+    anything-source: <anything_services_source> defined here.
 
 **  anything-explorer-history.ahk
    when you visit directory (double click on a directory,up or back ) in
@@ -128,6 +134,12 @@ Now I have wrote 4 <anything-source> for anything.ahk
    press <F3> to active "Anything" list all directory history you have
    visited. ,you can revisit it easily with anything-explorer-history.ahk .
    how to configure anything-explorer-history.ahk
+   [[file:../img/anything-directory-history1.JPG]]
+   [[file:../img/anything-directory-history2.JPG]]
+   [[file:../img/anything-directory-history3.JPG]]
+   [[file:../img/anything-directory-history4.JPG]]
+   [[file:../img/anything-directory-history5.JPG]]
+   [[file:../img/anything-directory-history6.JPG]]
     
 ***    if you only have one anything-source :
        anything_explorer_history_source  (defined in  anything-explorer-history.ahk)
@@ -181,6 +193,11 @@ Now I have wrote 4 <anything-source> for anything.ahk
 **  anything-favorite-directories.ahk (with with   anything-explorer-history.ahk )  
     anything-favorite-directories.ahk  do something similiar to [[https://github.com/jixiuf/my_autohotkey_scripts/raw/master/ahk_scripts/anything-explorer-history.ahk][anything-explorer-history.ahk]] 
     add your favorite directories ,and visit it using "Anything".
+   [[file:../img/anything-fav-history1.JPG]]
+   [[file:../img/anything-fav-history2.JPG]]
+   [[file:../img/anything-fav-history3.JPG]]
+   [[file:../img/anything-fav-history4.JPG]]
+    
     
 ***  how to configure it . 
     if you use anything-favorites-directory as the only source for anything.ahk
@@ -245,6 +262,8 @@ Now I have wrote 4 <anything-source> for anything.ahk
 ** anything-run.ahk is a replacement of <Win-r>
    it could remember old command too. when you press <Windows+r>
    about how to use it .see comments in anything-run.ahk
+   [[file:../img/anything-run1.JPG]]
+   
     #+begin_src c
          #include anything.ahk
          #include anything-run.ahk
@@ -274,7 +293,8 @@ Now I have wrote 4 <anything-source> for anything.ahk
       return
     #+end_src
    
-** anything-window-switch.ahk is a replacement of Alt-Tab   
+** anything-window-switch.ahk is a replacement of Alt-Tab
+      [[file:../img/anything-ws.JPG]]
    #+begin_src c
       #include anything.ahk
       #include anything-window-switch.ahk 
@@ -316,6 +336,68 @@ anything_window_switcher_source["action"]:=Array("anything_ws_activate_window", 
    now the selected candidate is "Firefox" ,and you press <Ctrl-m>
    then a InputBox appear ,and you type in "www" .
    next time you press Alt-TAB ,and type "www" Firefox is activated
+** anything-process-manager.ahk
+   is a process manager , you can use it kill a selected process
+   or change the priority of the process
+      [[file:../img/anything-process.jpg]]
+      [[file:../img/anything-process2.jpg]]
+      #+begin_src c
+        #include anything.ahk
+        #include anything-process-manager.ahk
+        f2::
+        anything(anything_process_manager_source)
+        return
+      #+end_src
+
+ 2  if you also have other anything-sources ,
+     you just need add 
+         anything_process_manager_source
+     to the sources
+    for example :
+    #+begin_src c
+        #include anything.ahk
+        #include anything-process-manager.ahk
+        #include anything-services.ahk
+         ^f4::
+          sources:=Array()
+          sources.Insert(anything_services_source)
+          sources.Insert(anything_process_manager_source)  ;         <--------- here.
+          anything_multiple_sources(sources)
+         return
+    #+end_src
+      
+      
+** anything-services.ahk
+   is a Windows Services Manager ,just like services.msc
+   it can start a stopped service ,or stop a running service
+   or change the start type of a service <Manual> <Disabled><Automictal>
+      [[file:../img/anything-services1.JPG]]
+      [[file:../img/anything-services2.JPG]]
+#+begin_src c
+ #include anything.ahk
+ #include anything-services.ahk
+ f4::
+ anything(anything_services_source)
+ return
+#+end_src
+
+ 2  if you also have other anything-sources ,
+     you just need add 
+         anything_services_source
+     to the sources
+    for example :
+     #+begin_src c
+        #include anything.ahk
+        #include anything-process-manager.ahk
+        #include anything-services.ahk
+         ^f4::
+          sources:=Array()
+          sources.Insert(anything_services_source) ;         <--------- here.
+          sources.Insert(anything_process_manager_source) 
+          anything_multiple_sources(sources)
+         return
+     #+end_src
+
    
 * how to  write an anything-source
   an anything-source is an Object with some pre-defined properties

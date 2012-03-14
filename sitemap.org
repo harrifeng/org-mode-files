@@ -30,8 +30,8 @@
      + [[file:erlang/spawn_link.org][spawn_link进程关,同生共死]]
      + [[file:erlang/release.org][发布release]]
      + [[file:erlang/binary_bit.org][binary bit 处理]]
-     +  [[file:erlang/mochiweb_comet_chat.org][mochiweb comet ,long pull网页即时聊天系统原理代码 ]]
-     +  [[file:erlang/mochiweb_http_load.org][mochiweb 的使用 及 可开tcp连接数的(http长连接) 测试 ]]
+     + [[file:erlang/mochiweb_comet_chat.org][mochiweb comet ,long pull网页即时聊天系统原理代码 ]]
+     + [[file:erlang/mochiweb_http_load.org][mochiweb 的使用 及 可开tcp连接数的(http长连接) 测试 ]]
    + Emacs (编辑器圣战的主角)
      + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
      + [[file:emacs/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念 ]]
@@ -79,4 +79,7 @@
      + [[file:oracle/oracle_learn.org][oracle笔记]]
    + [[file:about.org][about]]
    + [[file:links.org][一些有用的链接]]
+   + 个人简历
+     - [[file:author.org][Erlang版]]
+     - [[file:author2.org][Java版]]
 

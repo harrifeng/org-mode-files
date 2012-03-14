@@ -11,4 +11,3 @@ orgmode的开发版本)。
 经htmlize.el 进行着色后便于网上浏览的在这里:[[file:htmlized-src][htmlized后
 的org源代码]] 另外，每个网页右上角会有src htmlize-src 的链接，分别对应当前页
 的源码、htmlized后的源码。
-

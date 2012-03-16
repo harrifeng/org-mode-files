@@ -32,6 +32,7 @@
      + [[file:erlang/binary_bit.org][binary bit 处理]]
      + [[file:erlang/mochiweb_comet_chat.org][mochiweb comet ,long pull网页即时聊天系统原理代码 ]]
      + [[file:erlang/mochiweb_http_load.org][mochiweb 的使用 及 可开tcp连接数的(http长连接) 测试 ]]
+     + [[file:erlang/distel.org][emacs 下erlang的调试distel]]
    + Emacs (编辑器圣战的主角)
      + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
      + [[file:emacs/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念 ]]

@@ -5,10 +5,10 @@
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:     2011-11-08 二
 #+DESCRIPTION:echo
-#+KEYWORDS: erlang echo 
+#+KEYWORDS: erlang echo
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
-#+FILETAGS: @erlang
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+#+FILETAGS: @Erlang
 
 #+begin_src erlang
 -module(echo).

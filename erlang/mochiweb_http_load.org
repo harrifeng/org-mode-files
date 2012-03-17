@@ -1,20 +1,21 @@
-#+TITLE:  mochiweb 的使用 及 可开tcp连接数的(http长连接) 测试 
+#+TITLE:  mochiweb 的使用 及 可开tcp连接数的(http长连接) 测试
+#+FILETAGS: @Erlang
 * 测试代码位置
   https://github.com/jixiuf/helloerlang/tree/master/mochiweb_test
 * mochiweb 的使用
-  1. 先得到源码 
+  1. 先得到源码
    #+begin_src sh
-   git clone git://github.com/mochi/mochiweb.git 
+   git clone git://github.com/mochi/mochiweb.git
    #+end_src
   2. 在根目录下make 进行编译
   3.
     #+begin_src sh
-      make app PROJECT=mochiweb_test 
+      make app PROJECT=mochiweb_test
     #+end_src
     然后在mochiweb 同级目录下会生成mochiweb_test目录
-    在这个目录下，运行make 
+    在这个目录下，运行make
     对这个项目进行一定的准备工作，比如得到它depend 的项目mochiweb(会上网继续下载mochiweb)
-    启动mochiweb , 
+    启动mochiweb ,
     #+begin_src sh
         ./start-dev.sh
     #+end_src
@@ -42,10 +43,10 @@ time(Resp)->
   #+end_src
   当访问http://localhost:8080/time 时,调用 time(Resp )方法进行处理,变是一种长
   连接
-在对 src/目录下的erl 文件进行编辑后，运行make 命令，在    
+在对 src/目录下的erl 文件进行编辑后，运行make 命令，在
         ./start-dev.sh启动模式下，会自动加载编译的文件，只需要在浏览器中刷新即
         可
-        
+
 
 * 可开tcp连接数的(http长连接) 测试
   参考了http://www.metabrew.com/article/a-million-user-comet-application-with-mochiweb-part-1

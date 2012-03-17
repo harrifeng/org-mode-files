@@ -7,11 +7,11 @@
 #+DESCRIPTION:分布式,聊天小例
 #+KEYWORDS: erlang
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+FILETAGS: @erlang
+#+FILETAGS: @Erlang
 #+begin_src erlang
 -module(msg).
 -compile([export_all]).

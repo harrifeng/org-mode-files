@@ -3,14 +3,14 @@
   https://github.com/jixiuf/helloerlang/tree/master/mochiweb_comet_chat
 * 操作:
   分别打开两个网页，然后，对textfield中输入内容，在另一个网页中会即时显现.
-* Comet 
+* Comet
 Comet 是一项很时髦的技术。其目的很简单：由于历史原因，目前 HTTP 协议信息都是客
 户端向服务器要（Poll），服务器没有办法推送信息给客户端（Sever Push）。这在实现
 某些应用的时候就会遇到麻烦。例如：
     + 当邮件服务器收到新的邮件时，及时报告给用户，如果他在线的话（GMail 这样做了）
     + 当 Web Chat 服务器收到新的信息时，及时发送信息到相应的在线用户（Web Chat 的基本需求）。
     + 聊天时提示你对方正在输入（时下 IM 客户端很时髦的一个功能）。
-      
+
 Comet 技术对服务端的要求还是很高的，Long Polling减少了网络流量，但是服务端的连
 接数并没有减少。因此基于 Comet 的应用，很容易在 Scale（伸缩性）上出现问题。使用
 Erlang + MochiWeb，还是很好的利用了 Erlang 可以轻松建立大量连接这个特性。需要指
@@ -30,7 +30,7 @@ Erlang + MochiWeb，还是很好的利用了 Erlang 可以轻松建立大量连�
           $("#history").append(new Date().toLocaleString()+":"+data+"<br/>");
           get();
       }
-  
+
   #+end_src
   在index.html 加载完比后，会先调用一次:
  #+begin_src javascript
@@ -43,7 +43,7 @@ Erlang + MochiWeb，还是很好的利用了 Erlang 可以轻松建立大量连�
  有新的消息就不返回（达到超时时间除外（代码中设为20s））。
 
  #+begin_src javascript
-      $('#send').click(         
+      $('#send').click(
           function(){
               $.ajax({
                   type: "POST",
@@ -54,11 +54,11 @@ Erlang + MochiWeb，还是很好的利用了 Erlang 可以轻松建立大量连�
                       $("#status").empty(); // remove children
                       $("#status").append(new Date().toLocaleString()+":"+msg); // add child
                   }
-              });               
+              });
           }
-      );        
+      );
       });
- 
+
  #+end_src
 点击发送按钮的时候，会以POST方式,向服务器发送一条消息，
 服务器在接到这条消息后,会进行如下处理:

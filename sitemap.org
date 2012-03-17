@@ -20,7 +20,7 @@
      + [[file:autohotkey/anything-doc.org][Anything.ahk]]
    + Daily
      + [[file:daily/beautiful-sentence.org][一些话]]
-   + Erlang(一种变量只能赋值一次，没有循环只有递归的诡异语言) 
+   + Erlang(一种变量只能赋值一次，没有循环只有递归的诡异语言)
      + [[file:erlang/echo.org][echo]]
      + [[file:erlang/catch.org][catch]]
      + [[file:erlang/timeout.org][timeout]]
@@ -56,17 +56,17 @@
      + [[file:emacs/image-suport-on-windows.org][Windows上Emacs中显示jpeg ,pgn 格式的图片]]
    + Java
      + [[file:java/ant-example1.org][ant build.xml 示例 ]]
-   + C 
+   + C
      + [[file:c/concat.org][c 的长度可变的参数concat(char* first ...)]]
      + [[file:c/error_log.org][可变参数2 ,类printf的error()]]
      + [[file:c/concat.org][可变参数3 ,concat(string...)]]
      + [[file:c/macro.org][宏展开 及#与##]]
-   + Perl 
+   + Perl
      + [[file:perl/perl.org][perl 笔记]]
    + Git
      + [[file:git/git.org][git拾遗]]
      + [[file:git/git-proxy-on-windows.org][Git代理]]
-   + SVN 
+   + SVN
      + [[file:svn/svnignore.org][svn ignore]]
    + Windows
      + [[file:windows/windows-keymap.org][windows 的键盘映射]]
@@ -83,4 +83,3 @@
    + 个人简历
      - [[file:author.org][Erlang版]]
      - [[file:author2.org][Java版]]
-

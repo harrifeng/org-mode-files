@@ -7,11 +7,11 @@
 #+DESCRIPTION:spawn_link.org
 #+KEYWORDS: spawn_link erlang
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+FILETAGS: @erlang
+#+FILETAGS: @Erlang
 
 进程可以互相监视。这里要引入两个概念，进程链接和EXIT信号。在执行期间，进程可
 以与其他进程（和端口，参见??章节）建立链接。当一个进程终止（无论正常或非正常
@@ -42,7 +42,7 @@ EXIT信号将被忽略
          link(Id = spawn(Module, Function, ArgumentList)),
          Id.
    #+end_src
-   
+
 #+begin_src erlang
 -module(lk).
 -export([start/0,start2/0,hello/0,sleep/1]).

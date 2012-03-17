@@ -78,8 +78,8 @@
      + [[file:oracle/3ManageAnOracleInstance.org]]
      + [[file:oracle/4ManageADatabase.org]]
      + [[file:oracle/oracle_learn.org][oracle笔记]]
-   + [[file:about.org][about]]
-   + [[file:links.org][一些有用的链接]]
    + 个人简历
      - [[file:author.org][Erlang版]]
-     - [[file:author2.org][Java版]]
+     - [[file:author2.org][Java版]]der
+   + [[file:about.org][about]]
+   + [[file:links.org][一些有用的链接]]

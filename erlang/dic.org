@@ -7,11 +7,11 @@
 #+DESCRIPTION:Dict,or Map的简单实现
 #+KEYWORDS: erlang
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+FILETAGS: @erlang
+#+FILETAGS: @Erlang
 
 #+begin_src erlang
 -module(dic).
@@ -58,7 +58,7 @@ get(_,[]) ->
       [Key1,V1,put(Key,Value,Smaller),Bigger];
   put(Key,Value,[Key1,V1,Smaller,Bigger]) when Key> Key1 -> %对于比当前节点大的值如何处理.
       [Key1,V1,Smaller,put(Key,Value,Bigger)].
-  
+
   get(_,nil)->
       nil;
   get(Key,[Key,Value,_,_]) ->
@@ -67,7 +67,7 @@ get(_,[]) ->
       get(Key,Smaller);
   get(Key,[Key1,_,_,Bigger]) when Key>Key1 ->
       get(Key,Bigger).
-  
+
   del(_ ,nil)->
       nil;
   del(Key,[Key,_,Smaller,nil]) ->
@@ -78,11 +78,11 @@ get(_,[]) ->
       [Key1,Value1,del(Key,Smaller) ,Bigger];
   del(Key,[Key1,Value1,Smaller,Bigger]) when Key > Key1 ->
       [Key1,Value1,Smaller ,del(Key,Bigger)];
-  
+
   del(Key,[Key1,_,Smaller,Bigger])  when Key==Key1->
       [Key2,Value2,Smaller2]=delp(Smaller),
       [Key2,Value2,Smaller2,Bigger].
-  
+
   %% delp返回,一个个[最大key,最大value,子tree]
   %% delp(nil)->
   %%     [nil,nil,nil];
@@ -93,7 +93,7 @@ get(_,[]) ->
   delp([Key,Value,Smaller,Bigger]) ->
       [Key2,Value2,Bigger2]=delp(Bigger),
       [Key2,Value2,[Key,Value,Smaller,Bigger2]].
-  
+
   test()->
       V1=new(),
       V2=put(10,a,V1),
@@ -112,5 +112,5 @@ get(_,[]) ->
       V15=put(18,a,V14),
       V16=put(13,a,V15),
       V16.
-  
+
 #+end_src

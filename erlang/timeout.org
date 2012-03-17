@@ -7,11 +7,12 @@
 #+DESCRIPTION:receive timeout
 #+KEYWORDS: erlang
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+FILETAGS: @erlang
+#+FILETAGS: @Erlang
+
 #+begin_src erlang
 receive
     Message1 [when Guard1] ->
@@ -69,7 +70,7 @@ test() ->
 数值0表示超时会立即发生，不过在那之前系统仍然会首先尝试对邮箱中已有的消息进
     行匹配。(我估计含义是:如果已有的消息匹配成功,则不运行超时子句,若此时邮
     箱中没任何消息,则立即运行超时子句.)
-    
+
 #+begin_src erlang
   %% 比如,确定 鼠标双击或单击事件
   get_event() ->
@@ -94,11 +95,11 @@ test() ->
 #+end_src
 #+begin_src erlang
   %% flush_buffer()清空当前进程的邮箱：
-  
+
   %% 只要邮箱中还有消息，第一个消息会被匹配到（未绑定变量AnyMessage会匹配到任何消
   %% 息，在这里就是第一个消息），然后flush_buffer会再次被调用，但是如果邮箱已经为
   %% 空了，那么函数会从超时子句中返回。
-  
+
   flush_buffer() ->
       receive
           AnyMessage ->                           %注意首字母大写表示这是一个变量,所以可以否配任何传过来的消息.
@@ -106,11 +107,11 @@ test() ->
           after 0 ->
               true
       end.
-  
+
 #+end_src
 #+begin_src erlang
   %% 消息的优先级也可以通过使用0作为超时长度来实现：
-  
+
   %% 函数priority_receive会返回邮箱中第一个消息，
   %% 除非有消息interrupt发送到了邮箱中，此时将返回interrupt
   %% 即消息 interrupt 优先级较其他高.
@@ -124,5 +125,5 @@ test() ->
                   AnyMessage
           end
       end
-  
+
 #+end_src

@@ -35,6 +35,7 @@
      + [[file:erlang/distel.org][emacs 下erlang的调试distel]]
      + [[file:erlang/Distributed_Applications.org][Distributed_Applications]]
      + [[file:erlang/global_register_name.org][global register name 相关内容 ]]
+     + [[file:erlang/makefile.org][Makefile for Erlang示例]]
    + Emacs (编辑器圣战的主角)
      + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
      + [[file:emacs/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念 ]]

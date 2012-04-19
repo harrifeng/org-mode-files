@@ -63,6 +63,7 @@
      + [[file:c/error_log.org][可变参数2 ,类printf的error()]]
      + [[file:c/concat.org][可变参数3 ,concat(string...)]]
      + [[file:c/macro.org][宏展开 及#与##]]
+     + [[file:c/bit.org][二进制 与或非 移位]]
    + Perl
      + [[file:perl/perl.org][perl 笔记]]
    + Git

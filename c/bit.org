@@ -1,0 +1,32 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     二进制，int 的与或非、移位操作
+#+AUTHOR:    纪秀峰
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2012-04-19 四
+#+DESCRIPTION:二进制，int 的与或非
+#+KEYWORDS:
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+#+FILETAGS:
+  /* 位的与或非，是针对int 类型的。对于char short 会被自动提升为int 之后再做与或非 */
+  /* ~ 取返 */
+
+#+BEGIN_SRC c
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <string.h>
+int main(int argc, char *argv[]){
+
+  unsigned int a, b, mask = 0x0000ff00;
+  a = 0x12345678;               /* 针对a的对8～15位进行操作， */
+  b = (a & mask) >> 8; /* 0x00000056 */
+  printf ("%x\n",b);
+
+  b =( a>>8) &(~((~0 )<<8 ));   /* ~0== ffffffff , (~0)<<8 == ffffff00 */
+  printf ("%x\n",b);
+
+  return 0;
+}
+#+END_SRC

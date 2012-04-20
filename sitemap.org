@@ -81,6 +81,8 @@
      + [[file:oracle/3ManageAnOracleInstance.org]]
      + [[file:oracle/4ManageADatabase.org]]
      + [[file:oracle/oracle_learn.org][oracle笔记]]
+   + Mysql
+     + [[file:mysql/benchmark.org][mysql压力测试]]
    + 个人简历
      - [[file:author.org][Erlang版]]
      - [[file:author2.org][Java版]]der

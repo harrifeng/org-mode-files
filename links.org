@@ -9,8 +9,9 @@
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:{} -:t f:t *:t <:t timestamp:t
 
 + [[http://blog.yufeng.info/archives/category/erlang][Erlang非业余研究]]
-+ [[http://www.cnblogs.com/me-sa/category/304370.html][erlang blog]]
 + [[http://blog.ec-ae.com/][zhangwei Denny (Emacs Erlang)]]
++ [[http://www.cnblogs.com/me-sa/category/304370.html][erlang blog]]
++ http://iany.me/
 + [[http://emacser.com/][Emacs中文网，不知是哪位老兄建的站.还算不错]]
 + [[http://emacser.com/about.htm][Emacs中文网众多牛人的信息]]
 + [[http://emacser.com/to-emacs-beginner.htm][致Emacs初学者]]

@@ -86,6 +86,6 @@
      + [[file:mysql/benchmark.org][mysql压力测试]]
    + 个人简历
      - [[file:author.org][Erlang版]]
-     - [[file:author2.org][Java版]]der
+     - [[file:author2.org][Java版]]
    + [[file:about.org][about]]
    + [[file:links.org][一些有用的链接]]

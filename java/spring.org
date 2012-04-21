@@ -7,16 +7,17 @@
 #+DESCRIPTION:spring.rnc的作成
 #+KEYWORDS: spring rnc trang rngrnc nxml emacs
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+FILETAGS: @Java @Emacs 
-参考:
+#+FILETAGS: @Java @Emacs
+链接:
 http://jamsa.javaeye.com/blog/38202
 http://infohost.nmt.edu/tcc/help/pubs/nxml/schema-locating.html
 http://infohost.nmt.edu/tcc/help/pubs/rnc/def-patterns.html
-
+演示视频：http://screencast-repos.googlecode.com/files/emacs-can-do-what-nxml0springContext.mp4
+我提供的关于spring-3.0.rnc struts 等一些rnc文件  https://github.com/jixiuf/emacs_conf/tree/master/script/nxml
 关于如何作成spring-3.0.rnc
 因为spring-3.0 的applicationContext.xml 使用xsd进行约束.
 而要将xsd 转换成rnc 需要经过两步
@@ -24,11 +25,11 @@ xsd  --> rng -->rnc
 先将xsd格式转换成rng格式,然后再转换在rnc
 由xsd 转换成rng 的过程可以通过rngconv来实现
 #+begin_src sh
-  java -jar rngconv.jar spring-beans-3.0.xsd   >spring-beans-3.0.rng 
+  java -jar rngconv.jar spring-beans-3.0.xsd   >spring-beans-3.0.rng
 #+end_src
 而由rng转换成rnc 的过程可以通过trang来实现
 #+begin_src sh
-  java -jar trang.jar  spring-beans-3.0.rng spring-beans-3.0.rnc  
+  java -jar trang.jar  spring-beans-3.0.rng spring-beans-3.0.rnc
 #+end_src
 
 如果一切都正常的话,那面上面这些已经足够了,但是实际情况总是会出一些小问题
@@ -38,25 +39,25 @@ xsd  --> rng -->rnc
 会一起用到,分别下载两个压缩包解压开找到jar 即可.
 * 2找到这几个文件,放到同一个目录
 #+begin_src sh
-  spring-aop-3.0.xsd      
-  spring-beans-3.0.xsd    
-  spring-context-3.0.xsd  
-  spring-jdbc-3.0.xsd     
-  spring-jee-3.0.xsd      
-  spring-jms-3.0.xsd      
-  spring-lang-3.0.xsd     
-  spring-mvc-3.0.xsd      
-  spring-oxm-3.0.xsd      
-  spring-task-3.0.xsd     
-  spring-tool-3.0.xsd     
-  spring-tx-3.0.xsd       
-  spring-util-3.0.xsd     
+  spring-aop-3.0.xsd
+  spring-beans-3.0.xsd
+  spring-context-3.0.xsd
+  spring-jdbc-3.0.xsd
+  spring-jee-3.0.xsd
+  spring-jms-3.0.xsd
+  spring-lang-3.0.xsd
+  spring-mvc-3.0.xsd
+  spring-oxm-3.0.xsd
+  spring-task-3.0.xsd
+  spring-tool-3.0.xsd
+  spring-tx-3.0.xsd
+  spring-util-3.0.xsd
 #+end_src
-* 具体操作  
-* spring-beans-3.0.xsd 转换成spring-beans-3.0.rnc  
+* 具体操作
+* spring-beans-3.0.xsd 转换成spring-beans-3.0.rnc
   当运行这条命令时,
 #+begin_src sh
-  java -jar rngconv.jar spring-beans-3.0.xsd   >spring-beans-3.0.rng 
+  java -jar rngconv.jar spring-beans-3.0.xsd   >spring-beans-3.0.rng
 #+end_src
 会出现这个错误
 
@@ -80,7 +81,7 @@ namespace指向http://www.w3.org/XML/1998/namespace地址的 import 都可以这
 再次运行这条命令,会成功生成rng文件
 #+begin_src sh
 然后用这条命令生成 rnc文件
-  java -jar trang.jar  spring-beans-3.0.rng spring-beans-3.0.rnc  
+  java -jar trang.jar  spring-beans-3.0.rng spring-beans-3.0.rnc
 #+end_src
 对于spring-bean-.3.0.xsd转换成rnc 的步骤是最简单的.
 与此相同处理即可得到rnc  的是spring-tool-3.0.xsd
@@ -153,10 +154,10 @@ Debugger entered--Lisp error: (error "Invalid grammar content")
 
 最后,在 编辑applicationContext.xml 时,按Control+Return 可以,补全出相应的属
 性名.
-* spring-aop-3.0.xsd 转换成spring-aop-3.0.rnc  
+* spring-aop-3.0.xsd 转换成spring-aop-3.0.rnc
 spring-aop-3.0.xsd比 spring-beans-3.0.xsd的处理要复杂一点
 #+begin_src sh
- java -jar rngconv.jar spring-aop-3.0.xsd   >spring-aop-3.0.rng  
+ java -jar rngconv.jar spring-aop-3.0.xsd   >spring-aop-3.0.rng
 #+end_src
 #+begin_src sh
 "schemaLocation" attribute is required for "xsd:import" element, but is not specified
@@ -243,14 +244,14 @@ failed to load the grammar
 下面这几个文件不需要这么复杂,只需要将其中的
 #+begin_quote
   spring-context-3.0.xsd
-  spring-jdbc-3.0.xsd   
-  spring-jee-3.0.xsd    
-  spring-jms-3.0.xsd    
-  spring-lang-3.0.xsd   
-  spring-mvc-3.0.xsd    
-  spring-oxm-3.0.xsd    
-  spring-task-3.0.xsd   
-  spring-tx-3.0.xsd     
+  spring-jdbc-3.0.xsd
+  spring-jee-3.0.xsd
+  spring-jms-3.0.xsd
+  spring-lang-3.0.xsd
+  spring-mvc-3.0.xsd
+  spring-oxm-3.0.xsd
+  spring-task-3.0.xsd
+  spring-tx-3.0.xsd
   spring-util-3.0.xsd
 #+end_quote
 #+begin_src xml
@@ -266,15 +267,15 @@ failed to load the grammar
 
 这两个文件,删除其中的
 #+begin_quote
-  spring-tool-3.0.xsd   
-  spring-beans-3.0.xsd  
+  spring-tool-3.0.xsd
+  spring-beans-3.0.xsd
 #+end_quote
 #+begin_quote
 	<xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
 #+end_quote
 用这两条命令生成spring-3.0.rnc,生成之后还会出现 "?+" 这个问题,解决掉之后,即
-可  
+可
 #+begin_src sh
- java -jar rngconv.jar spring-aop-3.0.xsd   >spring-aop-3.0.rng  
-  java -jar trang.jar  spring-aop-3.0.rng spring-3.0.rnc  
+ java -jar rngconv.jar spring-aop-3.0.xsd   >spring-aop-3.0.rng
+  java -jar trang.jar  spring-aop-3.0.rng spring-3.0.rnc
 #+end_src

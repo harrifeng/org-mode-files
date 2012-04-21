@@ -1,0 +1,6 @@
+# -*- coding:utf-8 -*-
+
+#+TITLE: Tag: @Mysql
+
+#+LANGUAGE:  zh
+   + [[file:../mysql/benchmark.org][mysql压力测试]]

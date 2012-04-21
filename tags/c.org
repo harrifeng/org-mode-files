@@ -1,0 +1,6 @@
+# -*- coding:utf-8 -*-
+
+#+TITLE: Tag: c
+
+#+LANGUAGE:  zh
+   + [[file:../c/x86.org][x86.汇编的一些知识]]

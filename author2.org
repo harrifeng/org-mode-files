@@ -77,7 +77,8 @@ Oracle+Struts2+Hibernate+Spring+JQuery平台，前期在Gentoo Linux平台上进
 数据录入员录入流向单数据；商务主管审核（如 有数量差异，可以修改调整项数据） ；
 商务经理审核确认（如果有问题 ，驳回，正确的话就直接冲减库存）。整个系统界面通过
 伸缩菜单进行管理（使用jquery自己实现）。源代码托管
-在:https://github.com/jixiuf/drp开发环境：
+在: https://github.com/jixiuf/drp
+开发环境：
 Gentoo Linux ,Windows XP
 JAVA应用服务器： Tomcat；
 开发语言及技术： Jsp,Struts2 , Hibernate ,Spring,JQuery；

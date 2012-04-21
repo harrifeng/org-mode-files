@@ -4,4 +4,4 @@
 
 #+LANGUAGE:  zh
    + [[file:../oracle/4ManageADatabase.org][4ManageADatabase.org]]
-   + [[file:../emacs/sqlparser.org][为mysql 及oracle编写sql脚本时补全表名、列名]]
+   + [[file:../emacs/sqlparser.org][为mysql、sqlserver、oracle编写sql脚本时补全表名、列名]]

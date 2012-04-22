@@ -198,7 +198,7 @@ Benchmark
 press:start(10000,1,1).
 #+END_SRC
 #+BEGIN_SRC sh
-测试结果显示大楖用了11秒，大概是比单纯的mysql测试慢4倍
+测试结果显示大概用了11秒，大概是比单纯的mysql测试慢4倍
 (emacsdd@jf.org)4> press:start(10000,1,1).
 process_count:10000 sql count each process:1 used time:11616.7109375
 #+END_SRC

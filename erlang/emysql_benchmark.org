@@ -9,7 +9,7 @@
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+FILETAGS: @Erlang @Mysql @DB
-本站关于mysql的测试在 [[file:mysql/benchmark_demo.org]]
+本站关于mysql的测试在 [[file:../mysql/benchmark_demo.org]]
 #+BEGIN_SRC sh
 其中关于开一个mysql连接执行10000次存储过程插入10000条数据的测试
  mysqlslap --query="call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1)" --concurrency=1  --number-of-queries 10000 --iterations=1 --engine=myisam -uroot -proot

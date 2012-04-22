@@ -74,6 +74,7 @@
      + [[file:c/IO.org][IO]]
      + [[file:c/malloc.org][动态内存分配]]malloc
      + [[file:c/qsort.org][qsort 与函数指针 ]]
+     + [[file:c/errno_perror.org][errno_perror.org]]
    + Perl
      + [[file:perl/perl.org][perl 笔记]]
    + Git

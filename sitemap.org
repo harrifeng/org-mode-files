@@ -86,7 +86,8 @@
      + [[file:oracle/oracle_learn.org][oracle笔记]]
    + Mysql
      + [[file:mysql/benchmark.org][mysql压力测试]]
-   + 个人简历
+     + [[file:mysql/mysql.org][mysql拾 遗
+]]   + 个人简历
      - [[file:author.org][Erlang版]]
      - [[file:author2.org][Java版]]
    + [[file:about.org][about]]

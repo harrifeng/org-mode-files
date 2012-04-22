@@ -68,6 +68,12 @@
      + [[file:c/macro.org][宏展开 及#与##]]
      + [[file:c/bit.org][二进制 与或非 移位]]
      + [[file:c/x86.org][x86汇编的一些知识]]
+     + [[file:c/cast.org][强制类型转换]]
+     + [[file:c/fread_fwrite_int.org][读写二进制文件,读写int]]
+     + [[file:c/fscanf.org][fscanf示例]]
+     + [[file:c/IO.org][IO]]
+     + [[file:c/malloc.org][动态内存分配]]malloc
+     + [[file:c/qsort.org][qsort 与函数指针 ]]
    + Perl
      + [[file:perl/perl.org][perl 笔记]]
    + Git

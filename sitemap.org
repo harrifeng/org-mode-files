@@ -37,6 +37,7 @@
      + [[file:erlang/hot_code_swap.org][热代码替换拾遗]]
      + [[file:erlang/global_register_name.org][global register name 相关内容 ]]
      + [[file:erlang/makefile.org][Makefile for Erlang示例]]
+     + [[file:erlang/emysql_benchmark.org][emysql 压力测试]]
    + Emacs (编辑器圣战的主角)
      + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
      + [[file:emacs/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念 ]]

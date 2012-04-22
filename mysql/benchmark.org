@@ -16,6 +16,10 @@ mysql来执行测试。 "man mysqlslap" 可以看到有下面一条示例
 #+BEGIN_SRC sh
 mysqlslap --delimiter=";" --create="CREATE TABLE a (b int);INSERT INTO a VALUES (23)"  --query="SELECT * FROM a" --concurrency=50 --iterations=200 -uroot -p
 #+END_SRC
+--create ="用于生成一个表，"后绪的查询
+--query 用这个表做测试,这里一般是insert ,或select 或update 语句
+--create 可以是几条sql语句 ，也可以是一个文件名，里面写满sql语句
+
 
 指定并发数： —concurrency ,可以多个值，逗号分开
 #+BEGIN_SRC sh

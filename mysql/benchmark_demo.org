@@ -557,3 +557,7 @@ Benchmark
    ) engine= InnoDB;
 #+END_SRC
 我不贴 InnoDB的测试数据了，我没耐心等了, InnoDB支持事务 ，全表锁，插入奇慢无比。
+
+最后补充一点：
+照常来说 建表语句 应该在 --create语句中的，这样指定 --engine可以指定多个engine,以逗号隔开，
+直接出测试结果 ，不必每次手动建表建表.

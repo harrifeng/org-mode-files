@@ -77,6 +77,7 @@
      + [[file:c/errno_perror.org][errno_perror.org]]
      + [[file:c/printf.org][格式化输出]]
      + [[file:c/int.org][数值转换]]atoi等
+     + [[file:c/dfs_maze.org][深度优先算法dfs迷宫寻路]]
    + Perl
      + [[file:perl/perl.org][perl 笔记]]
    + Git

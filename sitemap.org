@@ -76,6 +76,7 @@
      + [[file:c/qsort.org][qsort 与函数指针 ]]
      + [[file:c/errno_perror.org][errno_perror.org]]
      + [[file:c/printf.org][格式化输出]]
+     + [[file:c/int.org][数值转换]]atoi等
    + Perl
      + [[file:perl/perl.org][perl 笔记]]
    + Git

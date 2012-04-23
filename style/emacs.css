@@ -163,9 +163,9 @@ pre.src {
 	text-align:left;
     
     /* overflow: scroll; */
-    max-height:300px;           /*IEXPLORE  don't support max-height*/
+    max-height:500px;           /*IEXPLORE  don't support max-height*/
     _height:expression(this.scrollHeight > 300 ? "300px" : "auto");
-    min-height:20px;
+    min-height:50px;
     max-width:700px;
     min-width:700px;
     overflow-x:auto;

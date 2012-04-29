@@ -368,3 +368,36 @@ int foo(int a, int b)
 }
 #+END_SRC
 P.S.关于地址的表示方式 0xc(%ebp)内容见 [[file:x86.org][寻址方式]]
+#+BEGIN_SRC c
+080483b4 <bar>:
+int bar(int c, int d)
+{
+ 80483b4:    55                       push   %ebp
+ 80483b5:    89 e5                    mov    %esp,%ebp
+# 这个sub 命令，我不太明白 ，参数为什么是10,而不是0xc,或者8
+#如果算上局部变量e 的究竟应该是8+4,如果不算，则为8,为什么是10呢
+ 80483b7:    83 ec 10                 sub    $0x10,%esp
+    int e = c + d;
+# 这是将foo函数中最后压栈的两个参数取出放到eax edx中，
+ 80483ba:    8b 45 0c                 mov    0xc(%ebp),%eax
+ 80483bd:    8b 55 08                 mov    0x8(%ebp),%edx
+#这个利用 寻址(%dex,%eax,1)= %edx+%eax+1 ,即做加法运算，
+#难道没有add指令？ lea是将运算后的结果存到%eax中
+ 80483c0:    8d 04 02                 lea    (%edx,%eax,1),%eax
+#将运算结果存到局部变量e中
+ 80483c3:    89 45 fc                 mov    %eax,-0x4(%ebp)
+    return e;
+ 把e的值放到%eax中，返加
+ 80483c6:    8b 45 fc                 mov    -0x4(%ebp),%eax
+}
+ 80483c9:    c9                       leave
+ 80483ca:    c3                       ret
+#+END_SRC
+bar函数有一个int型的返回值，这个返回值是通过eax寄存器传递的，所以首先把e的值读
+到eax寄存器中。然后执行leave指令，这个指令是函数开头的push %ebp和mov %esp,%ebp
+的逆操作：
+最后是ret指令，它是call指令的逆操作：
+
++ 参数压栈传递，并且是从右向左依次压栈。
++ ebp总是指向当前栈帧的栈底。
++ 返回值通过eax寄存器传递

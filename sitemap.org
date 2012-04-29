@@ -69,6 +69,7 @@
      + [[file:c/bit.org][二进制 与或非 移位]]
      + [[file:c/x86.org][x86汇编的一些知识]]
      + [[file:c/register.org][汇编 寄存器]]
+     + [[file:c/c_assemble.org][c与汇编]]
      + [[file:c/cast.org][强制类型转换]]
      + [[file:c/fread_fwrite_int.org][读写二进制文件,读写int]]
      + [[file:c/fscanf.org][fscanf示例]]

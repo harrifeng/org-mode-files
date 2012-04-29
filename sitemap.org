@@ -95,6 +95,7 @@
      + [[file:oracle/3ManageAnOracleInstance.org]]
      + [[file:oracle/4ManageADatabase.org]]
      + [[file:oracle/oracle_learn.org][oracle笔记]]
+     + [[file:oracle/hanzi_pinyin.org][汉字拼音对应表]]
    + Mysql
      + [[file:mysql/benchmark.org][mysql压力测试]]
      + [[file:mysql/benchmark_demo.org][mysql压力测试实战]]

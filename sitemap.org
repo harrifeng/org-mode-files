@@ -92,6 +92,7 @@
      + [[file:sqlserver/clonedb.org][sqlserver clone DB]]
    + Linux
      + [[file:Linux/lcd-vga.org][Linux下调笔记本亮度]]
+     + [[file:Linux/iptables.org][iptables防火墙]]
    + Oracle
      + [[file:oracle/3ManageAnOracleInstance.org]]
      + [[file:oracle/4ManageADatabase.org]]

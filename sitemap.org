@@ -68,13 +68,14 @@
      + [[file:c/macro.org][宏展开 及#与##]]
      + [[file:c/bit.org][二进制 与或非 移位]]
      + [[file:c/x86.org][x86汇编的一些知识]]
+     + [[file:c/register.org][汇编 寄存器]]
      + [[file:c/cast.org][强制类型转换]]
      + [[file:c/fread_fwrite_int.org][读写二进制文件,读写int]]
      + [[file:c/fscanf.org][fscanf示例]]
      + [[file:c/IO.org][IO]]
      + [[file:c/malloc.org][动态内存分配]]malloc
      + [[file:c/qsort.org][qsort 与函数指针 ]]
-     + [[file:c/errno_perror.org][errno_perror.org]]
+     + [[file:c/errno_perror.org]]
      + [[file:c/printf.org][格式化输出]]
      + [[file:c/int.org][数值转换]]atoi等
      + [[file:c/dfs_maze.org][深度优先算法dfs迷宫寻路]]

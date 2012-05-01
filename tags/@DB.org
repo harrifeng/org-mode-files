@@ -3,6 +3,7 @@
 #+TITLE: Tag: @DB
 
 #+LANGUAGE:  zh
+   + [[file:../oracle/oracle.org][oracle拾遗]]
    + [[file:../oracle/hanzi_pinyin.org][汉字拼音对应表]]
    + [[file:../oracle/4ManageADatabase.org][4ManageADatabase.org]]
    + [[file:../mysql/benchmark_demo.org][mysql压力测试 实战]]

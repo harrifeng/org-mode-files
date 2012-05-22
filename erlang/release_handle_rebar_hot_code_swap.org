@@ -23,12 +23,12 @@
 + https://bitbucket.org/basho/rebar/wiki/ReleaseHandling
 + https://github.com/basho/rebar/wiki/Upgrades
 + http://www.metabrew.com/article/erlangotp-releases-rebar-release_handler-appup-etc
-+ http://stackoverflow.com/questions/7324556/cannot-start-sample-erlang-release-generated-with-rebar
 + http://www.metabrew.com/article/erlang-rebar-tutorial-generating-releases-upgrades
-+ http://www.erlang.org/doc/design_principles/release_handling.html
 + http://www.erlang.org/doc/design_principles/appup_cookbook.html#sup
++ http://www.erlang.org/doc/design_principles/release_handling.html
 + http://www.erlang.org/doc/system_principles/create_target.html
 + http://www.erlang.org/doc/man/reltool.html
++ http://stackoverflow.com/questions/7324556/cannot-start-sample-erlang-release-generated-with-rebar
 
 * 操作步骤
   #+BEGIN_SRC sh
@@ -260,7 +260,6 @@ ok
 [{world_gen,<0.60.0>,worker,[world_gen]},
  {hello_gen,<0.49.0>,worker,[hello_gen]}]
 (release_h@jixiufeng-Joseph)11>
-(release_h@jixiufeng-Joseph)8> supervisor:which_children().
 (release_h@jixiufeng-Joseph)11> tool:sayworld().
 this is just a common module withou process running on ,so
 update this module is easy

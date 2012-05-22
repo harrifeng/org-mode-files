@@ -21,14 +21,13 @@
    + Daily
      + [[file:daily/beautiful-sentence.org][一些话]]
    + Erlang(一种变量只能赋值一次，没有循环只有递归的诡异语言)
-     + [[file:erlang/echo.org][echo]]
      + [[file:erlang/catch.org][catch]]
      + [[file:erlang/timeout.org][timeout]]
      + [[file:erlang/dic.org][dict]]
      + [[file:erlang/message.org][message分布式聊天小例]]
-     + [[file:erlang/counter.org][counter计数]]
      + [[file:erlang/spawn_link.org][spawn_link进程关,同生共死]]
      + [[file:erlang/release.org][发布release]]
+     + [[file:erlang/release_handle_rebar_hot_code_swap.org][release_handler rebar hot code swap]]
      + [[file:erlang/binary_bit.org][binary bit 处理]]
      + [[file:erlang/mochiweb_comet_chat.org][mochiweb comet ,long pull网页即时聊天系统原理代码 ]]
      + [[file:erlang/mochiweb_http_load.org][mochiweb 的使用 及 可开tcp连接数的(http长连接) 测试 ]]

@@ -73,3 +73,12 @@ git show 83c4ba189edcc364ca18b0b7d2cd81655d97adc5 后查看文件a的内容
 git show f7619cab6a71505b23e172f3146adfa750bab71e:a     的效果相同 
 #+end_src
 
+* git svn 
+  git svn clone svn-url == git clone git-url
+  git svn  rebase == git pull
+  git svn dcommit == git push
+  在运行git svn dcommit 时，必须保证本地没有已修改但未commit 的文件，
+  解决方法是
+  git stash
+  git svn dcommit
+  git stash pop

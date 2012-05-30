@@ -34,6 +34,8 @@
      + [[file:erlang/global_register_name.org][global register name 相关内容 ]]
      + [[file:erlang/makefile.org][Makefile for Erlang示例]]
      + [[file:erlang/emysql_benchmark.org][emysql 压力测试]]
+     + [[file:erlang/record_info.org][record_info util]]
+     + [[file:erlang/gb_tree_dict.org][gt_tree dict orddict proplist]]
      + [[file:erlang/release.org][发布release]]
      + [[file:erlang/release_handle_rebar_hot_code_swap.org][release_handler rebar hot code swap]]
      + [[file:erlang/hot_code_swap.org][热代码替换拾遗]]

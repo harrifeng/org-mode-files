@@ -94,4 +94,9 @@ git show f7619cab6a71505b23e172f3146adfa750bab71e:a     的效果相同
   当前分支里的commit 并不想push到远程svn上，做法是
   git co remotes/git-svn -b tmp
   然后修复bug 提交 即可，当然其中可以使用stash 来暂时保存未commit 的修改
-  
+** git reset version
+   合并commit 。想将最后几次commit 合并成一个commit 
+   可以用 git reset version
+   git reset 回退到某一版本后，
+   工作区的文件依然保存着未回退前的状态 ，所以只需再提交一次
+   即将最后几次的commit 合并到一次提交 

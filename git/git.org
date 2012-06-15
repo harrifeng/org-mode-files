@@ -100,3 +100,17 @@ git show f7619cab6a71505b23e172f3146adfa750bab71e:a     的效果相同
    git reset 回退到某一版本后，
    工作区的文件依然保存着未回退前的状态 ，所以只需再提交一次
    即将最后几次的commit 合并到一次提交 
+* 找回丢失的提交
+  在使用Git的过程中，有时可能会有一些误操作
+  比如：执行checkout -f 或 reset -hard 或 branch -d删除一个分支
+  结果造成本地（远程）的分支或某些commit丢失
+  这时，我们可以通过reflog来进行恢复，前提是丢失的分支或commit信息没有被
+  git gc清除
+  一般情况下，gc对那些无用的object会保留很长时间后才清除的
+  reflog是git提供的一个内部工具，用于记录对git仓库进行的各种操作
+  可以使用git reflog show或git log -g命令来看到所有的操作日志
+  恢复的过程很简单：
+1. 通过git log -g命令来找到我们需要恢复的信息对应的commitid，可以通过提
+   交的时间和日期来辨别
+2. 通过git branch recover_branch commitid 来建立一个新的分支
+  这样，我们就把丢失的东西给恢复到了recover_branch分支上了

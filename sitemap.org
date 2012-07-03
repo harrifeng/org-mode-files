@@ -60,6 +60,7 @@
      + [[file:java/spring.org][nxml mode : spring.rnc的作成]]
      + [[file:emacs/msys-bash-ls-color.org][Windows 上使用msys中的bash，及ls 显示颜色的配置]]
      + [[file:emacs/image-suport-on-windows.org][Windows上Emacs中显示jpeg ,pgn 格式的图片]]
+     + [[file:emacs/goto-last-change.org][goto-last-change跳转到最近几次编辑的位置]]
    + Java
      + [[file:java/ant-example1.org][ant build.xml 示例 ]]
    + C

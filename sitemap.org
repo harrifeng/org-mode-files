@@ -66,6 +66,7 @@
      + [[file:c/concat.org][c 的长度可变的参数concat(char* first ...)]]
      + [[file:c/error_log.org][可变参数2 ,类printf的error()]]
      + [[file:c/macro.org][宏展开 及#与##]]
+     + [[file:c/sth.org][c拾遗]]
      + [[file:c/bit.org][二进制 与或非 移位]]
      + [[file:c/x86.org][x86汇编的一些知识]]
      + [[file:c/register.org][汇编 寄存器]]

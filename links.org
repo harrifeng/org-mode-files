@@ -9,6 +9,7 @@
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:{} -:t f:t *:t <:t timestamp:t
 
 + http://blog.solrex.org/
++ [[http://rdc.taobao.com/blog/cs/][淘宝核心团队]]
 + [[http://learn.akae.cn/media/index.html][Linux C编程一站式学习]]
 + [[http://blog.yufeng.info/archives/category/erlang][Erlang非业余研究]]
 + [[http://blog.ec-ae.com/][zhangwei Denny (Emacs Erlang)]]

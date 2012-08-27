@@ -56,6 +56,7 @@
      + [[file:emacs/ediff.org][Windows 下使用Emacs的 Ediff 进行文件的比较、合并]]
      + [[file:emacs/emacs-23.2-cedet.org][emacs-23.2安装官网cedet]]
      + [[file:emacs/cedet-customize.org][cedet 的定制，（译文）]]
+     + [[file:emacs/c-c%2B%2B-cedet-eassist.org][c-c++-cedet-eassist]]
      + [[file:emacs/nxml-mode.org][nxml mode ]]
      + [[file:java/spring.org][nxml mode : spring.rnc的作成]]
      + [[file:emacs/msys-bash-ls-color.org][Windows 上使用msys中的bash，及ls 显示颜色的配置]]

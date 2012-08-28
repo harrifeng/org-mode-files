@@ -72,3 +72,13 @@ Enter       回车中转到相应代码处
     cout<<p.name;
 #+END_SRC
 全部展开之后的样子
+#+BEGIN_QUOTE
+ -- Variable: semantic-symref-tool
+     The value of this variable is a symbol that determines the external
+     symbol reference tool to use.  The default value, `detect', says
+     to look for the best available tool.  Other possible values are
+     `global', `idutils', `cscope', and `grep'.  Note that `grep' is
+     much slower than the others.
+#+END_QUOTE
+semantic 会使 用     `global', `idutils', `cscope', and `grep'这几个工具来实现
+以上功能， grep是最慢的

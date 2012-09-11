@@ -26,8 +26,8 @@
 * 自我介绍：
 Erlang个人代码仓库:   https://github.com/jixiuf/helloerlang
 EmacsWiki个人主页：  http://emacswiki.org/Joseph
-csdn博客：            http://blog.csdn.net/jixiuffff
 个人主页:              http://jixiuf.github.com/sitemap.html
+csdn博客：            http://blog.csdn.net/jixiuffff
 自学能力强，所有计算机知识均为自学。以上几个网址是个人成果的展示， Erlang个人代码仓库为
 学习Erlang过程中写的一些代码; EmacsWiki个人主页  为我为Emacs开源社区贡献的代码。
 * 专业技能：

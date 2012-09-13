@@ -281,10 +281,8 @@ public class TestMysqlConn {
 #+BEGIN_QUOTE
 java TestMysqlConn
 7198
-
 java TestMysqlConn
 7453
-
 java TestMysqlConn
 7031
 #+END_QUOTE

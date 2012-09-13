@@ -10,20 +10,37 @@
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+FILETAGS: @Erlang @Mysql @DB
 本站关于mysql的测试在 [[file:../mysql/benchmark_demo.org]]
+* mysqlslap 测试
 #+BEGIN_SRC sh
 其中关于开一个mysql连接执行10000次存储过程插入10000条数据的测试
- mysqlslap --query="call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1)" --concurrency=1  --number-of-queries 10000 --iterations=1 --engine=myisam -uroot -proot
+ mysqlslap --query="call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)" --concurrency=1  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
 #+END_SRC
 #+BEGIN_QUOTE
 结果显示不用3s就插入了10000条数据
+jixiuf@jf /tmp/d $ mysqlslap --query="call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)" --concurrency=1  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
 Benchmark
     Running for engine myisam
-    Average number of seconds to run all queries: 2.758 seconds
-    Minimum number of seconds to run all queries: 2.758 seconds
-    Maximum number of seconds to run all queries: 2.758 seconds
+    Average number of seconds to run all queries: 2.496 seconds
+    Minimum number of seconds to run all queries: 2.469 seconds
+    Maximum number of seconds to run all queries: 2.551 seconds
     Number of clients running queries: 1
     Average number of queries per client: 10000
 #+END_QUOTE
+#+BEGIN_SRC sh
+ 使用普通的insert 语句 (对于非常简单的insert语句 没有必要包装成存储过程，以下
+  证明，存储过程不比简单insert)
+  mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)"  --concurrency=1  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
+#+END_SRC
+  #+BEGIN_QUOTE
+  jixiuf@jf /tmp/d $ mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)"  --concurrency=1  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
+  Benchmark
+    Running for engine myisam
+    Average number of seconds to run all queries: 1.642 seconds
+    Minimum number of seconds to run all queries: 1.620 seconds
+    Maximum number of seconds to run all queries: 1.676 seconds
+    Number of clients running queries: 1
+  Average number of queries per client: 10000
+  #+END_QUOTE
 
 * emysql的压力测试，开一条mysql连接，用存储过程插入10000条数据
 1. 首先修改emysql的 emysql.app.src,添加env的值{lock_timeout,infinity}
@@ -76,8 +93,8 @@ Benchmark
               sql_count_each_process=SqlCountEachProcess
              })->
       Usedtime =get_timestamp()-StartTime,
-      io:format("process_count:~p sql count each process:~p used time:~p~n",[ProcessCount,SqlCountEachProcess,Usedtime])
-          ;
+      io:format("process_count:~p sql count each process:~p used time:~p~n",[ProcessCount,SqlCountEachProcess,Usedtime]),
+      emysql:remove_pool(hello_pool);
   recv(#state{running=Running}=State)->
       receive
           done->
@@ -102,7 +119,7 @@ Benchmark
 
 
   test2()->
-      Result=    emysql:execute(hello_pool,<<"call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1);">>),
+      Result=emysql:execute(hello_pool,<<"call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1);">>),
       case Result of
           Rec when is_record(Rec ,ok_packet) ->
               ok;
@@ -191,29 +208,30 @@ Benchmark
   %% );
   %% END$$
   %% DELIMITER ;
+
 #+END_SRC
 #+BEGIN_SRC sh
-启用10000个erlang进程，每个进程向emysql发一条sql,最后一个参数是emysql连接池
+启用10000个erlang进程，每个进程向emysql发一条sql(存储过程),最后一个参数是emysql连接池
 里只开一个mysql连接
 press:start(10000,1,1).
 #+END_SRC
 #+BEGIN_SRC sh
-测试结果显示大概用了11秒，大概是比单纯的mysql测试慢4倍
+测试结果显示大概用了11秒，大概是比单纯的mysql测试慢3~4倍 (7583/2496)
 (emacsdd@jf.org)4> press:start(10000,1,1).
-process_count:10000 sql count each process:1 used time:11616.7109375
+process_count:10000 sql count each process:1 used time:7583.25390625
 #+END_SRC
 有些网友怀疑创建10000个进程也会消耗一部分时间 ，所以增加下面几个测试 ，结果显
-示所用时间仍然处于10~12s这个范围内，影响不大
+示所用时间仍然处于7~9s这个范围内，影响不大
 #+BEGIN_SRC sh
 起用一个进程，此进程向emysql发送10000条sql语句
 1>  press:start(1,10000,1).
-process_count:1 sql count each process:10000 used time:10984.7900390625
+process_count:1 sql count each process:10000 used time:8632.112060546875
 #+END_SRC
 #+BEGIN_SRC sh
 1>  press:start(10,1000,1).
-process_count:10 sql count each process:1000 used time:12295.9609375
+process_count:10 sql count each process:1000 used time:7520.348876953125
 #+END_SRC
 #+BEGIN_SRC sh
 1>  press:start(100,100,1).
-process_count:100 sql count each process:100 used time:12485.96411132812
+process_count:100 sql count each process:100 used time:7613.68896484375
 #+END_SRC

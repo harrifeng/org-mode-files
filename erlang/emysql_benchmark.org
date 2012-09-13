@@ -193,7 +193,7 @@ Benchmark
   %% DELIMITER ;
 #+END_SRC
 #+BEGIN_SRC sh
-启用10000万个erlang进程，每个进程向emysql发一条sql,最后一个参数是emysql连接池
+启用10000个erlang进程，每个进程向emysql发一条sql,最后一个参数是emysql连接池
 里只开一个mysql连接
 press:start(10000,1,1).
 #+END_SRC

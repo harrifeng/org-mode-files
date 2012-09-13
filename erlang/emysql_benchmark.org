@@ -10,6 +10,84 @@
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+FILETAGS: @Erlang @Mysql @DB
 本站关于mysql的测试在 [[file:../mysql/benchmark_demo.org]]
+* 建表语句
+#+BEGIN_SRC sql
+   CREATE TABLE `tbl_test` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `onOffType` int(11) DEFAULT NULL,
+    `accountId` int(11) DEFAULT NULL,
+    `accountType` int(11) DEFAULT NULL,
+    `playerId` int(11) DEFAULT NULL,
+    `headHeroId` int(11) DEFAULT NULL,
+    `playerLevel` int(11) DEFAULT NULL,
+    `playerName` varchar(255) DEFAULT NULL,
+    `logTime` datetime DEFAULT NULL,
+    `clientVersion` varchar(255) DEFAULT NULL,
+    `clientType` varchar(255) DEFAULT NULL,
+    `issuers` varchar(255) DEFAULT NULL,
+    `flashPlayerVersion` int(11) DEFAULT NULL,
+    `connectType` int(11) DEFAULT NULL,
+    `gameServerName` varchar(255) DEFAULT NULL,
+    `ipAddr` varchar(255) DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  );
+
+  DELIMITER $$
+  drop procedure if exists `insert_tbl_test`$$
+  create procedure `insert_tbl_test`(
+  IN inaccountId int(11),/**/
+  IN inaccountType int(11),/**/
+  IN inplayerId int(11),/**/
+  IN inheadHeroId int(11),/**/
+  IN inplayerLevel int(11),/**/
+  IN inplayerName varchar(255),/**/
+  IN inlogTime datetime,/**/
+  IN inclientVersion varchar(255),/**/
+  IN inclientType varchar(255),/**/
+  IN inissuers varchar(255),/**/
+  IN inflashPlayerVersion int(11),/**/
+  IN inconnectType int(11),/**/
+  IN ingameServerName varchar(255),/**/
+  IN inipAddr varchar(255),/**/
+  IN inonOffType int(11) /**/
+  )
+  BEGIN
+  insert into `tbl_on_off`(
+  `accountId`, /**/
+  `accountType`, /**/
+  `playerId`, /**/
+  `headHeroId`, /**/
+  `playerLevel`, /**/
+  `playerName`, /**/
+  `logTime`, /**/
+  `clientVersion`, /**/
+  `clientType`, /**/
+  `issuers`, /**/
+  `flashPlayerVersion`, /**/
+  `connectType`, /**/
+  `gameServerName`, /**/
+  `ipAddr`, /**/
+  `onOffType` /**/
+  ) values(
+  inaccountId,/**/
+  inaccountType,/**/
+  inplayerId,/**/
+  inheadHeroId,/**/
+  inplayerLevel,/**/
+  inplayerName,/**/
+  inlogTime,/**/
+  inclientVersion,/**/
+  inclientType,/**/
+  inissuers,/**/
+  inflashPlayerVersion,/**/
+  inconnectType,/**/
+  ingameServerName,/**/
+  inipAddr,/**/
+   inonOffType /**/
+  );
+  END$$
+  DELIMITER ;
+#+END_SRC
 * mysqlslap 测试
 #+BEGIN_SRC sh
 其中关于开一个mysql连接执行10000次存储过程插入10000条数据的测试
@@ -135,81 +213,6 @@ Benchmark
       {Mega,Sec,Micro} = erlang:now(),
       ((Mega*1000000+Sec)*1000000+Micro)/1000.
 
-  %%  CREATE TABLE `tbl_test` (
-  %%   `id` int(11) NOT NULL AUTO_INCREMENT,
-  %%   `onOffType` int(11) DEFAULT NULL,
-  %%   `accountId` int(11) DEFAULT NULL,
-  %%   `accountType` int(11) DEFAULT NULL,
-  %%   `playerId` int(11) DEFAULT NULL,
-  %%   `headHeroId` int(11) DEFAULT NULL,
-  %%   `playerLevel` int(11) DEFAULT NULL,
-  %%   `playerName` varchar(255) DEFAULT NULL,
-  %%   `logTime` datetime DEFAULT NULL,
-  %%   `clientVersion` varchar(255) DEFAULT NULL,
-  %%   `clientType` varchar(255) DEFAULT NULL,
-  %%   `issuers` varchar(255) DEFAULT NULL,
-  %%   `flashPlayerVersion` int(11) DEFAULT NULL,
-  %%   `connectType` int(11) DEFAULT NULL,
-  %%   `gameServerName` varchar(255) DEFAULT NULL,
-  %%   `ipAddr` varchar(255) DEFAULT NULL,
-  %%   PRIMARY KEY (`id`)
-  %% );
-
-  %% DELIMITER $$
-  %% drop procedure if exists `insert_tbl_test`$$
-  %% create procedure `insert_tbl_test`(
-  %% IN inaccountId int(11),/**/
-  %% IN inaccountType int(11),/**/
-  %% IN inplayerId int(11),/**/
-  %% IN inheadHeroId int(11),/**/
-  %% IN inplayerLevel int(11),/**/
-  %% IN inplayerName varchar(255),/**/
-  %% IN inlogTime datetime,/**/
-  %% IN inclientVersion varchar(255),/**/
-  %% IN inclientType varchar(255),/**/
-  %% IN inissuers varchar(255),/**/
-  %% IN inflashPlayerVersion int(11),/**/
-  %% IN inconnectType int(11),/**/
-  %% IN ingameServerName varchar(255),/**/
-  %% IN inipAddr varchar(255),/**/
-  %% IN inonOffType int(11) /**/
-  %% )
-  %% BEGIN
-  %% insert into `tbl_on_off`(
-  %% `accountId`, /**/
-  %% `accountType`, /**/
-  %% `playerId`, /**/
-  %% `headHeroId`, /**/
-  %% `playerLevel`, /**/
-  %% `playerName`, /**/
-  %% `logTime`, /**/
-  %% `clientVersion`, /**/
-  %% `clientType`, /**/
-  %% `issuers`, /**/
-  %% `flashPlayerVersion`, /**/
-  %% `connectType`, /**/
-  %% `gameServerName`, /**/
-  %% `ipAddr`, /**/
-  %% `onOffType` /**/
-  %% ) values(
-  %% inaccountId,/**/
-  %% inaccountType,/**/
-  %% inplayerId,/**/
-  %% inheadHeroId,/**/
-  %% inplayerLevel,/**/
-  %% inplayerName,/**/
-  %% inlogTime,/**/
-  %% inclientVersion,/**/
-  %% inclientType,/**/
-  %% inissuers,/**/
-  %% inflashPlayerVersion,/**/
-  %% inconnectType,/**/
-  %% ingameServerName,/**/
-  %% inipAddr,/**/
-  %%  inonOffType /**/
-  %% );
-  %% END$$
-  %% DELIMITER ;
 
 #+END_SRC
 #+BEGIN_SRC sh
@@ -246,8 +249,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 public class TestMysqlConn {
     public static void main(String[] args) throws Exception {
-        // DBC:子协议:子名称//主机名:端口/数据库名？属性名=属性值&…
-         //
         // Class.forName("com.mysql.jdbc.Driver");
         Class.forName("org.gjt.mm.mysql.Driver");
         long start= System.currentTimeMillis();

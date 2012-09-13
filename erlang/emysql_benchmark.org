@@ -202,3 +202,18 @@ press:start(10000,1,1).
 (emacsdd@jf.org)4> press:start(10000,1,1).
 process_count:10000 sql count each process:1 used time:11616.7109375
 #+END_SRC
+有些网友怀疑创建10000个进程也会消耗一部分时间 ，所以增加下面几个测试 ，结果显
+示所用时间仍然处于10~12s这个范围内，影响不大
+#+BEGIN_SRC sh
+起用一个进程，此进程向emysql发送10000条sql语句
+1>  press:start(1,10000,1).
+process_count:1 sql count each process:10000 used time:10984.7900390625
+#+END_SRC
+#+BEGIN_SRC sh
+1>  press:start(10,1000,1).
+process_count:10 sql count each process:1000 used time:12295.9609375
+#+END_SRC
+#+BEGIN_SRC sh
+1>  press:start(100,100,1).
+process_count:100 sql count each process:100 used time:12485.96411132812
+#+END_SRC

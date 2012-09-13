@@ -98,25 +98,26 @@ mysqlslap
   );
   END$$
   DELIMITER ;
+
 #+END_SRC
 
 向表中插入用的sql
 #+BEGIN_SRC sql
   /* 使用存储过程 */
-  call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1);
+  call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1);
    /* 或 */
-   insert into tbl_test(  `accountId`,  `accountType`,  `playerId`,  `headHeroId`,  `playerLevel`,  `playerName`,  `logTime`,  `clientVersion`,  `clientType`,  `issuers`,  `flashPlayerVersion`,  `connectType`,  `gameServerName`,  `ipAddr`,  `onOffType`  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1);
+   insert into tbl_test(  `accountId`,  `accountType`,  `playerId`,  `headHeroId`,  `playerLevel`,  `playerName`,  `logTime`,  `clientVersion`,  `clientType`,  `issuers`,  `flashPlayerVersion`,  `connectType`,  `gameServerName`,  `ipAddr`,  `onOffType`  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1);
 #+END_SRC
 测试用语句,在测试这前要用上面create_table.sql建表及存储过程。
 #+BEGIN_SRC sh
-mysqlslap --query="call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1)" --concurrency=50  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
+mysqlslap --query="call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)" --concurrency=50  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
 #+END_SRC
 开50个连接共执行10000次插入操作，
 进行3次测试以便数据得到max、min、avg几个值，准确一点.
 并且分别测在myisam,ARCHIVE,InnoDB 引擎上的差异
 测试结果没太大差别
 #+BEGIN_QUOTE
-mysqlslap --query="call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1)" --concurrency=50  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
+mysqlslap --query="call insert_tbl_test(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)" --concurrency=50  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
 Benchmark
     Running for engine myisam
     Average number of seconds to run all queries: 1.528 seconds
@@ -144,7 +145,7 @@ Benchmark
 
 下面不使用存储过程，而直接用insert语句的效果
 #+BEGIN_SRC sh
- mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1)" --concurrency=50  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
+ mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)" --concurrency=50  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
 #+END_SRC
 #+BEGIN_QUOTE
 Benchmark
@@ -175,10 +176,10 @@ Benchmark
 
 测试开不同连接数的执行速度
 #+BEGIN_SRC sh
- mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1)" --concurrency=5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
+ mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)" --concurrency=5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
 #+END_SRC
 #+BEGIN_QUOTE
-  mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1)" --concurrency=5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
+  mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)" --concurrency=5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  --number-of-queries 10000 --iterations=3 --engine=myisam -uroot -proot
 Benchmark
     Running for engine myisam
     Average number of seconds to run all queries: 1.758 seconds
@@ -342,7 +343,7 @@ Benchmark
 从结果来看，20连接，速度提升，开到70个连接时速度下隆,大楖在40左右时速度最好。
 
 #+BEGIN_SRC sh
-  mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1)" --concurrency=5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  --number-of-queries 10000 --iterations=3 --engine=ARCHIVE -uroot -proot
+  mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)" --concurrency=5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  --number-of-queries 10000 --iterations=3 --engine=ARCHIVE -uroot -proot
 #+END_SRC
 
 #+BEGIN_SRC sql
@@ -367,7 +368,7 @@ Benchmark
    ) engine=ARCHIVE;
 #+END_SRC
 #+BEGIN_QUOTE
-jixiuf@jf erlang/lib $  mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1)" --concurrency=5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  --number-of-queries 10000 --iterations=3 --engine=ARCHIVE -uroot -proot
+jixiuf@jf erlang/lib $  mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)" --concurrency=5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  --number-of-queries 10000 --iterations=3 --engine=ARCHIVE -uroot -proot
 Benchmark
     Running for engine ARCHIVE
     Average number of seconds to run all queries: 0.894 seconds
@@ -532,7 +533,7 @@ Benchmark
 连接数在40~65之间时插入速度达到最大
 
 #+BEGIN_SRC sh
-  mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd','dd','con','name','localhost',1)" --concurrency=5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  --number-of-queries 10000 --iterations=3 --engine=InnoDB -uroot -proot
+  mysqlslap --query="insert into tbl_test(  accountId,  accountType,  playerId,  headHeroId,  playerLevel,  playerName,  logTime,  clientVersion,  clientType,  issuers,  flashPlayerVersion,  connectType,  gameServerName,  ipAddr,  onOffType  ) values(1,1,1,1,1,'name','1989-01-26','ver','t','dd',1,1,'name','localhost',1)" --concurrency=5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100  --number-of-queries 10000 --iterations=3 --engine=InnoDB -uroot -proot
 #+END_SRC
 
 #+BEGIN_SRC sql

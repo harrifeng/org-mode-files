@@ -102,6 +102,7 @@
      + [[file:Linux/linux-logo-by-code.htm][传说中用代码堆成的linux logo]]
      + [[file:Linux/ext2.org][ext2]]
      + [[file:Linux/linux_fbl.org][linux下分辨率调整]]
+     + [[file:Linux/ctags.org][Exuberant Ctags ]]
    + Oracle
      + [[file:oracle/3ManageAnOracleInstance.org]]
      + [[file:oracle/4ManageADatabase.org]]

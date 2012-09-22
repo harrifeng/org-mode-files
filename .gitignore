@@ -1,3 +1,4 @@
 *.elc
 *~
 
+/erlang/erl_crash.dump

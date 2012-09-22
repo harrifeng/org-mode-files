@@ -5,9 +5,8 @@
 本站使用Emacs 编辑器上的org-mode 7.5 生成(Emacs自带的版本有点老，我从
 orgmode.org官网上下载了7.5版，后来发现有一些bug,实在不好用，后来直接得到
 orgmode的开发版本)。
-
-所有的源文件也会发布在网上,原始org文件在这里：[[file:src][org源代码]]
-
-经htmlize.el 进行着色后便于网上浏览的在这里:[[file:htmlized-src][htmlized后
-的org源代码]] 另外，每个网页右上角会有src htmlize-src 的链接，分别对应当前页
+ 另外，每个网页右上角会有src htmlize-src 的链接，分别对应当前页
 的源码、htmlized后的源码。
+*** 关于我
+    qq:374346117
+    mail:jixiuf@gmail.com

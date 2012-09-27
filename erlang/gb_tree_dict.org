@@ -36,3 +36,5 @@ Expr1 and Expr2 Expr2可能被短路， 不运算
       正常的gb_trees:enter/2, gb_trees:lookup/2 and gb_trees:delete_any/2
       smart 的：gb_trees:insert/3, gb_trees:get/2, gb_trees:update/3 and gb_trees:delete/2.
       smart的之处在于，它认为要处理的key在 gb_trees中存在，所以一些检查不必做，速度会快一点。
+
+https://github.com/jixiuf/helloerlang/tree/master/benchmark/src

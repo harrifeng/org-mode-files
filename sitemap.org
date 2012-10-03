@@ -103,6 +103,7 @@
      + [[file:Linux/ext2.org][ext2]]
      + [[file:Linux/linux_fbl.org][linux下分辨率调整]]
      + [[file:Linux/ctags.org][Exuberant Ctags ]]
+     + [[file:Linux/nmap.org][nmap]]
    + Oracle
      + [[file:oracle/3ManageAnOracleInstance.org]]
      + [[file:oracle/4ManageADatabase.org]]

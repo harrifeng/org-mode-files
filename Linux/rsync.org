@@ -60,36 +60,46 @@ jixiuf
 #+END_SRC
 inotify监控目录 inotify-tools
 #+BEGIN_SRC sh
- #/bin/sh
- # REMOTE_IP=192.168.1.202
- REMOTE_IP=127.0.0.1
- # 以下目录要以 /结尾,
- REMOTE_DEST_DIR=/tmp/
- LOCAL_SRC_DIR=/home/jixiuf/lszm2/server/game_server/sql_dest/
- USER_NAME=jixiuf
- PASSWORD_FILE=/home/jixiuf/passwd
- # --password-file=FILE
- # DST=rsync@$REMOTE_IP:$REMOTE_DEST_DIR
- DST=rsync://$USER_NAME@$REMOTE_IP::sql_remote
- # rsync /home/jixiuf/notes.org $REMOTE_IP::$REMOTE_DIR
- exit_status=$?
- echo $exit_status
+#/bin/sh
+# REMOTE_IP=192.168.1.202
+REMOTE_IP=127.0.0.1
+# 以下目录要以 /结尾,
+# 相对路径
+REMOTE_DEST_DIR=tmp/
+LOCAL_SRC_DIR=/home/jixiuf/lszm2/server/game_server/sql_dest/
+# 以上目录要以/结尾
+USER_NAME=jixiuf
+RSYNC_PASSWORD=jixiuf
+# --password-file=FILE
+# DST=rsync@$REMOTE_IP:$REMOTE_DEST_DIR
+DST=$USER_NAME@$REMOTE_IP::sql_remote/$REMOTE_DEST_DIR
+# rsync /home/jixiuf/notes.org $REMOTE_IP::$REMOTE_DIR
 
- # DST=rsync@192.168.10.4:/home/rsync/test
+# rsync
+# -a 存档模式
+# -h 保存硬连接
+# -q 制止非错误信息
+# -z 压缩文件数据在传输
+# -t 维护修改时间
+# -delete 删除于多余文件
+inotifywait -mrq --exclude '.#.*' -e moved_to,create ${LOCAL_SRC_DIR} | while read Dir Type File
+# -m 是保持一直监听
+# -r 是递归查看目录
+# -q 是打印出事件
+do
+    # echo $File , $Dir,$Type
+    # ${#变量名}得到字符串长度
+    # ${变量名:起始}得到子字符串
+    relativePath=${Dir:${#LOCAL_SRC_DIR}}
+    # -R 使用相对路径，　所以先cd到根目录
+    cd $LOCAL_SRC_DIR && RSYNC_PASSWORD=$RSYNC_PASSWORD	rsync  -ahqztR   --exclude '*~' --exclude '.#*'    $relativePath$File $DST
+    exit_status=$?
+    echo $Type $File
+    echo $exit_status
 
- # -a 存档模式
- # -h 保存硬连接
- # -q 制止非错误信息
- # -z 压缩文件数据在传输
- # -t 维护修改时间
- # -delete 删除于多余文件
- inotifywait -mrq -e modify,create ${LOCAL_SRC_DIR} | while read D E F
- do
-     echo $F
-     echo $DST
- 	rsync  -ahqzt   $LOCAL_SRC_DIR $DST
- done
- # --password-file=$PASSWORD_FILE
+done
+#
+# rsync  -ahqzt  /home/jixiuf/Linux-C.pdf jixiuf@127.0.0.1::sql_remote  --password-file=/home/jixiuf/passwd
 #+END_SRC
 
 

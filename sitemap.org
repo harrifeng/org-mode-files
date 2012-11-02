@@ -103,6 +103,7 @@
      + [[file:Linux/ctags.org][Exuberant Ctags ]]
      + [[file:Linux/nmap.org][nmap]]
      + [[file:Linux/rsync.org][rsync inotify]]
+     + [[file:Linux/ssh_proxy.org][ssh 通过代理连接]]
    + Oracle
      + [[file:oracle/3ManageAnOracleInstance.org]]
      + [[file:oracle/4ManageADatabase.org]]

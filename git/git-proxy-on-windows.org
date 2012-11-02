@@ -6,8 +6,8 @@
 #+DATE:     2011-11-24 星期四
 #+DESCRIPTION:在windows上通过代理访问github.com
 #+KEYWORDS: git windows proxy github
-#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
@@ -26,7 +26,7 @@ github.com 的git 提供了三种方式： http:// git:// 与ssh 方式
   #+begin_src sh
   #!/bin/bash
 #这里是你对应的代理ip 及端口
-_proxy=172.20.65.51 
+_proxy=172.20.65.51
 _proxyport=12080
 exec socat STDIO PROXY:$_proxy:$1:$2,proxyport=$_proxyport
   #+end_src
@@ -42,7 +42,7 @@ exec socat STDIO PROXY:$_proxy:$1:$2,proxyport=$_proxyport
 #+begin_src sh
 # git-proxy已经加入到path目录下
  git config --global core.gitproxy "git-proxy"
- 
+
 # git-proxy没有加入到path目录下
  git config --global core.gitproxy "/local/path/to/git-proxy"
 #+end_src
@@ -61,30 +61,30 @@ msysGit bin目录下已经提供了这个文件。
 注意我用的密钥是dsa 的而不是rsa 另外文件中的和种路径 及代理ip端口，你需要改
 成你自已的
 #+begin_src sh
-# 此行要改路径 代理ip 及port 
-ProxyCommand d:/usr/Git/bin/connect.exe -H 172.20.65.51:12080 %h %p
+  # 此行要改路径 代理ip 及port
+  ProxyCommand d:/usr/Git/bin/connect.exe -H 172.20.65.51:12080 %h %p
 
-Host github.com
-User git
-Port 22
-Hostname github.com
+  Host github.com
+  User git
+  Port 22
+  Hostname github.com
 
-#此行要改路径及id_dsa 或id_rsa 
-IdentityFile "d:\.ssh\id_dsa"
+  #此行要改路径及id_dsa 或id_rsa
+  IdentityFile "d:\.ssh\id_dsa"
 
-TCPKeepAlive yes
-IdentitiesOnly yes
+  TCPKeepAlive yes
+  IdentitiesOnly yes
 
-Host ssh.github.com
-User git
-Port 443
-Hostname ssh.github.com
+  Host ssh.github.com
+  User git
+  Port 443
+  Hostname ssh.github.com
 
-#此行要改路径及id_dsa 或id_rsa 
-IdentityFile "d:\.ssh\id_dsa"
+  #此行要改路径及id_dsa 或id_rsa
+  IdentityFile "d:\.ssh\id_dsa"
 
-TCPKeepAlive yes
-IdentitiesOnly yes
+  TCPKeepAlive yes
+  IdentitiesOnly yes
 
 #+end_src
 
@@ -94,6 +94,5 @@ IdentitiesOnly yes
 export http_proxy='http://myproxy.example.com:1080/'
 export https_proxy='https://myproxy.example.com:1080/'
 export ftp_proxy='http://myproxy.example.com:1080/'
-export no_proxy = '.example.com'  
+export no_proxy = '.example.com'
   #+end_src
-  

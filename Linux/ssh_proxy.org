@@ -1,0 +1,28 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:    ssh 绕过代理登录
+#+AUTHOR:    纪秀峰
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2012-11-02 五
+#+DESCRIPTION:ssh_proxy.org
+#+KEYWORDS:
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+#+FILETAGS:
+
+我局域网ip 是192.168.1网段的
+
+10.142.8.24 是位于另一网段的一台内网机器　,
+122.224.249.55 是一台有公网ip的机器，
+10.142.8.24位于122.224.249.55后面
+也就是说要想ssh连接到10.142.8.24需要途经 122.224.249.55
+用到了socat这款软件做代理
+使用如下命令,
+本机ip: 192.168.1.127
+
+防火墙 122.224.249.55 port 9991
+内网机　10.142.8.24 ssh 端口开在36000上
+
+sudo ssh -o ProxyCommand='socat - socks:122.224.249.55:%h:%p,socksport=9991' username@10.142.8.24 -p 36000
+没加 sudo 之前一直给我提示Permission denied (keyboard-interactive),不知原因何
+在，难道socat命令需要root权限

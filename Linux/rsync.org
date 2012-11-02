@@ -12,38 +12,38 @@
 
 rsyncd.conf
 #+BEGIN_SRC sh
- # /etc/rsyncd.conf
+  # /etc/rsyncd.conf
 
- # Minimal configuration file for rsync daemon
- # See rsync(1) and rsyncd.conf(5) man pages for help
+  # Minimal configuration file for rsync daemon
+  # See rsync(1) and rsyncd.conf(5) man pages for help
 
- # This line is required by the /etc/init.d/rsyncd script
- pid file = /var/run/rsyncd.pid
- use chroot = yes
- read only = yes
+  # This line is required by the /etc/init.d/rsyncd script
+  pid file = /var/run/rsyncd.pid
+  use chroot = yes
+  read only = yes
 
- [sql_remote]
- 	path = /tmp/sql_remote
-     read only = no
-     write only= yes
-     auth users= root jixiuf
-     secrets file=/etc/rsyncd_pass.conf
-     strict modes=no
- 	comment = sql remote
-     uid=0
-     gid=0
- 	# exclude = /distfiles /packages
+  [sql_remote]
+     path = /tmp/sql_remote
+      read only = no
+      write only= yes
+      auth users= root jixiuf
+      secrets file=/etc/rsyncd_pass.conf
+      strict modes=no
+     comment = sql remote
+      uid=0
+      gid=0
+     # exclude = /distfiles /packages
 
- # Simple example for enabling your own local rsync server
- #[gentoo-portage]
- #	path = /usr/portage
- #	comment = Gentoo Portage tree
- #	exclude = /distfiles /packages
+  # Simple example for enabling your own local rsync server
+  #[gentoo-portage]
+  #  path = /usr/portage
+  #  comment = Gentoo Portage tree
+  #  exclude = /distfiles /packages
 #+END_SRC
 /etc/rsyncd_pass.conf
 #+BEGIN_SRC sh
-jixiuf:jixiuf
-root:root
+  jixiuf:jixiuf
+  root:root
 #+END_SRC
 #+BEGIN_SRC sh
 rsync  -ahqzt  /home/jixiuf/Linux-C.pdf jixiuf@127.0.0.1::sql_remote  --password-file=/home/jixiuf/passwd
@@ -143,8 +143,8 @@ inotify监控目录 inotify-tools
 
 
 #+BEGIN_SRC sh
-/usr/local/bin/inotifywait -mrq -e modify,delete,create,attrib ${src}
--m 是保持一直监听
--r 是递归查看目录
--q 是打印出事件
+  /usr/local/bin/inotifywait -mrq -e modify,delete,create,attrib ${src}
+  -m 是保持一直监听
+  -r 是递归查看目录
+  -q 是打印出事件
 #+END_SRC

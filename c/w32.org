@@ -10,7 +10,7 @@
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+FILETAGS: @C
 * windows 下VS 下命令行调用
-#+begin_src
+#+begin_src sh
  devenv.exe project.sln /build "DEBUG|Win32"
  devenv.exe project.sln /build "DEBUG|x64"
 #+end_src

@@ -4,6 +4,7 @@
 
 #+LANGUAGE:  zh
    + [[file:../windows/windows-keymap.org][windows 的键盘映射]]
+   + [[file:../windows/bat.org][windows 脚本技巧]]
    + [[file:../sqlserver/sqlserver-kill-all-connection.org][kill所有连接到某库的连接]]
    + [[file:../git/git-proxy-on-windows.org][在windows上通过代理访问github.com]]
    + [[file:../emacs/msys-bash-ls-color.org][在Windows上使用MSYS中的bash并使ls可以显示颜色]]

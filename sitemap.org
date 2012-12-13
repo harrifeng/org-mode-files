@@ -83,6 +83,7 @@
      + [[file:c/int.org][数值转换]]atoi等
      + [[file:c/dfs_maze.org][深度优先算法dfs迷宫寻路]]
      + [[file:c/bfs_maze.org][queue与广度优先算法bfs迷宫寻路]]
+     + [[file:c/w32.org][windows VS 命令行编译]]
    + Perl
      + [[file:perl/perl.org][perl 笔记]]
    + Git
@@ -94,6 +95,8 @@
      + [[file:windows/windows-keymap.org][windows 的键盘映射]]
      + [[file:sqlserver/sqlserver-kill-all-connection.org][SQL SERVER kill all connection]]
      + [[file:sqlserver/clonedb.org][sqlserver clone DB]]
+     + [[file:windows/bat.org][window 脚本技巧]]
+     + [[file:c/w32.org][windows VS 命令行编译]]
    + Linux
      + [[file:Linux/lcd-vga.org][Linux下调笔记本亮度]]
      + [[file:Linux/iptables.org][iptables防火墙]]

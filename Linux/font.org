@@ -16,6 +16,7 @@ linux 下与字体相关的命令
   mkfontscale
   mkfontdir
   xrdb ~/.Xdefaults
+  fc-cache
 * 更新字体信息,mkfontscale mkfontdir
   #+BEGIN_SRC sh
   cd /usr/share/fonts/windows_fonts/
@@ -59,3 +60,5 @@ linux 下与字体相关的命令
 #+END_SRC
 * link
   http://hivelogic.com/articles/top-10-programming-fonts/
+  文件有点老,但里面有linux两种字体系统的介绍(emacs现在已经支持xft了)
+  http://laokaddk.blog.51cto.com/368606/686817

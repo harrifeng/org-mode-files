@@ -57,3 +57,5 @@ linux 下与字体相关的命令
           FontPath "/usr/share/fonts/wqy-bitmapfont"
   EndSection%
 #+END_SRC
+* link
+  http://hivelogic.com/articles/top-10-programming-fonts/

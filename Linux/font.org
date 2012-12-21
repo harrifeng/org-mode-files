@@ -13,9 +13,12 @@ linux 下与字体相关的命令
 * 列出可用的字体
   xlsfontls
   fc-list
-* mkfontscale mkfontdir
+  mkfontscale
+  mkfontdir
+  xrdb ~/.Xdefaults
+* 更新字体信息,mkfontscale mkfontdir
   #+BEGIN_SRC sh
-  cd /usr/share/fonts/some_font_dir/
+  cd /usr/share/fonts/windows_fonts/
   mkfontscale .
   mkfontdir .
   #+END_SRC

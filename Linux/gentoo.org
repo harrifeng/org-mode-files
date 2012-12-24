@@ -1,0 +1,29 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     Gentoo 拾遗
+#+AUTHOR:    纪秀峰
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2012-12-24 一
+#+DESCRIPTION:gentoo.org
+#+KEYWORDS:
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+#+FILETAGS: @Linux
+
+prelink -amR
+lafilefixer --justfixit
+revdep-rebuild --library libnss3.so.12
+/usr/sbin/libpng-1.4.x-update.sh
+perl-cleaner --all
+python-updater
+sys-apps/busybox-1.17.4 编译 :清缓存,删/var/tmp/portage/  export LC_ALL=en_US.UTF-8
+
+* 内核配置
+1. filesystem 的语言设置
+   ntfs  936 utf8
+   ext4
+   cdrom/udf
+   file system--network file system --CIFS support() 其他的不用变
+
+2. DeviceDriver--Graphics--Support for frame buffer--VESA/VGA
+3.  ipv6[*]

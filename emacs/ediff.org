@@ -132,4 +132,6 @@ int main(int argc, char *argv[], char *envp[]) {
 用VC编译的[[file:../download/call-ediff-by-emacsclientw-compiled-by-vc.exe][run-ediff-compiled-by-vc.exe]] 
        
 
-       
+* link 关于几种KDiff3, Diffuse, and VimDiff  Meld Emacs-Ediff工具的比较(有图有真相)
+http://rvb.mytanet.de/comparing-latex-files-with-latexdiff.shtml
+

@@ -5,14 +5,14 @@
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:     2011-08-09 二
 #+DESCRIPTION:git拾遗
-#+KEYWORDS: git scm 
+#+KEYWORDS: git scm
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:t -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+FILETAGS: @Git 
-** git rm 
+#+FILETAGS: @Git
+** git rm
 #+begin_src sh
 git rm --cache filename
 #+end_src
@@ -33,28 +33,28 @@ git rm --cache filename
     #+end_src
   + 运行git rm --cache 子模块所在路径,如:
     #+begin_src sh
-    git rm --cache site-lisp/anything-config 
+    git rm --cache site-lisp/anything-config
     #+end_src
     不能写成
     #+begin_src sh
-    git rm --cache site-lisp/anything-config/ 
+    git rm --cache site-lisp/anything-config/
     #+end_src
-    
+
 ** 要查看某个文件的以前的版本,使用 git show 命令
 #+begin_src sh
 git show 0b26bbe907c929ed88f6ba3dfeaaa9a2953b1c56:a.txt
 
 git cat-file blob 0b26bbe907c929ed88f6ba3dfeaaa9a2953b1c56:a.txt
 #+end_src
-   
+
 ** 可以checkout 某个文件的以前的版本
    #+begin_src sh
  git checkout 0b26bbe907c929ed88f6ba3dfeaaa9a2953b1c56 a.txt
    #+end_src
 
- 
 
-** git ls-tree 与git show 
+
+** git ls-tree 与git show
  不仅仅一次提交后会产生一个sha1 的字符串,其实每一个提交对应的文件也后有一个状态,比后我想杳看
 0b26bbe907c929ed88f6ba3dfeaaa9a2953b1c56这次提交后对应的文件所对应的sha1值
 可以使用git ls-tree命令
@@ -69,11 +69,11 @@ root # git ls-tree f7619cab6a71505b23e172f3146adfa750bab71e
 git show 83c4ba189edcc364ca18b0b7d2cd81655d97adc5 后查看文件a的内容
 #+end_src
 #+begin_src  sh
-这与 
-git show f7619cab6a71505b23e172f3146adfa750bab71e:a     的效果相同 
+这与
+git show f7619cab6a71505b23e172f3146adfa750bab71e:a     的效果相同
 #+end_src
 
-* git svn 
+* git svn
   git svn clone svn-url == git clone git-url
   git svn  fetch == git pull
   git svn  rebase == git rebase
@@ -89,17 +89,17 @@ git show f7619cab6a71505b23e172f3146adfa750bab71e:a     的效果相同
   git svn rebase
   git svn dcommit
   git stash pop
-** svn 的远程分支叫 remotes/git-svn 
+** svn 的远程分支叫 remotes/git-svn
 如果在当前分支已经有数次提交 ，但是发现有一个bug需要修复，修复后马上提交 ，而
   当前分支里的commit 并不想push到远程svn上，做法是
   git co remotes/git-svn -b tmp
   然后修复bug 提交 即可，当然其中可以使用stash 来暂时保存未commit 的修改
 ** git reset version
-   合并commit 。想将最后几次commit 合并成一个commit 
+   合并commit 。想将最后几次commit 合并成一个commit
    可以用 git reset version
    git reset 回退到某一版本后，
    工作区的文件依然保存着未回退前的状态 ，所以只需再提交一次
-   即将最后几次的commit 合并到一次提交 
+   即将最后几次的commit 合并到一次提交
 * 找回丢失的提交
   在使用Git的过程中，有时可能会有一些误操作
   比如：执行checkout -f 或 reset -hard 或 branch -d删除一个分支
@@ -114,3 +114,19 @@ git show f7619cab6a71505b23e172f3146adfa750bab71e:a     的效果相同
    交的时间和日期来辨别
 2. 通过git branch recover_branch commitid 来建立一个新的分支
   这样，我们就把丢失的东西给恢复到了recover_branch分支上了
+* 关于换行符
+  Github suggests that you should make sure to only use \n as a newline
+  character in git-handled repos. There's an option to auto-convert:
+  $ git config --global core.autocrlf true
+  Of course, this is said to convert crlf to lf.
+
+* 如果很多文件包含 ^M 这个字符想把它去掉 (未测试 )
+  #+BEGIN_SRC sh
+      # Remove everything from the index
+    $ git rm --cached -r .
+    # Re-add all the deleted files to the index
+    # You should get lots of messages like: "warning: CRLF will be replaced by LF in <file>."
+    $ git diff --cached --name-only -z | xargs -0 git add
+    # Commit
+    $ git commit -m "Fix CRLF"
+  #+END_SRC

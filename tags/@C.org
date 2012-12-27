@@ -10,6 +10,7 @@
    + [[file:../c/register.org][汇编 寄存器]]
    + [[file:../c/qsort.org][qsort 与函数指针 ]]
    + [[file:../c/printf.org][格式化输出]]
+   + [[file:../c/memcheck.org][linux 下 c内存检漏工具 valgrind]]
    + [[file:../c/malloc.org][动态内在分配]]
    + [[file:../c/macro.org][c中的宏]]
    + [[file:../c/int.org][数值转换]]

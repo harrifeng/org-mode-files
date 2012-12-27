@@ -10,6 +10,31 @@
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+FILETAGS:
 * Tasks
+** TODO slogger
+   [2012-12-25 二]
+** DONE compile inline {}
+   CLOSED: [2012-12-25 二 19:46]
+   - State "DONE"       from "TODO"       [2012-12-25 二 19:46]
+   [2012-12-25 二]
+** DONE yas dict merge
+   CLOSED: [2012-12-26 三 13:54]
+   - State "DONE"       from "TODO"       [2012-12-26 三 13:54] \\
+     done
+   [2012-12-25 二]
+** TODO recheck equip_develog_db.erl
+   [2012-12-24 一]
+** TODO role_active_degree add  onlinetime prop
+   [2012-12-24 一]
+** TODO quest_db ,中 droprate 类型
+   [2012-12-24 一]
+** TODO role_swordsman_reward_db与 role_forbiddencity_reward_db.today_items 始终为空,存不存库的问题
+   [2012-12-24 一]
+** TODO {} ->#{}
+   [2012-12-24 一]
+** TODO select in one rpc
+   [2012-12-24 一]
+** TODO org todo on windows crash
+   [2012-12-24 一]
 ** DONE procedure quote filed fix
    CLOSED: [2012-12-12 三 20:35]
    - State "DONE"       from "TODO"       [2012-12-12 三 20:35]

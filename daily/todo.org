@@ -44,3 +44,23 @@
    - State "DONE"       from "TODO"       [2012-12-03 一 17:06] \\
      done
    [2012-12-03 一]
+** TODO arg.c 内存泄漏分析
+   [2012-12-23 日]
+** DONE llvm org
+   CLOSED: [2012-12-23 日 23:25]
+   - State "DONE"       from "TODO"       [2012-12-23 日 23:25]
+   [2012-12-23 日]
+** DONE clear dist
+   CLOSED: [2012-12-23 日 23:16]
+   - State "DONE"       from "TODO"       [2012-12-23 日 23:16] \\
+     done
+   [2012-12-23 日]
+** DONE address
+   CLOSED: [2012-12-23 日 23:16]
+   - State "DONE"       from "TODO"       [2012-12-23 日 23:16] \\
+     done
+   [2012-12-23 日]
+** CANCELED 二个月内，拉开腿(五一时验收)
+   CLOSED: [2012-12-23 日 23:16]
+   - State "CANCELED"   from "TODO"       [2012-12-23 日 23:16]
+   [2012-03-06 二]

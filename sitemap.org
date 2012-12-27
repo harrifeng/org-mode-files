@@ -85,6 +85,7 @@
      + [[file:c/dfs_maze.org][深度优先算法dfs迷宫寻路]]
      + [[file:c/bfs_maze.org][queue与广度优先算法bfs迷宫寻路]]
      + [[file:c/w32.org][windows VS 命令行编译]]
+     + [[file:c/memcheck.org][linux下内存检测工具valgrind]]
    + Perl
      + [[file:perl/perl.org][perl 笔记]]
    + Git

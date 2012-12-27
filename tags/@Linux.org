@@ -15,4 +15,5 @@
    + [[file:../Linux/linux_fbl.org][linux下分辨率调整]]
    + [[file:../Linux/lcd-vga.org][linux调整笔记本亮度的命令]]
    + [[file:../Linux/iptables.org][iptables防火墙]]
+   + [[file:../Linux/font.org][linux 下字体相关]]
    + [[file:../Linux/ext2.org][ext2文件系统]]

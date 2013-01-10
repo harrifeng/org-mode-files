@@ -173,7 +173,8 @@ git show f7619cab6a71505b23e172f3146adfa750bab71e:a     的效果相同
    #+begin_src sh
       git filter-branch --subdirectory-filter w32 -- --all
    #+end_src
-** 删除两次提交之间的提交
+** 删除两次提交之间的提交log,但是提交的内容还在库里并没有丢失
+   作用仅仅相当于合并了n次提交成为一次提交
    之前
 #+begin_quote
   *  (HEAD, master)f5b0f0b..: jixiuf 2013-01-11 4

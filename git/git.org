@@ -135,3 +135,11 @@ git show f7619cab6a71505b23e172f3146adfa750bab71e:a     的效果相同
     # Commit
     $ git commit -m "Fix CRLF"
   #+END_SRC
+* 总有一些修改的文件你不想提交,比如 连接db的配置文件,你只是想在本机做测试而做的小修改
+  GIT: ignoring changes in tracked files
+
+  git update-index --assume-unchanged <file>
+  恢复则为
+  git update-index --no-assume-unchanged <file>
+  查看有哪些这样的文件
+  git ls-files -v|grep '^h'

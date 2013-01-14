@@ -113,6 +113,7 @@
      + [[file:Linux/llvm.org][llvm分区管理]]
      + [[file:Linux/dd.org][mbr信息]]
      + [[file:Linux/gentoo.org][gentoo系统拾遗]]
+     + [[file:Linux/shell.org][shell拾遗]]
    + Oracle
      + [[file:oracle/3ManageAnOracleInstance.org]]
      + [[file:oracle/4ManageADatabase.org]]

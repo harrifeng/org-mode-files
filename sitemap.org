@@ -110,6 +110,9 @@
      + [[file:Linux/rsync.org][rsync inotify]]
      + [[file:Linux/ssh_proxy.org][ssh 通过代理连接]]
      + [[file:Linux/font.org][linux下的字体相关]]
+     + [[file:Linux/llvm.org][llvm分区管理]]
+     + [[file:Linux/dd.org][mbr信息]]
+     + [[file:Linux/gentoo.org][gentoo系统拾遗]]
    + Oracle
      + [[file:oracle/3ManageAnOracleInstance.org]]
      + [[file:oracle/4ManageADatabase.org]]

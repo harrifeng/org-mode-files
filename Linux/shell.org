@@ -1,0 +1,42 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     shell.org
+#+AUTHOR:    纪秀峰
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2013-01-14 一
+#+DESCRIPTION:shell.org
+#+KEYWORDS:
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+#+FILETAGS:@Linux
+* 利用grep -c 来作instr()用
+#+begin_src sh
+  #!/bin/sh
+  a="Hello i am pass";
+  if [ `echo $a | grep -c "pass" ` -gt 0 ]
+  then
+    echo "Success"
+  else
+    echo "Fail";
+  fi
+#+end_src
+* grep -v 过滤 不匹配的行
+* shell for if example
+  #+srcname: name
+  #+begin_src sh
+      # 过滤掉开头是#的注释行
+    for url in  `cat $MODULE_FILE_NAME|grep -v "^[ \t]*#" ` ; do
+        mod=`echo $url|sed 's|.*/||g'|awk -F '.git$' '{print $1}'`
+        abs_mod_path=$WORD_DIR/$mod
+        if [ -d $abs_mod_path ] && [ -d $abs_mod_path/.git ] ; then
+            # 如果库已经存在
+            echo $abs_mod_path
+            cd $abs_mod_path
+            git checkout master
+            git pull
+        else
+            cd $WORD_DIR
+            git clone $url
+        fi
+    done
+  #+end_src

@@ -12,6 +12,7 @@
    + [[file:../emacs/cedet-customize.org][cedet 的定制，（译文）]]
    + [[file:../emacs/auto-insert-and-yasnippet.org][yasnippet ,Auto Insert mode整合]]
    + [[file:../c/memcheck.org][linux 下 c内存检漏工具 valgrind]]
+   + [[file:../Linux/shell.org][shell.org]]
    + [[file:../Linux/rsync.org][rsync.org]]
    + [[file:../Linux/llvm.org][llvm逻辑卷管理]]
    + [[file:../Linux/linux_fbl.org][linux下分辨率调整]]
@@ -20,3 +21,4 @@
    + [[file:../Linux/gentoo.org][Gentoo 拾遗]]
    + [[file:../Linux/font.org][linux 下字体相关]]
    + [[file:../Linux/ext2.org][ext2文件系统]]
+   + [[file:../Linux/dd.org][mbr and dd]]

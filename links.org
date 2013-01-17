@@ -9,6 +9,7 @@
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:{} -:t f:t *:t <:t timestamp:t
 
 + http://blog.solrex.org/
++ [[http://www.serveridol.com/2009/11/02/mysql-server-optimization/][mysql相关博文]]
 + [[http://rdc.taobao.com/blog/cs/][淘宝核心团队]]
 + [[http://learn.akae.cn/media/index.html][Linux C编程一站式学习]]
 + [[http://blog.yufeng.info/archives/category/erlang][Erlang非业余研究]]

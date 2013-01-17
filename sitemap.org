@@ -62,6 +62,7 @@
      + [[file:emacs/image-suport-on-windows.org][Windows上Emacs中显示jpeg ,pgn 格式的图片]]
      + [[file:emacs/goto-last-change.org][goto-last-change跳转到最近几次编辑的位置]]
      + [[file:emacs/text-property.org][text property]]
+       [[file:emacs/artist-mode.org][emacs画文本图 artist-mode与org-mode]]
    + Java
      + [[file:java/ant-example1.org][ant build.xml 示例 ]]
    + C

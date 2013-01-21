@@ -10,10 +10,11 @@
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+FILETAGS:@Erlang
 * Mnesia 的几个参数
-  这里域的dump应该是指把内存里的数据刷到硬盘上的过程(针对disc_copies),并不是备
-  份.
+  mnesia有 LATEST.LOG 日志文件 及 *.DAT, *.DCD *.DCL 等数据文件
+  mnesia是先向 LATEST.LOG写日志，当日志达到dump_log_write_threshold参数(默认
+  100条)或时间到dump_log_time_threshold(默认3min)时，会将这100条日志操作apply到数据文件上，
+  dump操作应该就是 LOG->DAT转移的过程
 **  dc_dump_limit
-    如果 size of log >   tablesize/dc_dump_limit,执行一次dump操作
     This variable controls how often disc_copies tables are dumped from memory.
     The default value is 4, which means if the size of the log is greater than
     the size of table / 4, then a dump occurs. To make table dumps happen more

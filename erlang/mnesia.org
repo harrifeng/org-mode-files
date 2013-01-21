@@ -1,0 +1,40 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     mnesia拾遗
+#+AUTHOR:    纪秀峰
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2013-01-21 一
+#+DESCRIPTION:mnesia.org
+#+KEYWORDS:
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+#+FILETAGS:@Erlang
+* Mnesia 的几个参数
+  这里域的dump应该是指把内存里的数据刷到硬盘上的过程(针对disc_copies),并不是备
+  份.
+**  dc_dump_limit
+    如果 size of log >   tablesize/dc_dump_limit,执行一次dump操作
+    This variable controls how often disc_copies tables are dumped from memory.
+    The default value is 4, which means if the size of the log is greater than
+    the size of table / 4, then a dump occurs. To make table dumps happen more
+    often, increase the value. I've found setting this to 40 works well for my
+    purposes.
+** dump_log_write_threshold
+   默认每执行100次write ,才会dump 到硬盘一次,
+   调大这个值,即增大dump的间隔,即，如果你write很频繁，可以试着调大此值，
+   同时也需要更大的内存支持
+   This variable defines the maximum number of writes to the transaction log
+   before a new dump is performed. The default value is 100, so a new
+   transaction log dump is performed after every 100 writes. If you're doing
+   hundreds or thousands of writes in a short period of time, then there's no
+   way mnesia can keep up. I set this value to 50000, which is a huge
+   increase, but I have enough RAM to handle it. If you're worried that this
+   high value means the transaction log will rarely get dumped when there's
+   very few writes occuring, there's also a dump_log_time_threshold
+   configuration variable, which by default dumps the log every 3 minutes.
+** dump_log_time_threshold 默认3min
+   跟dump_log_write_threshold配合的一个参数，
+   每3min执行一次dump操作,主要是当write数据很不频繁，达不到
+   dump_log_write_threshold的值，到了时间仍然进行dump操作，
+* Link
+http://streamhacker.com/2008/12/10/how-to-eliminate-mnesia-overload-events/

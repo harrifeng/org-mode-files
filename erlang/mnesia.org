@@ -37,5 +37,20 @@
    跟dump_log_write_threshold配合的一个参数，
    每3min执行一次dump操作,主要是当write数据很不频繁，达不到
    dump_log_write_threshold的值，到了时间仍然进行dump操作，
+** WARNING ** Mnesia is overloaded: {dump_log,time_threshold}
+   连续多次收到这样一条消息的原因，这里有说明 
+   http://erlang.2086793.n4.nabble.com/my-mnesia-is-lazy-td2114608.html
+   you start mnesia and then you put your laptop to sleeep or do nothing.
+   
+   you come back the next day, open your laptop and you find mnesia
+   complains about being overloaded.
+   
+   It basically is because you didn't do any transactions for a day.
+   
+   It has nothing to do with being overloaded and mnesia should
+   differentiate this case. 
+
 * Link
 http://streamhacker.com/2008/12/10/how-to-eliminate-mnesia-overload-events/
+http://www.erlang.org/doc/apps/mnesia/Mnesia_chap7.html
+http://erlang.2086793.n4.nabble.com/my-mnesia-is-lazy-td2114608.html

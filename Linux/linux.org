@@ -14,3 +14,25 @@
     chmod g+s dir1
   #+END_SRC
   dir1以下的FILE和FOLDER组名都是当前用户所属的组
+* umask
+  umask就是指定“当前用户在建立文件或目录时候的属性默认值”
+  对于文件来说，这一数字的最大值分别是6。
+  目录则允许设置执行权限，这样针对目录来说，umask中各个数字最大可以到7。
+  我们只要记住u m a s k是从权限中“拿走”相应的位即可。
+  如：umask值为022，则默认目录权限为755，默认文件权限为644。
+  对于组权限，setfacl设置的权限只对主组（即useradd -g或usermod -g的组）
+  有效，对附加组（即useradd -G或usermod -aG的组）无效，即使文件的所有组已改为附加组。
+* setfacl
+  /etc/fstab 里加 acl 选项
+  #+BEGIN_QUOTE
+   /dev/sda2		/		ext3		noatime,acl		0 1
+  #+END_QUOTE
+  mount -o remount /
+#+BEGIN_SRC sh
+  给某个用户设置权限：
+  setfacl -m u:joe:rx bobdir/
+  给某个组设置权限：
+  setfacl -m g:aclgp1:rx bobdir/
+  取消某项权限
+  setfacl -x g:aclgp1 bobdir/
+#+END_SRC

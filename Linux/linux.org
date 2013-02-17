@@ -36,3 +36,24 @@
   取消某项权限
   setfacl -x g:aclgp1 bobdir/
 #+END_SRC
+#+BEGIN_SRC sh
+  setfacl命令可以识别以下的规则格式。
+
+  [d[efault]:] [u[ser]:]uid [:perms]
+  指定用户的权限，文件所有者的权限（如果uid没有指定）。
+
+  [d[efault]:] g[roup]:gid [:perms]
+  指定群组的权限，文件所有群组的权限（如果gid未指定）
+
+  [d[efault]:] m[ask][:] [:perms]
+  有效权限掩码
+
+  [d[efault]:] o[ther] [:perms]
+#+END_SRC
+#+BEGIN_SRC sh
+  setfacl -m d:g:groupA:rwx /path/to/perms
+
+  The -m flag stands for "Modify" the existing ACL. The little d in front of g
+  makes it a "Default" ACL, so that in future if any file/dir gets created under
+  perms directory, groupA will have rwx permission on them too.
+#+END_SRC

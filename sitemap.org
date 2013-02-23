@@ -117,6 +117,7 @@
      + [[file:Linux/gentoo.org][gentoo系统拾遗]]
      + [[file:Linux/shell.org][shell拾遗]]
      + [[file:Linux/linux.org][linux拾遗]]
+     + [[file:Linux/iconv.org][linux gbk utf8 转换]]
    + Oracle
      + [[file:oracle/3ManageAnOracleInstance.org]]
      + [[file:oracle/4ManageADatabase.org]]

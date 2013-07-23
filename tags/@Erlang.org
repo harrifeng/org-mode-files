@@ -10,6 +10,7 @@
    + [[file:../erlang/record_info.org][record_info.org]]
    + [[file:../erlang/mochiweb_http_load.org][mochiweb 的使用 及 可开tcp连接数的(http长连接) 测试]]
    + [[file:../erlang/mochiweb_comet_chat.org][网上即时聊天原理(mochiweb+jquery实现)]]
+   + [[file:../erlang/mnesia.org][mnesia拾遗]]
    + [[file:../erlang/message.org][分布式,聊天小例]]
    + [[file:../erlang/hot_code_swap.org][热代码替换拾遗]]
    + [[file:../erlang/global_register_name.org][global_register_name.org]]

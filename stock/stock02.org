@@ -1,0 +1,31 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     民丰特纸 2013-07-23
+#+AUTHOR:    纪秀峰
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2013-07-23 Tue
+#+DESCRIPTION:民丰特纸 2013-07-23
+#+KEYWORDS:@Stock
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+#+FILETAGS:@Stock
+* Title
+日期 2013-07-23
+曲线如下
+[[file:~/Documents/org/src/img/stock0201.png][分时线]]
+分时线上看， 有庄家拉抬股价，另我有疑惑的是，拉抬后处于相对高价时的缩量,过几日
+后查看后续走势。
+初步认为 抛压不大，
+且从k线上看， 整体还算处于低价区，不像庄家拉高出货，这两日K线长幅不小，所以，
+今日买在尾市，买时正好处于尾市小幅拉升过程。
+7.36×200，
+成本价 7.41
+止损位：6.95
+止盈暂定 8.46  ,15%,
+
+这一次要有耐心!!!
+
+
+
+
+

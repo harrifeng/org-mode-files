@@ -24,5 +24,6 @@
    + [[file:../c/bit.org][二进制，int 的与或非、移位操作]]
    + [[file:../c/bfs_maze.org][queue与广度优先算法与迷宫寻路]]
    + [[file:../c/IO.org][IO.org]]
+   + [[file:../Linux/iconv.org][linux 下gbk utf8 转换]]
    + [[file:../Linux/ext2.org][ext2文件系统]]
    + [[file:../Linux/ctags.org][ctags.org]]

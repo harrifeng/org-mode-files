@@ -13,6 +13,9 @@
 日期 2013-07-23
 曲线如下
 [[file:~/Documents/org/src/img/stock0201.png][分时线]]
+[[file:~/Documents/org/src/img/stock204.png][日线]]
+[[file:~/Documents/org/src/img/stock203.png][周线]]
+
 分时线上看， 有庄家拉抬股价，令我有疑惑的是，拉抬后处于相对高价时的缩量,过几日
 后查看后续走势。
 初步认为 抛压不大，
@@ -25,7 +28,9 @@
 
 这一次要有耐心!!!
 
+2013-07-24 日补充，一天过后，
 
+[[file:~/Documents/org/src/img/stock2-05.png][次日分时线]]
 
 
 

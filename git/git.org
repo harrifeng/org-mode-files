@@ -121,6 +121,9 @@ git show f7619cab6a71505b23e172f3146adfa750bab71e:a     的效果相同
     git ls-files --deleted
   3. 列出git rm过，但未git commit 的
      用git status即可
+** grep 历史提交中的内容
+   git grep hello
+   但是如果某文件被删了， 不会grep之
 * 关于换行符 空格
   Github suggests that you should make sure to only use \n as a newline
   character in git-handled repos. There's an option to auto-convert:

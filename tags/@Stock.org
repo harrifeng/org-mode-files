@@ -1,6 +1,0 @@
-# -*- coding:utf-8 -*-
-
-#+TITLE: Tag: @Stock
-
-#+LANGUAGE:  zh
-   + [[file:../stock/stock02.org][民丰特纸 2013-07-23]]

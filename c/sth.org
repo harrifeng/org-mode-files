@@ -9,12 +9,12 @@
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+FILETAGS:@C
-
+* make_mark
 #+BEGIN_SRC c
 比如MAKE_MASK(3 )会生成  二进制的 00000111
 #define MAKE_MASK(n)  ((((int)1) << (n)) -1)
 #+END_SRC
-c cpp  的一些判断
+* c cpp  的一些判断
 #+BEGIN_SRC c
 if(flag)
 if(!flag)
@@ -28,6 +28,26 @@ if(p)
 if(p==0)
 #+END_SRC
 
-const 的作用
+* const 的作用
 1. 定义常量
 2. 在函数的返回值或参数中对其类型进行限制，防止函数内修改参数，一般多指指针类型
+* c++的初始化
+  #+BEGIN_SRC c++
+       int i(1024);// 直接初始化
+       int i=1024; //复制初始化
+
+    #include<string>
+    std:string str="asfdasd";
+    std:string str("asfdasd");
+  #+END_SRC
+* c++ 的声明与定义，
+  声明可以多次， 定义只能一次，声明不分配内存
+  用extern关键来来声明
+  #+BEGIN_SRC c++
+    extern int i ;//声明i
+    int i ;//声明 并定义
+    int i=2 ;//声明 并定义,并初始值
+    因为声明 不分配内存 所以不可以初始化，一旦有初始化的行为，则认为是定义，即便使用了ertern 也认为是定义而非声明
+    extern int i =3; // 声明 定义 并初始化， 这里的extern 几乎无意义.
+
+  #+END_SRC

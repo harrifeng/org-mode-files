@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 #+LANGUAGE:  zh
-#+TITLE:     c拾遗
+#+TITLE:     c cpp 拾遗
 #+AUTHOR:    纪秀峰
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:     2012-08-01 星期三
@@ -14,3 +14,20 @@
 比如MAKE_MASK(3 )会生成  二进制的 00000111
 #define MAKE_MASK(n)  ((((int)1) << (n)) -1)
 #+END_SRC
+c cpp  的一些判断
+#+BEGIN_SRC c
+if(flag)
+if(!flag)
+而非
+if(0==flag)
+
+判断指针非空用
+if(p==NULL)
+尽量少用:
+if(p)
+if(p==0)
+#+END_SRC
+
+const 的作用
+1. 定义常量
+2. 在函数的返回值或参数中对其类型进行限制，防止函数内修改参数，一般多指指针类型

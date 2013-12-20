@@ -38,7 +38,7 @@
      + [[file:erlang/release_handle_rebar_hot_code_swap.org][release_handler rebar hot code swap]]
      + [[file:erlang/hot_code_swap.org][热代码替换拾遗]]
      + [[file:erlang/mnesia.org][mnesia拾遗]]
-   + Emacs (编辑器圣战的主角)
+   + Emacs
      + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
      + [[file:emacs/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念 ]]
      + [[file:emacs/emacs-help-system.org][emacs 的帮助系统]]
@@ -128,8 +128,5 @@
      + [[file:mysql/benchmark.org][mysql压力测试]]
      + [[file:mysql/benchmark_demo.org][mysql压力测试实战]]
      + [[file:mysql/mysql.org][mysql拾 遗]]
-   + 个人简历
-     - [[file:author.org][Erlang版]]
-     - [[file:author2.org][Java版]]
    + [[file:about.org][about]]
    + [[file:links.org][一些有用的链接]]

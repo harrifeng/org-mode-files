@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 #+LANGUAGE:  zh
-#+TITLE:     c拾遗
+#+TITLE:     c cpp 拾遗
 #+AUTHOR:    纪秀峰
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:     2012-08-01 星期三
@@ -9,8 +9,85 @@
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+FILETAGS:@C
-
+* make_mark
 #+BEGIN_SRC c
 比如MAKE_MASK(3 )会生成  二进制的 00000111
 #define MAKE_MASK(n)  ((((int)1) << (n)) -1)
 #+END_SRC
+* c cpp  的一些判断
+#+BEGIN_SRC c
+if(flag)
+if(!flag)
+而非
+if(0==flag)
+
+判断指针非空用
+if(p==NULL)
+尽量少用:
+if(p)
+if(p==0)
+#+END_SRC
+
+* const 的作用
+1. 定义常量
+2. 在函数的返回值或参数中对其类型进行限制，防止函数内修改参数，一般多指指针类型
+* c++的初始化
+  #+BEGIN_SRC c++
+       int i(1024);// 直接初始化
+       int i=1024; //复制初始化
+
+    #include<string>
+    std:string str="asfdasd";
+    std:string str("asfdasd");
+  #+END_SRC
+* c++ 的声明与定义，
+  声明可以多次， 定义只能一次，声明不分配内存
+  用extern关键来来声明
+  #+BEGIN_SRC c++
+    extern int i ;//声明i
+    int i ;//声明 并定义
+    int i=2 ;//声明 并定义,并初始值
+    因为声明 不分配内存 所以不可以初始化，一旦有初始化的行为，则认为是定义，即便使用了ertern 也认为是定义而非声明
+    extern int i =3; // 声明 定义 并初始化， 这里的extern 几乎无意义.
+   定义之后可以再次出现 单独声明的语句， 但是不能出现
+  #+END_SRC
+  #+BEGIN_SRC c++
+    int main(int argc, char *argv[]){
+      extern  string s;// 只是声明 ，编译会报错
+      std::cout << s << std::endl;
+    }
+  #+END_SRC
+  非const 变量默认extern ,要使const 变量可以在其他文件中使用，
+  必须在本文件及其他文件中声明它为extern
+* c++ 引用
+  引用不可以为null ,定义时必须初始化,
+  初始化后，不可能绑定到其他对象了,所以一个引用只能绑定一个对象
+  const 引用 是指向 const对象的 引用 both ref and object are const
+  #+BEGIN_SRC c++
+  int i =1;
+  int &iRef=i;//正确
+  int &iRef2; //错
+  int &iref3=10;//错  10是常量
+
+  const  int i3=10;
+  const  int &i3ref=i3;//对
+  int &i3ref2=i3;//错 必须 加 const
+
+  const int &i4=111;//对 ，const引用可以指向常量
+  #+END_SRC
+* c++ 枚举 enum
+  #+BEGIN_SRC c++
+  enum Forms{shape=1,sphere,cylinder,polygon}
+  枚举的值后一个比前一个加1,除非显示初始化
+  shape=1 , sphere=2,cylinder=3,
+
+  枚举的值可以重复
+  enum Forms{shape=1,sphere,cylinder=2,polygon}
+  则shape=1 sphere=2 cylinder=2 polygon=3
+ 定义成枚举后， 枚举跟int是不同类型
+ 如
+Froms f1=shape; //ok
+Froms f2=2 ; // error
+
+
+  #+END_SRC

@@ -112,7 +112,18 @@ git show f7619cab6a71505b23e172f3146adfa750bab71e:a     的效果相同
    交的时间和日期来辨别
 2. 通过git branch recover_branch commitid 来建立一个新的分支
   这样，我们就把丢失的东西给恢复到了recover_branch分支上了
-** 在magit 中`lh'即要吧列出所有的commit
+3.  在magit 中`lh'即要吧列出所有的commit
+* 找回库中删除的文件
+  1. 找回库中不再管理的已删除文件(之前git rm 过且git commit 后的文件)
+   git log --all --pretty=format: --name-only --diff-filter=D |grep -v "^$"
+   grep -v 过滤不包含空的行
+  2. 列出  rm 过， 但未git rm 过的文件
+    git ls-files --deleted
+  3. 列出git rm过，但未git commit 的
+     用git status即可
+** grep 历史提交中的内容
+   git grep hello
+   但是如果某文件被删了， 不会grep之
 * 关于换行符 空格
   Github suggests that you should make sure to only use \n as a newline
   character in git-handled repos. There's an option to auto-convert:

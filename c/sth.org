@@ -109,7 +109,7 @@ Froms f2=2 ; // error
     string::size_type len=  s.size();//ok
     int len=  s.size();//error, 但是我试了 编译运行都 可过， 但是不推荐
   #+END_SRC
-** 取string第n个字符用[]下标操作即可,也可对其赋值
+** 取string第n个字符用[]下标操作即可,也可对其赋值,只能对已经存在的元素赋值，不能添加
    []中的数是一个size_type类型,从0 始计
   #+BEGIN_SRC c++
     string str("hello");
@@ -136,3 +136,29 @@ Froms f2=2 ; // error
   std::cout << isupper(c) << std::endl;
 
 #+END_SRC
+* vector 容器
+  是同一种类型的对象的集合
+  vector是类模版，不是数据类型
+  vector<int> vector<string>则是数据类型
+#+BEGIN_SRC c++
+  vector<string> v1;
+  string s1("aaa");
+  string s2("bbb");
+
+  v1.push_back(s1);
+  v1.push_back(s2);
+  vector<string> v2(v1);
+
+  s1="ccc";//对s1的改变 变不会影响v1 v2中的元素
+
+  // size_type类型的写法,不可以写成vector::size_type
+  for (vector<string>::size_type i = 0; i<v1.size(); i++) {
+    std::cout << v1.at(i) << std::endl;
+   } // 打印后的是"aaa" "bbb",
+  std::cout << "" << std::endl;
+
+  for (vector<string>::size_type i = 0; i<v2.size(); i++) {
+    std::cout << v2.at(i) << std::endl;
+   }// 打印后的是"aaa" "bbb",
+#+END_SRC
+** vector [] 下标操作同 string ,可get 可set,只能针对存在的元素,但不能add

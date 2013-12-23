@@ -103,3 +103,36 @@ Froms f2=2 ; // error
 
 
   #+END_SRC
+* string 相关
+**  string.size() 返回string::size_type类型,而非int
+  #+BEGIN_SRC c++
+    string::size_type len=  s.size();//ok
+    int len=  s.size();//error, 但是我试了 编译运行都 可过， 但是不推荐
+  #+END_SRC
+** 取string第n个字符用[]下标操作即可,也可对其赋值
+   []中的数是一个size_type类型,从0 始计
+  #+BEGIN_SRC c++
+    string str("hello");
+    char c=str [1];
+    std::cout << c << std::endl;
+    str[1]='E';
+    std::cout << str << std::endl;  // "hEllo"
+  #+END_SRC
+   #+BEGIN_SRC c++
+     遍历
+     for (string::size_type  i= 0; i < str.size(); i++){
+       std::cout << str[i] << std::endl;
+      }
+   #+END_SRC
+** cctype 头文件里一些函数如isupper tolower isspace
+#+BEGIN_SRC c++
+  #include <cctype>
+  // isdigit(int)
+  // islower(int)
+  // isupper
+  // isalnum
+  // isspace 这些函数也是在std::下的
+  char c='d';
+  std::cout << isupper(c) << std::endl;
+
+#+END_SRC

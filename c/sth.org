@@ -297,3 +297,14 @@ Froms f2=2 ; // error
 const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这种类型， 这种类型在typedef时就已经确定了
 并不会因为在它前面加一个const 就改变
 #+END_SRC
+* 动态数组
+ 普通数组长度在编译期就需要确定下来，动态数组长度可以在运行期确定
+ #+BEGIN_SRC c++
+  int *p = new int[10];//返回指向第一个元素的指针
+
+   动态数据允许长度为0
+ int *p = new int[0];//ok, 返回不是空， 但是不能进行解引用操作， 似类于vector.end()的返回值
+  int i[0]; //error
+
+  delete[] p; //释放
+ #+END_SRC

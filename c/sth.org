@@ -188,3 +188,19 @@ Froms f2=2 ; // error
    //可正可负
 ** 任何改变vector长度的操作，都会使已存在的iterator 失效,
    如push_back()之后，   原来iterator指向的值就不可信了
+* bitset
+   bitset 是模版， 不同的是区别只在长度 ，不在类型
+  #+BEGIN_SRC c++
+    #include<bitset>
+    using std::bitset;
+    bitset<32> bs; //32 bits all 0
+    bitset<16> bs2(0xffff);// 用0xffff的低16位填充
+    bs[0]  指的是低位第一位
+    bitset<16> bs2("11110001");
+
+   // bitset 提供 了 set all() any() ,count() test(pos)
+   //  flip()  flip(pos) 按位取反
+   // to_string to_ulong()
+   //  std::cout << bs << std::endl; //可以直接 入 流
+   // count() 返回有多少位是1，类型是size_t,在 #include<cstddef>中定义
+  #+END_SRC

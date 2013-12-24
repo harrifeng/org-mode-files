@@ -226,3 +226,74 @@ Froms f2=2 ; // error
 ***  在函数体外定义的内置类型的数组，其元素初始化为0
 ***  在函数体内定义的内置类型的数组，其元素未初始化，
 *** 不论数组在哪定义，若元素类型为类，则自动调用其默认构造函数初始化，若无默认构造函数，则必须显示初始化
+* 指针
+** 指针的定义 风格
+  #+BEGIN_SRC c++
+   char *p1 ,*p2; //p1 p2 都是指针
+
+  //p1 是指针 ，p2是char ,//跟 char *p1 p2;写法一样
+  // 建议使用 char *p1 ,而非 char* p1;
+   char* p1 p2 ;
+  #+END_SRC
+** 指针的初始化
+#+BEGIN_SRC c++
+  //指针不可以用int类型的变量来赋值,
+   //但可以用值为0 的const 变量来初始化
+  int a =0;
+  const b=0;
+  int *p =a;//错误
+  int *p2=b;// ok,
+  int *p2=0;// ok,
+  int *p2=NULL;// ok, #include<cstdlib>
+#+END_SRC
+** 指针类型要匹配
+   #+BEGIN_SRC c++
+   double d =10;
+   double *pd=&d;
+   int *pi =pd;//error
+   #+END_SRC
+** 指针与引用的区别
+   1. 引用必须指向某个对象，不可以为null, 必须进行初始化
+   2. 赋值行为的差异，对指针进行赋值，是让指针指向另一个对象
+      而对引用进行赋值，则是改变当前引用所指对象的值(引用就是对象)
+** 指针的运算
+   指针的类型不能乱用，所以一个指针是什么类型的是知道的 ，
+   对指针加一个数， 实际就是将指针往后移动这种类型的一个单位
+   比如
+   #+BEGIN_SRC c++
+     int i=1;
+     int *p =&i;
+     p++; //往后移动一个int单位,指向下一个int
+    *(p+4) ;//可以这样取p往后挪4个 int后所指对象的值
+   #+END_SRC
+** 指向const对象的指针 和const 指针(本身的值不可变)
+*** 指向const对象的指针
+   #+BEGIN_SRC c++
+     const double d=1;
+     const double *p=&d;//ok, 指向const 对象的指针 ,p 并不是const的
+     double *p2 = &d;//error ,普通的指针 不可以指向const对象
+     void *p3 = &d ;//错
+     const void *p4=&d;//ok
+
+     允许 把非const对象的地址赋值给 指向const对象的指针
+      double d2=2;
+
+     // 自以为指向const对象的指针
+      const double *p5 =&d2;     //ok, 但是不能通过*p5来改变 d2的值,虽然可以通过其他方法改d2的值
+   #+END_SRC
+*** const 指针(本身的值不可变),即定义时必须初始化
+    #+BEGIN_SRC c++
+     int i=1;
+     int *const p = &i;// p 只能指向i , 不可以指向其他值了
+    #+END_SRC
+*** typedef 与const易引起歧义
+#+BEGIN_SRC c++
+ typedef string *pstring;
+ const pstring ctr;
+ 并不能简单的将 上述两句像宏一样 扩展成 const  *pstring ctr; ,这则说明ctr是指向const对象的指针
+ 而实际 ctr 是const 指针 ,即， 不可以将ctr再指向其他对象 ，但可以改变当前所指对象的值
+
+可以这样理解， typedef string *pstring ; 说明 这种类型的指向string的指针， 并没有const限定,
+const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这种类型， 这种类型在typedef时就已经确定了
+并不会因为在它前面加一个const 就改变
+#+END_SRC

@@ -162,3 +162,29 @@ Froms f2=2 ; // error
    }// 打印后的是"aaa" "bbb",
 #+END_SRC
 ** vector [] 下标操作同 string ,可get 可set,只能针对存在的元素,但不能add
+** 使用iterator
+   #+BEGIN_SRC c++
+     # vector1.begin()指向首元素，
+     #vector1.end()指向尾元素的下一个位置
+     iterator的解引用操作(*it)，取得指向元素的对象 如元素类型是string ,则返回的是string对象
+     for (vector<string>::iterator it =  v1.begin();it!= v1.end() ; it++){
+       std::cout << *it << std::endl;
+       *it= *it+"hello";  //可以改变元素的值
+     }
+   #+END_SRC
+** 使用const_iterator
+   与iterator一样， 只是不能对iterator指向的元素进行赋值操作.
+   其指向的元素是只读的，并不是 const_iterator只读
+   意思是不能改变它指向元素的值， 但能改变他指向什么元素
+   所以 const vector<string>:iterator it;
+        vector<string>:const_iterator it;
+        并不相同
+** vector的iterator可以进行简单的算术运算操作，
+   不是所有的容器类型都支持
+   iter+n
+   iter-n
+   iter1-iter2
+   // 返回两元素间的位置差,返回的类型是vector<string>:difference_type
+   //可正可负
+** 任何改变vector长度的操作，都会使已存在的iterator 失效,
+   如push_back()之后，   原来iterator指向的值就不可信了

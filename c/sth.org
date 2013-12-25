@@ -22,7 +22,7 @@ if(!flag)
 if(0==flag)
 
 判断指针非空用
-if(p==NULL)
+if(p==NULL) // NULL 定义的 #include<cstdlib>  或c的stdlib.h
 尽量少用:
 if(p)
 if(p==0)

@@ -308,3 +308,66 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
 
   delete[] p; //释放
  #+END_SRC
+* -> 操作符
+  #+BEGIN_SRC c++
+  Item item;
+  Item *p=&item;
+  item.sth().
+  // 下面这两个操作同义
+  (*p).sth().
+   p->sth().
+  #+END_SRC
+* sizeof 操作符 的结果是 编译时常量
+  #+BEGIN_SRC c++
+    int array[3]={1,2,3};
+    sizeof(array); //12  3*sizeof(int)
+  #+END_SRC
+
+#+BEGIN_SRC c++
+  char *c=(char*) malloc(sizeof(char)*3);
+  strcpy(c, "ab");
+  std::cout << sizeof(c) << std::endl; // 4 返回指针的大小
+  std::cout << sizeof(*c) << std::endl; //1 返回指针所指对象的大小
+  // 上面两个都没有返回"ab"长度相关的内容
+#+END_SRC
+* new delete
+#+BEGIN_SRC c++
+ string *str= new string; //初始化为空串
+ int *i = new int;   //内建类型 则未初始化
+
+*
+ int *j  = new int(); // 初始化为0
+#+END_SRC
+* 强制类型转换( static_cast const_cast, dynamic_cast, reinterpret_cast)
+** static_cast 默认所有的隐式类型转换，都可以通过static_cast显示实现
+   #+BEGIN_SRC c++
+     double d =1;
+     int i =2;
+     i *= static_cast<int>(d) ;// 将d 强制转化成int ,然后与 int i相乘
+
+     void *p = &d;
+     double *pd= static_const<double*> (p);
+   #+END_SRC
+** const_cast 去掉var的const 属性
+   #+BEGIN_SRC c++
+     void test(char* c){}
+     int main(){
+       const char* c;
+       test(c);// error
+       test(const_cast<char*>(c)); //ok
+     }
+   #+END_SRC
+** reinterpret_cast
+   #+BEGIN_SRC c++
+      int i =1;
+     int *ip=&i;
+     //  转化之后， pc 依然是int* 类型的指针
+     char *pc = reinterpret_cast<char*>(ip);
+     string str(pc);////导致运行时error, 但是编译时不会出警告
+    //用int 来初始化string
+   #+END_SRC
+#+BEGIN_SRC c++
+  char* pc=(char*)ip;//  c++ 似乎不建议使用 这种c里使用的强转
+  //效果与使用 reinterpret_cast一样
+  //这种强转 具有 static_cast const_cast  reinterpret_cast 相同的功能,更笼统
+#+END_SRC

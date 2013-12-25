@@ -22,7 +22,7 @@ if(!flag)
 if(0==flag)
 
 判断指针非空用
-if(p==NULL)
+if(p==NULL) // NULL 定义的 #include<cstdlib>  或c的stdlib.h
 尽量少用:
 if(p)
 if(p==0)
@@ -60,7 +60,7 @@ if(p==0)
   非const 变量默认extern ,要使const 变量可以在其他文件中使用，
   必须在本文件及其他文件中声明它为extern
   默认const 变量只在定义它的文件中有用的局部变量,
-** 在头文件中不可以出现定义 ，因为会被多个源文件引用， 导致多处定义,只能有声明
+** 在头文件中不可以出现定义,只能有声明,因为会被多个源文件引用， 导致多处定义
    头文件里不能有定义有3个例外:
   1. 定义类
   2. 编译期就已经知道的const对象
@@ -162,3 +162,315 @@ Froms f2=2 ; // error
    }// 打印后的是"aaa" "bbb",
 #+END_SRC
 ** vector [] 下标操作同 string ,可get 可set,只能针对存在的元素,但不能add
+** 使用iterator
+   #+BEGIN_SRC c++
+     # vector1.begin()指向首元素，
+     #vector1.end()指向尾元素的下一个位置
+     iterator的解引用操作(*it)，取得指向元素的对象 如元素类型是string ,则返回的是string对象
+     for (vector<string>::iterator it =  v1.begin();it!= v1.end() ; it++){
+       std::cout << *it << std::endl;
+       *it= *it+"hello";  //可以改变元素的值
+     }
+   #+END_SRC
+** 使用const_iterator
+   与iterator一样， 只是不能对iterator指向的元素进行赋值操作.
+   其指向的元素是只读的，并不是 const_iterator只读
+   意思是不能改变它指向元素的值， 但能改变他指向什么元素
+   所以 const vector<string>:iterator it;
+        vector<string>:const_iterator it;
+        并不相同
+** vector的iterator可以进行简单的算术运算操作，
+   不是所有的容器类型都支持
+   iter+n
+   iter-n
+   iter1-iter2
+   // 返回两元素间的位置差,返回的类型是vector<string>:difference_type
+   //可正可负
+** 任何改变vector长度的操作，都会使已存在的iterator 失效,
+   如push_back()之后，   原来iterator指向的值就不可信了
+* bitset
+   bitset 是模版， 不同的是区别只在长度 ，不在类型
+  #+BEGIN_SRC c++
+    #include<bitset>
+    using std::bitset;
+    bitset<32> bs; //32 bits all 0
+    bitset<16> bs2(0xffff);// 用0xffff的低16位填充
+    bs[0]  指的是低位第一位
+    bitset<16> bs2("11110001");
+
+   // bitset 提供 了 set all() any() ,count() test(pos)
+   //  flip()  flip(pos) 按位取反
+   // to_string to_ulong()
+   //  std::cout << bs << std::endl; //可以直接 入 流
+   // count() 返回有多少位是1，类型是size_t,在 #include<cstddef>中定义
+  #+END_SRC
+* 数组
+  数组的维数 只能用 包含整形字面值常量、枚举常量 或者用常量表达式初始化的整形
+  const对象 ,非const变量， 以及到运行时才知道其值的const变量都不能用来定义其维数
+  #+BEGIN_SRC c++
+    const int i=10;
+    int j=10;
+    int arr[i+1];                   // 合法的 常量表达式(i是const变量， 编译其就知道其大小)
+    int arr2[j];                   // 不合法的 (j不是const变量， 编译其不知道其大小)
+  #+END_SRC
+** 初始化
+#+BEGIN_SRC c++
+  //数组初始化
+  int array[3] = {1,2,3};
+  int array[] = {1,2,3};//不指定数据长度也可，此时
+  char array[] = "c";//等同于 char array[]= {'c','\0'}
+  // 可以用sizeof(array) 取数组的长度(数组的长度编译期就确定了，所以sizeof可以做到, c语言里也一样)
+  // 但是 数组作为参数传递时会自动转化成char* 指针， 它是没法取到数组的长度的
+#+END_SRC
+
+***  在函数体外定义的内置类型的数组，其元素初始化为0
+***  在函数体内定义的内置类型的数组，其元素未初始化，
+*** 不论数组在哪定义，若元素类型为类，则自动调用其默认构造函数初始化，若无默认构造函数，则必须显示初始化
+* 指针
+** 指针的定义 风格
+  #+BEGIN_SRC c++
+   char *p1 ,*p2; //p1 p2 都是指针
+
+  //p1 是指针 ，p2是char ,//跟 char *p1 p2;写法一样
+  // 建议使用 char *p1 ,而非 char* p1;
+   char* p1 p2 ;
+  #+END_SRC
+** 指针的初始化
+#+BEGIN_SRC c++
+  //指针不可以用int类型的变量来赋值,
+   //但可以用值为0 的const 变量来初始化
+  int a =0;
+  const b=0;
+  int *p =a;//错误
+  int *p2=b;// ok,
+  int *p2=0;// ok,
+  int *p2=NULL;// ok, #include<cstdlib>
+#+END_SRC
+** 指针类型要匹配
+   #+BEGIN_SRC c++
+   double d =10;
+   double *pd=&d;
+   int *pi =pd;//error
+   #+END_SRC
+** 指针与引用的区别
+   1. 引用必须指向某个对象，不可以为null, 必须进行初始化
+   2. 赋值行为的差异，对指针进行赋值，是让指针指向另一个对象
+      而对引用进行赋值，则是改变当前引用所指对象的值(引用就是对象)
+** 指针的运算
+   指针的类型不能乱用，所以一个指针是什么类型的是知道的 ，
+   对指针加一个数， 实际就是将指针往后移动这种类型的一个单位
+   比如
+   #+BEGIN_SRC c++
+     int i=1;
+     int *p =&i;
+     p++; //往后移动一个int单位,指向下一个int
+    *(p+4) ;//可以这样取p往后挪4个 int后所指对象的值
+   #+END_SRC
+** 指向const对象的指针 和const 指针(本身的值不可变)
+*** 指向const对象的指针
+   #+BEGIN_SRC c++
+     const double d=1;
+     const double *p=&d;//ok, 指向const 对象的指针 ,p 并不是const的
+     double *p2 = &d;//error ,普通的指针 不可以指向const对象
+     void *p3 = &d ;//错
+     const void *p4=&d;//ok
+
+     允许 把非const对象的地址赋值给 指向const对象的指针
+      double d2=2;
+
+     // 自以为指向const对象的指针
+      const double *p5 =&d2;     //ok, 但是不能通过*p5来改变 d2的值,虽然可以通过其他方法改d2的值
+   #+END_SRC
+*** const 指针(本身的值不可变),即定义时必须初始化
+    #+BEGIN_SRC c++
+     int i=1;
+     int *const p = &i;// p 只能指向i , 不可以指向其他值了
+    #+END_SRC
+*** typedef 与const易引起歧义
+#+BEGIN_SRC c++
+ typedef string *pstring;
+ const pstring ctr;
+ 并不能简单的将 上述两句像宏一样 扩展成 const  *pstring ctr; ,这则说明ctr是指向const对象的指针
+ 而实际 ctr 是const 指针 ,即， 不可以将ctr再指向其他对象 ，但可以改变当前所指对象的值
+
+可以这样理解， typedef string *pstring ; 说明 这种类型的指向string的指针， 并没有const限定,
+const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这种类型， 这种类型在typedef时就已经确定了
+并不会因为在它前面加一个const 就改变
+#+END_SRC
+* 动态数组
+ 普通数组长度在编译期就需要确定下来，动态数组长度可以在运行期确定
+ #+BEGIN_SRC c++
+  int *p = new int[10];//返回指向第一个元素的指针
+
+   动态数据允许长度为0
+ int *p = new int[0];//ok, 返回不是空， 但是不能进行解引用操作， 似类于vector.end()的返回值
+  int i[0]; //error
+
+  delete[] p; //释放
+ #+END_SRC
+* -> 操作符
+  #+BEGIN_SRC c++
+  Item item;
+  Item *p=&item;
+  item.sth().
+  // 下面这两个操作同义
+  (*p).sth().
+   p->sth().
+  #+END_SRC
+* sizeof 操作符 的结果是 编译时常量
+  #+BEGIN_SRC c++
+    int array[3]={1,2,3};
+    sizeof(array); //12  3*sizeof(int)
+  #+END_SRC
+
+#+BEGIN_SRC c++
+  char *c=(char*) malloc(sizeof(char)*3);
+  strcpy(c, "ab");
+  std::cout << sizeof(c) << std::endl; // 4 返回指针的大小
+  std::cout << sizeof(*c) << std::endl; //1 返回指针所指对象的大小
+  // 上面两个都没有返回"ab"长度相关的内容
+#+END_SRC
+* new delete
+#+BEGIN_SRC c++
+ string *str= new string; //初始化为空串
+ int *i = new int;   //内建类型 则未初始化
+
+*
+ int *j  = new int(); // 初始化为0
+#+END_SRC
+* 强制类型转换( static_cast const_cast, dynamic_cast, reinterpret_cast)
+** static_cast 默认所有的隐式类型转换，都可以通过static_cast显示实现
+   #+BEGIN_SRC c++
+     double d =1;
+     int i =2;
+     i *= static_cast<int>(d) ;// 将d 强制转化成int ,然后与 int i相乘
+
+     void *p = &d;
+     double *pd= static_const<double*> (p);
+   #+END_SRC
+** const_cast 去掉var的const 属性
+   #+BEGIN_SRC c++
+     void test(char* c){}
+     int main(){
+       const char* c;
+       test(c);// error
+       test(const_cast<char*>(c)); //ok
+     }
+   #+END_SRC
+** reinterpret_cast
+   #+BEGIN_SRC c++
+      int i =1;
+     int *ip=&i;
+     //  转化之后， pc 依然是int* 类型的指针
+     char *pc = reinterpret_cast<char*>(ip);
+     string str(pc);////导致运行时error, 但是编译时不会出警告
+    //用int 来初始化string
+   #+END_SRC
+#+BEGIN_SRC c++
+  char* pc=(char*)ip;//  c++ 似乎不建议使用 这种c里使用的强转
+  //效果与使用 reinterpret_cast一样
+  //这种强转 具有 static_cast const_cast  reinterpret_cast 相同的功能,更笼统
+#+END_SRC
+* switch
+  执行到某个case后，如果不加break，会继续执行余下的case里的代码
+  所以 在case里定义变量，可能导致重复定义同一个变量，或者因为没有执行某个case里
+  的定义 ，导致 后面的case使用未定义 的变量,
+  所以switch里除了最后一个case 或default可以定义变量外， 其他case语句里不可以定
+  义变量, 如果一定要在case里定义变量可以用块语句(即大括号),在大括号里定义的变量
+  只在此块中有效
+
+  #+BEGIN_SRC c++
+    int i=1;
+    switch (i) {
+    case 1:
+      int j =0; // 这句出错，
+      break;
+    case 2:
+      int j =0;
+      break;
+    }
+  #+END_SRC
+* 内联函数
+** 内联函数应该在头文件中定义(对编译器必须是可见的)
+* 成员函数
+** 成员函数可在类外或类内定义，在类内定义 ，编译器隐式的将其转成内联函数
+** 成员函数的隐含形参this 是一个指针(不是引用),指向调用此函数的对象的地址
+   #+BEGIN_SRC c++
+     class Test
+     {
+     public:
+       Test(int parmI){
+         i=parmI;
+       }
+       bool test(int j) const{// const 是对this 对象的限制,意思是说此函数内不可以改变this对象的属性
+         // this->i=3; // 这种编译出错，尝试对const this对象进行修改
+
+         //  这两种方式是一样的
+         // return i==j;
+         return this->i==j;
+       }
+     private:
+       int i;
+     };
+   #+END_SRC
+* 构造函数
+** 必须在类中声明， 可在类内或类外定义
+** 构造函数的初始化列表(在参数列表后，函数体前的代码)
+#+BEGIN_SRC c++
+  class Test
+  {
+  public:
+    Test(int parmI):i(parmI){
+    }
+  private:
+    int i;
+  };
+
+#+END_SRC
+** 默认构造函数不能自动初始化 内置类型 的成员,必须自定义构造函数初始化这些成员,对于类类型的成员默认用他们默认构造函数来初始化
+* 函数重载(同一个类中 ，函数名相同参数不同)
+** 参数不同的含义，使用typedef定义一个别名后，认为使用别名跟使用本名是同一种类型
+** 参数的const 与否，与重载
+*** 对于值传递的参数,操作的只是副本,const与否并不影响副本,
+值传递参数 仅const 的区别,认为是同一个函数,不能根据是否有const来区分两个函数
+#+BEGIN_SRC c++
+   以下两种重载是  不 允许的
+  string getj(const int pi){
+  }
+  string getj(int pi){
+  }
+
+  string getj(const Test pi){
+  }
+  string getj(Test pi){
+  }
+#+END_SRC
+*** 对于引用形参和指针形参 可以根据 是否const 来区分两个函数
+    #+BEGIN_SRC c++
+     // 以下两种重载是允许的
+      string getj(const int *pi){
+        return str;
+      }
+      string getj(int *pi){
+        return str;
+      }
+
+      string getj(const int &pi){
+        return str;
+      }
+      string getj(int &pi){
+        return str;
+      }
+    #+END_SRC
+** 不能仅仅根据返回值类型不同来区别两个函数
+* 函数指针
+  #+BEGIN_SRC c++
+   typedef bool (*compFun) (const string &,const string);
+    // 以下两种方式 效果相同
+    compFun comF1= lengComp;
+    compFun comF2= &lengComp;
+
+   //调用 的时候 以下效果也相同
+   compF1(str1,str2);
+   (*compF1)(str1,str2);
+  #+END_SRC

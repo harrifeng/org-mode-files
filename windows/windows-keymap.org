@@ -6,7 +6,7 @@
 #+DATE:      2011-06-08 星期三
 #+DESCRIPTION:    windows 的键盘映射
 #+FILETAGS: @Emacs @Windows
-#+KEYWORDS: windows  keymap 键盘映射 Emacs  
+#+KEYWORDS: windows  keymap 键盘映射 Emacs
 * 参考文献：
 **** [[http://msdn.microsoft.com/zh-cn/windows/hardware/gg463372][Windows官网]] 有个下载链接[[http://download.microsoft.com/download/1/6/1/161ba512-40e2-4cc9-843a-923143f3456c/scancode.doc][scancode.doc]] ,第11页16页图表对应介绍每个按键对应哪个code
 **** [[http://msdn.microsoft.com/zh-cn/windows/hardware/gg463447.aspx][官网上关于键盘映射的文章]]
@@ -37,7 +37,7 @@ C-a（移动到行首）,C-e(移动到行尾）为例，你分别用默认的Ctr
 #+begin_src c
 HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout、
 下面的
-Scancode Map 
+Scancode Map
 #+end_src
 上图说话:
 这一项是交换ctrl alt capsLK三个键的：
@@ -58,7 +58,7 @@ Scancode Map
 04 00 00 00
 #+end_src
 #+begin_src c
-03 00 00 00 
+03 00 00 00
 #+end_src
 它记录你一共交换了(几次键+1),比如，比如上面两张图分别交换了3个键，2个键，所
 以3+1 ，2+1是为04 00 00 00 和03 00 00 00 . 剩下的就是真正的键盘映射信息,要想
@@ -105,9 +105,8 @@ LAlt 映射为 LCtrl:
 
 * 下载链接
 *** 本站保存了一份  [[../download/scancode.doc][scancode.doc]]
-    
+
 *** [[flie][Alt_Ctl_CapsLock交换的注删表修改文件]]
 
 另外从网上找了一个软件，他所用的原理就是本文所介绍的，用它可以很方便的修改键盘映射
 *** [[file:../download/sharpkeys2.msi][ sharpkey2.msi]]
-

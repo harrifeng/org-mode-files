@@ -604,3 +604,43 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
      ss<< "hello" << 1<< "world";
      std::cout << ss.str() << std::endl;
    #+END_SRC
+* 顺序容器
+  | vector | 快速随机访问       |
+  | list   | 支持快速插入、删除 |
+  | deque  | 双端队列           |
+
+  以上类型的适配器
+  | stack          | 后进先出 |
+  | queue          | 先进先出 |
+  | priority_queue | 有优先级 |
+#+BEGIN_SRC c++
+  #include<vector>
+  #include<list>
+  #include<deque>
+#+END_SRC
+** 容器内元素的约束
+   1. 元素类型必须支持 赋值
+   2. 元素类型对象必须可以复制
+ 所以 引用不可以作元素 IO类不可以作元素
+容器的容器
+ #+BEGIN_SRC c++
+ vector< vector<string> > lol;//中间需要有空格 ，否则 误解为>> <<
+ #+END_SRC
+** 容器iterator支持的操作
+   | *iter        |
+   | iter->mem    |
+   | ++iter       |
+   | iter++       |
+   | --iter       |
+   | iter--       |
+   | iter==iter2  |
+   | iter !=iter2 |
+*** vector deque 支持的特殊操作(数组实现的 支持随机访问的)
+    |              | return |
+    |--------------+--------|
+    | iter+n       | iter   |
+    | iter-n       | iter   |
+    | iter1+=iter2 | iter   |
+    | iter1-=iter2 | iter   |
+    | iter1-iter2  | number |
+    | > >= < <=    | bool   |

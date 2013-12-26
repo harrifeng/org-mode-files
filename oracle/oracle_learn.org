@@ -1,3 +1,4 @@
+* misc
 start d:/a.sql
 @    d:/a.sql
 
@@ -11,7 +12,7 @@ set linesize 320
 set pagesize 100
 set autoprint on
 set serveroutput on
-variable v1 refcursor 
+variable v1 refcursor
 
 exp imp 备份 恢
 
@@ -45,7 +46,7 @@ grant [系统特权名][角色]  to [用户名列表 ][public] [with admin optio
 grant connect to jixiuf ; 角色connect赋予jixiuf  此用户可以连接到数据库 connect,resource,dba 三个重要角色 ,拥有resource 可以在表空间建表， grant resource to jixiuf
 
 授权：
-grant select on tableName to jixiuf[ with grant option];  具有了select * from userName.tableName 
+grant select on tableName to jixiuf[ with grant option];  具有了select * from userName.tableName
 grant select,update,delete on userName.tableName to jixiuf ;
 grant all on userName.table to jixiuf; 增删改查权
 如果是对象权限 可以加with grant option ，
@@ -66,9 +67,9 @@ revoke  select on emp from jixiuf;
         GRANT SELECT ON SCOTT.EMP TO R1;
 数据字典：        SELECT * FROM DICT WHERE TABLE_NAME LIKE '%ROLE%';
 
-     
 
- 
+
+
 ** 使用profile 管理用户口令，profile 是口令限制，资源限制的命令集合，当建立数据库时，oracle 会自动建立名称为default 的profile ,当建立用户没有指定profile，则默认用此项分配给用户
   (1) 帐户锁定：
   指定用户登陆时最多可以输入口令的次数，指定锁定时间，用dba 身份执行此命令
@@ -81,7 +82,7 @@ revoke  select on emp from jixiuf;
   定期修改密码
   create profile change_password limit password_life_time 10 password_grace_time 2
   一个密码用10天后必须修改，宽限期2天，这两天会提示用户修改密码
-修改密码alter user jixiuf identified by newpassword 
+修改密码alter user jixiuf identified by newpassword
   口令历史：用户不能使用以前用过的密码
   create profile password_history limit password_life_time 10 password_grace_time 2 password_reuse_time 15 ; 15天后可以重用以前的密码
   删 除profile
@@ -96,11 +97,11 @@ startup; 启动数据库
 
  ---------------------------------备份与恢复-----------------------------------------------------
 * 备份与恢复(导入导出)
-** exp  
+** exp
     导出: 三类 ,导出表，导出方案(一个用户对应一个方案)，导出数据库 用exp 命令
     在导入和导出的时候 要用到C:/oracle/product/10.1.0/Db_1/BIN/exp.exe
     exp help=y 有帮助提示
-   
+
     （1）导出表( 也可以直接输入 exp 命令，以交互式进行备份)
          1导出自已的表：
              exp userid=scott/tiger@orcl  tables=(tableName1,tableName2) file=d:/tableName.dmp;
@@ -120,7 +121,7 @@ startup; 启动数据库
                 exp userid=system/root@orcl owner=(system,scott) file=d:/scott.dmp
     (3) 导出数据库( 须具有dba 权限，或者exp_full_database 权限  full=y inctype=complete 增量备份(第一次complete)
                 exp userid=system/root@orcl  full=y inctype=complete file=d:/scott.dmp
-       
+
 
 
 
@@ -142,8 +143,8 @@ startup; 启动数据库
              imp userid=system/root fromuser=scott touser=jixiuf  file=d:/scott.dmp
         (3)导入数据库
              imp userid=system/root full=y file=d:/scott.dmp
-         
-             
+
+
              注意导入的数据可能会与已有的数据重复（如果原来的数据没丢失，却运行了导入一次命令 则可能数据重复 ，慎!!!）
 * -------------------------数据字典-----------------------------------------------------
 user_xxx, all_xxx ,dba_xxx 如user_tables  dba_roles
@@ -181,7 +182,7 @@ drop tablespace tsname1 [ including contents [  and datafiles ] ]
     alter tablespace tsname1   'd:/b.dbf' resize 30M (?????)
   3  设置file 自动增长
 alter tablespace tsname1  'd:/a.dbf' autoextend on next 10m maxsize 500m
-  
+
 移动datafile  (磁盘损坏，但datafile 区域未坏，可移而用之)
     1 select tablespace_name from dba_data_files where file_name='D:/A.DBF';
             tableSpaceName1
@@ -194,9 +195,9 @@ alter tablespace tsname1  'd:/a.dbf' autoextend on next 10m maxsize 500m
     dba_tablespaces  dba_data_files
 
 * 索引 index ------------------------------------------------------------------------------------
- 
+
 1键压缩index
- 
+
 --因job 列有很多重复信息(即很多人的job是同一类型的)，于是普通 的索引就会导致job 重复生成索引
 为此可以压缩（job，name） 以节省空间，即同一个job 只建一个（无重复现象），而后即的name 共享前缀项 job，整个（job，name）索引可以节省 compress 表示压缩，而1表示压缩（job,name）第一项，即job项
 create index idxemp on emp(job,ename) compress 1 ;
@@ -208,7 +209,7 @@ create index idxemp on emp(job,ename) compress 1 ;
 
 
 簇cluster--------------------------------------------------------------------
- 
+
 有公共列的两个或多个表的集合（存储两个表的重复列）减少io节省空间，插入数据慢
 簇表中的数据存储在公共数据块中(如有主外键关系的表)
 簇键：簇中的唯一标识符，用于获取行
@@ -251,7 +252,7 @@ alter table student add (desc_ varchar2(20));
  truncate table student ,不写日志
  alter table emp add constraint pk_p1 primary key (id);
  alter table emp drop constraint pk_p1 ;
- 
+
 回滚
 savepoint a;
 delete from studnet ;
@@ -263,7 +264,7 @@ select '姓名：'||name from emp;
 字符函数
 lower() upper() substr(str,pos,len) replace(str,oldStr,newStr)
      null-->default 如果comm 为null 则以0为默认值
-     select nvl(comm,0) from emp;  
+     select nvl(comm,0) from emp;
 
 日期函数 ：
 select current_date,sysdate from dual;
@@ -271,7 +272,7 @@ select * from emp where sysdate>add_months(hiredate,8) 查八个月以前的员�
 select sysdate-hiredate as 入职天数 from emp;
 当月 最后一天
 select hiredate,last_day(hiredate) from emp;
-select to_char(hiredate,'yyyy-mm-dd hh24:mi:ss') from emp;   
+select to_char(hiredate,'yyyy-mm-dd hh24:mi:ss') from emp;
 update emp set hiredate=to_date('1988-09-09', 'yyyy-mm-dd');
 
 当前使用的数据库名：
@@ -280,13 +281,13 @@ select sys_context('USERENV','db_name') FROM DUAL;
 select sys_context('USERENV','language') from dual;
 select sys_context('USERENV','session_user') from dual;
 select sys_context('USERENV','current_schema') from dual;
-   
+
 -----------------------------------------------------------------------------------------
 
 
 
 *  ------------------------------ps/sql-----------------------------------------------
-
+#+BEGIN_SRC
 procedure ---------------------------------------------------------------------------
 可以用desc 查一个procedure
 desc sp_pro1;
@@ -302,7 +303,7 @@ pl/sql 以块为单位
 --无参数时加上括号好像编译不通过
 create  or replace procedure sp_pro1 is
 --此处不需要 declare 关键字
-   v_var_name varchar2(255); 
+   v_var_name varchar2(255);
 begin
    insert into scott.t values (1);
 end ;
@@ -334,7 +335,7 @@ exception
            no_data_found
       then
            dbms_output.put_line('对应数据未找到');
-   
+
 end;
 /
 ------------------------------------------------------------
@@ -355,7 +356,7 @@ procedure sp_getSal(p_ename in  varchar2,p_returnSal out  number) is
    dbms_output.put_line(v_returnSal);
    end;
    /
- 
+
 
    call call_sp_getSal();
 -------------java 调procedure-----------------
@@ -453,7 +454,7 @@ public static void main(String[] args) throws Exception {
 
     }
 
- 
+
 过程调用中的事务处理 pragma autonomous_transaction自主事务处理   ------------------------------------------------------------------------------
 create or replace procedure initDataForTestTranasction is
 begin
@@ -502,8 +503,8 @@ end;
  end;
  /
  再次调用call p4();    p3()内的回滚语句，未影响到p4的语句，
- 
- 
+
+
 这种解决方案，有一个问题，即死锁，即外层事务，与内层事务处理的是同一行数据，则会出现死锁(如果处理的不是同一条数据，则不会死锁)
 机理  1外层事务暂停
               2 开启内层事务
@@ -596,7 +597,7 @@ create or replace function  fun_getSal(p_ename varchar2)
             }
 
         }
-           
+
 
 -----------包------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
@@ -641,7 +642,7 @@ end;
    dbms_lob.--------------------------------------------------------------------------------
 2dbms_lob 操作大型对象  (普通用户对其没有操作权限,要用system )
        apend ,compare copy erase fileclose fileexists filegetname getlength
-       
+
        conn system/root ;
       1  create table downFileList(
                id number primary key,
@@ -675,7 +676,7 @@ end;
                 --从v_tmpDesc 中读取v_length个字符，从v_start 位置开始读，放到v_out_desc中
                 dbms_lob.read(v_tmpDesc,v_length,v_start,v_out_desc);
                 dbms_output.put_line('截取的字符：'||v_out_desc);
-                     
+
                 commit ;
                end;
 
@@ -702,7 +703,7 @@ end;
                        dbms_lob.write(v_tmpDesc,length(v_newStr),1,v_newStr);
                        dbms_output.put_line('new: '||v_tmpDesc);
                        commit;
-                  
+
              end;
              /
          5.4 append(dest_lob,appended_newStr);
@@ -720,7 +721,7 @@ end;
                  end;
                  /
           5.5 erase(clob,length,startPos) ,删除
-          5.6  copy (dest_lob,src_lob,length,destStartPos,srcStartPos)   
+          5.6  copy (dest_lob,src_lob,length,destStartPos,srcStartPos)
                 copy('abcedef','ABCDEFG' ,3,2,1)
 
                       declare
@@ -739,7 +740,7 @@ end;
                 fileclose fileexists filegetname getlength
          --测试文件是否存在
          select  id,name, dbms_lob.fileExists(fileLocation) from downfileList;
-         
+
          declare
           v_bfile bfile;
           v_exists number(1);--文件是否存在
@@ -775,7 +776,7 @@ end;
          --输出字符
           dbms_lob.read(v_bfile,v_outputLength,v_start,v_outputStr);
           dbms_output.put_line('输出的长度为'||v_outputLength||'内容为：'||v_outputStr);
-     
+
 
          --关闭文件
         dbms_lob.fileclose(v_bfile);
@@ -784,15 +785,7 @@ end;
                  <<end_flag>>
                  null;
          end;
-
-
-
-         
-
-
-
-
-----------------------------------------------------------------------------------------
+#+END_SRC
 * 触发器 user_triggers------------------------------------------------------------------------------
 
 1   三部分
@@ -826,15 +819,15 @@ end;
 
 
  1 before trigger
- 
- create or replace trigger tg_test1 
-  before insert   on dept 
+
+ create or replace trigger tg_test1
+  before insert   on dept
   begin
   dbms_output.put_line('哈哈before insert trigger 被触发了 ');
   end;
 
 2 行级触发器 表级触发器
- create or replace trigger tg_test1 
+ create or replace trigger tg_test1
   after update   on dept  for each row
   begin
   dbms_output.put_line('哈哈 after update  trigge 被 触发了,且是行级触发器 ');
@@ -843,7 +836,7 @@ end;
   update dept set dname=dname||'aaa' ;
 
   3 new old  (for each row 情况下才有这两个对象)
- create or replace trigger tg_test1 
+ create or replace trigger tg_test1
     before insert   on dept   for each row
   begin
       dbms_output.put_line('哈哈before insert trigger 被触发了 ,取得新插入的数据');
@@ -856,7 +849,7 @@ end;
 
   4 when 特定条件下触发
 
-     create or replace trigger tg_test1 
+     create or replace trigger tg_test1
     after delete   on dept   for each row
     when (old.deptno=22) --注意when 里面的old ,new 不带冒号
   begin
@@ -870,9 +863,9 @@ end;
 5 谓词inserting updating deleting
 
 
-     create or replace trigger tg_test1 
+     create or replace trigger tg_test1
      --注意这里，混合触发器
-            before insert or update or delete 
+            before insert or update or delete
      on dept   for each row
   begin
          if inserting then
@@ -895,7 +888,7 @@ end;
   --向dept 中    insert 如果deptno 不存在则插入，若已存在则更新
   create or replace trigger instead_of_test
     instead of insert on dept_view
- 
+
      for each row
  declare
          v_count number;
@@ -983,10 +976,10 @@ insert into dept_view values (99, '99a','99b');--
       --returning 子句，
     UPDATE employees SET salary = salary * 1.1 WHERE employee_id = emp_id
           RETURNING last_name, salary INTO emp_info;
-     
-      
 
-3 集合 
+
+
+3 集合
          1  Nested Tables 嵌套表 （数组）
                 TYPE type_name IS TABLE OF element_type [NOT NULL];
         2  Varrays  可变数组(有上限)
@@ -1000,7 +993,7 @@ insert into dept_view values (99, '99a','99b');--
 
                 CREATE TYPE ProjectList AS VARRAY(50) OF VARCHAR2(16);--此种语法，会在数据库中存储， user_types  中可查到
                 type projectlist is varray(50) of varchar2(16) ;     --此种语法用于编程，声明一种类型，程序结束就不存在了
- 
+
                  集合 类型，有一些属性(好象集合类型都有)COUNT (数组长度)，,first(表中第一行的索引)  last
                    函数     DELETE（删除一个元素）  因为varray 不允许操作单个元素，故无此法，只能操作整个数组
                                   三种用法
@@ -1018,11 +1011,11 @@ insert into dept_view values (99, '99a','99b');--
                                   EXTEND(n) appends n null elements to a collection.
                                   EXTEND(n,i) appends n copies of the ith element to a collection.
 
-     与集合操作有关的 sql  语句 
+     与集合操作有关的 sql  语句
       bulk collect into  语句  (在动态sql部分有bulk collect into 语句更详细 的使用方法 如forall )
-         
 
-3.1   Nested Tables 嵌套表(类似数组) -------------------------------------------------------------------         
+
+3.1   Nested Tables 嵌套表(类似数组) -------------------------------------------------------------------
 type table_type_emp_ename  is table of emp.ename%type ;
 create or replace type  table_type_emp_ename is table of varchar2(255);
 
@@ -1033,7 +1026,7 @@ create or replace type  table_type_emp_ename is table of varchar2(255);
                 count_ number,
                 name varchar2(33)
                 ) not final ; --not final 表示 此object可以被under ，即继承
-        2 创建 nested table 
+        2 创建 nested table
         create or replace type NestDetailType is table  of DetailObj;
 
         3 建表
@@ -1062,16 +1055,16 @@ create or replace type  table_type_emp_ename is table of varchar2(255);
             delete from table(select detail_ from stocktable )  dt where dt.goodsid=111; --删除嵌套表中的某一条记录
             delete from stockTable where orderid=1;
 
-         
+
 
 3.2可变数组varray -----------------------------------------------------------------------------
 一个字段里存多条数据
 --基类型
-  type dt is varray(199) of varchar2(200);   
-create or replace type baseType as object (name varchar2(22),id number);  
---在pl/sql 中应该用record 吧  type baseType is record  (name varchar2(22),id number);  
+  type dt is varray(199) of varchar2(200);
+create or replace type baseType as object (name varchar2(22),id number);
+--在pl/sql 中应该用record 吧  type baseType is record  (name varchar2(22),id number);
 --100 表示最大长度 ,基于基类型的可变数组
-create or replace type detailType as varray(100) of baseType; 
+create or replace type detailType as varray(100) of baseType;
 create or replace type dt as varray(100) of varchar2(22);
 
 --存货单
@@ -1122,7 +1115,7 @@ begin
        dbms_output.put_line(p_base.name||'      '||p_base.id);
    end loop;
       p_base:=baseType('name4',4);
- 
+
        select p_base into p_detail(p_detail.last) from dual; --只能更改，不能添加 ，思路 或可先建 一个比参数多一个的detail
 
          for  i in p_detail.first..p_detail.last
@@ -1130,7 +1123,7 @@ begin
    p_base:=p_detail(i);
        dbms_output.put_line(p_base.name||'      '||p_base.id);
    end loop;
- 
+
 end;
 
 
@@ -1144,13 +1137,13 @@ declare
      v_index binary_integer;
      v_tmp number(10):=1;
 begin
-   
+
     dbms_output.put_line('第一条数据：ename_array.first='||ename_array.first||' value ='||ename_array(ename_array.first));
     dbms_output.put_line('最后一条数据：ename_array.last='||ename_array.last||' value ='||ename_array(ename_array.last));
     dbms_output.put_line('此表数组中共有记录数为：'||ename_array.COUNT);
 
         dbms_output.put_line('next() 的用法  遍历 ' );
-      
+
           v_index:=ename_array.first;
           while v_index is not null
         loop
@@ -1170,7 +1163,7 @@ begin
 
 end;
 /
-     
+
 
 
   3.3 Associative Arrays  (table)-----------------------------------------------------------------
@@ -1198,13 +1191,13 @@ end;
                 ename_array.delete(ename_array.first+3);
 
                 dbms_output.put_line('next() 的用法  遍历 ' );
-              
+
                   v_index:=ename_array.first;
                   while v_index is not null
                 loop
                    dbms_output.put_line(v_index||'     '||ename_array(v_index));
                    v_index:=ename_array.next(v_index);
-           
+
                 end loop;
             dbms_output.put_line(' end of next() 的用法 ' );
         end;
@@ -1227,7 +1220,7 @@ end;
                --表明teacherid 是一个引用外键，类型是TeacherObj  ,范围只能是teacherTable 表中存在的行对象
                teacherId ref TeacherObj  scope is teacherTable
                );
-     
+
         3   insert into teachertable values (1,'老张');
              insert into student select 111,'小于', ref(t) from teacherTable t where t.id=1 ;
 
@@ -1242,7 +1235,7 @@ end;
 3.4.1  对象视图------------------------------------
    可以将普通关系表‘转换’为对象表
 
-  
+
     2 创建 关系表对应的对象
        create type deptObj is object (
           deptno number,
@@ -1262,7 +1255,7 @@ end;
  1 type  数据字典 user_types
 create or replace type addressType as object
 ( province varchar2(22),city varchar2(20));
- 
+
 
 create table stu (addr addressType,stuName varchar2(22));
 insert into stu values (addressType('山东','临沂'),'tom');
@@ -1276,7 +1269,7 @@ select stuName, s.addr.province, s.addr.city from stu s; 要使用别名
   (
    name varchar2(29),
    sex char(2)
-   ) not final ; 
+   ) not final ;
 /
   create or replace type studentType under Person
   ( studentNo number
@@ -1328,11 +1321,11 @@ declare
 /
 
  ---------------------------------------------------------------------------------------------------------
-     
+
 3.8 当然可以将以上record ,和table 结合使用(结构体的数组)
   type table_type_emp_ename  is table of emp.ename%rowtype index by binary_integer;
   或者
-   type type_emp is record ( v_name emp.ename%type ,v_no emp.empno%type); 
+   type type_emp is record ( v_name emp.ename%type ,v_no emp.empno%type);
     type table_type_emp_ename  is table of type_emp index by binary_integer;
 
 
@@ -1364,7 +1357,7 @@ declare
          open cursor_instance;
          --这句话，放这儿cursor_instance%rowcount ==0
            dbms_output.put_line('共有'||cursor_instance%rowcount||'行');
-            
+
          --注意这里也有notfound ，与隐式游标前面的sql% 不同，这里是自已定义的游标cursor_instance
         loop
         fetch cursor_instance into v_empno;
@@ -1374,12 +1367,12 @@ declare
               dbms_output.put_line('哈哈， 共有'||cursor_instance%rowcount||'行');
         --别忘了关闭
         close cursor_instance;
-     
+
     end;
     /
 
 
-   
+
     --带参数的游标
             DECLARE
               emp_name emp.ename%TYPE := 'SCOTT';
@@ -1428,11 +1421,11 @@ declare
     end;
     /
 
-   
-      
+
+
 
 5 参照变量 (类似 指针)
-   分两种， 游标变量，对象类型变量 
+   分两种， 游标变量，对象类型变量
    (1)游标类型变量 ref cursor ;
        declare
                       --定义一个类型
@@ -1458,14 +1451,14 @@ declare
 
 
 
- 
 
- 
+
+
 
 
   Cursor Expressions 游标表达示 (cursor 可以fetch 另一个cursor ，即cursor 嵌套)
 
- 
+
 
 DECLARE
    TYPE emp_cur_typ IS REF CURSOR;
@@ -1513,20 +1506,20 @@ DECLARE
 --注意，这两句的用法
    CURSOR c1 IS SELECT empno, ename FROM emp;
    TYPE NameSet IS TABLE OF c1%ROWTYPE;
-   some_names NameSet; 
+   some_names NameSet;
 
 BEGIN
- 
+
    SELECT * BULK COLLECT INTO underpaid FROM emp      WHERE sal < 2500 ORDER BY sal DESC;
 
- 
+
    dbms_output.put_line(underpaid.COUNT || ' people make less than 2500.');
    FOR i IN underpaid.FIRST .. underpaid.LAST
    LOOP
       dbms_output.put_line(underpaid(i).empno || ' makes ' || underpaid(i).sal);
    END LOOP;
 
- 
+
    SELECT empno, ename BULK COLLECT INTO some_names FROM emp
       WHERE ROWNUM < 11;
    FOR i IN some_names.FIRST .. some_names.LAST
@@ -1535,13 +1528,13 @@ BEGIN
    END LOOP;
 END;
 /
-     
+
 --------------------------------------------------------------------------------------
 控制语句----------------------------------------------------------------------------
  if else 语句 -----------------------------------------------------------------
- --example 
-     
-     create or replace  procedure sp_addSal10P(p_Name varchar2) 
+ --example
+
+     create or replace  procedure sp_addSal10P(p_Name varchar2)
         is
         v_sal emp.sal%type ;
     begin
@@ -1559,7 +1552,7 @@ END;
     end;
     /
 case ------------三种形式------------------------------------------------------
-       
+
  declare v_sal number:=3;
  begin
        case
@@ -1598,7 +1591,7 @@ case ------------三种形式---------------------------------------------------
 
 
 loop  end loop;------------------------------------------------------------------------
-         create or replace  procedure sp_addEmp 
+         create or replace  procedure sp_addEmp
             is
             v_i number :=0;
         begin
@@ -1612,11 +1605,11 @@ loop  end loop;-----------------------------------------------------------------
         /
 
 while ------------------------------------------------------------------------------
-         create or replace  procedure sp_addEmp 
+         create or replace  procedure sp_addEmp
             is
             v_i number :=10;
         begin
-               while v_i<20 
+               while v_i<20
                loop
                       insert into emp (empno,ename) values (v_i,'user_'||v_i);
                       v_i := v_i+1;
@@ -1625,7 +1618,7 @@ while --------------------------------------------------------------------------
         /
 
 for------------------------------------------------------------------------------
-             create or replace  procedure sp_addEmp 
+             create or replace  procedure sp_addEmp
                 is
             begin
             --受限制，一般不用for 因为步长始终为1，且须知始末
@@ -1639,7 +1632,7 @@ for-----------------------------------------------------------------------------
 
         ----------------------------------
         begin
-        for item in (select ename  from emp) 
+        for item in (select ename  from emp)
        loop
 
        dbms_output.put_line(item.ename);
@@ -1648,7 +1641,7 @@ for-----------------------------------------------------------------------------
        /
 
 goto -----------------------------------------------------------------
-                 create or replace  procedure sp_addEmp 
+                 create or replace  procedure sp_addEmp
                     is
                     v_i number :=100;
                 begin
@@ -1676,7 +1669,7 @@ goto -----------------------------------------------------------------
               end if ;
 
 
-             
+
 例外exception -----------------------------------------------------------------------------------
  分三类，预定义异常（常见异常），非预定义异常（一种特定的oracle 错误，但未被关联成预定义异常，可以将相应oracle 错误号，与自已声明的异常名称相关联），自定义异常
 
@@ -1751,7 +1744,7 @@ begin
 exception
  when e then
    raise_application_error(-20001,'纯属胡闹');
- 
+
 end;
 异常的一点补充
  when others then 语句 补获所有未被补的异常
@@ -1770,7 +1763,7 @@ end;
                        can contain any SQL statement (不必包括末尾的分号) or
                        any PL/SQL block (包括末尾分号).
 execute immediate stmt_sql
-execute immediate stmt_sql [ using val1,val2] 
+execute immediate stmt_sql [ using val1,val2]
 execute immediate  stmt_sql [ using val1,val2] [returning into someVariable]   --update insert delete 语句可以有returning 子句，返回一个值到某个变量中
 execute immediate stmt_sql bulk collect into ...;  集合的动态sql  select
 execute immediate stmt_sql   RETURNING BULK COLLECT INTO   --          update delete insert
@@ -1796,19 +1789,19 @@ EXECUTE IMMEDIATE v_sql_stmt USING 13, v_dept_name, '亚';
 --block  调用一个block块
 v_sql_stmt:='begin   pack_test.SP_UPDATESALDEPENDONENAME(:1,:2); end; ';
 execute immediate v_sql_stmt    using 'SCOTT',123;
- 
+
 --更新数据
  v_sql_stmt := 'UPDATE emp SET sal = 2000 WHERE empno = :1
       RETURNING sal INTO :2';
    EXECUTE IMMEDIATE v_sql_stmt USING 7369 RETURNING INTO v_sal;
    dbms_output.put_line(v_sal);
- 
+
    --删除数据
    EXECUTE IMMEDIATE 'DELETE FROM t2 WHERE id = :abce'     USING 123;
   --打开游标
    v_sql_stmt := 'SELECT * FROM emp WHERE job = :j';
    OPEN emp_cv FOR sql_stmt USING my_job;
-  
+
    --其他 情况
    EXECUTE IMMEDIATE 'ALTER SESSION SET SQL_TRACE TRUE';
 
@@ -1823,7 +1816,7 @@ END;
 /
 
 
- 
+
 
 --动态sql 中procedure 的参数 in out mode需要显式指明 ----------------------------------------------------------
 CREATE PROCEDURE create_dept (
@@ -1851,13 +1844,13 @@ BEGIN
    IF new_deptno > 90 THEN ...
 END;
 /
- 
+
 
 
 
 * -动态sql 与 bulk collect 集合操作 --------------------------------------------
 
-%BULK_ROWCOUNT 
+%BULK_ROWCOUNT
 
  bulk collect into
 
@@ -1876,7 +1869,7 @@ SELECT employee_id, last_name, salary FROM employees BULK COLLECT INTO all_emplo
                sals   SalList;
             BEGIN
                OPEN emp_cv FOR SELECT ename, sal FROM emp WHERE sal < 3000;
-               FETCH emp_cv BULK COLLECT INTO names, sals; 
+               FETCH emp_cv BULK COLLECT INTO names, sals;
                CLOSE emp_cv;
             -- Now loop through the NAMES and SALS collections.
                FOR i IN names.FIRST .. names.LAST
@@ -1886,7 +1879,7 @@ SELECT employee_id, last_name, salary FROM employees BULK COLLECT INTO all_emplo
                END LOOP;
             END;
             /
-                 
+
 
 
 
@@ -1902,7 +1895,7 @@ BEGIN
    OPEN emp_cv FOR 'SELECT empno, ename FROM emp';
      --fetch 语句的bulk collect into 处理整个集合
 --  FETCH emp_cv BULK COLLECT INTOempnos, enames  LIMIT 7;  只处理7行，可以用循环多次执行此操作完成数据的处理
-     
+
    FETCH emp_cv BULK COLLECT INTO empnos, enames;
    CLOSE emp_cv;
     --将整个返回的sal 赋给一个集合 变量
@@ -1966,7 +1959,7 @@ END;
 --------------------------------------------------------------------------------------------------------------------
 一个分页实例(java+oracle+pl/sql)
 create table book(id number(18),name varchar2(30),description varchar2(500)   ,author char(30));
- create or replace procedure insertBook(p_id number,p_name varchar2 ,p_desc varchar2,p_author char)       
+ create or replace procedure insertBook(p_id number,p_name varchar2 ,p_desc varchar2,p_author char)
      is
   begin
        insert into book  (id ,name ,description ,author) values (p_id,p_name,p_desc,p_author);
@@ -1975,7 +1968,7 @@ create table book(id number(18),name varchar2(30),description varchar2(500)   ,a
 -----------------------------------------------------------------------------------------
 //分页语句
  select t2.* from (select rownum as r,t1.* from (select * from emp) t1)    t2 where t2.r>2 and  t2.r<5 ;
- 
+
  create or replace package pack_cursor is
     type cursor_instance is ref cursor ;
 end;
@@ -1994,7 +1987,7 @@ end;
         --这一句，也关于反射机制，怎样将一个变量，作为一个sql 语句 执行
         --Dynamic SQL
         execute immediate v_sql into p_rowSumCount ;
-       
+
         if mod(p_rowSumCount ,p_pageSize)=0 then
             p_pageSumCount:=p_rowSumCount/p_pageSize;
         else
@@ -2017,7 +2010,7 @@ end;
         v_sql:='select count(*) from '||p_from ||' where '||p_where  ;
         --这一句，也关于反射机制，怎样将一个变量，作为一个sql 语句 执行
         execute immediate v_sql into p_rowSumCount ;
-       
+
         if mod(p_rowSumCount ,p_pageSize)=0 then
             p_pageSumCount:=p_rowSumCount/p_pageSize;
         else

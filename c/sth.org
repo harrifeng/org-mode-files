@@ -587,9 +587,20 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
     fin.close();
   }
 #+END_SRC
-** open close
+*** open close
+    #+BEGIN_SRC c++
+     ifstream fin;
+     fin.open("filename");
+     fin.close();
+    #+END_SRC
+** 字符流 stringstream ostringstream istringstream
    #+BEGIN_SRC c++
-    ifstream fin;
-    fin.open("filename");
-    fin.close();
+     #include <sstream>
+     using std::stringstream;
+
+     stringstream ss("hello");
+     std::cout << ss.str() << std::endl;
+
+     ss<< "hello" << 1<< "world";
+     std::cout << ss.str() << std::endl;
    #+END_SRC

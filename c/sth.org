@@ -474,3 +474,50 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
    compF1(str1,str2);
    (*compF1)(str1,str2);
   #+END_SRC
+* IO
+  1. IO 对象 不可赋值可复制
+** 类的关系
+    3个头文件，iostream fstream sstring 分别对应 “控制窗口类型" "文件" "string" 的读写
+    fstream sstring中定义的类型都是从iostream中定义的类型继承而来
+|----------+------------------------------------------|
+| 头文件   | 头文件中的类                             |
+| iostream | istream,ostream,iostream                 |
+| fstream  | ifstream ofstream fstream                |
+| sstream  | istringstream,ostringstream,stringstream |
+|----------+------------------------------------------|
+#+BEGIN_SRC ditaa
+
+#+END_SRC
+#+BEGIN_DITAA ../img/cpp-io-class.png  -r -S -E
+                       +---------+                                    +-------+
+                       |         | ^                                ^ |       | ^
+                       |         |  \                              /  |       |  \
+                       |ostream  |   \                            /   |istream|   \
+                      ^+-+-------+    \                          /    +---+---+    \
+                     /   ^             \                        /         ^         \
+                    /    |              \                      /          |          \
+                   /     |                +-----------------+             |           \
+                  /      |                |                 |             |            \
+                 /       |                |  iostream       |             |             \
+                /        |                |                 |             |              \   +-----------+
+               /         |                +-----------------+             |               \  |cBLU       |
+  +--------------+       |                ^                 ^             |                \ |ifstream   |
+  |cBLU ofstream |       |                |                 |             |                  |           |
+  |              |       |                |                 |             |                  |           |
+  |              |       |                |                 |             |                  +-----------+
+  +--------------+       |                |                 |             |
+                         |                |                 |             |
+                         |                |                 |             |
+                         |       +--------+----+       +----+------+      |
+                         |       |cPNK         |       |cBLU       |      |
+                         |       |stringstream |       |fstream    |      |
+                         |       |             |       |           |      |
+                         |       +-------------+       +-----------+      |
+                +-----------------+                                       |
+                |cPNK             |                                +------+------+
+                |ostringstream    |                                |cPNK         |
+                |                 |                                |istringstream|
+                |                 |                                |             |
+                +-----------------+                                +-------------+
+#+END_DITAA
+

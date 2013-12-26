@@ -481,13 +481,11 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
     fstream sstring中定义的类型都是从iostream中定义的类型继承而来
 |----------+------------------------------------------|
 | 头文件   | 头文件中的类                             |
+|----------+------------------------------------------|
 | iostream | istream,ostream,iostream                 |
 | fstream  | ifstream ofstream fstream                |
 | sstream  | istringstream,ostringstream,stringstream |
 |----------+------------------------------------------|
-#+BEGIN_SRC ditaa
-
-#+END_SRC
 #+BEGIN_DITAA ../img/cpp-io-class.png  -r -S -E
                        +---------+                                    +-------+
                        |         | ^                                ^ |       | ^

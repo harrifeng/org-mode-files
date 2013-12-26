@@ -475,7 +475,6 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
    (*compF1)(str1,str2);
   #+END_SRC
 * IO
-  1. IO 对象 不可赋值可复制
 ** 类的关系
     fstream sstring中定义的类型都是从iostream中定义的类型继承而来
 |----------+------------------------------------------+--------|
@@ -518,3 +517,79 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
                 +-----------------+                                +-------------+
 #+END_SRC
 
+** io 与宽字符
+   以上类名前加一个w ,则支持读写wchar_t类型的字符，如 wostream wistream
+
+** IO 对象 不可赋值或复制
+** 条件状态
+   | eof()                   | 判断是否eof                |
+   | good()                  | 流处于有效状态，则true     |
+   | fail()                  | 失败的IO操作               |
+   | bad()                   | 是否被破坏，strm::badbit位 |
+   | clear()                 | 重置所有状态为有效态       |
+   | clear(flag)             | 重置某状态为有效态         |
+   | setstate(strm::iostate) |                            |
+   | rdstate()               | 返回strm::iostate          |
+#+BEGIN_SRC c++
+  int i;
+  cin>>i;
+  if(cin){// 这里是判断 cin是处于有效状态，cin跟据当前条件状态 自动转换 成bool
+  }
+#+END_SRC
+#+BEGIN_SRC c++
+  #include <iostream>
+  #include <string>
+  #include <stdio.h>
+  #include <stdlib.h>
+  using std::cin;
+  using std::cout;
+  using std::cerr;
+  using std::endl;
+  using std::string;
+  using std::istream;
+  int read_int(istream &in){
+    int i =0;
+    while(in>>i , !in.eof()){// 读取一个int ,然后判断是否读到结尾
+      if(in.bad()){
+        exit(1);
+      }else if (in.fail()){
+        cerr<<"bad data,not int ,try again " <<std::endl;
+        in.clear(istream::failbit); // reset failbit
+        std::cerr<< "failbit flag after in.clear(istream::failbit) "<< in.fail() << std::endl;
+        in.clear();
+        std::cerr << "failbit flag after in.clear() "<< in.fail() << std::endl;
+        cin.ignore();// 忽略掉上次读取失败的字符，以便继续读下一个
+        continue;
+      }else{//成功读取一个int后退出循环
+        break;
+      }
+    }
+    return i;
+  }
+  main(int argc, char *argv[]){
+    int i =read_int(cin);
+    std::cout << i << std::endl;
+  }
+#+END_SRC
+** File
+#+BEGIN_SRC c++
+  //一行行读取一个文件， 写到另一个文件
+  main(int argc, char *argv[]){
+    ifstream fin("c.cpp");
+    ofstream fout("c.cpp2");
+    string buf;
+    if (fin ){
+      while(std::getline(fin, buf)){
+        fout<< buf <<std::endl ;
+      }
+    }
+    fout.close();
+    fin.close();
+  }
+#+END_SRC
+** open close
+   #+BEGIN_SRC c++
+    ifstream fin;
+    fin.open("filename");
+    fin.close();
+   #+END_SRC

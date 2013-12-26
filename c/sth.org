@@ -485,7 +485,7 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
 | fstream  | ifstream ofstream fstream                | 文件   |
 | sstream  | istringstream,ostringstream,stringstream | string |
 |----------+------------------------------------------+--------|
-#+BEGIN_DITAA ../img/cpp-io-class.png  -r -S -E
+#+BEGIN_SRC ditaa :file ../img/cpp-io-class.png :cmdline  -r -S -E
                        +---------+                                    +-------+
                        |         | ^                                ^ |       | ^
                        |         |  \                              /  |       |  \
@@ -516,5 +516,5 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
                 |                 |                                |istringstream|
                 |                 |                                |             |
                 +-----------------+                                +-------------+
-#+END_DITAA
+#+END_SRC
 

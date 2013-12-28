@@ -605,6 +605,7 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
      std::cout << ss.str() << std::endl;
    #+END_SRC
 * 顺序容器
+** 包括哪些
   | vector | 快速随机访问       |
   | list   | 支持快速插入、删除 |
   | deque  | 双端队列           |
@@ -636,11 +637,97 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
    | iter==iter2  |
    | iter !=iter2 |
 *** vector deque 支持的特殊操作(数组实现的 支持随机访问的)
-    |              | return |
-    |--------------+--------|
-    | iter+n       | iter   |
-    | iter-n       | iter   |
-    | iter1+=iter2 | iter   |
-    | iter1-=iter2 | iter   |
-    | iter1-iter2  | number |
-    | > >= < <=    | bool   |
+    |              | return                        |
+    |--------------+-------------------------------|
+    | iter+n       | iter                          |
+    | iter-n       | iter                          |
+    | iter1+=iter2 | iter                          |
+    | iter1-=iter2 | iter                          |
+    | iter1-iter2  | vector<type>::difference_type |
+    | > >= < <=    | bool                          |
+
+** 容器提供的类型
+   |                        | 例                                   |                                                 |
+   |------------------------+--------------------------------------+-------------------------------------------------|
+   | size_type              | vector<int>::size_type               | v1.size()                                       |
+   | difference_type        | list<int>::difference_type           | iter1-iter2                                     |
+   | iterator               | vector<string>::iterator             | vector<int>::iterator beg=v1.begin()            |
+   | const_iterator         | vector<string>::const_iterator       | vector<int>::const_iterator beg=v1.begin()      |
+   | reverse_iterator       | vector<string>::reverse_iterator     | v1.rbegin(),v1.rend()                           |
+   | const_reverse_iterator | list<string>::const_reverse_iterator |                                                 |
+   | value_type             | vector<string>::value_type           | vector<int>::value_type value1=  *(v1.begin()); |
+   | reference              | vector<string>::reference            | 同value_type&                                   |
+   | const_reference        | vector<string>::const_reference      | const value_type&                               |
+** 插入元素
+   | push_back(New)                  | append to end of ...                         |
+   | insert(iter1,New)               | insert before element of iter1               |
+   | insert(iter1,n,New)             | insert n个 New                               |
+   | insert(iter1,iter_beg,iter_end) | 在iter1前插入从iter_beg,到iter_end之间的元素 |
+*** 插入元素会使iterator失效
+#+BEGIN_SRC c++
+  vector<int>::iterator first= v1.begin();
+  v1.push_back(3);
+  vector<int>::iterator first2= v1.begin();
+  std::cout << first==first2 << std::endl;
+  两次返回的begin()是不同的，如果下面的处理，使用到了first局部变量，
+  后果不可预知
+#+END_SRC
+**  删除元素
+    | c.erase(iter1)   |
+    | c.erase(beg,end) |
+    | c.clear()        |
+    | c.pop_back()     |
+    | c.pop_front()    |
+    |                  |
+* 关联容器
+** 关联窗口列表
+| map      |               |
+| set      |               |
+| multimap | key可多次出现 |
+| multiset |               |
+** pair
+   #+BEGIN_SRC c++
+     #include <utility>
+     pair<string ,int> p("v1" ,100);
+     std::cout << p.first << " "<< p.second<< std::endl;
+     p=make_pair("hello", 300);
+   #+END_SRC
+** map
+   #+BEGIN_SRC c++
+        map<string,int> m;
+        m["3"]=3;
+        // 使用下标访问元素，如果key不存在， 则自动创建一个，value为相应类型的默认值
+        std::cout <<m["3"]<< std::endl;
+     // 如果不想自动插入，则用map.count() ,map.find() ,来处理
+     if(m.count("3")){
+       map<string,int>::iterator it=m.find("3");
+         pair<string,int> p = *it;
+         std::cout << p.second << std::endl;
+     }
+
+
+        for (map<string,int>::iterator it=m.begin(); it!=m.end(); it++) {
+          pair<string,int> p = *it;
+          std::cout << p.first <<"="<<p.second << std::endl;
+         }
+   #+END_SRC
+*** map 的iterator解引用 是pair类型
+
+*** map 插入
+    #+BEGIN_SRC c++
+      map<string,string> m;
+      m.insert(make_pair("3", "111"));
+      pair<map<string,string>::iterator,bool> ret=
+        m.insert(make_pair("3", "222"));//重复则什么都不做, 返回值是一个pair<iterator,boolInsertSuccessful>
+      std::cout << m["3"] << std::endl;//m["3"] 的值 是"111" ,而不是"222"
+
+      m["4"]="111";
+      m["4"]="222"; //覆盖
+      std::cout << m["4"] << std::endl;//m["4"] 的值 是"222" ,而不是"111"
+
+    #+END_SRC
+*** map 删除
+    | erase(Key)     |
+    | erase(iter)    |
+    | erase(beg,end) |
+

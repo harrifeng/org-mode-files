@@ -48,9 +48,9 @@
      + [[file:c/register.org][汇编 寄存器]]
      + [[file:c/fread_fwrite_int.org][读写二进制文件,读写int]]
    + emacs
-     + [[file:emacs/emacs-introduce.org][Emacs闲言碎语]]
      + [[file:emacs/emacs-kill-region-or-line.org][Emacs中的剪切复制]]
      + [[file:emacs/open-with.org][Emacs的插件openwith.el]]
+     + [[file:emacs/emacs-introduce.org][Emacs闲言碎语]]
      + [[file:emacs/emacs-can-do-what.org][GNU/Emacs 可以做什么]]
      + [[file:emacs/ediff.org][Windows 下使用Emacs的 Ediff 进行文件的比较、合并]]
      + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
@@ -117,8 +117,6 @@
    + sqlserver
      + [[file:sqlserver/clonedb.org][clone db in sqlserver]]
      + [[file:sqlserver/sqlserver-kill-all-connection.org][kill所有连接到某库的连接]]
-   + stock
-     + [[file:stock/stock02.org][民丰特纸 2013-07-23]]
    + svn
      + [[file:svn/svnignore.org][svn:ignore global-ignores property 忽略某些文件]]
    + windows

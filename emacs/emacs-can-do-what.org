@@ -5,9 +5,9 @@
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:     2011-08-27 六
 #+DESCRIPTION:GNU/Emacs 可以做什么
-#+KEYWORDS: emacs 
+#+KEYWORDS: emacs
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
@@ -78,7 +78,7 @@ get {return last ;}
  UPDATE_DATETIME									DATETIME
  UPDATER_ID									NVARCHAR					20
  DELETE_FLG									NVARCHAR					1
-  
+
 * Emacs 的列编辑模式(Emacs称矩形编辑rect),
   Emacs 不仅可以选择几行数据，而且可以选择列
   我用到的与列编辑有关的 扩展
@@ -88,10 +88,10 @@ get {return last ;}
   C-x-r-k(Control+x,r,k) 列删除
   C-x-r-t                列插入
   C-x-r-y                列粘贴
-  
+
 比如以下此为例
  1删除每行开头的分号
- 2 在每行开头插入# 
+ 2 在每行开头插入#
 #whateveryouwantSTOCK_ID									IDENTITY
 #whateveryouwantSEMIFINISHER_ID									INT
 #whateveryouwantSTOCK_WEIGHT									DECIMAL
@@ -103,9 +103,9 @@ get {return last ;}
 #whateveryouwantUPDATER_ID									NVARCHAR
 #whateveryouwantDELETE_FLG									NVARCHAR
 * 美化sql
-  需要 blancosqlformatter-0.1.1.jar 作后台进程处理 
+  需要 blancosqlformatter-0.1.1.jar 作后台进程处理
   http://www.emacswiki.org/emacs/SqlBeautify
-  
+
 * 作为数据库前端，以oracle ,mysql 为例
 * （我写的）编写mysql 脚本时，适时的补全表名列名
   http://www.emacswiki.org/emacs/sqlparser-mysql-complete.el
@@ -116,7 +116,7 @@ get {return last ;}
 * dired (Emacs的文件管理系统(资源管理器))
   此例演示使用dired文件管理系统及 第四讲中提到的列编辑
   模式批量重命名文件
-  
+
 * org-mode 非程序员的mode
   我现在编写的这个文件使用的mode 就是org-mode
   它的第一特定是TAB 进行折叠
@@ -130,9 +130,9 @@ get {return last ;}
   目录下的所有org 文件，导出成html 放到
   /home/jixiuf/documents/org/public_html/
   目录下为例
-  
+
 * org-table ,org-mode 中的表格
-  
+
   | head   | head2 | head3 |
   | hello  | world | ok    |
   | this   | is    | come  |
@@ -178,8 +178,8 @@ get {return last ;}
   比如，我所有的emacs配置文件使用git 进行版本管理,
 * 在svn 或git等版本控制工具管理的文件里，查看此文件的历史
   C-xvl 查看历史,
-  
-* Version Control  
+
+* Version Control
   emacs 有一个Version Control ，它试图将所有现存的版本管理工具
   如svn cvs git 等等版本控制工具在emacs中的使用方式得到统一
   比如，不论你是svn 还是git ,
@@ -188,7 +188,7 @@ get {return last ;}
   C-xvu revert
   而功能最强大的功能C-xvv 对应的，它会根据当前文件所处的状态，自动
   决定下一部操作该如何做
-  
+
 * Ediff 文件的合并，对比的工具，一般与版本控制工具使用，如git ,svn.
 * 录制键盘宏
   另外说一点我对键盘和鼠标的一些看法，不想带有太多的偏见.
@@ -197,7 +197,7 @@ get {return last ;}
   这一次在(100,200)处点击的是确定按钮，下一次可能就是其他按钮了.
   所以你没法记住一个坐标，然后将它重复点击n次(就算能，可重复性相对键盘较差
   一点,说到这，推荐大家学习一下AutoHotKey这款开源软件).
-  
+
   而Emacs 用熟了之后，是要完全脱离鼠标的使用的，虽然它也添加了对鼠标的支持，
   鼠标、菜单栏、工具栏只起一个辅助作用.
 
@@ -230,10 +230,10 @@ adm:x:4:
    1 把光标移动到第一行的末尾
      M-<   (实际是Shift-Alt+,) (beginning-of-buffer) 函数，跳到第一行
      C-e    (Control-e)       (move-end-of-line)  移动到行尾
-   2 开始录制键盘宏 C-x(        (kmacro-start-macro)  
+   2 开始录制键盘宏 C-x(        (kmacro-start-macro)
       C-backspace              (backward-kill-word) 删除光标前的一个单词
       C-n                      (next-line)          光标移动到下一行
       C-e                       (move-end-of-line)  移动到行尾
       注意开始录制的时候光标所处的位置，与录制结束后所处的位置应该相似 ,才
-     能使录制的内容多次执行后无误 (比如此处均处于每行的末尾) 
+     能使录制的内容多次执行后无误 (比如此处均处于每行的末尾)
    3 结束录制键盘宏 C-x)        (kmacro-end-macro)

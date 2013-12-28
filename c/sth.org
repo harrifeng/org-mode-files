@@ -644,3 +644,15 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
     | iter1-=iter2 | iter   |
     | iter1-iter2  | number |
     | > >= < <=    | bool   |
+#+BEGIN_SRC c++
+  vector<int> v1;
+  v1.push_back(1);
+  v1.push_back(2);
+  v1.push_back(3);
+  vector<int>::iterator it = v1.begin()+ v1.size()/2;
+  std::cout << *it << std::endl;
+
+  list<int> il(v1.begin(),v1.end());
+
+  // list<int>::iterator it = il.begin()+il.size()/2; //error  list doesnot support
+#+END_SRC

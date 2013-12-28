@@ -156,10 +156,10 @@ pre.src {
     /* background:#263111; */
     color: #f7f8c6;
 	font-size: 10pt;
-    width:85%;
+    width:90%;
 	padding: 0em;
 	margin: 0;
-	width: 700px;
+	/* width: 700px; */
 	float: none;
 	clear: none;
 	line-height: 1.333;
@@ -169,11 +169,12 @@ pre.src {
     max-height:500px;           /*IEXPLORE  don't support max-height*/
     _height:expression(this.scrollHeight > 300 ? "300px" : "auto");
     min-height:50px;
-    max-width:700px;
+    /* max-width:700px; */
     min-width:700px;
     overflow-x:auto;
     overflow-y:auto;
 }
+
 blockquote {
 	 border: #D1D7DC;
      border-style: solid;

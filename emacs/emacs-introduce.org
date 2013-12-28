@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 #+LANGUAGE:  zh
-#+TITLE:   Emacs一些并不可笑的笑话，闲言碎语
-#+AUTHOR:    孤峰独秀
+#+TITLE:   Emacs闲言碎语
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:      2011-06-09 星期四
 #+DESCRIPTION: emacs 闲言碎语

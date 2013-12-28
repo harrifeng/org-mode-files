@@ -730,4 +730,7 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
     | erase(Key)     |
     | erase(iter)    |
     | erase(beg,end) |
-
+** set
+   #+BEGIN_SRC c++
+     //count(Key) 返回0 1 是否含有此key
+   #+END_SRC

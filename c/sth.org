@@ -1068,4 +1068,45 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
   }
 #+END_SRC
 
+* 复制构造函数
+#+BEGIN_SRC c++
+  class MyClass
+  {
+  public:
+   //用另一个MyClass  初始化
+   //若要禁止复制 ， 则声明为private
+  //若要连自身的成员函数 或友元函数也不能访问， 则只声明 不定义
+    MyClass(const MyClass &cls);
+  };
+#+END_SRC
+* 赋值操作符
+  #+BEGIN_SRC c++
+      MyClass& MyClass::operator=(const MyClass &rhs) {
+        // Check for self-assignment!
+        if (this == &rhs)
+          return *this;
+        return *this;
+      }
+  #+END_SRC
+* 析构函数
+  #+BEGIN_SRC c++
+    class Name
+    {
+    private :
+      string name;
+    public:
+      Name(string &n){name=n;}
+      virtual ~Name(){
+        std::cout << "deleted Name class:" <<name << std::endl;
+      }
+    };
 
+    int main(int argc, char *argv[])
+    {
+      string hello= "hello";
+      Name *n  = new Name(hello);
+      delete n;
+      return 0;
+    }
+  #+END_SRC
+**  即使我们自己编写了析构函数 ， 系统为我们自动 生成的合成析构函数也会运行

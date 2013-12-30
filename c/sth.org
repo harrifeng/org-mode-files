@@ -428,6 +428,37 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
 
 #+END_SRC
 ** 默认构造函数不能自动初始化 内置类型 的成员,必须自定义构造函数初始化这些成员,对于类类型的成员默认用他们默认构造函数来初始化
+** 构造函数隐式转换
+   #+BEGIN_SRC c++
+     class Name
+     {
+     public:
+       Name(string &str){
+
+       }
+       void copy(Name n){           // 接受一个Name类型
+         std::cout << "it works" << std::endl;
+       }
+     };
+      int main(int argc, char *argv[])
+      {
+        string str=string("hello");
+        string world=string("world");
+        Name name(str);
+        name.copy(world);  // 传过来的是string 类型， 但是copy()接受的是Name,编译器会自动用string调用Name的相应构造函数
+        return 0;
+      }
+   #+END_SRC
+*** 抑制构造函数隐匿转换
+    #+BEGIN_SRC c++
+      class Name
+      {
+      public:
+        explicit Name(string &str){
+        }
+      };
+
+    #+END_SRC
 * 函数重载(同一个类中 ，函数名相同参数不同)
 ** 参数不同的含义，使用typedef定义一个别名后，认为使用别名跟使用本名是同一种类型
 ** 参数的const 与否，与重载
@@ -871,4 +902,170 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
 3. inserter(vector,iter) 当需要插入时 在iter所指位置后插入
 *** iostream 迭代器
 *** 反向迭代器
+* 类
+  1. 类的定义必须以分号结束 ， 因为可以}后加 对象定义列表,像struct一样
+     #+BEGIN_SRC c++
+       class Name
+       {
+       } name1, name2;
+     #+END_SRC
+* 类 this 指针
+  #+BEGIN_SRC c++
+    //this 是指针
+    class Name
+    {
+    public:
+      int i;
+      Name& get(){
+        return *this;//this指针   转成对象的引用
+      }
+      Name get2(){                  // // 转成对象
+        return *this;
+      }
+
+    };
+
+    int main(int argc, char *argv[]){
+      Name n;
+      n.i=3;
+      Name &p = n.get();
+      Name same = n.get2();
+      // 打印结果都是3
+      std::cout << p.i << std::endl;
+      std::cout << same.i << std::endl;
+      return 0;
+    }
+  #+END_SRC
+** this 与const
+   1. this 的类型是 指向类类型的const 指针， 意思是它只能指向当前对象， 不能指向其
+      他对象 ，可以改变所指对象 的值 ， 但不能改变this所指的地址
+   2. 在const 成员函数中，this是一个指向const类类型对象的const 指针
+      即 不能改变其所指的对象 ，也不能改变其地址
+      有一个问题 ，即return 当前对象时 类型也固定成this的类型，
+      #+BEGIN_SRC c++
+        class Name
+        {
+        public:
+          int i;
+          Name& get() const{// 编译是通不过的(这里的const 是对this的限制)
+            //因为*this 的类型是const的
+            return *this;
+          }
+          const Name& get2() const{      //这样是允许的
+            return *this;
+          }
+        };
+      #+END_SRC
+* mutable 可变数据成员
+  即使在const成员函数中， 也可以对mutable成员变量进行更改
+  #+BEGIN_SRC c++
+    class Name
+    {
+    public:
+      mutable int i;
+      Name& set() const{
+        i=3;//this 是const的， 但是依然可以对this->i 进行更改
+      }
+    };
+  #+END_SRC
+* 友元 friend
+** friend Class
+  允许某些 非成员函数或类 访问类private成员，同时阻止其他一般的访问
+  如 重载的操作符（操作符不是类的成员)
+#+BEGIN_SRC c++
+  class Name
+  {
+// 声明， NameF 类，可以访问我的么有成员
+    friend class NameF;//只是一个声明， 不是定义
+  private :
+    string name;
+  public:
+    Name(string n){
+      name=n;
+    }
+  };
+  class NameF
+  {
+  public:
+    void print(Name n){
+      //访问n 的private成员 name
+      std::cout << n.name << std::endl;
+    }
+  };
+
+  int main(int argc, char *argv[])
+  {
+    Name n("hello");
+    NameF f;
+    f.print(n);
+    return 0;
+  }
+#+END_SRC
+** friend Function
+#+BEGIN_SRC c++
+  class Name; // 前向声明，因为NameF依赖Name , Name也依赖NameF
+
+  class NameF{
+  public:
+    void print(Name n);
+    void print2(Name n);
+  };
+
+  class Name
+  {
+    // 声明， NameF.print，可以访问我的私有成员
+    friend void NameF::print(Name n);//只是一个声明， 不是定义
+  private :
+    string name;
+  public:
+    Name(string n){
+      name=n;
+    }
+  };
+
+  void NameF::print(Name n)
+  {
+    //访问n 的private成员 name
+    std::cout << n.name << std::endl;
+  }
+
+  void NameF::print2(Name n){
+    // 在这里访问n.name是不允许 的，print2不是friend
+    // std::cout << n.name << std::endl;
+  }
+  int main(int argc, char *argv[])
+  {
+    Name n("hello");
+    NameF f;
+    f.print(n);
+    return 0;
+  }
+#+END_SRC
+* static 数据成员
+
+** static 数据成员必须在 类的定义 外 初始化 (只能一次）
+#+BEGIN_SRC c++
+  class Name
+  {
+  private:
+    static int init_i(int iParm){
+      return iParm;
+    }
+
+  public:
+    // static int i=3; // error 不允许在类内初始化 static 数据成员
+    //static const int i=4;  //ok 例外是 static const类型的常量，则可以在类体用常量表达式初始化，
+
+    static int i;
+  };
+  // 在类外定义  初始化 ,初始化的时候 不能加static 关键字
+  //init_i() 是Name类private static 成员， 此处也可以直接这样调
+  int Name::i =init_i(3);
+
+  int main(int argc, char *argv[])
+  {
+    return 0;
+  }
+#+END_SRC
+
 

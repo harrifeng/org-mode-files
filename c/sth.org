@@ -1109,4 +1109,72 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
       return 0;
     }
   #+END_SRC
-**  即使我们自己编写了析构函数 ， 系统为我们自动 生成的合成析构函数也会运行
+ 1.  即使我们自己编写了析构函数 ， 系统为我们自动 生成的合成析构函数也会运行
+* 管理具有指针成员的类（引用计数)
+  #+BEGIN_SRC c++
+    #include <iostream>
+    #include <string>
+    #include <vector>
+
+    using namespace std;
+    class Nptr
+    {
+      friend class Obj;
+    private:
+      size_t cnt;
+      int *p;
+    public:
+      Nptr(size_t c,int *pr):cnt(c), p(pr)  {}
+      ~Nptr(){
+        std::cout << "~Nptr() is called" << std::endl;
+        delete p;
+      }
+      int * get_value(){
+        return p;
+      }
+      size_t  get_cnt(){
+        return cnt;
+      }
+
+    };
+    class Obj
+    {
+    public:
+      Nptr *nptr;
+      Obj(int *i ):nptr( new Nptr(1,i)) {}
+      virtual ~Obj(){
+        std::cout << "nptr.cnt--" << std::endl;
+        if (--nptr->cnt==0){
+              delete nptr;
+          std::cout << "nptr cnt =0 ,deleted" << std::endl;
+        }
+      }
+      Obj(Obj &another): nptr(another.nptr)
+      {
+        another.nptr->cnt++;
+      }
+      Obj& operator=(const Obj &rhs) {
+        // Check for self-assignment!
+        if (this == &rhs)
+          return *this;
+        if ((--nptr->cnt)==0){
+          delete nptr;
+        }
+        nptr=rhs.nptr;
+        rhs.nptr->cnt++;
+        return *this;
+      }
+    };
+
+    int main(int argc, char *argv[]){
+      int *i   = new int(3) ;
+      Obj obj(i);
+      std::cout << obj.nptr->get_cnt()<< std::endl;
+      Obj obj2(obj);
+      std::cout << obj.nptr->get_cnt()<< std::endl;
+      Obj obj3=obj2;
+
+      std::cout << obj.nptr->get_cnt()<< std::endl;
+      return 0;
+    }
+  #+END_SRC

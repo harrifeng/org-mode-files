@@ -1178,3 +1178,147 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
       return 0;
     }
   #+END_SRC
+* 操作符重载
+  1. 重载操作符 必须 具有  一个 类类型 操作数，即 不能重载内置类型的操作符，
+     #+BEGIN_SRC c++
+     int  operator+(int ,int )//eror , int int 都是内转类型
+     #+END_SRC
+  2. 优先级 结合性是固定的
+  3. 不再具备短路求值特殊性（重载 || &&时） ，因 重载后  ，不能保证 求值顺序，
+     所以 两个值都要 求
+  4. 一般将自述和关系操作符 定义为 非成员函数，赋值 定义为成员函数(=  += )
+     #+BEGIN_SRC c++
+       MyClass& MyClass::operator=(const MyClass &rhs) { //赋值= 与+=  返回 引用
+         // Check for self-assignment!
+         if (this == &rhs)
+           return *this;
+         return *this;
+       }
+
+       MyClass operator+(const MyClass &me const MyClass &other) //返回 不是引用
+       {
+         MyClass result = *this;
+         result += other;
+         return result;
+       }
+     #+END_SRC
+  5. 与友元函数 ，当为非成员函数时， 通常设为它的友好函数
+   #+BEGIN_SRC c++
+     class A
+     {
+       friend A operator+(const A &a, const A &a2);// 声明为A的码元函数,这样 ，可以访问A的private member
+
+     };
+
+     A operator+(const A &self,const A &other)
+     {
+       A result =*self +*other;
+
+       return result;
+     }
+   #+END_SRC
+  6. 不建议 重载  逗号 取地址 逻辑与 逻辑或
+  7. 如果重载了 ＋  通常也会重载 +=
+  8. 要作为map 的key 的类 ，通常要重载<号与==, 如果定义了== 一般会定义!= ,如果定
+     义的<  通常也该提供 > >= <=
+  9. = [] ()  -> 四个必须定义的成员函数（否则编译错)， \+= 建议定义成成员，改变对
+     象状态 如++ -- 通常定义为成员，对象的操作符通常定义为非成员 如 + - * / = =
+     ! =
+  10. < < 与 > > 必须非成员函数
+      #+BEGIN_SRC c++
+        std::ostream& operator<<(std::ostream& s, const MyClass& c)
+        {
+          return s;
+        }
+
+        istream& operator>>(istream& s, const MyClass& c)
+        {
+         //要处理 错误 ，与eof
+          return s;
+        }
+      #+END_SRC
+  11. = 操作符 ，可以重载 ,必须定义为成员函数
+  12. [] 下标
+      #+BEGIN_SRC c++
+        Class& operator[](int index);
+      #+END_SRC
+  13. 成员访问 解引用*  箭头-> (通常用在 智能指针的类中)
+      #+BEGIN_SRC c++
+        //* 必须定义为成员
+        MyClass& MyClass::operator*() {
+          return *ptr->sp;  //return ref
+        }
+
+        MyClass* MyClass::operator->():const { //const or not
+          return ptr->sp;  //return pointer
+        }
+      #+END_SRC
+  14. ++ --
+   #+BEGIN_SRC c++
+     MyClass& MyClass::operator++() { //++i
+       return *this;
+     }
+     MyClass& MyClass::operator++(int) {//i++ ,参数int 无意义 ，只是为了区分i++ ++i
+       return *this;
+     }
+   #+END_SRC
+  15. 调用操作符（） 和函数对象
+  #+BEGIN_SRC c++
+    class MyClass
+    {
+    public:
+      int operator() (int i) {
+        return i+1;
+      }
+    };
+    int main(int argc, char *argv[])
+    {
+      MyClass c;//c is object
+      int ret=c(1);                 // 调用操作符,定义了调用操作符的类，的对象 常称为函数对象 ，
+      return 0;
+    }
+  #+END_SRC
+  #+BEGIN_SRC c++
+     //函数对象在 算法库中的应用
+    #include <iostream>
+    #include <string>
+    #include <cstdlib>
+    #include <vector>
+    #include <algorithm>
+    using namespace std;
+
+    class IsGreatThanN
+    {
+    private:
+      size_t n;
+    public:
+    IsGreatThanN(size_t N){
+        this->n=N;
+      }
+
+      bool operator() (const string & str) { //定义了 调用操作符()
+        return str.size()>n;
+      }
+    };
+
+    int main(int argc, char *argv[])
+    {
+      vector<string> v;
+      v.push_back(string("abc"));
+      v.push_back(string("abcccccc"));
+      v.push_back(string("dddddabc"));
+      int cnt=count_if(v.begin(),v.end(),IsGreatThanN(5)); // 这里利用函数对像 ，在初始化时，将参数5传过去 ，count_if 其实是利用了 IsGreatThanN 对象的() 操作符来完成bool的判断的
+      std::cout << cnt << std::endl;
+      return 0;
+    }
+  #+END_SRC
+  16  转换操作符
+  #+BEGIN_SRC c++
+      class SmallInt
+      {
+      public:
+        //转换成int 的转换操作符
+        operator int() const{ return 0}
+      };
+
+  #+END_SRC

@@ -58,6 +58,7 @@
      + [[file:emacs/cc-indent.org][cc mode 里关于indent(缩进)的控制]]
      + [[file:emacs/c-c++-cedet-eassist.org][cedet eassist在c c++编程中的应用]]
      + [[file:emacs/cedet-customize.org][cedet 的定制，（译文）]]
+     + [[file:emacs/csharp.org][emacs csharp 开发环境配置]]
      + [[file:emacs/emacs-smart-beginning-of-line-and-end-of-line.org][emacs smart-end-of-line smart-beginning-of-line]]
      + [[file:emacs/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念]]
      + [[file:emacs/emacs-help-system.org][emacs 的帮助系统]]

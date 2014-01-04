@@ -107,28 +107,11 @@
                (list ;;"c:\\.net3.5ra"    ;; <<- locations of reference assemblies
                      ;;"c:\\.net3.0ra"    ;; <<-
                      ;; "C:\\Windows\\Microsoft.NET\\Framework\\v2.0"      ;; <<- location of .NET Framework assemblies
-                "D:\\usr\\unity\\Data\\Managed\\"
-                  "D:\\usr\\unity"
-                     "C:\\Windows\\Microsoft.NET\\Framework\\v3.5"))
-
-    (defvar is-my-dll-loaded nil)
-    ;;如果你有额外 的dll文件需要加载，这样可以工作，可能不是最好的方法
-    ;; 参见这个bug report
-   ;; https://code.google.com/p/csharpmode/issues/detail?id=15
-    (defun laod-my-dll()
-      "emacs中至少打开了一个powershell 后,才不会报错"
-      (unless is-my-dll-loaded
-        (cscomp-load-one-assembly "D:\\usr\\unity\\Data\\Managed\\UnityEngine.dll")
-        (cscomp-load-one-assembly "D:\\usr\\unity\\Data\\Managed\\UnityEditor.dll")
-        (setq is-my-dll-loaded t)))
-
-    (run-at-time "4"  nil  'laod-my-dll);;10秒后load,
-    ;;
-
+                "D:\\usr\\unity\\Data\\Managed\\"  ;; 你自已项目用到的dll所在的路径
+                ;; "C:\\Windows\\Microsoft.NET\\Framework\\v3.5" ;; 系统路径 似乎不用加入
+                ))
     (require 'csharp-completion)
     (require 'flymake)
-
-
 
     (defun helm-complete-csharp()
       (interactive)
@@ -160,7 +143,7 @@
     (csharp-analysis-mode 1)
     (local-set-key "\M-\\"   'cscomp-complete-at-point)
     (local-set-key [(control return)] 'helm-complete-csharp)
-    (laod-my-dll)
+    ;; (laod-my-dll)
     ;; (local-set-key "\C-x\C-e"  'eval-print-last-sexp)
     ;; (add-to-list 'ac-sources 'ac-source-csharp) ;
     )
@@ -175,6 +158,35 @@ helm可以受益于此，
 你如果 想用auto-complete 进行补全，csharp-completion.el
 已经提供 ac-source-csharp 这个source,及(ac-complete-csharp) 这个函数，
 
+* 目前尚未实现的补全，
+  #+BEGIN_SRC java
+    using UnityEngine;
+    using System;
+    using System.Collections;
+    [RequireComponent(typeof(AudioSource))]
+    public class cube : MonoBehaviour {
+      public void test()
+      {
+        string s;
+        s. // 这里是可以进行实例的
+      }
+    }
+  #+END_SRC
+ #+BEGIN_SRC java
+    using UnityEngine;
+   using System;
+   using System.Collections;
+   [RequireComponent(typeof(AudioSource))]
+   public class cube : MonoBehaviour {
+     public void test()
+     {
+         if(true){
+             string s;// 声明在if 语句里的变量，似乎在分析语法树的时候 ,分析不到if里面定义的变量
+             s. // 这里不可以进行补全
+         }
+     }
+   }
+ #+END_SRC
 * Links 我关于csharp 的配置
   https://github.com/jixiuf/emacs_conf/blob/master/site-lisp/joseph/joseph-csharp.el
   https://github.com/jixiuf/emacs_conf/blob/master/site-lisp/joseph/joseph-program.el

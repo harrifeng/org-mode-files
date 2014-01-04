@@ -198,4 +198,4 @@ helm可以受益于此，
   https://github.com/jixiuf/emacs_conf/blob/master/site-lisp/joseph/joseph-csharp.el
   https://github.com/jixiuf/emacs_conf/blob/master/site-lisp/joseph/joseph-program.el
 * 另附截图一张
-  [file:../img/csharp.png]
+  [[file:../img/csharp.png]]

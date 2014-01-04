@@ -81,7 +81,7 @@
 #+BEGIN_SRC sh
  到CscompUtilities.cs 所在目录 ，使用csc.exe编译，生成CscompUtilities.dll
   // 需要依赖ICSharpCode.NRefactory.dll, 同目录下已经自带
- // 注意不发用 c:\\windows\Microsoft.NET\\Framework\\v4.0.* 目录下的csc编译， 似乎版本太高， 用3.5 应该可以
+ // 注意不要用 c:\\windows\Microsoft.NET\\Framework\\v4.0.* 目录下的csc编译， 似乎版本太高， 用3.5 应该可以
  csc.exe  /target:library /R:ICSharpCode.NRefactory.dll   /debug /out:CscompUtilities.dll  CscompUtilities.cs
  csc.exe  /target:library /R:ICSharpCode.NRefactory.dll   /platform:anycpu  /out:CscompUtilities.dll  CscompUtilities.cs
   //或者你自己建一个VS2010 的项目，加入这段代码， 引用ICSharpCode.NRefactory.dll,利用VS2010进行编译，(我用vs2005打开CscompUtilities.cs报错)
@@ -175,7 +175,7 @@ helm可以受益于此，
       public void test()
       {
         string s;
-        s. // 这里是可以进行实例的
+        s. // 这里是可以进行补全的
       }
     }
   #+END_SRC

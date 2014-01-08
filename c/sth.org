@@ -1423,3 +1423,16 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
          return 0;
        }
      #+END_SRC
+* 子类 权限的控制
+  子类可以进一步限制 但不能 放松 它所继承来的成员的访问权限
+  1. class Child:public Parent ,原来为public 则为public,原来为protected 则为  protected
+  2. class Child:protect Parent ,原来为public 则为protected,原来为protected 则为
+     protected(默认)
+  3. class Child:private Parent ,parent所有成员在Child为成为private
+
+  1. public 的,可以继承Parent继承的接口, ,private protected 不行
+ #+BEGIN_SRC c++
+   class Base{};
+    struct D1: Base{}  ;;默认是public
+    class D2:Base{}  默认是protected
+ #+END_SRC

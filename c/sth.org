@@ -1322,3 +1322,104 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
       };
 
   #+END_SRC
+* 面向对象 繼承 多态(动态绑定,父类引用指向子类对象)) 封装
+  1. 父类 通常 应该 将 子类需要重新定义的函数 声明为 virtual
+  2. 继承语法  子类:[public |private|protected] 父类
+  3. 子类可以选择性的继承父类的 virtaul 函数
+     #+BEGIN_SRC c++
+        class Parent
+        {
+        public:
+          virtaul void test();
+        };
+       class Child:public Parent
+       {
+       public:
+         void test();
+       };
+     #+END_SRC
+  4. 子类的声明(并非定义)
+    #+BEGIN_SRC c++
+       //正确
+       class Child;
+       class Parent;
+     #+END_SRC
+     #+BEGIN_SRC c++
+        //错误
+        class Child :Parent
+     #+END_SRC
+  5. virtaul
+  #+BEGIN_SRC c++
+    #include <iostream>
+    #include <string>
+    #include <vector>
+
+    using namespace std;
+
+    class Parent
+    {
+    public:
+      virtual void test(){
+        std::cout << "pppp" << std::endl;
+      }
+    };
+    class Child:public Parent
+    {
+    public:
+      virtual void test(){
+        std::cout << "childdddd" << std::endl;
+      }
+    };
+
+    void call_test(Parent *p){// 这里声明为Parent* 类型,
+      p->test(); // 因为Parent 将test()函数 声明为 virtaul
+    };
+
+    int main(int argc, char *argv[]){
+      Parent p  ;
+      Child c;
+      call_test(&p);
+      call_test(&c);
+      c.Parent::test();// 强制使用 parent版 的test
+      return 0;
+    }
+  #+END_SRC
+  6. virtaul 函数 与　默认参数
+     若　父类　子类都为virtal 函数 指定了默认参数 , 则 传过来的是什么跟所指对象
+     的实际类型无关, 跟 传过来形参的类型有关
+     #+BEGIN_SRC c++
+       #include <iostream>
+       #include <string>
+       #include <vector>
+
+       using namespace std;
+
+       class Parent
+       {
+       public:
+         virtual void test(int i=1 ){
+           std::cout << "pppp"<< i << std::endl;
+         }
+       };
+       class Child:public Parent
+       {
+       public:
+         virtual void test(int i=2){
+           std::cout << "childdddd"<<i << std::endl;
+         }
+       };
+
+       void call_test(Parent *p){
+         p->test();
+       };
+
+       int main(int argc, char *argv[]){
+         Parent p  ;
+         Child c;
+         call_test(&p); //打印的int 是 1
+         call_test(&c);//打印的int 是 1 ,因为 call_test()里调用的时候 , 指针的类型是Parent* 类型的
+         c.Parent::test();
+         // 最佳实践,默认参数 要一致
+         return 0;
+       }
+     #+END_SRC

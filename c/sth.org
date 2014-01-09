@@ -1322,33 +1322,45 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
       };
 
   #+END_SRC
-* 面向对象 繼承 多态(动态绑定,父类引用指向子类对象)) 封装
-  1. 父类 通常 应该 将 子类需要重新定义的函数 声明为 virtual
-  2. 继承语法  子类:[public |private|protected] 父类
-  3. 子类可以选择性的继承父类的 virtaul 函数
-     #+BEGIN_SRC c++
-        class Parent
-        {
-        public:
-          virtaul void test();
-        };
-       class Child:public Parent
-       {
-       public:
-         void test();
-       };
-     #+END_SRC
-  4. 子类的声明(并非定义)
+* 面向对象 多承 多态(动态绑定,父类引用指向子类对象)) 封装
+** 父类 通常 应该 将 子类需要重新定义的函数 声明为 virtual
+** 继承语法  子类:[public |private|protected] 父类, 子类权限的控制
+   子类可以进一步限制 但不能 放松 它所继承来的成员的访问权限
+*** class Child:public Parent ,原来为public 则为public,原来为protected 则为  protected
+*** class Child:protect Parent ,原来为public 则为protected,原来为protected 则为protected(默认)
+*** class Child:private Parent ,parent所有成员在Child为成为private
+    public 的,可以继承Parent继承的接口,private protected 不行
     #+BEGIN_SRC c++
+     class Base{};
+      struct D1: Base{}  ;;默认是public
+      class D2:Base{}  默认是protected
+    #+END_SRC
+
+
+** 子类可以选择性的继承父类的 virtaul 函数
+   #+BEGIN_SRC c++
+      class Parent
+      {
+      public:
+        virtaul void test();
+      };
+     class Child:public Parent
+     {
+     public:
+       void test();
+     };
+    #+END_SRC
+** 子类的声明(并非定义)
+   #+BEGIN_SRC c++
        //正确
        class Child;
        class Parent;
-     #+END_SRC
-     #+BEGIN_SRC c++
+   #+END_SRC
+   #+BEGIN_SRC c++
         //错误
         class Child :Parent
-     #+END_SRC
-  5. virtaul
+   #+END_SRC
+** virtaul
   #+BEGIN_SRC c++
     #include <iostream>
     #include <string>
@@ -1384,7 +1396,7 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
       return 0;
     }
   #+END_SRC
-  6. virtaul 函数 与　默认参数
+** virtaul 函数 与　默认参数
      若　父类　子类都为virtal 函数 指定了默认参数 , 则 传过来的是什么跟所指对象
      的实际类型无关, 跟 传过来形参的类型有关
      #+BEGIN_SRC c++
@@ -1423,16 +1435,3 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
          return 0;
        }
      #+END_SRC
-* 子类 权限的控制
-  子类可以进一步限制 但不能 放松 它所继承来的成员的访问权限
-  1. class Child:public Parent ,原来为public 则为public,原来为protected 则为  protected
-  2. class Child:protect Parent ,原来为public 则为protected,原来为protected 则为
-     protected(默认)
-  3. class Child:private Parent ,parent所有成员在Child为成为private
-
-  1. public 的,可以继承Parent继承的接口, ,private protected 不行
- #+BEGIN_SRC c++
-   class Base{};
-    struct D1: Base{}  ;;默认是public
-    class D2:Base{}  默认是protected
- #+END_SRC

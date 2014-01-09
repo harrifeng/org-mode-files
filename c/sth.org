@@ -1435,3 +1435,166 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
          return 0;
        }
      #+END_SRC
+** 友元关系不能继承
+  #+BEGIN_SRC c++
+    #include <iostream>
+    #include <string>
+    #include <vector>
+
+    using namespace std;
+    class Parent
+    {
+      friend class Friend;
+    protected:
+      int i;
+    };
+
+    class Child:public Parent
+    {
+    protected:
+      int j;
+    };
+    class Friend
+    {
+    public:
+      void test(Parent p){p.i=3;}           // ok
+      // void test(Child c){c.j=3;}            // errro
+    };
+    class FriendChild:public Friend
+    {
+    public:
+      // void test(Parent p){p.i=3;};   // error
+    };
+  #+END_SRC
+** static
+   父类定义了static成员, 则无论继承多少次, 整个继承层次中只有一个这样的成员
+   若为private ,则子类不能访问之
+   可以这样访问 Parent.static_mem ,Child.static_mem
+** 继承与转化
+   1. 可以将子类对象传给接受 "父类引用" 的函数,此行为并非对象的转换, 引用依然指向子
+     类
+   2. 可以将子类对象 传给 接受 父类对象 的函数,会将 子类对象中父类的那部分 复制
+      到形参(值传递)
+   3. 父类转子类
+      #+BEGIN_SRC c++
+        Child c;
+        Parent *p =&c;                  // ok
+        Child *cp =p;                   //  error ,虽然p所指向的是个Child,但,p是 Parent* 类型的指针, 转化失败,
+        // 不过可以用static_cast 或dynamic_cast 进行转换
+      #+END_SRC
+** 构造函数 与继承
+   #+BEGIN_SRC c++
+     class Parent
+     {
+     public:
+       Parent(int i){}
+     };
+
+     class Child:public Parent
+     {
+     private:
+       int member_j;
+     public:
+     // 先初始化父类, 然后按照 声明的顺序 初始化自己的成员,
+       Child(int i ,int j) :Parent(i),member_j(j){}
+     };
+   #+END_SRC
+   只能初始化直接父类,祖父的的初始化让父类去完成就可以了.
+** 复制构造函数 与继承
+   #+BEGIN_SRC c++
+        class Child
+        {
+        public:
+          Child(Child c ){
+            Parent(c); //先调用父类的复制构造函数 ,
+            //然后对自己的部分进行处理
+          }
+        };
+   #+END_SRC
+** 赋值操作符 与继承
+   #+BEGIN_SRC c++
+        Child& Child::operator=(const Child &rhs) {
+          // Check for self-assignment!
+          if (this == &rhs)
+            return *this;
+          Parent::operator=(rhs);//先初始化父类部分
+          // ...
+          return *this;
+        }
+   #+END_SRC
+** 如果在构造函数 或 析构函数 中调用  虚函数,
+   则调用的是 对象本身类型定义的版本,
+   在运行构造函数 或析构函数时, 自身对象是不完整的,
+   在父类构造或析构函数中,将子类对象当作父类对象对待,此时调用的虚函数
+   是父类中定义的版本
+** 名字冲突与继承
+   与父类成员同名的子类成员 会屏蔽父类的,函数也一样(即便参数不同)
+   Base::i ,这样可以访问 父类的,函数也一样 ,
+   #+BEGIN_SRC c++
+     class Parent
+     {
+     public:
+       void test(){}
+     };
+     class Child:public Parent
+     {
+     public:
+       void test(int i){} //隐藏了 父类中的同名函数,虽然 参数不同
+     };
+     int main(int argc, char *argv[])
+     {
+       Parent p;
+       Child c;
+       p.test();                     // ok
+       c.test(1);                    // ok
+       c.Parent::test();             // ok
+       // c.test();                     // error
+       return 0;
+     }
+   #+END_SRC
+** 重载
+   如果 子类重定义了重载的成员, 则通过子类型 只能访问 子类中定义 的那些成员
+   子类想通过自身类型使用所有的重载版本,要么重定义所有的重载版本, 要么一个不定义
+   或者子类中使用using声明, using声明 只能指定函数名,不能指向参数 ,所以可以把父
+   类中所有同名函数 引到子类中,然后 只重载需要的就可
+   #+BEGIN_SRC c++
+
+     using namespace std;
+     class Parent
+     {
+     public:
+       void test(){
+         std::cout << "parent test()" << std::endl;
+       }
+       void test(int i){
+         std::cout << "parent test(int)" << std::endl;
+       }
+     };
+     class Child:public Parent
+     {
+     public:
+       using Parent::test;// 使用 using声明
+       void test(int i){//只重载需要重载的部分
+         std::cout << "child test(int)" << std::endl;
+       }
+     };
+     int main(int argc, char *argv[])
+     {
+       Parent p;
+       Child c;
+       p.test();                     // ok
+       c.test(1);                    // ok
+       c.test();                     // ok 这里不在报错
+       return 0;
+     }
+   #+END_SRC
+** 纯虚函数 ,
+   含有纯虚函数的类是抽象的 ,类似于java abstract关键字
+   #+BEGIN_SRC c++
+        class AbClass
+        {
+        public:
+            public void test():const =0; //=0 定义 为纯虚函数
+        };
+
+   #+END_SRC

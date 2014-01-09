@@ -1605,3 +1605,21 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
    设计一个中间类 里面存着 类型为父类的一个指针类型(可以指向子类向象),
    及 引用计数 来管理指向此对象的引用数,以便管理内存,为方便可能需要重定义操作符
     * ->
+* 模版
+  #+BEGIN_SRC c++
+    template<typename T> compare(const T &v1,const &v2){
+      if (v1 <v2)return 1;
+      if (v1 >v2)return -1;
+      return 0;
+    }
+
+    template<class T> class List{
+    public:
+      List();
+      T& first();
+      void add(T &t);
+      void del(T &t);
+
+    }
+   //关键字 class typename 完全相同 , 只是给程序员 直观的感受来区分 T的可能类型
+  #+END_SRC

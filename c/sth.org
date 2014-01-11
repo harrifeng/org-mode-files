@@ -1623,3 +1623,50 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
     }
    //关键字 class typename 完全相同 , 只是给程序员 直观的感受来区分 T的可能类型
   #+END_SRC
+* 高级内存分配
+** allocator 模版类
+   内存分配和对象的初始化是可以分开进行的 ，
+   主要作用是 ，预先分配一段内存 ，然后在这段内存上分配对象，
+   这段内存
+   | allocator<T> a                   | 定义a,a可以用来为类型T申请内存，在这段内存上构造销毁对象                                                  |
+   | a.allocate(N)                    | 为类型T 申请N个大小的内存空间，                                                                           |
+   | a.deallocate(ptr,N)              | 回收allocate(N)分配的内存空间                                                                             |
+   | a.construct(ptr,t)               | 在ptr所指的内存中 利用t的复制构造函数 构造一个新的对象 (copy t 到ptr),ptr是a.allocate(n),分配到的内存     |
+   | a.destroy(ptr)                   | 调用ptr所指对象的析构函数，并没有释放这段内存 ，在deallocate调用之前,这段内存 可以再次分配给另一个t对象了 |
+   | uninitialized_copy(beg end,beg2) | 从beg end 范围内的对象 copy 到beg2所指对象处，beg2 指向a.allocate(n) 所分配的未初始化内存中               |
+
+   a.construct(ptr,t) 不灵活的一点是 ，只能得用T的复制构造函数来初始化这段内存，
+   即必须事先构造一个t对象， 然后利用这个t来初始化之
+** 普通的new
+   string *str = new string("hello");
+   实际分3 部
+     1. 调用 operator new 的标准库函数 ，分配足够大的内存
+     2. 调用构造函数构造对象
+     3. 返回指针
+
+   这里提到了 operator new ,标准库函数 只是分配内存， 未初始化,功能类似于c里的malloc
+   void *operator  new (size_t); //分配size_t 大小的内存,为一个object,
+   void *operator  new[] (size_t);//分配size_t大小的内存，为一个数组
+   void *operator  delete (void*);// free an object
+   void *operator  delete[] (void*);// free an array
+
+
+** 特殊的new ,定位new表达式
+   new (ptr) T(param);
+   在ptr所指的内存中 构造T(param)对象,比 allocator.construct(T) 好的地方是
+   直接在所指内存中构造对象 ，可以使用其任何构造函数，
+   #+BEGIN_SRC c++
+     allocator<string> a;
+     string* str=a.allocate(2) ;//分配空间 hold  2 strings
+     new (str)string("he");
+     a.construct((str+1),string("llo"));
+     std::cout << *str << std::endl;
+     std::cout << *(str+1) << std::endl;
+
+     str->~string(); //调用析构函数
+     a.destroy(str+1);//调用析构函数
+     a.deallocate(str,2);//释放内存
+
+   #+END_SRC
+   这个操作并没有分配内存，ptr所指的内存是事先申请好了的，
+   其反操作是直接调用 相应对象的析构函数

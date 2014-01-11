@@ -1637,6 +1637,8 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
 
    a.construct(ptr,t) 不灵活的一点是 ，只能得用T的复制构造函数来初始化这段内存，
    即必须事先构造一个t对象， 然后利用这个t来初始化之
+   应用场合， 比如vector 的实现， 预先分配n的对象的空间， add 或delete 时， 直接
+   使用这些已经申请到的内存， 不必每次都向操作系统申请
 ** 普通的new
    string *str = new string("hello");
    实际分3 部
@@ -1670,3 +1672,107 @@ const pstring ctr; 这里const只是限定ctr这个变量，  而非pstring这�
    #+END_SRC
    这个操作并没有分配内存，ptr所指的内存是事先申请好了的，
    其反操作是直接调用 相应对象的析构函数
+**    string *str = new string("hello");
+      综上 ，对此语句进行细化
+      #+BEGIN_SRC c++
+        allocator<string> a;
+        string* str=a.allocate(1) ;//分配空间 hold  1 string
+        new (str)string("hell");
+        std::cout << *str << std::endl;
+      #+END_SRC
+
+      #+BEGIN_SRC c++
+        string *str = static_cast<string*> (operator new (sizeof(string)));
+        new (str)string("hell");
+        std::cout << *str << std::endl;
+      #+END_SRC
+
+** 例子 一个内存分配置基类
+   #+BEGIN_SRC c++
+     #include <iostream>
+     #include <string>
+     #include <vector>
+     #include <stdexcept>
+     #include <memory>
+
+     using namespace std;
+     template<class T> class CacheObj
+     {
+     public:
+       static size_t sz;// debug用，记录 当前早请了多少个T了
+     protected:
+       T *next;//指向下一个
+     private:
+       static allocator<T> t_allocator;
+       static T *free_list;                 // 申请到的内存里，尚未被使用的
+       static const std::size_t incr_size;      // 每次内存不足时 扩容那么大
+       static void add_to_free_list(T *t);
+
+     public:
+       virtual ~CacheObj(){};
+       void* operator new (size_t sz);
+       void operator delete (void* ptr,size_t sz);
+     };
+
+     template<class T>  allocator<T> CacheObj<T>::t_allocator;
+     template<class T>  T* CacheObj<T>::free_list=NULL;
+     template<class T>  const size_t CacheObj<T>::incr_size=2;
+     template<class T>  size_t CacheObj<T>::sz=0;
+
+     template<class T> void* CacheObj<T>::operator new (size_t sz){
+
+       std::cout << "new called" << std::endl;
+       if (sizeof(T)!= sz){//这里做检查 ，保证传过来是T本身， 而非其子类
+         throw std::runtime_error("CacheObj wrong size");
+       }
+       if(!free_list){               // 如果free_list null
+         T* array=t_allocator.allocate(incr_size);
+         CacheObj<T>::sz= CacheObj<T>::sz+incr_size;
+         for (int i = 0; i !=incr_size ; i++){
+           add_to_free_list(&array[0]);
+         }
+       }
+       T* tmp = free_list;
+       free_list=free_list->CacheObj<T>::next;
+       return tmp;
+     }
+
+     template<class T> void CacheObj<T>::operator delete(void* ptr,size_t sz){
+       std::cout << "delted called" << std::endl;
+       if(ptr){
+         add_to_free_list(static_cast<T*> (ptr));
+       }
+     }
+
+     template<class T> void CacheObj<T>::add_to_free_list(T* t){
+       t->CacheObj<T>::next=free_list;
+       free_list=t;
+     }
+     class Item: public CacheObj<Item>
+     {
+     public:
+       int value;
+     };
+
+     // 实现了为 Item new 新对象时 ，提前分配好CacheObj<T>::incr_size 大小的空间
+     //限制是Item 不可以有子类， 或者说 不可以将Item的子类对象放进去
+     //哪个类继承了CacheObj<T> ,哪个类可以放
+     // 因为提前分配内存时 是按照T的大小来分配的，而其子类的大小必然比其本身大
+
+     int main(int argc, char *argv[]){
+
+       Item *item = new Item();
+       std::cout << item->sz << std::endl;
+
+       Item *item2 = new Item();
+       std::cout << item2->sz << std::endl;
+
+       Item *item3 = new Item();
+       std::cout << item3->sz << std::endl;
+
+       delete item;
+       delete item2;
+       delete item3;
+       return 0;
+     }
+   #+END_SRC

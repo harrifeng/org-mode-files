@@ -50,8 +50,6 @@
    + emacs
      + [[file:emacs/emacs-kill-region-or-line.org][Emacs中的剪切复制]]
      + [[file:emacs/open-with.org][Emacs的插件openwith.el]]
-     + [[file:emacs/emacs-introduce.org][Emacs闲言碎语]]
-     + [[file:emacs/emacs-can-do-what.org][GNU/Emacs 可以做什么]]
      + [[file:emacs/ediff.org][Windows 下使用Emacs的 Ediff 进行文件的比较、合并]]
      + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
      + [[file:emacs/c-c++-cedet-symref.org][c-c++-cedet-symref.org]]
@@ -65,9 +63,7 @@
      + [[file:emacs/emacs-vc.org][emacs 进行版本控制(Version Control)]]
      + [[file:emacs/emacs-23.2-cedet.org][emacs-23.2安装官网cedet]]
      + [[file:emacs/emacs-some-func.org][emacs-some-func.org]]
-     + [[file:emacs/emacs-fun.org][emacs中一些有趣的东西]]
      + [[file:emacs/artist-mode.org][emacs画文本图]]
-     + [[file:emacs/goto-last-change.org][goto-last-change.el 跳转到最近几次编辑的位置]]
      + [[file:emacs/nxml-mode.org][nxml-mode补全]]
      + [[file:emacs/text-property.org][text-property.org]]
      + [[file:emacs/auto-insert-and-yasnippet.org][yasnippet ,Auto Insert mode整合]]
@@ -76,10 +72,8 @@
      + [[file:emacs/image-suport-on-windows.org][在Windows 下让Emacs 支持打开jpeg png 图片]]
      + [[file:emacs/msys-bash-ls-color.org][在Windows上使用MSYS中的bash并使ls可以显示颜色]]
    + erlang
-     + [[file:erlang/dic.org][Dict,or Map的简单实现]]
      + [[file:erlang/Distributed_Applications.org][Distributed_Applications.org]]
      + [[file:erlang/catch.org][catch ,throw ,异常处理]]
-     + [[file:erlang/echo.org][echo]]
      + [[file:erlang/emysql_benchmark.org][emysql 压力测试]]
      + [[file:erlang/distel.org][erlang distel]]
      + [[file:erlang/release.org][erlang.org]]
@@ -96,7 +90,6 @@
      + [[file:erlang/message.org][分布式,聊天小例]]
      + [[file:erlang/hot_code_swap.org][热代码替换拾遗]]
      + [[file:erlang/mochiweb_comet_chat.org][网上即时聊天原理(mochiweb+jquery实现)]]
-     + [[file:erlang/counter.org][计数器,并行示例]]
    + git
      + [[file:git/git.org][git拾遗]]
      + [[file:git/git-proxy-on-windows.org][在windows上通过代理访问github.com]]

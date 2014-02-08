@@ -13,7 +13,7 @@
 
 * link 关于几种diff tool 的比较 KDiff3, Diffuse, and VimDiff  Meld Emacs-Ediff(有图有真相)
   http://rvb.mytanet.de/comparing-latex-files-with-latexdiff.shtml (此链接已失效)
-  以下几张图 可以显示出 只种diff tool 在比较时的不同，可以明显看出 ediff 能够清
+  以下几张图 可以显示出 几种diff tool 在比较时的不同，可以明显看出 ediff 能够清
   晰的显示 添加了什么，修改了什么，而其他几种工具， 简直一团糟
   [[file:../img/ediff.png]]
   [[file:../img/meld.png]]

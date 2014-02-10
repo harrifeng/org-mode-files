@@ -34,7 +34,6 @@
      + [[file:c/errno_perror.org][errno_perror.org]]
      + [[file:c/fscanf.org][fscanf示例]]
      + [[file:c/memcheck.org][linux 下 c内存检漏工具 valgrind]]
-     + [[file:c/qsort.org][qsort 与函数指针]]
      + [[file:c/bfs_maze.org][queue与广度优先算法与迷宫寻路]]
      + [[file:c/sizeof.org][sizeof.org]]
      + [[file:c/w32.org][windows VS拾遗]]

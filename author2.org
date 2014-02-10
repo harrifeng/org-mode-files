@@ -40,10 +40,11 @@ EmacsWiki个人主页:为我为Emacs开源社区贡献的代码。
 + 熟练使用Lucene Compass 等Java搜索相关框架的使用及与 Hibernate Spring 框架的整合。
 + 掌握基于Oracle的数据库编程：JDBC 、 PLSQL；
 + 熟练掌握Html JavaScript/AJAX Jquery客户端代码的编写
-+ 熟练使用MyEclipse,Eclipse ,等 集成IDE工具,及Linux  下Vim、Emacs 编辑器；
-+ 熟练使用SVN、 Git等版本管理工具；
 + 熟练掌握C++语言,学习使用过一些开源的库， 如opencv等
 + 熟练掌握Erlang 语言,并有一到两年实际开发经验
++ 熟练使用MyEclipse,Eclipse ,等 集成IDE工具,及Linux  下Vim、Emacs 编辑器；
++ 熟练使用SVN、 Git等版本管理工具；
++ 3年Linux 系统使用经验,熟悉Linux下进行开发
 * 开发经验：
 ** 网页游戏<<乱世诛魔>>及<<兰陵王>> (Erlang)
    乱世诛魔游戏在腾讯游戏平台目前已开服700多个。

@@ -20,12 +20,12 @@
   | 学    历   | 本科 2007-9~2011-7 |
   | 现居住地   | 北京海淀区         |
 * 择业目标：
-  + Java
+  + Java开发
 * 自我介绍：
-csdn博客：            http://blog.csdn.net/jixiuffff
-个人主页:              http://jixiuf.github.com/sitemap.html
 EmacsWiki个人主页：  http://emacswiki.org/Joseph
-个人主页On Github：  https://github.com/jixiuf
+Github个人主页 ：    https://github.com/jixiuf
+csdn博客：           http://blog.csdn.net/jixiuffff
+个人主页:            http://jixiuf.github.com/sitemap.html
 
 其中为Emacs编辑器写了一个插件，实现编写java代码时进行补全(包括类名 包名 方法名等)
 http://www.emacswiki.org/emacs/AutoJavaComplete#toc6

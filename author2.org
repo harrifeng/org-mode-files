@@ -25,6 +25,7 @@
 csdn博客：            http://blog.csdn.net/jixiuffff
 个人主页:              http://jixiuf.github.com/sitemap.html
 EmacsWiki个人主页：  http://emacswiki.org/Joseph
+个人主页On Github：  https://github.com/jixiuf
 
 其中为Emacs编辑器写了一个插件，实现编写java代码时进行补全(包括类名 包名 方法名等)
 http://www.emacswiki.org/emacs/AutoJavaComplete#toc6
@@ -39,7 +40,6 @@ EmacsWiki个人主页:为我为Emacs开源社区贡献的代码。
 + 熟悉Struts1 Struts2 Hibernate Spring(AOP,IOC)等框架的使用；
 + 熟悉JPA EJB3 JMS  JavaMail的使用。
 + 熟练使用Lucene Compass 等Java搜索相关框架的使用及与 Hibernate Spring 框架的整合。
-+ 熟练使用Maven 对项目进行管理；
 + 掌握基于Oracle的数据库编程：JDBC 、 PLSQL；
 + 熟练掌握Html JavaScript/AJAX Jquery客户端代码的编写
 + 熟练使用MyEclipse,Eclipse ,等 集成IDE工具,及Linux  下Vim、Emacs 编辑器；

@@ -16,33 +16,44 @@
   | 出生年月   | 1989-01            |
   | E-mail     | jixiuf@qq.com　    |
   | 英语水平   | 六级460            |
-  | 证    书   | 数据库三级         |
   | 毕业院校   | 青岛科技大学       |
   | 学    历   | 本科 2007-9~2011-7 |
-  | 户口所在地 | 山东青岛           |
   | 现居住地   | 北京海淀区         |
 * 择业目标：
-  + Java程序员　    基于Web应用的Java软件开发。
+  + Java
 * 自我介绍：
 csdn博客：            http://blog.csdn.net/jixiuffff
 个人主页:              http://jixiuf.github.com/sitemap.html
 EmacsWiki个人主页：  http://emacswiki.org/Joseph
+
+其中为Emacs编辑器写了一个插件，实现编写java代码时进行补全(包括类名 包名 方法名等)
+http://www.emacswiki.org/emacs/AutoJavaComplete#toc6
+修改eclipse的一个插件easyexplorer,添加新功能，使用外部编辑器编辑代码，及在
+terminal中进入到当前文件所在的目录
+http://blog.csdn.net/jixiuffff/article/details/5978393
+
 自学能力强，所有计算机知识均为自学。以上几个网址是个人成果的展示，
 EmacsWiki个人主页:为我为Emacs开源社区贡献的代码。
 * 专业技能：
-+ 精通基于Web应用的JAVA编程： JSP/Servlet JSTL JDBC ；
-+ 精通Struts1 Struts2 Hibernate Spring(AOP,IOC)等框架的使用；
++ 熟悉基于Web应用的JAVA编程： JSP/Servlet JSTL JDBC ；
++ 熟悉Struts1 Struts2 Hibernate Spring(AOP,IOC)等框架的使用；
 + 熟悉JPA EJB3 JMS  JavaMail的使用。
 + 熟练使用Lucene Compass 等Java搜索相关框架的使用及与 Hibernate Spring 框架的整合。
-+ 熟练使用SVN、 Git等版本管理工具；
-+ 熟练使用Maven Nexus 对项目进行管理；
-+ 熟练在基于Windows, Linux(Gentoo，redhat) 环境下进行Java软件开发,偏爱Linux；
++ 熟练使用Maven 对项目进行管理；
 + 掌握基于Oracle的数据库编程：JDBC 、 PLSQL；
-+ 熟练掌握Html JavaScript/AJAX Jquery客户端代码的编写;了解Extjs、 Flex、 DWR  的使用;
++ 熟练掌握Html JavaScript/AJAX Jquery客户端代码的编写
 + 熟练使用MyEclipse,Eclipse ,等 集成IDE工具,及Linux  下Vim、Emacs 编辑器；
-+ 熟练应用多种JAVA服务器,包括 JBoss，Apache Tomcat ；
++ 熟练使用SVN、 Git等版本管理工具；
 * 开发经验：
-**      海华生产管理系统(2011-7~2011-11)
+** 网页游戏<<乱世诛魔>>及<<兰陵王>> (Erlang)
+   乱世诛魔游戏在腾讯游戏平台目前已开服700多个。
+      在乱世诛魔项目中主要参与游戏服务端代码的编写，实现策划设计的新功能。
+   优化改造了此项目中读取策划文档数据的方式，加快了服务端程序的启动速度。
+      之后转到新项目组<<兰陵王>>,在<<乱世诛魔>>项目代码基础上进行开发。
+   对代码进行了较大改造 ，数据存储由原来的mnesia改成mysql,编写了底层连接mysql
+   数据库相关的代码，并对大量游戏基础模块的数据存储进行改造,改造完成之后<<兰陵王>>
+   项目正式立项， 与其他成员一些完成新的游戏逻辑的编写
+**      海华生产管理系统(2011-7~2011-11) (C#)
     为青岛海华纤维有限公司（主要生产假发的半成品）编写生产管理系统 。主要分为三大模块：
 1. 数据收集模块主要通过PDA(掌上电脑)条码扫描器从各袋半制品上的条码上扫描得到数
       据(进行盘点)、以及进行入库、出库操作。
@@ -58,7 +69,7 @@ EmacsWiki个人主页:为我为Emacs开源社区贡献的代码。
    面(中间仓库出库、灌壁出库、 粉碎丝出库、)、及半制品的管理(新增、更新、冻结、
    初始化库存)等操作。
 
-**   修改并完善 Eclipse插件 EasyExplore (在校期间)
+**   修改并完善 Eclipse插件 EasyExplore (在校期间)(Java)
      easyExplore 是一个开源项目，主要实现了用文件管理器打开在eclipse中选中的目
 录,不过已经停止开发了。而我下载了它的源代码后添加了两项功能，一是添加了用系统编
 辑器编辑eclipse中选中的文件，当编辑完这个文件、关闭编辑器时,eclipse会刷新整个项
@@ -66,7 +77,7 @@ EmacsWiki个人主页:为我为Emacs开源社区贡献的代码。
 处打开Linux的终端模拟器或者Windows的cmd.exe窗口，可以通过工具栏、右键、快捷键进
 行操作。源代码使用Git进行版本控制,托管在
 http://github.com/jixiuf/easyexplore_modify_by_jixiuf。
-**  DRP分销资源管理系统
+**  DRP分销资源管理系统 (在校期间)(Java)
        该项目使企业具有对订单和供货具有快速反应和持续补充库存的能力。主要包括分
 销库存管理，统计报表管理、基础数据管理、分销费管理、付款结算管理等几个模块。我
 主要参与了其中基础数据的管理，分销商库存管理及部分报表的生成。采用Tomcat +

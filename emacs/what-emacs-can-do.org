@@ -28,6 +28,7 @@
   http://youtu.be/ZCGmZK4V7Sg
   http://yasnippet.googlecode.com/files/yas_demo.avi
   http://v.youku.com/v_show/id_XMzI0NDYxNDQ=.html
+* TODO yasnippet and auto-insert
 * TODO hippie-expand
 * TODO Iedit
 * TODO Hgtags

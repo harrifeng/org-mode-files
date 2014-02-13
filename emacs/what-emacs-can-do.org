@@ -18,7 +18,7 @@
   https://github.com/emacs-java/auto-java-complete
   Video Demo:
   https://www.dropbox.com/s/p5x7olfijeoqa4b/auto-java-complete.mov.7z
-* AutoComplete+auto-complete-clang for c and c++ complete
+* auto-complete-clang
   AutoComplete 用于c c++ 补全的插件
   Video Demo:
   https://www.dropbox.com/s/fxloagadt95h0yf/autocomplete-clang.mov.7z
@@ -42,3 +42,4 @@
 * TODO VC
 * TODO Ediff
 * TODO magit
+* TODO org-mode

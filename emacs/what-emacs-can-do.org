@@ -49,3 +49,5 @@
 * TODO magit
 * TODO org-mode
 * TODO org publish
+* TODO mail
+* TODO sdcv

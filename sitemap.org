@@ -48,6 +48,7 @@
      + [[file:c/fread_fwrite_int.org][读写二进制文件,读写int]]
    + emacs
      + [[file:emacs/emacs-kill-region-or-line.org][Emacs中的剪切复制]]
+     + [[file:emacs/what-emacs-can-do.org][Emacs可以做什么(功能演示)]]
      + [[file:emacs/open-with.org][Emacs的插件openwith.el]]
      + [[file:emacs/ediff.org][Windows 下使用Emacs的 Ediff 进行文件的比较、合并]]
      + [[file:emacs/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]

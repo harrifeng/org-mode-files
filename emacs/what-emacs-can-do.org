@@ -1,0 +1,30 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     Emacs可以做什么(功能演示)
+#+AUTHOR:    纪秀峰
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+
+* AutoComplete
+  http://www.emacswiki.org/emacs/AutoComplete
+  Video Demo:
+  http://youtu.be/rGVVnDxwJYE
+  http://cx4a.org/software/auto-complete/demo.html
+  http://v.youku.com/v_show/id_XMzMxMDg0NDIw.html
+* AutoJavaComplete
+  AutoComplete 的一个插件，基于TAG 用于java补全
+  虽然比Eclipse差些， 但总还可以用，再加上emacs 其他一些补全机制
+  足可以用
+  https://github.com/emacs-java/auto-java-complete
+  Video Demo:
+  https://www.dropbox.com/s/p5x7olfijeoqa4b/auto-java-complete.mov.7z
+* AutoComplete+auto-complete-clang for c and c++ complete
+  AutoComplete 用于c c++ 补全的插件
+  Video Demo:
+  https://www.dropbox.com/s/fxloagadt95h0yf/autocomplete-clang.mov.7z
+* yasnippet  模版
+  https://github.com/capitaomorte/yasnippet
+  Video Demo:
+  http://youtu.be/ZCGmZK4V7Sg
+  http://yasnippet.googlecode.com/files/yas_demo.avi
+  http://v.youku.com/v_show/id_XMzI0NDYxNDQ=.html

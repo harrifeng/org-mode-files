@@ -28,3 +28,17 @@
   http://youtu.be/ZCGmZK4V7Sg
   http://yasnippet.googlecode.com/files/yas_demo.avi
   http://v.youku.com/v_show/id_XMzI0NDYxNDQ=.html
+* TODO Iedit
+* TODO Hgtags
+* TODO bm
+* TODO Helm
+* TODO helm-ls-git
+* TODO sqlparser
+* TODO Emacs-wgrep
+* TODO ace-jump-mode
+* TODO golden-ratio.el
+* TODO helm-etags-plus
+* TODO emacs-helm-gtags
+* TODO VC
+* TODO Ediff
+* TODO magit

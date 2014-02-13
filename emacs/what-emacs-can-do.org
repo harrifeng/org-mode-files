@@ -28,18 +28,24 @@
   http://youtu.be/ZCGmZK4V7Sg
   http://yasnippet.googlecode.com/files/yas_demo.avi
   http://v.youku.com/v_show/id_XMzI0NDYxNDQ=.html
+* TODO hippie-expand
 * TODO Iedit
 * TODO Hgtags
 * TODO bm
 * TODO Helm
-* TODO helm-ls-git
-* TODO sqlparser
-* TODO Emacs-wgrep
-* TODO ace-jump-mode
-* TODO golden-ratio.el
+* TODO Helm-Imenu
 * TODO helm-etags-plus
 * TODO emacs-helm-gtags
+* TODO Helm-occur
+* TODO helm-ls-git
+* TODO helm-grep and Emacs-wgrep
+* TODO eshell
+* TODO sqlparser
+* TODO ace-jump-mode
+* TODO golden-ratio.el
+* TODO dired
 * TODO VC
 * TODO Ediff
 * TODO magit
 * TODO org-mode
+* TODO org publish

@@ -85,9 +85,8 @@
   快速打开项目中文件的一种方法
   以 helm-ls-git 为例
   https://www.dropbox.com/s/v251u4g2lo4fr3u/helm-ls-git.mov.7z
-
+* TODO helm-etags-plus ctags-update.el
 * TODO emacs-helm-gtags
-* TODO helm-etags-plus
 * TODO eshell
 * TODO sqlparser
 * TODO ace-jump-mode

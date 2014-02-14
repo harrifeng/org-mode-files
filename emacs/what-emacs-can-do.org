@@ -28,18 +28,62 @@
   http://youtu.be/ZCGmZK4V7Sg
   http://yasnippet.googlecode.com/files/yas_demo.avi
   http://v.youku.com/v_show/id_XMzI0NDYxNDQ=.html
-* TODO yasnippet and auto-insert
-* TODO hippie-expand
-* TODO Iedit
-* TODO Hgtags
-* TODO bm
-* TODO Helm
-* TODO Helm-Imenu
-* TODO helm-etags-plus
-* TODO emacs-helm-gtags
-* TODO Helm-occur
+* yasnippet and auto-insert
+  yasnippet 与auto-insert 结合，  将新创建文件时自动在文件里插入一定的模版
+  Video Demo:
+  https://www.dropbox.com/s/tey5t0ax6a5zx53/yasnippet-auto-insert.mov.7z
+* hippie-expand
+  emacs 自带的一种补全机制，可以补全 变量名（当从前打开的buffer,所有打开的
+  buffer,剪切板),可以补全文件名
+  Video Demo:
+  https://www.dropbox.com/s/y0248u60kokz8e6/hippie-expand.mov.7z
+* Iedit
+  显示光标下匹配的word或变量
+  同步的更改光标下匹配的word或变量
+  Video Demo:
+  https://www.dropbox.com/s/bhivm5rm8tcua92/iedit.mov.7z
+* bm.el
+  可视化 书签,在书签间快速跳转
+  Video Demo:
+  https://www.dropbox.com/s/xoihcos1psfpebd/bm-bookmark.mov.7z
+
+* Helm
+  Helm 的功能很多， 主要实现了通过一个或多个关键字从各种侯选项（可以是buffer,文
+  件，剪切环里的内容,最近打开的文件等）中过滤出某几个，
+  然后执行相应的操作(如 切换到某个buffer ,打开某个文件，将选中的剪切板里的内容插
+  入到光标处等）
+  Video Demo:
+  https://www.dropbox.com/s/s3gu53qwag580ya/helm.mov.7z
+
+* Helm Imenu
+  列出当前所编辑文件中各个函数 并跳转(以emacs源码中的sha256.c 及helm-imenu.el文
+  件为例)
+  Video Demo:
+  https://www.dropbox.com/s/ne6st72j03mrkde/helm-imenu.mov.7z
+* Helm-occur
+  根据关键字列出当前文件中包含关键字的行， 并跳转
+  Video Demo:
+  https://www.dropbox.com/s/36gj0u0gdgqk9wy/helm-occur.mov.7z
+
+* helm-grep and Emacs-wgrep
+  helm-grep.el
+    grep 的helm 版， 根据关键字过滤某个文件（如果是一个文件，可以直接用helm-occur)
+    或多个文件，
+    或某个目录
+    或某个目录（包括子目录）
+    并跳转到指定的行
+    (可以是交互式的,即每输入一个字母，过滤后的结果就跟着变化）
+    （也可以将过滤后的结果保存到一个buffer中， 然后在这个buffer中的某一行回车后
+    就跳转到相应的行）
+    同时有了Emacs-wgrep ,则对上述buffer 内容的更改 则会反映到这些文件中，以实现
+    在多个文件中更改某个变量的目录
+    Video Demo:
+    https://www.dropbox.com/s/czgk5vm5gbj8svk/helm-grep-wgrep.mov.7z
+
 * TODO helm-ls-git
-* TODO helm-grep and Emacs-wgrep
+* TODO emacs-helm-gtags
+* TODO helm-etags-plus
+* TODO Hgtags
 * TODO eshell
 * TODO sqlparser
 * TODO ace-jump-mode

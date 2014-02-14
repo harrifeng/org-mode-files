@@ -80,10 +80,14 @@
     Video Demo:
     https://www.dropbox.com/s/czgk5vm5gbj8svk/helm-grep-wgrep.mov.7z
 
-* TODO helm-ls-git
+* helm-ls-git helm-ls-hg
+  列出git 或hg 仓库里的文件， 从中过滤中某个文件 打开
+  快速打开项目中文件的一种方法
+  以 helm-ls-git 为例
+  https://www.dropbox.com/s/v251u4g2lo4fr3u/helm-ls-git.mov.7z
+
 * TODO emacs-helm-gtags
 * TODO helm-etags-plus
-* TODO Hgtags
 * TODO eshell
 * TODO sqlparser
 * TODO ace-jump-mode

@@ -117,14 +117,36 @@
   golden-ratio.el 则按照黄金分隔（0.618）的比例自动调整窗口的大小
   使光标所在的窗口无论是水平还是竖直方向都占整个比例的0.618，
   https://www.dropbox.com/s/vozuebnknsxjjj5/golden-ratio-el.mp4.7z
-* TODO dired
+* dired
   emacs 管理文件的方式，
   1.在这里更改文件名字就行更改一个文件的内容一样，
   2.删除文件
   3.快速当前目录想要的文件（只显示匹配的文件）
-  ...
+  Video Demo:
+  https://www.dropbox.com/s/gs4zncq9idnecnp/dired.mp4.7z
+* TODO VC (version control) emacs自带的用于进行svn git cvs hg 等各种版本管理工具的一个统一的接口
+  C-x v v     vc-next-action -- perform the next logical control operation on file 会根据当前文件状态决定该做什么
+    1.如果当前的文件(work file)不在任何一个version control 管理下,则询问你创建什么样的仓库,如svn git等.
+    2.如果在管理下,则register the file. 即git add filename.
+    3.如果work file 与库中的文件一样,do nothing.
+    4.若不一样,则进行merge (checkout 或update) 操作. 即更新(好像并不更新,更新需要`C-xvu')
+    5.如果你对work file 进行的修改则进行checkin(即commit)操作,它会打开一个*VC-LOG*buffer让你输入日志,关于*VC-LOG* 见下面的注释
+    6.如果有冲突则先merge 最新的文件到work file,此时work file 处于冲突状态,需要解决冲突,继续`C-xvv'后说明冲突已解决此后再`c-xvv'则提交
+    ;;`C-uC-xvv' 可以选择进入哪个分支,reversion,
 
-* TODO VC
+  C-x v =     vc-diff -- diff with other revisions
+    对未提交的文件与最新的版本对应的文件进行diff操作,C-u可以选择用哪两个版本,不仅可以单文件diff,
+    可以是fileset,如何对多文件进行操作看vc-dir mode `C-xvd' 类似于dired, ibuffer.
+  C-x v u     vc-revert-buffer -- undo checkout  放弃对文件的修改,即重新update 一下.
+    ;;查看日志 `*vc-change-log*' buffer
+  C-x v l     vc-print-log -- show log (not in ChangeLog format) 显示日志,只显示当前文件有关的日志
+      这个打开的日志buffer 功能绝对不止显示日志这么简单，
+      你可以按下C-hb 查看一下它的键绑定，
+      比如= 是进行diff比较，默认是最新的版本，与你光标下的版本进行比较
+      也可以用m ,mark 两个版本后，然后= ,将其进行比较
+  C-x v L     `vc-print-root-log' 显示日志,显示所有日志
+      在*vc-change-log*buffer 中可以进行以下操作
+
 * TODO Ediff
 * TODO magit
 * TODO org-mode

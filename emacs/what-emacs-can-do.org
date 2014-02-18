@@ -111,7 +111,12 @@
   下面以 快速跳转到各个字母m处进行演示(注意窗口最下面提示我输入一个字母
   Video Demo:
   https://www.dropbox.com/s/mgsmfhsdpzgcw9v/ace-jump-mode.mp4.7z
-* TODO sqlparser
+*  sqlparser
+   支持mysql oracle sqlserver
+   主要实现编写sql语句时可以实时的从数据据中查询相应的信息 ，帮助编写sql语句，
+   比如 进行补全 表名 列名等
+   以mysql 为例
+   https://www.dropbox.com/s/voo5zxcijq2hk93/sqlparser-mysql-complete.mp4.7z
 * golden-ratio.el
   多窗口操作时 ，比较烦人的一件事情就是调整窗口的大小
   golden-ratio.el 则按照黄金分隔（0.618）的比例自动调整窗口的大小
@@ -124,33 +129,75 @@
   3.快速当前目录想要的文件（只显示匹配的文件）
   Video Demo:
   https://www.dropbox.com/s/gs4zncq9idnecnp/dired.mp4.7z
-* TODO VC (version control) emacs自带的用于进行svn git cvs hg 等各种版本管理工具的一个统一的接口
+* VC (version control) emacs自带的用于进行svn git cvs hg 等各种版本管理工具的一个统一的接口
+  Video Demo:
+  https://www.dropbox.com/s/rw53o0ee6eoiwap/vc.mp4.7z
   C-x v v     vc-next-action -- perform the next logical control operation on file 会根据当前文件状态决定该做什么
     1.如果当前的文件(work file)不在任何一个version control 管理下,则询问你创建什么样的仓库,如svn git等.
     2.如果在管理下,则register the file. 即git add filename.
     3.如果work file 与库中的文件一样,do nothing.
-    4.若不一样,则进行merge (checkout 或update) 操作. 即更新(好像并不更新,更新需要`C-xvu')
-    5.如果你对work file 进行的修改则进行checkin(即commit)操作,它会打开一个*VC-LOG*buffer让你输入日志,关于*VC-LOG* 见下面的注释
-    6.如果有冲突则先merge 最新的文件到work file,此时work file 处于冲突状态,需要解决冲突,继续`C-xvv'后说明冲突已解决此后再`c-xvv'则提交
-    ;;`C-uC-xvv' 可以选择进入哪个分支,reversion,
-
+    4.如果你对work file 进行的修改则进行checkin(即commit)操作,它会打开一个*VC-LOG*buffer让你输入日志,关于*VC-LOG* 见下面的注释
   C-x v =     vc-diff -- diff with other revisions
     对未提交的文件与最新的版本对应的文件进行diff操作,C-u可以选择用哪两个版本,不仅可以单文件diff,
     可以是fileset,如何对多文件进行操作看vc-dir mode `C-xvd' 类似于dired, ibuffer.
   C-x v u     vc-revert-buffer -- undo checkout  放弃对文件的修改,即重新update 一下.
-    ;;查看日志 `*vc-change-log*' buffer
+    查看日志 `*vc-change-log*' buffer
   C-x v l     vc-print-log -- show log (not in ChangeLog format) 显示日志,只显示当前文件有关的日志
       这个打开的日志buffer 功能绝对不止显示日志这么简单，
       你可以按下C-hb 查看一下它的键绑定，
       比如= 是进行diff比较，默认是最新的版本，与你光标下的版本进行比较
       也可以用m ,mark 两个版本后，然后= ,将其进行比较
   C-x v L     `vc-print-root-log' 显示日志,显示所有日志
-      在*vc-change-log*buffer 中可以进行以下操作
+      在*VC-change-log*buffer 中可以进行以下操作
 
-* TODO Ediff
-* TODO magit
-* TODO org-mode
-* TODO org publish
-* TODO mail
-* TODO sdcv
-* TODO calc
+* Ediff
+  ediff 在VC 那一节里有演示， 通常情况下， ediff 会与版本管理控制一起使用，
+  可以对同一个文件两个不同版本进行比较 ，也可以在出现冲突的时候用于解决冲突
+  这里就演示一下 what-emacs-can-do.org 这个文件各个版本之间用ediff 进行比较
+  Video Demo:
+  https://www.dropbox.com/s/l9sxfvuhe6t6zos/ediff.mp4.7z
+* magit
+  magit 是emacs专门针对git的一个版本控制插件
+  https://github.com/magit/magit
+  https://github.com/magit/magit/wiki
+  Video demo:
+  http://shelby.tv/video/vimeo/2871241/meet-magit
+* org-mode
+  当前文件就是用org-mode 进行编辑的，
+  用Tab 键进行展开或折叠,
+  可以将org file 导出成html
+  | tab                 | col2         |
+  | hello this is a tab | another line |
+  | eeee                | fff          |
+  https://www.dropbox.com/s/4iew0stcupnevk9/org-mode.mp4.7z
+* org-agenda org-mode TODO list
+  org mode 用于日程管理
+  (global-set-key (kbd "C-c a")  'org-agenda)
+  (define-key global-map [(control meta ?r)] 'org-capture)
+  比如C-cat 列出所有todo list
+  Control+Alt+r 添加一条新的todo
+  https://www.dropbox.com/s/wfpvt4ydhi56w57/org-mode-todolist.mp4.7z
+* mail
+  使用 mew 发邮件
+  https://www.dropbox.com/s/37n7jv55yvzomot/emacs-mew-send-mail.mp4.7z
+* calc emacs里的计算器
+  https://www.dropbox.com/s/2xb0lorud0hypvs/emacs-calc.mp4.7z
+  可以用calc 的功能
+  如计算1+2 : 1 enter 2 enter +,即先输入数，再输入运算符，+-*/^
+  d2 将当前int 转为二进制
+  d6 转为16进制
+  d8 转为8进制
+  d0 转为十进制
+  当我们只是想简单的对一系列数字进行代数运算时，使用逆波兰表达式不是很直观，因此， calc 提供了一个更加直接的指令：
+  ' （就是分号旁边的那个按键）
+  比如，在 calc 中按“'”，然后输入算式：
+  (3^2 + 4^2) ^ 0.5
+
+  二进制数的输入方法
+  2#01010101
+  8#131324123
+
+  另外，与二进制处理相关的函数绑定在以b开头的键上
+  如bL,br 左移右移
+  ba bo bn  ,and or not
+

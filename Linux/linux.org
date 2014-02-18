@@ -57,3 +57,81 @@
   makes it a "Default" ACL, so that in future if any file/dir gets created under
   perms directory, groupA will have rwx permission on them too.
 #+END_SRC
+* mbr and dd
+
+MBR=主引导区记录。硬盘的0磁道的第一个扇区称为MBR，它的大小是512字节，而这个区域
+可以分为三个部分。第一部分为pre-boot区（预启动区），占446字节；第二部分是
+Partition table区（分区表），占64个字节，硬盘中分区有多少以及每一分区的大小都记
+在其中。第三部分是magic number，占2个字节，固定为55AA。MBR是针对整个硬盘而言的，
+而引导扇区是对单个分区而言的。每个分区的第一扇区就是引导扇区：像MBR一样，引导扇
+区里包含了一些引导操作系统所需要的相关信息。如果引导扇区被破坏了是个非常严重的
+问题，那就意味着这个分区不能被访问，安装在这个分区上的操作系统也不能被启动。所
+以说修复引导是使得每一个分区都能被正确识别引导。
+
+#+srcname: 备份与还原mbr信息
+#+begin_src sh
+  446+64+2=512
+  dd </dev/sda bs=512 count=1 >mbr512.img
+  dd <mbr512.img bs=446 count=1 >/dev/sda
+  dd <mbr512.img bs=1 count=64 skip=446 seek=446 >/dev/sda
+#+end_src
+* ctags
+  http://blog.csdn.net/moiyer/article/details/5438962
+* nmap
+*** IP
+  ip 地址范围 192.168.1.0/24
+  192.168.1.1-254
+*** Port
+    指定端口 : -p80 -p1-1024
+
+*** -s 开头的 表示扫描
+    | -sT | 扫描Tcp连接 |
+    | -sU | 扫描Udp连接 |
+    | -sP | Ping扫描    |
+    |     |             |
+    扫描tcp连接
+    nmap -sT 192.168.1.101
+* linux下分辨率调整
+  http://blog.csdn.net/wangfaqiang/article/details/6289959
+  #+BEGIN_SRC sh
+我的理解就是，长1440 宽900,深75
+root@jf /home/jixiuf # cvt 1440 900 75
+生成 Modeline这一行
+# 1440x900 74.98 Hz (CVT 1.30MA) hsync: 70.64 kHz; pclk: 136.75 MHz
+Modeline "1440x900_75.00"  136.75  1440 1536 1688 1936  900 903 909 942 -hsync +vsync
+  #+END_SRC
+  然后，配成这面的样子，即可
+  #+BEGIN_QUOTE
+  Section "Monitor"
+  Identifier      "Configured Monitor"
+  Modeline "1440x900_75.00"  136.75  1440 1536 1688 1936  900 903 909 942 -hsync +vsync
+  Option          "PreferredMode" "1440x900_75.00"
+  EndSection
+
+  Section "Screen"
+  Identifier      "Default Screen"
+  Monitor         "Configured Monitor"
+  Device          "Configured Video Device"
+  EndSection
+
+  Section "Device"
+  Identifier "Configured Video Device"
+  EndSection
+  #+END_QUOTE
+* ssh socat
+  我局域网ip 是192.168.1网段的
+
+  10.142.8.24 是位于另一网段的一台内网机器　,
+  122.224.249.55 是一台有公网ip的机器，
+  10.142.8.24位于122.224.249.55后面
+  也就是说要想ssh连接到10.142.8.24需要途经 122.224.249.55
+  用到了socat这款软件做代理
+  使用如下命令,
+  本机ip: 192.168.1.127
+
+  防火墙 122.224.249.55 port 9991
+  内网机　10.142.8.24 ssh 端口开在36000上
+
+  sudo ssh -o ProxyCommand='socat - socks:122.224.249.55:%h:%p,socksport=9991' username@10.142.8.24 -p 36000
+  没加 sudo 之前一直给我提示Permission denied (keyboard-interactive),不知原因何
+  在，难道socat命令需要root权限

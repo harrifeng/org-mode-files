@@ -2,20 +2,14 @@
 
    + Linux
      + [[file:Linux/gentoo.org][Gentoo 拾遗]]
-     + [[file:Linux/ctags.org][ctags.org]]
      + [[file:Linux/ext2.org][ext2文件系统]]
      + [[file:Linux/iptables.org][iptables防火墙]]
      + [[file:Linux/iconv.org][linux 下gbk utf8 转换]]
      + [[file:Linux/font.org][linux 下字体相关]]
-     + [[file:Linux/linux_fbl.org][linux下分辨率调整]]
      + [[file:Linux/linux.org][linux拾遗]]
-     + [[file:Linux/lcd-vga.org][linux调整笔记本亮度的命令]]
      + [[file:Linux/llvm.org][llvm逻辑卷管理]]
-     + [[file:Linux/dd.org][mbr and dd]]
-     + [[file:Linux/nmap.org][nmap.org]]
      + [[file:Linux/rsync.org][rsync.org]]
      + [[file:Linux/shell.org][shell.org]]
-     + [[file:Linux/ssh_proxy.org][ssh 绕过代理登录]]
    + autohotkey
      + [[file:autohotkey/AutoHotKey_1.org][AutoHotKey 几个简单的小例子]]
      + [[file:autohotkey/AutoHotKey_Introduce.org][AutoHotKey 简介]]
@@ -24,7 +18,6 @@
      + [[file:autohotkey/AutoHotKeyExplorer.org][对"我的电脑"  进行增强]]
      + [[file:autohotkey/AutoHotKey_auto_close_boring_window.org][自动关闭某些窗口]]
    + c
-     + [[file:c/IO.org][IO.org]]
      + [[file:c/sth.org][c cpp 拾遗]]
      + [[file:c/concat.org][concat()可变长度参数的实现]]
      + [[file:c/c_assemble.org][c与汇编]]

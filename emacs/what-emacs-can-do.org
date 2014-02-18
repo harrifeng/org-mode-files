@@ -17,11 +17,11 @@
   足可以用
   https://github.com/emacs-java/auto-java-complete
   Video Demo:
-  https://www.dropbox.com/s/p5x7olfijeoqa4b/auto-java-complete.mov.7z
+  https://www.dropbox.com/s/f8dr9utzhh0usay/auto-java-complete.mp4.7z
 * auto-complete-clang
   AutoComplete 用于c c++ 补全的插件
   Video Demo:
-  https://www.dropbox.com/s/fxloagadt95h0yf/autocomplete-clang.mov.7z
+  https://www.dropbox.com/s/ks3wylqijyapyky/autocomplete-clang.mp4.7z
 * yasnippet  模版
   https://github.com/capitaomorte/yasnippet
   Video Demo:
@@ -31,21 +31,21 @@
 * yasnippet and auto-insert
   yasnippet 与auto-insert 结合，  将新创建文件时自动在文件里插入一定的模版
   Video Demo:
-  https://www.dropbox.com/s/tey5t0ax6a5zx53/yasnippet-auto-insert.mov.7z
+  https://www.dropbox.com/s/47d4ujlqao0j6ou/yasnippet-auto-insert.mkv.7z
 * hippie-expand
   emacs 自带的一种补全机制，可以补全 变量名（当从前打开的buffer,所有打开的
   buffer,剪切板),可以补全文件名
   Video Demo:
-  https://www.dropbox.com/s/y0248u60kokz8e6/hippie-expand.mov.7z
+  https://www.dropbox.com/s/ltheog1cp6quciv/hippie-expand.mkv.7z
 * Iedit
   显示光标下匹配的word或变量
   同步的更改光标下匹配的word或变量
   Video Demo:
-  https://www.dropbox.com/s/bhivm5rm8tcua92/iedit.mov.7z
+  https://www.dropbox.com/s/px380psaksx8277/iedit.mkv.7z
 * bm.el
   可视化 书签,在书签间快速跳转
   Video Demo:
-  https://www.dropbox.com/s/xoihcos1psfpebd/bm-bookmark.mov.7z
+  https://www.dropbox.com/s/z2dqtwq05so4u02/bm-bookmark.mkv.7z
 
 * Helm
   Helm 的功能很多， 主要实现了通过一个或多个关键字从各种侯选项（可以是buffer,文
@@ -53,17 +53,17 @@
   然后执行相应的操作(如 切换到某个buffer ,打开某个文件，将选中的剪切板里的内容插
   入到光标处等）
   Video Demo:
-  https://www.dropbox.com/s/s3gu53qwag580ya/helm.mov.7z
+  https://www.dropbox.com/s/45lu4bvrd1zxusx/helm.mkv.7z
 
 * Helm Imenu
   列出当前所编辑文件中各个函数 并跳转(以emacs源码中的sha256.c 及helm-imenu.el文
   件为例)
   Video Demo:
-  https://www.dropbox.com/s/ne6st72j03mrkde/helm-imenu.mov.7z
+  https://www.dropbox.com/s/zq6zk562nmgypve/helm-imenu.mkv.7z
 * Helm-occur
   根据关键字列出当前文件中包含关键字的行， 并跳转
   Video Demo:
-  https://www.dropbox.com/s/36gj0u0gdgqk9wy/helm-occur.mov.7z
+  https://www.dropbox.com/s/9krjogmt9ssk8bm/helm-occur.mkv.7z
 
 * helm-grep and Emacs-wgrep
   helm-grep.el
@@ -78,20 +78,52 @@
     同时有了Emacs-wgrep ,则对上述buffer 内容的更改 则会反映到这些文件中，以实现
     在多个文件中更改某个变量的目录
     Video Demo:
-    https://www.dropbox.com/s/czgk5vm5gbj8svk/helm-grep-wgrep.mov.7z
+    https://www.dropbox.com/s/jvju9gwyctwxg6a/helm-grep-wgrep.mkv.7z
 
 * helm-ls-git helm-ls-hg
   列出git 或hg 仓库里的文件， 从中过滤中某个文件 打开
   快速打开项目中文件的一种方法
   以 helm-ls-git 为例
-  https://www.dropbox.com/s/v251u4g2lo4fr3u/helm-ls-git.mov.7z
-* TODO helm-etags-plus ctags-update.el
-* TODO emacs-helm-gtags
-* TODO eshell
+  https://www.dropbox.com/s/6kpqsvxh4d59ojl/helm-ls-git.mkv.7z
+* helm-etags-plus ctags-update.el
+    使用Exuberant Ctags(ctags) 实现函数的跳转（支持c c++ java等多种语言）
+    helm-etags-plus 支持多个TAGS文件，
+    ctags-update.el 则可以自动更新TAGS文件，
+    以emacs 的源代码为例演示如何使用
+    Video Demo:
+    https://www.dropbox.com/s/xroh50ptv5iuw4x/helm-etags-plus.mp4.7z
+* emacs-helm-gtags
+  GNU Global with helm for emacs
+  使用 GNU Global 来实现函数的跳转，查找哪些地方调用了某函数等功能
+  Video Demo:
+  https://www.dropbox.com/s/duuapzy1tuivqas/emacs-helm-gtags.mkv.7z
+* eshell
+  emacs 实现的一个shell ,
+  可以在编辑文件时快速的跳到此文件所在的目录 ，然后执行相应的shell命令
+  可以利用到emacs自身的补全机会，
+  Video Demo:
+  https://www.dropbox.com/s/pc3shb7resaz9k1/eshell.mp4.7z
+* ace-jump-mode
+  无笔标快速定位的方法之一：
+  比如 :按下M-m（Alt-m)之后,
+  等侯你按下一个字母(比如m),然后它会用另外一组红色face的字母 标出
+  所有以此字母(m)开头的单词,可以多次操作,直到光标定位到你想要的位置
+  下面以 快速跳转到各个字母m处进行演示(注意窗口最下面提示我输入一个字母
+  Video Demo:
+  https://www.dropbox.com/s/mgsmfhsdpzgcw9v/ace-jump-mode.mp4.7z
 * TODO sqlparser
-* TODO ace-jump-mode
-* TODO golden-ratio.el
+* golden-ratio.el
+  多窗口操作时 ，比较烦人的一件事情就是调整窗口的大小
+  golden-ratio.el 则按照黄金分隔（0.618）的比例自动调整窗口的大小
+  使光标所在的窗口无论是水平还是竖直方向都占整个比例的0.618，
+  https://www.dropbox.com/s/vozuebnknsxjjj5/golden-ratio-el.mp4.7z
 * TODO dired
+  emacs 管理文件的方式，
+  1.在这里更改文件名字就行更改一个文件的内容一样，
+  2.删除文件
+  3.快速当前目录想要的文件（只显示匹配的文件）
+  ...
+
 * TODO VC
 * TODO Ediff
 * TODO magit

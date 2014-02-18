@@ -170,6 +170,7 @@
   | hello this is a tab | another line |
   | eeee                | fff          |
   https://www.dropbox.com/s/4iew0stcupnevk9/org-mode.mp4.7z
+  http://orgmode.org/worg/org-tutorials/index.html
 * org-agenda org-mode TODO list
   org mode 用于日程管理
   (global-set-key (kbd "C-c a")  'org-agenda)

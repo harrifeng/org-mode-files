@@ -1,5 +1,7 @@
 #+TITLE: 站点地图
 
+   + Golang
+     [[file:go/golang_heap_stack_var.org][golang 变量分配在堆上 或者栈上的分析]]
    + Linux
      + [[file:Linux/gentoo.org][Gentoo 拾遗]]
      + [[file:Linux/ext2.org][ext2文件系统]]

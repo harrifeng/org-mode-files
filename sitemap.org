@@ -1,7 +1,5 @@
 #+TITLE: 站点地图
 
-   + Golang
-     [[file:go/golang_heap_stack_var.org][golang 变量分配在堆上 或者栈上的分析]]
    + Linux
      + [[file:Linux/gentoo.org][Gentoo 拾遗]]
      + [[file:Linux/ext2.org][ext2文件系统]]
@@ -88,6 +86,8 @@
    + git
      + [[file:git/git.org][git拾遗]]
      + [[file:git/git-proxy-on-windows.org][在windows上通过代理访问github.com]]
+   + go
+     + [[file:go/golang_heap_stack_var.org][golang 变量倒底是在堆上还是栈上分配的分析]]
    + java
      + [[file:java/ant-example1.org][ant build.xml 示例]]
      + [[file:java/spring.org][spring.rnc的作成]]

@@ -9,6 +9,19 @@
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 #+FILETAGS: @Linux
+* 几个工具
+- nload 查看网卡流量
+- nethugs 查看具体的进程发包收包情况
+- rkhunter linux 安全工具，扫描后门程序（需要刚装机时建立样本进行对比)
+- lsof -i:8888  查看兼听8888端口的程序
+- top 按M按内存排序
+- tmux
+  tmux attach
+  C-bd  退出
+  C-b0 C-b1 C-b2  切tag
+  C-bs list sessions
+  C-bn C-bp next prev
+  C-bc 新建tag
 * 使某一目录下创建的所有文件目录的groupname 都是 当前用户所属的组
   #+BEGIN_SRC sh
     chmod g+s dir1

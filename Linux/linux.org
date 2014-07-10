@@ -131,6 +131,15 @@ Modeline "1440x900_75.00"  136.75  1440 1536 1688 1936  900 903 909 942 -hsync +
   Identifier "Configured Video Device"
   EndSection
   #+END_QUOTE
+* 通过ssh 连接远程机器上的mysql 等
+  通常的情况是远程 42.62.14.55 上有一个mysql ,兼听在3306端口上
+  但是防火墙阻止直接连3306端口
+  解决加法是 ssh 连上42.62.14.55 ,然后在ssh 访问mysql 3306端口，
+  此时防问
+  ssh -L 3307:localhost:3306 username@42.62.14.55 -N
+   # ssh -L <localport>hostname<remoteport> <username>@<servername>
+  这个时候在你的本机会开一个3307端口
+  然后 mysql -uroot -ppass -P3307 就可以连上这个mysql了
 * ssh socat
   我局域网ip 是192.168.1网段的
 

@@ -180,6 +180,13 @@ iptables -A BAN_INPUT_PORT25 -p tcp -s 192.168.1.30 -j DROP
 iptables -A INPUT -p tcp --dport 25 -j BAN_INPUT_PORT25
 
 
+# 防止DoS攻击
+iptables -A INPUT -p tcp --dport 22 -m limit --limit 25/minute --limit-burst 20 -j ACCEPT
+# -m limit: 启用limit扩展
+# –limit 25/minute: 允许最多每分钟25个连接
+# –limit-burst 20: 当达到20个连接后，才启用上述25/minute限制
+
+
 #关于地址转换，一般是在网关上作操作，网关上一般有两个网卡，一个有外网的地址，可以与外网互访，一个有内网的ip，可以与内网互访。需要地址转换的情况：服务架设在内网的某台机上，外网通过访问网关的80端口，则认为是访问这台内网的80端口，即保护内网服务器，另一种情况，内网机器访问外网，则将内网发出的数据包的源地址改成可以外网访问的公网ip(网关的地址),
 内网访问外网，作源地址转换，即将发出去的数据包的源地址改成外网识别我网关的地址，在POSTROUTING 链上做源地址转换
 iptables -t nat -A POSTROUTING  -s 192.168.0.0/24 -j  SNAT --to 192.168.1.1(网关的ip)

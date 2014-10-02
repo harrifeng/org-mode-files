@@ -5,14 +5,16 @@
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 * Tips: dropbox 里的视频不要用迅雷下载， 似乎下不了(PS. 似乎国内现在封了dropbox，试从微盘vdist.weibo.com下载相应的视频链接)
-  微盘里也上传一份
+  微盘里也上传一份供下载
   http://vdisk.weibo.com/s/A2UdJFfhA_GG5/1412260686
+  优酷上也上传了一些，供在线观看(清晰度相对差些）
+  http://i.youku.com/u/UMjU4NzMzNDA=/videos
 * AutoComplete
   http://www.emacswiki.org/emacs/AutoComplete
   Video Demo:
+  http://v.youku.com/v_show/id_XMzMxMDg0NDIw.html
   http://youtu.be/rGVVnDxwJYE
   http://cx4a.org/software/auto-complete/demo.html
-  http://v.youku.com/v_show/id_XMzMxMDg0NDIw.html
 * AutoJavaComplete
   AutoComplete 的一个插件，基于TAG 用于java补全
   虽然比Eclipse差些， 但总还可以用，再加上emacs 其他一些补全机制
@@ -218,8 +220,9 @@
   https://github.com/magit/magit
   https://github.com/magit/magit/wiki
   Video demo:
-  http://shelby.tv/video/vimeo/2871241/meet-magit
+  http://v.youku.com/v_show/id_XNzk1NjI5OTM2.html
   http://vimeo.com/2871241
+  http://shelby.tv/video/vimeo/2871241/meet-magit
 * org-mode
   当前文件就是用org-mode 进行编辑的，
   用Tab 键进行展开或折叠,

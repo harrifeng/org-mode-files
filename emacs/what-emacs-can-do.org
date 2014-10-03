@@ -54,6 +54,7 @@
   同步的更改光标下匹配的word或变量
   Video Demo:
   https://www.dropbox.com/s/px380psaksx8277/iedit.mkv.7z
+  或 http://vdisk.weibo.com/s/A2UdJFfhA_GFq
   演示视频里演示了 如何同时更改本文件里所有hello变量为hello另一个变量
   及如何只同时更改test()方法里的hello变量为另一个变量的功能(其他区域的hello不受
   影响）

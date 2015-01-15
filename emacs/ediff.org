@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:     Windows 下使用Emacs的 Ediff 进行文件的比较、合并
 #+AUTHOR:    纪秀峰

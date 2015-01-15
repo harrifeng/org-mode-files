@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:     cedet eassist在c c++编程中的应用
 #+AUTHOR:    纪秀峰

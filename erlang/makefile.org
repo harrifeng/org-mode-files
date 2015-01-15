@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:     makefile for erlang 示例
 #+AUTHOR:    纪秀峰

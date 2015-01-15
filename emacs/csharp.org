@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:     emacs csharp 开发环境配置
 #+AUTHOR:    纪秀峰

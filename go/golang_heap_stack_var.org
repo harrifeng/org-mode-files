@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:     golang 变量倒底是在堆上还是栈上分配的分析
 #+AUTHOR:    纪秀峰

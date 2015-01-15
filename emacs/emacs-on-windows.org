@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+TITLE:     Windows上Emacs的安装及emacsclient进行C/S连接
 #+AUTHOR:    孤峰独秀
 #+EMAIL:     jixiuf@gmail.com

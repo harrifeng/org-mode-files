@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:     AutoHotKey 几个简单的小例子
 #+AUTHOR:    孤峰独秀

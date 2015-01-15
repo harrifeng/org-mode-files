@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:    emacs 入门第一课：Emacs里的基本概念 
 #+AUTHOR:    孤峰独秀

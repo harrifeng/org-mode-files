@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:     dfs(深度优先算法)算法 走迷宫
 #+AUTHOR:    纪秀峰

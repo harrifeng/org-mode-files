@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:     yasnippet ,Auto Insert mode整合
 #+AUTHOR:    孤峰独秀

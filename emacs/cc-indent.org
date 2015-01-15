@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:     cc mode 里关于indent(缩进)的控制
 #+AUTHOR:    纪秀峰

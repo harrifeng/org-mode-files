@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+TITLE:     emacs-23.2安装官网cedet
 #+AUTHOR:    孤峰独秀
 #+EMAIL:     jixiuf@gmail.com

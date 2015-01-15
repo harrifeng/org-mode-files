@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:     c里的变量或函数或数组的声明的解析,先右后左法则
 #+AUTHOR:    纪秀峰

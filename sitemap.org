@@ -4,6 +4,7 @@
      + [[file:Linux/gentoo.org][Gentoo 拾遗]]
      + [[file:Linux/ext2.org][ext2文件系统]]
      + [[file:Linux/iptables.org][iptables防火墙]]
+     + [[file:Linux/linux_io_benchmark.org][linux IO性能测试]]
      + [[file:Linux/iconv.org][linux 下gbk utf8 转换]]
      + [[file:Linux/font.org][linux 下字体相关]]
      + [[file:Linux/linux.org][linux拾遗]]

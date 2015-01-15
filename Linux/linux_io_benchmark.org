@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+# -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
 #+TITLE:linux IO性能测试    
 #+AUTHOR:    纪秀峰
@@ -100,7 +100,7 @@
    测试序列读， 每次读取大小4k的块，默认的ioengine=sync,运行60s(runtime),-direct=1,跳过buffer
    下面的测试的结束 每秒读取速度bw=112297KB/s，,112297KB/s*60s=6820320 KB=6660.7MB
    其中iops=28074
-#+BEGIN_SRC 
+#+BEGIN_SRC sh
         fio -filename=/tmp/hello -direct=1 -bs=4k -rw=read -size=5G -numjobs=8 -runtime=60 -group_reporting -name=test_for_sync
   
 test_for_sync: (g=0): rw=read, bs=4K-4K/4K-4K/4K-4K, ioengine=sync, iodepth=1
@@ -140,7 +140,7 @@ Disk stats (read/write):
      下面的测试的结束 每秒写速bw=12042KB/s,
      bw=12042KB/s,
      iops=3010 
-#+BEGIN_SRC 
+#+BEGIN_SRC  sh
      fio -filename=/tmp/hello -direct=1 -bs=4k -rw=write -size=5G -numjobs=8 -runtime=60 -group_reporting -name=test_for_sync
 test_for_sync: (g=0): rw=write, bs=4K-4K/4K-4K/4K-4K, ioengine=sync, iodepth=1
 ...
@@ -180,7 +180,7 @@ Disk stats (read/write):
      下面的测试的结束 每秒写速bw=4213KB/s,
      bw=4213KB/s,
      iops=1053 
-#+BEGIN_SRC 
+#+BEGIN_SRC  sh
 root@10-9-26-206 /home/deployer # fio -filename=/tmp/hello -direct=1 -bs=4k -rw=randread -size=5G -numjobs=8 -runtime=60 -group_reporting -name=test_for_sync
 test_for_sync: (g=0): rw=randread, bs=4K-4K/4K-4K/4K-4K, ioengine=sync, iodepth=1
 ...
@@ -220,7 +220,7 @@ Disk stats (read/write):
      bw=10185KB/s,
      iops=2546 
      
-#+BEGIN_SRC 
+#+BEGIN_SRC  sh
 root@10-9-26-206 /home/deployer # fio -filename=/tmp/hello -direct=1 -bs=4k -rw=randwrite -size=5G -numjobs=8 -runtime=60 -group_reporting -name=test_for_sync
 test_for_sync: (g=0): rw=randwrite, bs=4K-4K/4K-4K/4K-4K, ioengine=sync, iodepth=1
 ...

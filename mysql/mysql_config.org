@@ -1,0 +1,89 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     mysql_config.org
+#+AUTHOR:    纪秀峰
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2015-02-06 Fri
+#+DESCRIPTION:mysql_config.org
+#+KEYWORDS: 
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
+#+FILETAGS: 
+
+* server 层参数
+  1. tmp-table-size
+  2. query-cache-type (0|1|2)
+  3. query-cache-size
+  4. max-connections
+  5. table-open-cache
+  6. wait_timeout (8h? 8day?)
+  7. transaction-isolation (rc|rc) 事务隔离级别
+  8. key_buffer
+  9. low_case_table_names (ignore case )
+  10. sort_buffer_size  (order by 是在server 层做)
+** 复制参数 master (server层做)
+   log-bin
+   server-id
+   binlog-do-db (哪些库  主从复制)
+   binlog-ignore-db （忽略哪些库）
+   binlog-format(row|stmt|mixed) row-整行数据记录  ， stmt-记录sql语句
+***  半同步复制(plugin 存在)
+     半同步复制--- 扔给从库  从库接收后立刻回复master好了，
+     同步复制---  扔给从库  从库接收后，从库上apply后 再回复我好了
+     
+     rpl_semi_sync_master_enabled
+     rpl_semi_sync_master_timeout
+** 复制参数 slave (server层做)
+   1. server-id
+   2. master-port
+   3. slave-skip-errors
+   4. relay_log
+   5. sync_binlog
+   6. replicate-ignore-db replicate-do-db replicate-do-table 与master
+      上的binlog-do-db inlog-ignore-db 对应
+* Engine 层参数
+** innodb
+  1. innodb-buffer-pool-size  default 8M  (一定要调大 50%~-80% mem)
+  2. innodb-flush-log-at-tx-commit (0|1|2) 
+     0每次提交  innodb 都写redo日志
+     1  每秒钟写一次
+     2  每秒钟写一次且 每次commit 写一次
+  3. innodb-flush-method(fdatasync|O_DIRECT|O_DSYNC)
+     基本O_DIRECT
+     fdatasync  用fsync  告诉操作系统 ( 一定要绕过缓存)
+     O_DIRECT  redo log 直接到硬盘
+  4. innodb-file-per-table 一定要设
+     每建个表  innodb 为其建两文件
+     inodb_file_format 与之相关
+  5. innodb-log-buffer-size --64M
+  6. innodb-log-file-size 两个文件轮换着写
+  7. innodb-io-capacity=200|2000|20000
+     200 15000转sasi盘
+     2000 150000转  做了raid10的盘20块
+     根据iops来设置
+  8. inodb-read-io-threads  2*cpu
+     inodb-write-io-threads  2*cpu
+  9. innodb_stats_on_metadata=off
+  10. innodb-buffer-pool-instance=4 左右
+      innodb-buffer-pool-instance*innodb-buffer-pool-size
+      实际使用的内存
+  11. libaio 
+       innodb_use_native_aio (需要装libaio)
+  12. 
+      use-sys-malloc (do not use)
+      use google tc-malloc
+      
+  13. mysql 改io 调度器为deadline 
+       
+
+     
+
+  
+   
+   
+   
+  
+  
+  
+  
+  

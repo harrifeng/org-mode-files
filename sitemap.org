@@ -93,6 +93,7 @@
      + [[file:java/ant-example1.org][ant build.xml 示例]]
      + [[file:java/spring.org][spring.rnc的作成]]
    + mysql
+     + [[file:mysql/mysql_config.org][mysql_config.org]]
      + [[file:mysql/benchmark.org][mysql压力测试]]
      + [[file:mysql/benchmark_demo.org][mysql压力测试 实战]]
      + [[file:mysql/mysql.org][mysql拾 遗]]

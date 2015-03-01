@@ -7,3 +7,4 @@
 
  + 首页还未做好，先看[[file:sitemap.org][站点地图]]吧
  + [[file:about.org][About]]
+ + [[file:passhash.htm][password hash密码生成器网页便携版]]

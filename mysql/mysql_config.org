@@ -5,10 +5,10 @@
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:     2015-02-06 Fri
 #+DESCRIPTION:mysql_config.org
-#+KEYWORDS: 
+#+KEYWORDS:
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
-#+FILETAGS: 
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+#+FILETAGS:
 
 * server 层参数
   1. tmp-table-size
@@ -16,6 +16,13 @@
   3. query-cache-size
   4. max-connections
   5. table-open-cache
+     保持处于open 状态的table 的数量（应该是）（需要根据库里表的数量来决定）
+     mysql 会缓存 一部分 open table, 当缓存满时  再去open 一个table 时， mysql
+     会根据LRU法则把最旧的table 关闭掉。所以 如果这个值设置的过小的话，
+     mysql 会频繁的open close table
+     可以根据Table_open_cache_misses这个值来判断 table-open-cache 是否正常
+     如果Table_open_cache_misses 远大于Open_tables
+     这几个变量show  global  status like 'Open%';
   6. wait_timeout (8h? 8day?)
   7. transaction-isolation (rc|rc) 事务隔离级别
   8. key_buffer
@@ -30,7 +37,7 @@
 ***  半同步复制(plugin 存在)
      半同步复制--- 扔给从库  从库接收后立刻回复master好了，
      同步复制---  扔给从库  从库接收后，从库上apply后 再回复我好了
-     
+
      rpl_semi_sync_master_enabled
      rpl_semi_sync_master_timeout
 ** 复制参数 slave (server层做)
@@ -44,7 +51,7 @@
 * Engine 层参数
 ** innodb
   1. innodb-buffer-pool-size  default 8M  (一定要调大 50%~-80% mem)
-  2. innodb-flush-log-at-tx-commit (0|1|2) 
+  2. innodb-flush-log-at-tx-commit (0|1|2)
      0每次提交  innodb 都写redo日志
      1  每秒钟写一次
      2  每秒钟写一次且 每次commit 写一次
@@ -67,23 +74,10 @@
   10. innodb-buffer-pool-instance=4 左右
       innodb-buffer-pool-instance*innodb-buffer-pool-size
       实际使用的内存
-  11. libaio 
+  11. libaio
        innodb_use_native_aio (需要装libaio)
-  12. 
+  12.
       use-sys-malloc (do not use)
       use google tc-malloc
-      
-  13. mysql 改io 调度器为deadline 
-       
 
-     
-
-  
-   
-   
-   
-  
-  
-  
-  
-  
+  13. mysql 改io 调度器为deadline

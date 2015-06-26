@@ -12,6 +12,29 @@
 
 * server 层参数
   1. tmp-table-size
+     default 32M
+
+     copy to tmp talbe 语句产生的原因是查询需要Order By 或者Group By等
+     需要用到结果集时，参数中设置的临时表的大小小于结果集的大小时，就
+     会将该表放在磁盘上，这个时候在硬盘上的IO要比内销差很多。所耗费的
+     时间也多很多。另外Mysql的另外一个参数max_heap_table_size比
+     tmp_table_size小时，则系统会把max_heap_table_size的值作为最大的内
+     存临时表的上限，大于这个时，改写硬盘。
+
+
+     This variable determines the maximum size for a temporary table
+     in memory. If the table becomes too large, a MYISAM table is
+     created on disk. Try to avoid temporary tables by optimizing the
+     queries where possible, but where this is not possible, try to
+     ensure temporary tables are always stored in memory. Watching the
+     processlist for queries with temporary tables that take too long
+     to resolve can give you an early warning that tmp_table_size
+     needs to be upped. Be aware that memory is also allocated
+     per-thread. An example where upping this worked for more was a
+     server where I upped this from 32MB (the default) to 64MB with
+     immediate effect. The quicker resolution of queries resulted in
+     less threads being active at any one time, with all-round
+     benefits for the server, and available memory.
   2. query-cache-type (0|1|2)
   3. query-cache-size
   4. max-connections

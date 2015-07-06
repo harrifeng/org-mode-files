@@ -75,9 +75,24 @@
 ** innodb
   1. innodb-buffer-pool-size  default 8M  (一定要调大 50%~-80% mem)
   2. innodb-flush-log-at-tx-commit (0|1|2)
-     0每次提交  innodb 都写redo日志
-     1  每秒钟写一次
-     2  每秒钟写一次且 每次commit 写一次
+      不同的值 影响两个操作 （write,flush） ,
+     + write 是操作系统级的write(意思是说 write 到操作系统的缓存了)
+     + flush  刷日志到硬盘
+     0  表示每秒钟write and flush 一次，  但是sql commit 的时候并不提交
+     1  每次sql commit 都会write and flush （最安全 也是最慢的）
+     2  每次sql commit 都会write  ,但是每间隔1s 才flush 一次 (折中，如果mysql 崩掉 只会丢失1s的数据)
+     0, the log buffer is written out to the log file once per second
+     and the flush to disk operation is performed on the log file, but
+     nothing is done at a transaction commit. When the value is 1 (the
+     default), the log buffer is written out to the log file at each
+     transaction commit and the flush to disk operation is performed
+     on the log file. When the value is 2, the log buffer is written
+     out to the file at each commit, but the flush to disk operation
+     is not performed on it. However, the flushing on the log file
+     takes place once per second also when the value is 2. Note that
+     the once-per-second flushing is not 100% guaranteed to happen
+     every second, due to process scheduling issues.
+
   3. innodb-flush-method(fdatasync|O_DIRECT|O_DSYNC)
      基本O_DIRECT
      fdatasync  用fsync  告诉操作系统 ( 一定要绕过缓存)
@@ -100,7 +115,7 @@
   11. libaio
        innodb_use_native_aio (需要装libaio)
   12.
-      use-sys-malloc (do not use)
-      use google tc-malloc
+       use-sys-malloc (do not use)
+       use google tc-malloc
 
   13. mysql 改io 调度器为deadline

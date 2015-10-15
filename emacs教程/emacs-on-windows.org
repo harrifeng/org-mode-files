@@ -39,10 +39,9 @@ Emacs之后再也不关闭,然后用emacsclient 或者gnuclient 去连这个没�
 好它那 也确实有点让人为难.我没用gnuclient 也没用打过补丁的EmacsW32,只用
 Emacs 自带的emacsclient,就已经足够了.
 * 下载
-  下面从头到尾介绍Emacs 在Windows 上的安装及简单配置首先到[[http://ftp.gnu.org/pub/gnu/emacs/windows/ ][这个]]目录下载
-emacs 的安装包目前的最新版是23.3所以下载[[http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-23.3-bin-i386.zip][emacs-23.3-bin-i386.zip]] 这个这可以了.
-上面这个是相对比较稳定正式发布的.而在[[http://alpha.gnu.org/gnu/emacs/windows/][这个 ]]网站上的是Emacs 的最新版，一周一更
-新，相对上面那个不太稳定，但绝对可用. 下载下来，放到一个目录中不包含空格，不
+  下面从头到尾介绍Emacs 在Windows 上的安装及简单配置首先到[[http://ftp.gnu.org/pub/gnu/emacs/windows/][这个]]目录下载
+emacs 的安装包目前的最新版是24.5所以下载[[http://ftp.gnu.org/pub/gnu/emacs/windows/emacs-24.5-bin-i686-mingw32.zip][emacs-24.5-bin-i686-mingw32.zip]] 这个这可以了.
+上面这个是相对比较稳定正式发布的.下载下来，放到一个目录中不包含空格，不
 包含汉字的路径下。解压开后，里面有个bin目录，目录下有个addpm.exe ,点这个程序
 以后会将Emacs加入到开始菜单中。另外还有个runemacs.exe 一般情况下用这个程序就
 可以启动Emacs .你可以发送一个链接到桌面上，便于使用。另外有一个emacs.exe 这
@@ -78,7 +77,7 @@ emacs 的安装包目前的最新版是23.3所以下载[[http://ftp.gnu.org/pub/
 *** 新建 HOME环境变量
 大体步骤是这样的. 右击"我的电脑"~属性~环境变量,然后点击上面的那个"新建
 ",然后变量名输入"HOME"变量值输入"d:\",一路确定之后Home变量就设好了.
-#+ATTR_HTML: alt="HOME=D:\emacs-23.3" 
+#+ATTR_HTML: alt="HOME=D:\emacs-23.3"
 [[file:../img/env_home.JPG]]
 *** 创建.emacs.d目录和.emacs文件
 相信.emacs.d目录和.emacs文件是困扰大家很久的问题了，其实有个简单的办法可以解
@@ -101,17 +100,17 @@ Options的时候，Emacs会在home路径下产生.emacs文件，并把配置信�
 (setq server-name "emacs-server-file")
 (server-start)
 #+end_src
-      
+
     然后像建HOME变量一样建一个
 ***  EMACS_SERVER_FILE  与 ALTERNATE_EDITOR环境变量
-       
+
 **** EMACS_SERVER_FILE变量,值为"d:\emacs-server-file"
-#+ATTR_HTML: alt="ALTERNATE_EDITOR=d:\emacs-23.3\runemacs.exe" 
+#+ATTR_HTML: alt="ALTERNATE_EDITOR=d:\emacs-23.3\runemacs.exe"
 [[file:../img/env_emacs_server_file.JPG]]
 
 **** ALTERNATE_EDITOR=d:\emacs-23.3\runemacs.exe
 [[file:../img/env_alternate_editor.JPG]]
-       
+
 *** 右键菜单中加入 "Open With Emacs"
 下面要实现，在资源管理器的右键菜单中加入，"Open with Emacs"这个一个选项
 。假设你把Emacs 解压到了d:\emacs-23.3\这个目录下。

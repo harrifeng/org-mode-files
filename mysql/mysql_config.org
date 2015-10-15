@@ -5,17 +5,47 @@
 #+EMAIL:     jixiuf@gmail.com
 #+DATE:     2015-02-06 Fri
 #+DESCRIPTION:mysql_config.org
-#+KEYWORDS: 
+#+KEYWORDS:
 #+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil 
-#+FILETAGS: 
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+#+FILETAGS:
 
 * server 层参数
   1. tmp-table-size
+     default 32M
+
+     copy to tmp talbe 语句产生的原因是查询需要Order By 或者Group By等
+     需要用到结果集时，参数中设置的临时表的大小小于结果集的大小时，就
+     会将该表放在磁盘上，这个时候在硬盘上的IO要比内销差很多。所耗费的
+     时间也多很多。另外Mysql的另外一个参数max_heap_table_size比
+     tmp_table_size小时，则系统会把max_heap_table_size的值作为最大的内
+     存临时表的上限，大于这个时，改写硬盘。
+
+
+     This variable determines the maximum size for a temporary table
+     in memory. If the table becomes too large, a MYISAM table is
+     created on disk. Try to avoid temporary tables by optimizing the
+     queries where possible, but where this is not possible, try to
+     ensure temporary tables are always stored in memory. Watching the
+     processlist for queries with temporary tables that take too long
+     to resolve can give you an early warning that tmp_table_size
+     needs to be upped. Be aware that memory is also allocated
+     per-thread. An example where upping this worked for more was a
+     server where I upped this from 32MB (the default) to 64MB with
+     immediate effect. The quicker resolution of queries resulted in
+     less threads being active at any one time, with all-round
+     benefits for the server, and available memory.
   2. query-cache-type (0|1|2)
   3. query-cache-size
   4. max-connections
   5. table-open-cache
+     保持处于open 状态的table 的数量（应该是）（需要根据库里表的数量来决定）
+     mysql 会缓存 一部分 open table, 当缓存满时  再去open 一个table 时， mysql
+     会根据LRU法则把最旧的table 关闭掉。所以 如果这个值设置的过小的话，
+     mysql 会频繁的open close table
+     可以根据Table_open_cache_misses这个值来判断 table-open-cache 是否正常
+     如果Table_open_cache_misses 远大于Open_tables
+     这几个变量show  global  status like 'Open%';
   6. wait_timeout (8h? 8day?)
   7. transaction-isolation (rc|rc) 事务隔离级别
   8. key_buffer
@@ -30,7 +60,7 @@
 ***  半同步复制(plugin 存在)
      半同步复制--- 扔给从库  从库接收后立刻回复master好了，
      同步复制---  扔给从库  从库接收后，从库上apply后 再回复我好了
-     
+
      rpl_semi_sync_master_enabled
      rpl_semi_sync_master_timeout
 ** 复制参数 slave (server层做)
@@ -44,10 +74,25 @@
 * Engine 层参数
 ** innodb
   1. innodb-buffer-pool-size  default 8M  (一定要调大 50%~-80% mem)
-  2. innodb-flush-log-at-tx-commit (0|1|2) 
-     0每次提交  innodb 都写redo日志
-     1  每秒钟写一次
-     2  每秒钟写一次且 每次commit 写一次
+  2. innodb-flush-log-at-tx-commit (0|1|2)
+      不同的值 影响两个操作 （write,flush） ,
+     + write 是操作系统级的write(意思是说 write 到操作系统的缓存了)
+     + flush  刷日志到硬盘
+     0  表示每秒钟write and flush 一次，  但是sql commit 的时候并不提交
+     1  每次sql commit 都会write and flush （最安全 也是最慢的）
+     2  每次sql commit 都会write  ,但是每间隔1s 才flush 一次 (折中，如果mysql 崩掉 只会丢失1s的数据)
+     0, the log buffer is written out to the log file once per second
+     and the flush to disk operation is performed on the log file, but
+     nothing is done at a transaction commit. When the value is 1 (the
+     default), the log buffer is written out to the log file at each
+     transaction commit and the flush to disk operation is performed
+     on the log file. When the value is 2, the log buffer is written
+     out to the file at each commit, but the flush to disk operation
+     is not performed on it. However, the flushing on the log file
+     takes place once per second also when the value is 2. Note that
+     the once-per-second flushing is not 100% guaranteed to happen
+     every second, due to process scheduling issues.
+
   3. innodb-flush-method(fdatasync|O_DIRECT|O_DSYNC)
      基本O_DIRECT
      fdatasync  用fsync  告诉操作系统 ( 一定要绕过缓存)
@@ -67,23 +112,10 @@
   10. innodb-buffer-pool-instance=4 左右
       innodb-buffer-pool-instance*innodb-buffer-pool-size
       实际使用的内存
-  11. libaio 
+  11. libaio
        innodb_use_native_aio (需要装libaio)
-  12. 
-      use-sys-malloc (do not use)
-      use google tc-malloc
-      
-  13. mysql 改io 调度器为deadline 
-       
+  12.
+       use-sys-malloc (do not use)
+       use google tc-malloc
 
-     
-
-  
-   
-   
-   
-  
-  
-  
-  
-  
+  13. mysql 改io 调度器为deadline

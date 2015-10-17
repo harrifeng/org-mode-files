@@ -64,9 +64,10 @@
      + [[file:emacs/image-suport-on-windows.org][在Windows 下让Emacs 支持打开jpeg png 图片]]
      + [[file:emacs/msys-bash-ls-color.org][在Windows上使用MSYS中的bash并使ls可以显示颜色]]
    + emacs教程
-     + [[file:emacs教程/emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
-     + [[file:emacs教程/emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念]]
-     + [[file:emacs教程/emacs-on-mac.org][emacs 在Mac上的安装及一些相应配置]]
+     + [[file:emacs教程/00001-emacs-on-windows.org][Windows上Emacs的安装及emacsclient进行C/S连接]]
+     + [[file:emacs教程/00002-emacs-on-mac.org][emacs 在Mac上的安装及一些相应配置]]
+     + [[file:emacs教程/00003-emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念]]
+     + [[file:emacs教程/00004-emacs-self-tutorial.org][emacs 自带的简单入门教程]]
    + erlang
      + [[file:erlang/Distributed_Applications.org][Distributed_Applications.org]]
      + [[file:erlang/catch.org][catch ,throw ,异常处理]]

@@ -1,9 +1,9 @@
 # -*- coding:utf-8-unix -*-
 #+LANGUAGE:  zh
-#+TITLE:    emacs 入门第一课：Emacs里的基本概念 
-#+AUTHOR:    孤峰独秀
+#+TITLE:    emacs 入门第一课：Emacs里的基本概念
+#+AUTHOR:    纪秀峰
 #+EMAIL:     jixiuf@gmail.com
-#+DATE:      2011-06-09 星期四
+#+DATE:      2011-06-01 星期四
 #+DESCRIPTION:
 #+FILETAGS: @Emacs @Linux @Windows
 #+KEYWORDS: emacs 入门
@@ -32,8 +32,8 @@
     Emacs自已使用的buffer 一般用"*" 引起来，比如用来记录你进行了哪些操作的*Message*
     buffer ,及进行补全时用的*Completions* buffer ,这样的buffer 不与文件关联，所以你关闭
     Emacs时这些buffer里的内容会被丢弃，因为没有保存的必要。
-    
-    
+
+
 *  window（窗口）与frame
     这两个概念与浏览器里的window ,frame 概念正好颠倒。由于Emacs很早就诞生了（1984年由
     Richard Stallman发起）,它诞生的时候，Windows还在娘胎里孕育(孕育了六年才出Windows3.0)。
@@ -70,7 +70,7 @@
     #+end_src
     lisp 的语法初看上去很吓人，但是想一想小学学的加减乘除优先级里的括号
     或许你会有一点他乡遇故知的感觉。
-* Emacs的mode 
+* Emacs的mode
 建立一个微小的基本功能的集合，然后把所有复杂功能作为这些基本功能的组合。这体现了一种程序设
 计的哲学。不同于 Windows, 也不同于 UNIX，它更好的协调了程序的灵活性和同一性。这句话说的应
 该是Emacs时的mode 的概念，Emacs里的mode 分major mode ,minor mode两种。 major-mode 是专门用
@@ -85,7 +85,7 @@ Line-Number mode 列号的Column-Number , 高亮显示匹配的括号的Show-Par
 
 
 
-    
+
 *  函数function、命令command、键绑定keybinding
     函数不用多解释，命令是一种特殊的函数，在这种函数内部通常第一个调用的函数是
    (interactive) ，表示这是一个可交互的函数，即命令，命令可以与按键进行绑定也可以直接输入
@@ -131,6 +131,3 @@ Line-Number mode 列号的Column-Number , 高亮显示匹配的括号的Show-Par
 *****   M-w ,kill-ring-save       copy
 *****   C-y, yank                 paste
 *****   M-y   yank-pop           从kill-ring 里取出以前的内容，按时间顺序，（前提是你按下一次C-y）
-    
-    
-  

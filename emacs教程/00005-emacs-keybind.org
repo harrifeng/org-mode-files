@@ -112,9 +112,8 @@ M-x:global-set-key RET 然后 按下 Alt-Return 按键 ，然后输入forward-ch
    | M-g c        | goto-char                               | 到文件的第 N 字节。                                        |
    | M-g g        | goto-line                               | 到文件第 N 行。                                            |
    |--------------+-----------------------------------------+------------------------------------------------------------|
-   | C-x C-n      | set-goal-column                         | 设定 goal-column.                                          |
-   | C-u C-x C-n  | set-goal-column                         | 取消 goal-column.                                          |
-   |--------------+-----------------------------------------+------------------------------------------------------------|
+   | C-g          | keyboard-quit                           | 取消或放弃一个操作                                         |
+   C-g的详细说明: 比如我想打开一个文件C-x C-f 当我按完C-x 还没按C-f 前，我突然想放弃了，这个时候直接C-g 就可以了
 ** 常用操作相关
 | C-x C-f            | find-file                  | open file                                                                         |
 | C-x C-s            | save-buffer                | save file                                                                         |

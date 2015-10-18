@@ -82,10 +82,15 @@ M-x:global-set-key RET 然后 按下 Alt-Return 按键 ，然后输入forward-ch
 ** 光标移动/快速定位相关
     | C-f, C-b     | forward-char backward-char              | 以字符为单位移动。                                         |
     | M-f, M-b     | forward-word,backward-word              | 以单词为单位移动。                                         |
+    | C-M-f, C-M-b | forward-sexp backward-sexp              | 以一个语法单元尾单位前后移动                               |
     | C-a, C-e     | move-beginning-of-line move-end-of-line | 移动到行首，行末。                                         |
     | M-a, M-e     | backward-sentence forward-sentence      | 移动到句子头，句子尾。                                     |
     | C-M-a ,C-M-e | beginning-of-defun end-of-defun         | 到函数头尾                                                 |
     | M-{, M-}     | forward-paragraph backward-paragraph    | 移动到段落头，段落尾。                                     |
+    | C-k          | kill-line                               | 删除一行                                                   |
+    | C-M-k        | kill-sexp                               | 删除一个语法单元(比如一对(),[]{})                          |
+    | M-h          | mark-paragraph                          | 选择一段                                                   |
+    | C-M-h        | mark-defun                              | 选择一个函数                                               |
     | C-v, M-v     | scroll-up-command scroll-down-command   | 翻页。                                                     |
     | M-<, M->     | beginning-of-buffer end-of-buffer       | 到文件头和文件尾。                                         |
     | M-r          | move-to-window-line-top-bottom          | 加参数，移动到窗口里的某一行。不加参数缺省移动到窗口中间。 |

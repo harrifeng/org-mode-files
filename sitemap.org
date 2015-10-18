@@ -69,6 +69,7 @@
      + [[file:emacs教程/00003-emacs-first-class.org][emacs 入门第一课：Emacs里的基本概念]]
      + [[file:emacs教程/00004-emacs-self-tutorial.org][emacs 自带的简单入门教程]]
      + [[file:emacs教程/00005-emacs-keybind.org][emacs 按键绑定]]
+     + [[file:emacs教程/00006-emacs-common-setup.org][emacs 一些简单的设置]]
      
    + erlang
      + [[file:erlang/Distributed_Applications.org][Distributed_Applications.org]]

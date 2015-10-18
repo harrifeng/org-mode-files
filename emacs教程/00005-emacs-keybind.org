@@ -94,6 +94,8 @@ M-x:global-set-key RET 然后 按下 Alt-Return 按键 ，然后输入forward-ch
    |--------------+-----------------------------------------+------------------------------------------------------------|
    | C-d          | delete-char                             | 删除光标后的字符                                           |
    | M-d          | kill-word                               | 删除光标后的单词                                           |
+   | C-backspace  | backward-kill-word                      | 删除光标前的一个单词                                       |
+   | M-backspace  | backward-kill-word                      | 删除光标前的一个单词                                       |
    |--------------+-----------------------------------------+------------------------------------------------------------|
    | C-k          | kill-line                               | 删除一行                                                   |
    | C-M-k        | kill-sexp                               | 删除一个语法单元(比如一对(),[]{})                          |
@@ -167,3 +169,38 @@ point 之间的区域。
   )
 (global-set-key (kbd "C-x k") 'kill-buffer-or-server-edit)
 #+END_SRC
+**  C-a smart-beginning-of-line
+   默认情况下C-a 绑定的的函数move-beginning-of-line 。
+   但是我对   move-beginning-of-line这个函数不太满意，我想做到，当我第一次
+   按下C-a时，跳到行首，当已经在行首时，则忽略行首的空白字符，并且C-a 可以在这
+   两个位置来回跳转.于是有了下面的  smart-beginning-of-line
+#+begin_src emacs-lisp
+;;;###autoload
+(defun smart-beginning-of-line ()
+  "Move point to first non-whitespace character or beginning-of-line.
+Move point to beginning-of-line ,if point was already at that position,
+  move point to first non-whitespace character. "
+  (interactive)
+  (let ((oldpos (point)))
+    (beginning-of-line)
+    (and (= oldpos (point))
+         (back-to-indentation) )))
+(global-set-key (kbd "C-a") 'smart-beginning-of-line)
+#+end_src
+**  C-e smart-end-of-line
+C-e对于end-of-line ,也想要同样的效果。
+#+begin_src emacs-lisp
+;;;###autoload
+(defun smart-end-of-line()
+  "Move point to first non-whitespace character or end-of-line.
+Move point to end-of-line ,if point was already at that position,
+  move point to first non-whitespace character."
+  (interactive)
+  (let ((oldpos (point)))
+    (beginning-of-line)
+    (when (re-search-forward "[ \t]*$" (point-at-eol) t)
+      (goto-char (match-beginning 0)))
+    (when (= oldpos (point))
+      (end-of-line))))
+(global-set-key (kbd "C-e") 'smart-end-of-line)
+#+end_src

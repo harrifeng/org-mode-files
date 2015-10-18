@@ -41,7 +41,6 @@
      + [[file:c/register.org][汇编 寄存器]]
      + [[file:c/fread_fwrite_int.org][读写二进制文件,读写int]]
    + emacs
-     + [[file:emacs/emacs-kill-region-or-line.org][Emacs中的剪切复制]]
      + [[file:emacs/what-emacs-can-do.org][Emacs可以做什么(功能演示)]]
      + [[file:emacs/open-with.org][Emacs的插件openwith.el]]
      + [[file:emacs/ediff.org][Windows 下使用Emacs的 Ediff 进行文件的比较、合并]]
@@ -50,7 +49,6 @@
      + [[file:emacs/c-c++-cedet-eassist.org][cedet eassist在c c++编程中的应用]]
      + [[file:emacs/cedet-customize.org][cedet 的定制，（译文）]]
      + [[file:emacs/csharp.org][emacs csharp 开发环境配置]]
-     + [[file:emacs/emacs-smart-beginning-of-line-and-end-of-line.org][emacs smart-end-of-line smart-beginning-of-line]]
      + [[file:emacs/emacs-help-system.org][emacs 的帮助系统]]
      + [[file:emacs/emacs-vc.org][emacs 进行版本控制(Version Control)]]
      + [[file:emacs/emacs-23.2-cedet.org][emacs-23.2安装官网cedet]]

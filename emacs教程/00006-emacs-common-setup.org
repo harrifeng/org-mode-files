@@ -169,3 +169,11 @@
      read-file-name-completion-ignore-case t;;补全文件名时忽略大小写
      completion-cycle-threshold 8)
   #+END_SRC
+* fill-column 当某行的长度大于70个字符的时候，再次输入文字会自动添加到下一行
+  #+BEGIN_SRC emacs-lisp
+   (setq-default fill-column 80)
+   或者可以 C-x f 交互式的设置这个值
+  #+END_SRC
+  与此相关的一个命令是M-q fill-paragraph比如 某一段文字，每一行的字数
+  长度不一，比较混乱光标移动到此段文字上 然后按下C-q 后， 会自动调整每
+  一行的字数到fill-column 个.

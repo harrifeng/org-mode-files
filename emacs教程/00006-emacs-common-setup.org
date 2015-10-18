@@ -54,7 +54,6 @@
     (setq kill-ring-max 200)
     (setq kill-do-not-save-duplicates t);不向kill-ring中加入重复内容
   #+END_SRC
-
 * space vs tab  代码缩进
   #+BEGIN_SRC emacs-lisp
    用空格代替tab来进行代码的缩进
@@ -94,8 +93,9 @@
     (setq kill-read-only-ok t)
     ;;kill read-only buffer内容时,会把此内容放到kill-ring中而不用警告
   #+END_SRC
-
-
+  #+BEGIN_SRC emacs-lisp
+    (delete-selection-mode 1) ;;当选中内容时，输入新内容则会替换掉,启用delete-selection-mode
+  #+END_SRC
 * default-major-mode
   #+BEGIN_SRC emacs-lisp
     ;; 把缺省的 major mode 设置为 text-mode, 而不是几乎什么功能也 没有的 fundamental-mode.

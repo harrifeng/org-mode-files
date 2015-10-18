@@ -9,7 +9,12 @@
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
 *  C-x n n narrow-to-region
  效果是 当你选中一个区域 然后按下C-x n n 后
- 选中区域 之外的其他内容不会再显示（被没有被删掉， 只是不显示了而已）
+ 选中区域 之外的其他内容不会再显示（并没有被删掉， 只是不显示了而已）
+ 这个命令 会让初学者迷惑(会给人一种感觉，丢了一部分内容)，所以默认是禁用的
+#+BEGIN_SRC emacs-lisp
+;; 起用这个命令
+(put 'narrow-to-region 'disabled nil)
+#+END_SRC
 * C-x n w widen
   narrow-to-region 的返向操作，
   按下 C-x n w  原来被隐藏的内容会显示出来

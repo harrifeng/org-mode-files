@@ -1,0 +1,26 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     emacs 移动相关命令总结
+#+AUTHOR:    纪秀峰
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2015-10-18 日
+#+DESCRIPTION:emacs 移动相关命令总结
+#+KEYWORDS:
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+#+FILETAGS:
+    | C-f, C-b     | forward-char backward-char              | 以字符为单位移动。                                         |
+    | M-f, M-b     | forward-word,backward-word              | 以单词为单位移动。                                         |
+    | C-a, C-e     | move-beginning-of-line move-end-of-line | 移动到行首，行末。                                         |
+    | M-a, M-e     | backward-sentence forward-sentence      | 移动到句子头，句子尾。                                     |
+    | C-M-a ,C-M-e | beginning-of-defun end-of-defun         | 到函数头尾                                                 |
+    | M-{, M-}     | forward-paragraph backward-paragraph    | 移动到段落头，段落尾。                                     |
+    | C-v, M-v     | scroll-up-command scroll-down-command   | 翻页。                                                     |
+    | M-<, M->     | beginning-of-buffer end-of-buffer       | 到文件头和文件尾。                                         |
+    | M-r          | move-to-window-line-top-bottom          | 加参数，移动到窗口里的某一行。不加参数缺省移动到窗口中间。 |
+    | M-g c        | goto-char                               | 到文件的第 N 字节。                                        |
+    | M-g g        | goto-line                               | 到文件第 N 行。                                            |
+    | C-x C-n      | set-goal-column                         | 设定 goal-column.                                          |
+    | C-u C-x C-n  | set-goal-column                         | 取消 goal-column.                                          |
+
+

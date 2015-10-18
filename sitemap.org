@@ -70,6 +70,8 @@
      + [[file:emacs教程/00004-emacs-self-tutorial.org][emacs 自带的简单入门教程]]
      + [[file:emacs教程/00005-emacs-keybind.org][emacs 按键绑定]]
      + [[file:emacs教程/00006-emacs-common-setup.org][emacs 一些简单的设置]]
+     + [[file:emacs教程/00007-emacs-move.org][emacs 移动相关命令总结]]
+     
      
    + erlang
      + [[file:erlang/Distributed_Applications.org][Distributed_Applications.org]]

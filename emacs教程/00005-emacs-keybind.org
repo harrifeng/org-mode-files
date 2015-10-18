@@ -1,0 +1,80 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     emacs 按键绑定
+#+AUTHOR:    纪秀峰
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2015-10-18 日
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+
+* 全局按键绑定global-set-key
+#+BEGIN_SRC emacs-lisp
+(global-set-key ... 'my-funtion)
+比如
+(global-set-key (kbd "C-f") 'forward-char)
+(global-set-key (kbd "C-x C-f") 'find-file)
+或者
+(define-key global-map (kbd "C-f") 'forward-char)
+(define-key global-map (kbd "C-x C-f") ''find-file)
+#+END_SRC
+常用的 像C-x C-f  ,C-f ,C-c C-f  等按键 很容易写出来
+但是有些按键 包含  f1 f2 backspace,delete return shift 等按键
+这样的按键不好配置。
+有一种方法可以帮你解决这个问题
+
+    1. M-x global-set-key RET 交互式的绑定你的键。
+    2. C-x Esc Esc 调出上一条“复杂命令”。
+    好了，你现在就能在 minibuffer 里看到你应该写在 .emacs 的东西 了。
+比如 我想绑定 Alt-Return 到 forward-char 这个命令
+M-x:global-set-key RET 然后 按下 Alt-Return 按键 ，然后输入forward-char 然后回来
+再然后 按下 C-x Esc Esc 就会在minibuffer 里显示出
+#+BEGIN_SRC emacs-lisp
+(global-set-key [27 13] (quote forward-char))
+#+END_SRC
+* 绑定新的前缀键
+ 其实上面的办法只能让你绑定一个已有的前缀。你有可能想绑定一个
+ save-buffer 到 "C-c C-c C-b a"。上面的办法就不灵了。我们必须 使用另外
+ 的办法：
+
+ #+BEGIN_SRC emacs-lisp
+   (global-set-key (kbd "C-c C-c C-b a") 'save-buffer)
+ #+END_SRC
+  上面的那个 "C-c C-c C-b a" 是自动把 "C-c C-c", "C-c C-c C-b" 都定义
+  成了一个 prefix-command.
+
+* 创建新的 prefix command
+  上面这个办法只对开头的键已经是 prefix command 的键序列起作用， 如果
+  你的第一个键不是一个 prefix，那么就会出错。你可以试试：
+  #+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-z C-c C-w b") 'find-file)
+  #+END_SRC
+  出现错误：(error "Key sequence C-z C-c C-w b uses invalid prefix characters")
+
+  所以你必须事先把第一个键设定为 prefix:
+  #+BEGIN_SRC emacs-lisp
+    (define-prefix-command 'ctl-z-map)
+    (global-set-key (kbd "C-z") 'ctl-z-map)
+    (global-set-key (kbd "C-z C-c C-w b") 'find-file)
+  #+END_SRC
+* 如何查看 某个快捷键绑定了什么命令
+  C-h k 或 F1 k
+  比如我想看 C-x C-s 这个快捷键 绑定了什么命令
+  C-h k 然后按下C-x C-s按键
+  或者
+  F1 k 然后按下C-s C-s按键
+* 如何查看 某个函数或命令的文档
+  C-h f 或F1 f 然后输入相应函数名
+  如查看 forward-char 命令的文档
+  C-h f 然后输入forward-char 回车
+  F1 f 然后输入forward-char 回车
+* 为具体的 major mode 绑定按键
+  #+BEGIN_SRC emacs-lisp
+    (require 'dired)
+    ;;比如在dired mode 下  直接按u  就回到上层目录dired-up-directory
+    (define-key dired-mode-map "u" 'dired-up-directory)
+    ;; 或者
+    (defun my-dired-mode-hook()
+      (local-set-key "u" 'dired-up-directory))
+    (add-hook 'dired-mode-hook 'my-dired-mode-hook)
+  #+END_SRC
+

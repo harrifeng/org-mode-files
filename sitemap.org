@@ -70,6 +70,7 @@
      + [[file:emacs教程/00005-emacs-keybind.org][emacs 按键绑定]]
      + [[file:emacs教程/00006-emacs-common-setup.org][emacs 一些简单的设置]]
      + [[file:emacs教程/00007-emacs-search-replace.org][emacs 搜索与替换]]
+     + [[file:emacs教程/00008-emacs-narrow.org][emacs narrow-to-region 与widen]]
    + erlang
      + [[file:erlang/Distributed_Applications.org][Distributed_Applications.org]]
      + [[file:erlang/catch.org][catch ,throw ,异常处理]]

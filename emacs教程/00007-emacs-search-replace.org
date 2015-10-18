@@ -53,3 +53,5 @@
   1 选中 任意一个hello 然后按 C-; 此时 全部的hello 会被高亮显示
     然后输入world 此时所有的hello 都变成helloworld了
     然后再次输入 C-; 退出 iedit模式
+* 函数内变量的改名
+  可以结合 Iedit 与 [[file:00008-emacs-narrow.org][narrow-to-region]] 来完成

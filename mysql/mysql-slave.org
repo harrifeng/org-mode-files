@@ -1,0 +1,92 @@
+# -*- coding:utf-8 -*-
+#+LANGUAGE:  zh
+#+TITLE:     mysql5.6 主从复制的配置过程
+#+AUTHOR:    纪秀峰
+#+EMAIL:     jixiuf@gmail.com
+#+DATE:     2015-10-19 Mon
+#+DESCRIPTION:mysql 主从复制的配置过程
+#+KEYWORDS:
+#+OPTIONS:   H:2 num:nil toc:t \n:t @:t ::t |:t ^:nil -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil
+#+FILETAGS:
+* master 的配置 ip 192.168.1.132
+[mysqld]
+server-id = 1  #这里的数字不能和从库一样
+#需要复制的数据库，多个数据库写多行,不写的话默认复制所有库
+binlog_do_db = t1
+binlog_do_db =t2
+
+log-bin                        = /data/mysql/data/mysql-bin
+#expire-logs-days               = 14
+#sync-binlog                    = 1 #事务提交后立即写入二进制日志，而不是放内存中，避免主服务器故障时事务没有写入日志
+binlog_format=MIXED   #混合格式
+* slave 配置 ip 192.168.1.137
+[mysqld]
+server-id = 2
+replicate-do-db =t1
+replicate-do-db =t2
+binlog-format                  = mixed
+replicate-ignore-db=mysql
+log-slave-update=true
+slave-skip-errors=true
+
+* 配置完 之后
+** master 上的操作
+  #+BEGIN_SRC sh
+   #master 上创建用于同步数据的账户
+   grant replication slave on *.* to slave@'192.168.1.137' identified by 'slave';
+   # 锁表
+   flush tables with read lock;
+   show master status;
+  #+END_SRC
+#+BEGIN_QUOTE
+mysql>  show master status;
++------------------+----------+--------------+------------------+-------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
++------------------+----------+--------------+------------------+-------------------+
+| mysql-bin.000005 |     2147 | t1,t2        |                  |                   |
++------------------+----------+--------------+------------------+-------------------+
+mysql-bin.000005   和     2147  这两个数据 会在从库上用到
+#+END_QUOTE
+#+BEGIN_SRC sh
+    # 将 t1,t2 库的数据导出到sql 文件 ，然后在从库192.168.1.137 上 建立t1,t2 库， 把数据分别导入
+   /usr/bin/mysqldump t1 -uroot -padmin >t1.sql
+   /usr/bin/mysqldump t2 -uroot -padmin >t2.sql
+    #或者 从库上加立空库t1,t2后， 直接这样将主库数据导入到从库中
+   # /usr/bin/mysqldump t1 -uroot -padmin --opt | mysql t1 -uroot -padmin -h 192.168.1.37
+   # /usr/bin/mysqldump t2 -uroot -padmin --opt | mysql t2 -uroot -padmin -h 192.168.1.37
+   #dump to slave ,(需要提前在slave 上建上空库t1,t2)
+    # 导完数据之后 解锁表
+   unlock tables;
+#+END_SRC
+** slave 上的操作
+    首先完成 t1,t2 两个数据库数据的同步
+   #+BEGIN_SRC sh
+    create database t1;
+    use t1;
+    source t1.sql
+
+    create database t2;
+    use t2;
+    source t2.sql
+   #+END_SRC
+    然后 根据master 上  show master status 获得的数据
+    #+BEGIN_SRC sh
+    change master to master_host='192.168.1.132',master_user='slave',master_password='slave',master_log_file='mysql-bin.000005',master_log_pos=2147;
+    start slave;  # 开始保持同步
+    #+END_SRC
+    此时在从库上
+    #+BEGIN_SRC sh
+     show slave status \G;
+    #+END_SRC
+    #+BEGIN_QUOTE
+        mysql> show slave status \G;
+                Slave_IO_Running: Yes
+                Slave_SQL_Running: Yes
+
+    #+END_QUOTE
+    当 Slave_IO_Running 与Slave_SQL_Running 状态是Yes 的时候 就算配置完成了
+    可以试着在master 插入数据 看看slave 上数据是否得到同步
+
+
+

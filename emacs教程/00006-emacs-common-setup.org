@@ -34,6 +34,19 @@
     (setq visible-bell t)
     (setq  ring-bell-function 'ignore)
   #+END_SRC
+* 输入括号时 自动添加半边括号的功能
+  #+BEGIN_SRC emacs-lisp
+    (electric-pair-mode t)
+  #+END_SRC
+*  隐藏菜单栏 工具栏 滚动条
+   #+BEGIN_SRC emacs-lisp
+     (require 'menu-bar)
+     (menu-bar-mode nil)
+     (require 'tool-bar)
+     (tool-bar-mode nil)
+     (require 'scroll-bar)
+     (scroll-bar-mode nil)
+   #+END_SRC
 * 鼠标粘贴相关
   不要在鼠标点击的那个地方插入剪贴板内容。我不喜欢那样，经常把 我的文档
   搞的一团糟。我觉得先用光标定位，然后鼠标中键点击要好 的多。不管你的光

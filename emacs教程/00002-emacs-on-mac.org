@@ -39,14 +39,23 @@
 **  只编译终端下可用的版本 编译完后 会安装到/usr/local/bin/下
   #+BEGIN_SRC sh
   cd emacs
-  ./configure
+  ./configure --without-ns
+  or
+  ./configure --disable-ns-self-contained
   make
   make install
+#+BEGIN_QUOTE
+    If you pass the --disable-ns-self-contained option to configure, the lisp
+    files will be installed under whatever 'prefix' is set to (defaults to
+    /usr/local).  The bundle will be smaller, but depend on these resources (may
+    require 'sudo' for "make install").
+#+END_QUOTE
+
   #+END_SRC
 ** 编译 图形界面的
   #+BEGIN_SRC sh
   cd emacs
-   ./configure --with-ns
+   ./configure
    make
    make install
   #+END_SRC

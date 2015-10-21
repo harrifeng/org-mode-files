@@ -22,6 +22,95 @@
   C-bs list sessions
   C-bn C-bp next prev
   C-bc 新建tag
+
+
+
+* IOSTAT 介绍
+Iostat（Input Output statistics）反映了磁盘I/O情况和CPU 活动。
+基本语法： iostat <options> interval count
+
+option - 让你指定所需信息的设备，像磁盘、cpu或者终端(-d , -c , -t or
+-tdc ) 。x 选项给出了完整的统计结果。iostat的默认参数是tdc(terminal,
+disk, and CPU)。如果任何其他的选项被指定，这个默认参数将被完全替代。
+
+interval – 统计运行的间隔时间（秒），
+count – 统计运行的次数
+
+
+
+参数说明：
+rrqm/s:   每秒进行 merge 的读操作数目。
+wrqm/s:  每秒进行 merge 的写操作数目。
+r/s:           每秒完成的读 I/O 设备次数。
+w/s:         每秒完成的写 I/O 设备次数。
+rsec/s:    每秒读扇区数。即 delta(rsect)/s
+wsec/s:  每秒写扇区数。即 delta(wsect)/s
+rkB/s:      每秒读K字节数。是 rsect/s 的一半，因为每扇区大小为512字节。
+wkB/s:    每秒写K字节数。是 wsect/s 的一半。
+avgrq-sz: 平均每次设备I/O操作的数据大小 (扇区)。
+avgqu-sz: 平均I/O队列长度。即 delta(aveq)/s/1000 (因为aveq的单位为毫秒)。
+await:    平均每次设备I/O操作的等待时间 (毫秒)。
+svctm:   平均每次设备I/O操作的服务时间 (毫秒)。
+%util:      一秒中有百分之多少的时间用于 I/O 操作，或者说一秒中有多少时间 I/O 队列是非空的。
+
+注意：
+
+输出结果的第一行是从系统启动到现在为止的这段时间的结果，接下去的每一行
+是interval时间段内的结果。Kernel里有一组计数器用来跟踪这些值。所以我们
+在取性能指标的时候要注意第一行指标的特殊性。
+
+SUSE 10 和9 iostat 参数数量略有不同，suse 10 多出rkB/s ,wkB/两个参数，
+不过意义不大，因为完全可以通过rsec/s，wsec/s计算得出。
+
+现在的监控脚本中已经利用IOSTAT采集每秒设备的读写次数，IO队列长度，IO操
+作哦等待时间以及IO利用率等性能指标上报至 二级网管系统及DB性能平台
+（db.ied.com）其中IO利用率已经作为重要的指标成为衡量DB健康度的标准
+
+* VMSTAT 介绍
+Vmstat（Virtual Memory Statistics）反映了进程的虚拟内存、虚拟内存、磁盘、trap和cpu的活动情况
+基本语法：vmstat <options> interval count
+
+option - 让你指定所需的信息类型，例如 paging -p , cache -c ,.interrupt
+-i etc. 如果没有指定选项，将会显示进程、内存、页、磁盘、中断和cpu信息。
+
+
+
+报告说明：
+
+    procs
+n    r:
+   运行的和等待(CPU时间片)运行的进程数，这个值也可以判断是否需要增加CPU(长期大于1)
+n    b:
+   处于不可中断状态的进程数，常见的情况是由IO引起的
+l    memory
+n    swpd: 切换到交换内存上的内存(默认以KB为单位)
+如果 swpd 的值不为0，或者还比较大，比如超过100M了，但是 si, so 的值长期为 0，这种情况我们可以不用担心，不会影响系统性能。
+n    free: 空闲的物理内存
+n    buff: 作为buffer cache的内存，对块设备的读写进行缓冲
+n    cache: 作为page cache的内存, 文件系统的cache
+如果 cache 的值大的时候，说明cache住的文件数多，如果频繁访问到的文件都能被cache住，那么磁盘的读IO bi 会非常小。
+l    Swap
+n    si: 交换内存使用，由磁盘调入内存
+n    so: 交换内存使用，由内存调入磁盘
+内存够用的时候，这2个值都是0，如果这2个值长期大于0时，系统性能会受到影响。磁盘IO和CPU资源都会被消耗。
+常有人看到空闲内存(free)很少或接近于0时，就认为内存不够用了，实际上不能光看这一点的，还要结合si,so，如果free很少，但是si,so也很少(大多时候是0)，那么不用担心，系统性能这时不会受到影响的。
+l    io
+n    bi: 从块设备读入的数据总量(读磁盘) (KB/s)，
+n    bo: 写入到块设备的数据总理(写磁盘) (KB/s)
+随机磁盘读写的时候，这2个 值越大（如超出1M），能看到CPU在IO等待的值也会越大
+l    system
+n    in: 每秒产生的中断次数
+n    cs: 每秒产生的上下文切换次数
+上面这2个值越大，会看到由内核消耗的CPU时间会越多
+l    cpu
+n    us: 用户进程消耗的CPU时间百分比
+us 的值比较高时，说明用户进程消耗的CPU时间多，但是如果长期超过50% 的使用，那么我们就该考虑优化程序算法或者进行加速了
+n    sy: 内核进程消耗的CPU时间百分比
+sy 的值高时，说明系统内核消耗的CPU资源多，这并不是良性的表现，我们应该检查原因。
+n    wa: IO等待消耗的CPU时间百分比
+wa 的值高时，说明IO等待比较严重，这可能是由于磁盘大量作随机访问造成，也有可能是磁盘的带宽出现瓶颈(块操作)。
+n    id: CPU处在空闲状态时间百分比
+
 * free 命令详解
 因为LINUX的内核机制，一般情况下不需要特意去释放已经使用的cache。这些cache起来的内容可以增加文件以及的读写速度。
 先说下free命令怎么看内存

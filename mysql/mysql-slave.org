@@ -121,6 +121,23 @@ mysql-bin.000005   和     2147  这两个数据 会在从库上用到
    1）mysqldump生成全备sql时需要注意--single-transaction --master-data等参数，详细可以参见mysqldump --help
    2）全备入库时，需要设置--default-character-set，使用一致的字符集
 
+   先前在使用mysqldump的时候，没有加任何选项，查看dump出来的文件，发现每
+   个table的insert语句被lock tables write和unlock tables包住。mysqldump在
+   备份的时候，居然锁表！如果这张表非常大，在dump的过程中，其他线程岂不是
+   不能写数据？看了下mysql的manual，发现--lock-tables默认是True，可以使
+   用--skip-opt选项来屏蔽--lock-tables。另外，我们很多时候需要基于时间点
+   的备份，如早上9点，这时，可以使用--single-transaction选项，这个选项可
+   以在dump之前发出一个BEGIN语句，获取一个短暂的全局写锁，可以所有事务性
+   数据库的一致性（内部应该是使用snapshot来实现，待求证），另外通过指
+   定--master-data=2，可以在dump文件中用注释的方式指定当前dump快照使用的
+   binlog文件和位置，联合--single-transaction和--master-data两个选项，可
+   以实现基于时间点的备份和恢复，特别是做热备。
+
+   [注意]--skip-opt禁用了很多默认的选项，如--create-option等，其
+   中--create-option是比较重要的属性，如果该选项被disable掉，则在dump出来
+   的table会少了auto-increment等字段属性。
+
+
 #+BEGIN_QUOTE
   --single-transaction
                       Creates a consistent snapshot by dumping all tables in a
@@ -146,3 +163,5 @@ mysql-bin.000005   和     2147  这两个数据 会在从库上用到
                       of the dump. Option automatically turns --lock-tables
                       off.
 #+END_QUOTE
+
+

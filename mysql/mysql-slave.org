@@ -90,3 +90,59 @@ mysql-bin.000005   和     2147  这两个数据 会在从库上用到
 
 
 
+
+
+*  mysql热备做DR
+** 在master db上使用mysqldump构建基于时间点的一致性全备
+   mysqldump -uroot -pPASSWORD --single-transaction --master-data=2 --skip-opt --create-option -B item > dump.sql
+
+** scp该sql文件到slave dr上面
+
+** 在slave dr上把全备的数据入库
+   mysql -uroot -pPASSWORD --default-character-set=latin1 < dump.sql
+
+** 在master db上执行授权语句
+   GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'repl'@'slave1ip' IDENTIFIED BY 'pass'
+
+** 在slave dr上设置热备关系
+  CHANGE MASTER TO
+    MASTER_HOST='masterIP',
+    MASTER_USER='root',
+    MASTER_PASSWORD='pass，
+    MASTER_LOG_FILE='binlog.022804',
+    MASTER_LOG_POS=98;
+  start slave;
+
+** 注：其中pos和file参数可以从mysqldump出来的sql文件前25行了解到
+   head -25
+
+** 使用show slave status\G 查看slave的情况
+   说明：上述的步骤是简单的热备做dr的步骤，有常见需要注意的问题
+   1）mysqldump生成全备sql时需要注意--single-transaction --master-data等参数，详细可以参见mysqldump --help
+   2）全备入库时，需要设置--default-character-set，使用一致的字符集
+
+#+BEGIN_QUOTE
+  --single-transaction
+                      Creates a consistent snapshot by dumping all tables in a
+                      single transaction. Works ONLY for tables stored in
+                      storage engines which support multiversioning (currently
+                      only InnoDB does); the dump is NOT guaranteed to be
+                      consistent for other storage engines. While a
+                      --single-transaction dump is in process, to ensure a
+                      valid dump file (correct table contents and binary log
+                      position), no other connection should use the following
+                      statements: ALTER TABLE, DROP TABLE, RENAME TABLE,
+                      TRUNCATE TABLE, as consistent snapshot is not isolated
+                      from them. Option automatically turns off --lock-tables.
+  --master-data[=#]   This causes the binary log position and filename to be
+                      appended to the output. If equal to 1, will print it as a
+                      CHANGE MASTER command; if equal to 2, that command will
+                      be prefixed with a comment symbol. This option will turn
+                      --lock-all-tables on, unless --single-transaction is
+                      specified too (in which case a global read lock is only
+                      taken a short time at the beginning of the dump; don't
+                      forget to read about --single-transaction below). In all
+                      cases, any action on logs will happen at the exact moment
+                      of the dump. Option automatically turns --lock-tables
+                      off.
+#+END_QUOTE

@@ -50,7 +50,7 @@
      + [[file:emacs教程/00006-emacs-common-setup.org][emacs 一些简单的设置]]
      + [[file:emacs教程/00007-emacs-search-replace.org][emacs 搜索与替换]]
      + [[file:emacs教程/00008-emacs-narrow.org][emacs narrow-to-region 与widen]]
-     + [[file:emacs%E6%95%99%E7%A8%8B/00009-emacs-theme.org][我的emacs配色]]
+     + [[file:emacs教程/00009-emacs-theme.org][我的emacs配色]]
    + emacs
      + [[file:emacs/what-emacs-can-do.org][Emacs可以做什么(功能演示)]]
      + [[file:emacs/open-with.org][Emacs的插件openwith.el]]

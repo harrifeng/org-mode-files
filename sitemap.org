@@ -10,7 +10,6 @@
      + [[file:Linux/linux.org][linux拾遗]]
      + [[file:Linux/llvm.org][llvm逻辑卷管理]]
      + [[file:Linux/rsync.org][rsync.org]]
-     + [[file:Linux/shell.org][shell.org]]
    + autohotkey
      + [[file:autohotkey/AutoHotKey_1.org][AutoHotKey 几个简单的小例子]]
      + [[file:autohotkey/AutoHotKey_Introduce.org][AutoHotKey 简介]]

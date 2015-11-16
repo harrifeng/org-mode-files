@@ -317,6 +317,14 @@ Modeline "1440x900_75.00"  136.75  1440 1536 1688 1936  900 903 909 942 -hsync +
     echo "Fail";
   fi
 #+end_src
+* find
+  #+BEGIN_SRC sh
+    # 修改时间在10天前的都删除
+    find . -maxdepth 1 -mtime +10 -exec rm  -rf {} \;
+    # 修改时间在10天之内的都删除
+    find . -maxdepth 1 -mtime -10 -exec rm  -rf {} \;
+  #+END_SRC
+
 * “.”点号替代单个字符
   这个用法真的非常非常有用，极力推荐。
   grep [a,A]..[b,B]* file  在文件中查找a（或A）开头，第四个字母为b（或B）的所有单词

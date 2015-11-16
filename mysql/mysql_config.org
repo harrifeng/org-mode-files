@@ -115,7 +115,10 @@
   11. libaio
        innodb_use_native_aio (需要装libaio)
   12.
-       use-sys-malloc (do not use)
-       use google tc-malloc
+        use-sys-malloc (do not use)
+        use google tc-malloc
 
   13. mysql 改io 调度器为deadline
+
+  14. sync_binlog：默认情况下，0,表示写日志文件不会马上同步到磁盘。可以设置每N次写操作后同步到磁盘。
+

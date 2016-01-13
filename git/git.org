@@ -17,6 +17,9 @@
 git rm --cache filename
 #+end_src
 从库中删除filename ,即不再对它进行管理， 但本地会留一份.
+* 在一个旧库中 建一个新分支（新分支上无任何内容）
+   git checkout --orphan gh-pages
+   git rm -rf .
 
 * git submodule 子模块的删除
   需要3步

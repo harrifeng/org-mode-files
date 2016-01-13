@@ -40,7 +40,8 @@
 
   #+END_SRC
 
-#+BEGIN_SRC
+  #+BEGIN_HTML
+  <pre>
   +---------+
   | cBLU    |
   |         |
@@ -48,7 +49,9 @@
   |    |cPNK|
   |    |    |
   +----+----+
-#+END_SRC
+
+  </pre>
+  #+END_HTML
 * Link
   http://www.udpwork.com/item/1464.html
   http://orgmode.org/worg/org-contrib/org-exp-blocks.html

@@ -1,1 +1,1 @@
-Moved to github.com/jixiuf/jixiuf.github.com  (branch:source)
+Moved to http://github.com/jixiuf/jixiuf.github.com  (branch:source)
